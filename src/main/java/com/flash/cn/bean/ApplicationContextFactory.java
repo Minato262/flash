@@ -1,4 +1,4 @@
-package com.flash.cn;
+package com.flash.cn.bean;
 
 import java.util.HashMap;
 import java.util.Map;
