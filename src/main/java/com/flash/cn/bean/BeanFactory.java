@@ -2,7 +2,7 @@ package com.flash.cn.bean;
 
 /**
  * @author kay
- * @version v0.0.1
+ * @version v1.0
  */
 public interface BeanFactory {
 
