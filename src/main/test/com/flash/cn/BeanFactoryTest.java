@@ -1,6 +1,6 @@
 package com.flash.cn;
 
-import com.flash.cn.bean.ApplicationContextFactory;
+import com.flash.cn.factory.People;
 import org.junit.Test;
 
 /**
@@ -13,6 +13,18 @@ public class BeanFactoryTest {
 
     @Test
     public void test() {
-        System.out.println("Test");
+        BeanFactory factory = new ApplicationContextFactory();
+        People people = factory.getBean("com.flash.cn.factory.People");
+        System.out.println(people);
+        System.out.println(people.getAge());
+        System.out.println(people.getName());
+
+        people.setAge(1);
+        people.setName("name");
+
+        People people1 = factory.getBean("com.flash.cn.factory.People");
+        System.out.println(people1);
+        System.out.println(people1.getAge());
+        System.out.println(people1.getName());
     }
 }

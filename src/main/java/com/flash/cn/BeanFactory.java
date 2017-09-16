@@ -1,4 +1,4 @@
-package com.flash.cn.bean;
+package com.flash.cn;
 
 /**
  * Bean Factory.
@@ -11,9 +11,9 @@ public interface BeanFactory {
     /**
      * get Bean.
      *
-     * @param requiredType the required of type
-     * @param <T>          new object
+     * @param name the required of type
+     * @param <T>  new object
      * @return bean object
      */
-    <T> T getBean(Class<T> requiredType);
+    <T> T getBean(String name);
 }
