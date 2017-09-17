@@ -1,7 +1,4 @@
-package com.flash.cn;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.flash.cn.beans;
 
 /**
  * Application Context Factory.
@@ -9,9 +6,7 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory implements BeanFactory {
-
-    private Map<String, String> container = new HashMap<String, String>();
+public class ApplicationContextFactory extends BeanContainer implements BeanFactory {
 
     /**
      * get Bean.

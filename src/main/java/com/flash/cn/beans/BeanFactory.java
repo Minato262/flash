@@ -1,4 +1,4 @@
-package com.flash.cn;
+package com.flash.cn.beans;
 
 /**
  * Bean Factory.

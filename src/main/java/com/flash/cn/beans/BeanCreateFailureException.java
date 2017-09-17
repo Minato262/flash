@@ -1,10 +1,10 @@
-package com.flash.cn;
+package com.flash.cn.beans;
 
 /**
  * @author kay
- * @version v0.0.1
+ * @version v1.0
  */
-public class BeanCreateFailureException extends RuntimeException {
+public class BeanCreateFailureException extends BeanException {
 
     public BeanCreateFailureException() {
         super();
