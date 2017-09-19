@@ -10,6 +10,6 @@ public class BeforeTest {
 
     @Before
     public void init() {
-        System.out.println("1");
+        System.out.println("容器启动!");
     }
 }

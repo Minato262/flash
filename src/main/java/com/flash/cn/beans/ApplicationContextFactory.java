@@ -6,7 +6,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory extends BeanContainer implements BeanFactory {
+public class ApplicationContextFactory implements BeanFactory {
 
     /**
      * get Bean.

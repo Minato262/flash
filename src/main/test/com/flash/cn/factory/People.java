@@ -1,9 +1,12 @@
 package com.flash.cn.factory;
 
+import com.flash.cn.annotation.Autowired;
+
 /**
  * @author kay
  * @version v0.0.1
  */
+@Autowired
 public class People {
 
     private String name;
