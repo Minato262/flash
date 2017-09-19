@@ -1,6 +1,8 @@
 package com.flash.cn.core;
 
 import com.flash.cn.annotation.Autowired;
+import com.flash.cn.beans.ApplicationContextFactory;
+import com.flash.cn.beans.BeanFactory;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -18,7 +20,7 @@ import java.util.List;
  */
 public class ClassPathResource {
 
-    public void getClassName(String packageName) {
+    public List<Class<?>> getClassName(String packageName) {
         List<Class<?>> classes = new ArrayList<Class<?>>();
         String packageDirName = packageName.replace('.', '/');
         Enumeration<URL> dirs = null;
@@ -44,11 +46,18 @@ public class ClassPathResource {
             }
         }
 
+        List<Class<?>> result = new ArrayList<Class<?>>();
         for (Class<?> clazz : classes) {
             System.out.println(clazz.getName());
             Autowired annotation = clazz.getAnnotation(Autowired.class);
+            if (annotation == null) {
+                continue;
+            }
             System.out.println(annotation);
+            System.out.println(annotation.value());
+            result.add(clazz);
         }
+        return result;
     }
 
     public void findAndAddClassesInPackageByFile(String packageName, String packagePath, List<Class<?>> classes) {

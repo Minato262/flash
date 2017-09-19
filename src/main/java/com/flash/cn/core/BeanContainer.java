@@ -9,5 +9,5 @@ import java.util.Map;
  */
 public class BeanContainer {
 
-    private static Map<String, String> container = new HashMap<String, String>();
+    private static Map<String, Object> container = new HashMap<String, Object>();
 }
