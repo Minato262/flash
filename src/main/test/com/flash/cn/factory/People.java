@@ -8,7 +8,6 @@ import com.flash.cn.annotation.Autowired;
  */
 @Autowired
 public class People {
-
     private String name;
     private int age;
 
