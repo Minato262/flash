@@ -1,8 +1,6 @@
 package com.flash.cn.core;
 
 import com.flash.cn.annotation.Autowired;
-import com.flash.cn.beans.ApplicationContextFactory;
-import com.flash.cn.beans.BeanFactory;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -38,7 +36,7 @@ public class ClassPathResource {
             if ("file".equals(protocol)) {
                 try {
                     String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
-                    findAndAddClassesInPackageByFile(packageName, filePath, classes);
+                    findAndAddClasses(packageName, filePath, classes);
                 }
                 catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -53,6 +51,7 @@ public class ClassPathResource {
             if (annotation == null) {
                 continue;
             }
+
             System.out.println(annotation);
             System.out.println(annotation.value());
             result.add(clazz);
@@ -60,7 +59,7 @@ public class ClassPathResource {
         return result;
     }
 
-    public void findAndAddClassesInPackageByFile(String packageName, String packagePath, List<Class<?>> classes) {
+    public void findAndAddClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
         if (!dir.exists() || !dir.isDirectory()) {
             return;
@@ -75,7 +74,7 @@ public class ClassPathResource {
         assert files != null;
         for (File file : files) {
             if (file.isDirectory()) {
-                findAndAddClassesInPackageByFile(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
+                findAndAddClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);

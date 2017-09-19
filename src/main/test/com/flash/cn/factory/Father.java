@@ -1,6 +1,5 @@
 package com.flash.cn.factory;
 
-import com.flash.cn.Bean;
 import com.flash.cn.annotation.Autowired;
 
 /**

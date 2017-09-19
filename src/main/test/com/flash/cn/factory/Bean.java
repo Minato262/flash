@@ -1,4 +1,4 @@
-package com.flash.cn;
+package com.flash.cn.factory;
 
 /**
  * @author kay
