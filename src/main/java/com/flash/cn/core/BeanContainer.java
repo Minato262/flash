@@ -10,4 +10,8 @@ import java.util.Map;
 public class BeanContainer {
 
     private static Map<String, Object> container = new HashMap<String, Object>();
+
+    public void init(){
+
+    }
 }

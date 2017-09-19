@@ -1,6 +1,8 @@
 package com.flash.cn.factory;
 
 /**
+ * {@link Bean} Test.
+ *
  * @author kay
  * @version v1.0
  */

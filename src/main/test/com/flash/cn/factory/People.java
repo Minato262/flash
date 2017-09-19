@@ -3,6 +3,8 @@ package com.flash.cn.factory;
 import com.flash.cn.annotation.Autowired;
 
 /**
+ * {@link People} Test.
+ *
  * @author kay
  * @version v0.0.1
  */
