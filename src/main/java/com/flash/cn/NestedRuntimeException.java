@@ -6,10 +6,17 @@ package com.flash.cn;
  */
 public class NestedRuntimeException extends RuntimeException {
 
+    /**
+     *
+     */
     public NestedRuntimeException() {
         super();
     }
 
+    /**
+     *
+     * @param cause
+     */
     public NestedRuntimeException(Throwable cause) {
         super(cause);
     }

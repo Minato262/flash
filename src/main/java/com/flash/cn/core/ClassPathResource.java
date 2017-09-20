@@ -13,53 +13,54 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
+ * Class Path Resource.
+ *
  * @author kay
  * @version v1.0
  */
 public class ClassPathResource {
 
-    public List<Class<?>> getClassName(String packageName) {
-        List<Class<?>> classes = new ArrayList<Class<?>>();
-        String packageDirName = packageName.replace('.', '/');
-        Enumeration<URL> dirs = null;
+    private Enumeration<URL> getEnumeration(String packageDirName) {
         try {
-            dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+            return Thread.currentThread().getContextClassLoader().getResources(packageDirName);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new ClassPathResourceException();
         }
+    }
 
-        assert dirs != null;
+    private Class<?> loadClass(String className) {
+        try {
+            return Thread.currentThread().getContextClassLoader().loadClass(className);
+        }
+        catch (ClassNotFoundException e) {
+            throw new ClassPathResourceException();
+        }
+    }
+
+    private String decode(String s) {
+        try {
+            return URLDecoder.decode(s, "UTF-8");
+        }
+        catch (UnsupportedEncodingException e) {
+            throw new ClassPathResourceException();
+        }
+    }
+
+    private List<Class<?>> getClass(Enumeration<URL> dirs, String packageName) {
+        List<Class<?>> classes = new ArrayList<Class<?>>();
         while (dirs.hasMoreElements()) {
             URL url = dirs.nextElement();
             String protocol = url.getProtocol();
             if ("file".equals(protocol)) {
-                try {
-                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
-                    findAndAddClasses(packageName, filePath, classes);
-                }
-                catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                String filePath = decode(url.getFile());
+                checkAddClasses(packageName, filePath, classes);
             }
         }
-
-        List<Class<?>> result = new ArrayList<Class<?>>();
-        for (Class<?> clazz : classes) {
-            System.out.println(clazz.getName());
-            Autowired annotation = clazz.getAnnotation(Autowired.class);
-            if (annotation == null) {
-                continue;
-            }
-
-            System.out.println(annotation);
-            System.out.println(annotation.value());
-            result.add(clazz);
-        }
-        return result;
+        return classes;
     }
 
-    public void findAndAddClasses(String packageName, String packagePath, List<Class<?>> classes) {
+    private void checkAddClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
         if (!dir.exists() || !dir.isDirectory()) {
             return;
@@ -71,20 +72,36 @@ public class ClassPathResource {
             }
         });
 
-        assert files != null;
+        if (files == null) {
+            return;
+        }
+
         for (File file : files) {
             if (file.isDirectory()) {
-                findAndAddClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
+                checkAddClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                try {
-                    classes.add(Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + className));
-                }
-                catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                classes.add(loadClass(packageName + "." + className));
             }
         }
+    }
+
+    public List<Class<?>> getClassName(String packageName) {
+        String packageDirName = packageName.replace('.', '/');
+        Enumeration<URL> dirs = getEnumeration(packageDirName);
+        List<Class<?>> result = new ArrayList<Class<?>>();
+        for (Class<?> clazz : getClass(dirs, packageName)) {
+            System.out.println(clazz.getName());
+            Autowired annotation = clazz.getAnnotation(Autowired.class);
+            if (annotation == null) {
+                continue;
+            }
+
+            System.out.println(annotation);
+            System.out.println(annotation.value());
+            result.add(clazz);
+        }
+        return result;
     }
 }

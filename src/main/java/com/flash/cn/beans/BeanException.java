@@ -8,10 +8,17 @@ import com.flash.cn.NestedRuntimeException;
  */
 public class BeanException extends NestedRuntimeException {
 
+    /**
+     *
+     */
     public BeanException() {
         super();
     }
 
+    /**
+     *
+     * @param cause
+     */
     public BeanException(Throwable cause) {
         super(cause);
     }
