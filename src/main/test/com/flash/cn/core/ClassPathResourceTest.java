@@ -3,7 +3,7 @@ package com.flash.cn.core;
 import com.flash.cn.BeforeTest;
 import com.flash.cn.beans.ApplicationContextFactory;
 import com.flash.cn.beans.BeanFactory;
-import com.flash.cn.factory.Bean;
+import com.flash.cn.core.factory.Bean;
 import org.junit.Test;
 
 import java.util.List;

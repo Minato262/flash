@@ -1,6 +1,6 @@
 package com.flash.cn.core;
 
-import com.flash.cn.annotation.Autowired;
+import com.flash.cn.annotation.Repository;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -20,9 +20,9 @@ import java.util.List;
  */
 public class ClassPathResource {
 
-    private Enumeration<URL> getEnumeration(String packageDirName) {
+    private Enumeration<URL> getEnumeration(String name) {
         try {
-            return Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+            return Thread.currentThread().getContextClassLoader().getResources(name);
         }
         catch (IOException e) {
             throw new ClassPathResourceException();
@@ -93,7 +93,7 @@ public class ClassPathResource {
         List<Class<?>> result = new ArrayList<Class<?>>();
         for (Class<?> clazz : getClass(dirs, packageName)) {
             System.out.println(clazz.getName());
-            Autowired annotation = clazz.getAnnotation(Autowired.class);
+            Repository annotation = clazz.getAnnotation(Repository.class);
             if (annotation == null) {
                 continue;
             }

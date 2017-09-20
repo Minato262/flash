@@ -8,6 +8,9 @@ import com.flash.cn.NestedRuntimeException;
  */
 public class ClassPathResourceException extends NestedRuntimeException {
 
+    /**
+     *
+     */
     public ClassPathResourceException(){
         super();
     }

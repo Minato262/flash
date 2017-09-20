@@ -1,6 +1,6 @@
-package com.flash.cn.factory;
+package com.flash.cn.core.factory;
 
-import com.flash.cn.annotation.Autowired;
+import com.flash.cn.annotation.Repository;
 
 /**
  * {@link People} Test.
@@ -8,6 +8,6 @@ import com.flash.cn.annotation.Autowired;
  * @author kay
  * @version v0.0.1
  */
-@Autowired("2")
+@Repository("2")
 public class People extends Bean {
 }

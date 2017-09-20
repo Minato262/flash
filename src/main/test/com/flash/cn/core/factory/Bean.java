@@ -1,4 +1,4 @@
-package com.flash.cn.factory;
+package com.flash.cn.core.factory;
 
 /**
  * {@link Bean} Test.

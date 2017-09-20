@@ -2,7 +2,7 @@ package com.flash.cn;
 
 import com.flash.cn.beans.ApplicationContextFactory;
 import com.flash.cn.beans.BeanFactory;
-import com.flash.cn.factory.People;
+import com.flash.cn.core.factory.People;
 import org.junit.Test;
 
 /**
