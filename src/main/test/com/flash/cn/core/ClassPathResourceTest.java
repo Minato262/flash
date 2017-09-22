@@ -19,7 +19,7 @@ public class ClassPathResourceTest extends BeforeTest {
     @Test
     public void test() {
         ClassPathResource classPathResource = new ClassPathResource();
-        List<Class<?>> classes = classPathResource.getClassName("com.flash.cn");
+        List<Class<?>> classes = classPathResource.getClasses("com.flash.cn");
         BeanFactory factory = new ApplicationContextFactory();
         for(Class<?> clazz : classes){
             Bean people = factory.getBean(clazz.getName());

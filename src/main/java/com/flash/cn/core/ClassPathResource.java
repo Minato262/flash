@@ -1,13 +1,12 @@
 package com.flash.cn.core;
 
 import com.flash.cn.annotation.Repository;
+import com.flash.cn.util.EncodingUtils;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -20,6 +19,12 @@ import java.util.List;
  */
 public class ClassPathResource {
 
+    /**
+     * 根据来源获取，目标 URL 资源
+     *
+     * @param name 资源名称
+     * @return URL 元素资源
+     */
     private Enumeration<URL> getEnumeration(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().getResources(name);
@@ -29,37 +34,49 @@ public class ClassPathResource {
         }
     }
 
-    private Class<?> loadClass(String className) {
+    /**
+     * 载入 Class 类
+     *
+     * @param name 资源名称
+     * @return 载入的 Class 类
+     */
+    private Class<?> loadClass(String name) {
         try {
-            return Thread.currentThread().getContextClassLoader().loadClass(className);
+            return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
             throw new ClassPathResourceException();
         }
     }
 
-    private String decode(String s) {
-        try {
-            return URLDecoder.decode(s, "UTF-8");
-        }
-        catch (UnsupportedEncodingException e) {
-            throw new ClassPathResourceException();
-        }
-    }
 
-    private List<Class<?>> getClass(Enumeration<URL> dirs, String packageName) {
+    /**
+     * 获取到 Class 类集合
+     *
+     * @param urlElements url 入参
+     * @param packageName 包名
+     * @return Class 类集合
+     */
+    private List<Class<?>> getClassesByUrl(Enumeration<URL> urlElements, String packageName) {
         List<Class<?>> classes = new ArrayList<Class<?>>();
-        while (dirs.hasMoreElements()) {
-            URL url = dirs.nextElement();
+        while (urlElements.hasMoreElements()) {
+            URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
             if ("file".equals(protocol)) {
-                String filePath = decode(url.getFile());
+                String filePath = EncodingUtils.decode(url.getFile());
                 checkAddClasses(packageName, filePath, classes);
             }
         }
         return classes;
     }
 
+    /**
+     * 检测全部 Class 类集合
+     *
+     * @param packageName 包名称
+     * @param packagePath 包路径
+     * @param classes     Class 类集合
+     */
     private void checkAddClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
         if (!dir.exists() || !dir.isDirectory()) {
@@ -87,11 +104,18 @@ public class ClassPathResource {
         }
     }
 
-    public List<Class<?>> getClassName(String packageName) {
+    /**
+     * 获取 Class 名称
+     *
+     * @param packageName 包名称
+     * @return Class 类集合
+     */
+    public List<Class<?>> getClasses(String packageName) {
         String packageDirName = packageName.replace('.', '/');
         Enumeration<URL> dirs = getEnumeration(packageDirName);
+
         List<Class<?>> result = new ArrayList<Class<?>>();
-        for (Class<?> clazz : getClass(dirs, packageName)) {
+        for (Class<?> clazz : getClassesByUrl(dirs, packageName)) {
             System.out.println(clazz.getName());
             Repository annotation = clazz.getAnnotation(Repository.class);
             if (annotation == null) {
