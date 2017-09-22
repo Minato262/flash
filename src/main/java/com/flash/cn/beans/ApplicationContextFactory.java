@@ -24,9 +24,8 @@ public class ApplicationContextFactory implements BeanFactory {
      * @return bean object
      * @throw BeanCreateFailureException
      */
-    @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(String name) {
-        return (T) container.getValue(name);
+        return container.getValue(name);
     }
 }

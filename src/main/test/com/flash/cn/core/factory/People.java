@@ -10,4 +10,9 @@ import com.flash.cn.annotation.Repository;
  */
 @Repository("2")
 public class People extends Bean {
+
+    public People(){
+        this.setName("123");
+        this.setAge(12);
+    }
 }

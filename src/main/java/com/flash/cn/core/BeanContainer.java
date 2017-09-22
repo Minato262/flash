@@ -36,14 +36,15 @@ public final class BeanContainer {
     }
 
     public void println() {
-        for (Map.Entry entry : container.entrySet()) {
+        for (Map.Entry<String, Object> entry : container.entrySet()) {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
             System.out.println("Size=" + container.size());
         }
     }
 
-    public Object getValue(String key) {
-        return container.get(key);
+    @SuppressWarnings("unchecked")
+    public <T> T getValue(String key) {
+        return (T) container.get(key);
     }
 }
