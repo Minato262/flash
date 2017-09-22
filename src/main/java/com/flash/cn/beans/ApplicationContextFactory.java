@@ -1,6 +1,7 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.core.BeanContainer;
+import com.flash.cn.util.PropertiesUtils;
 
 /**
  * Application Context Factory.
@@ -12,8 +13,9 @@ public class ApplicationContextFactory implements BeanFactory {
 
     private BeanContainer container = BeanContainer.getInstance();
 
-    public ApplicationContextFactory(){
-        container.init("com.flash.cn");
+    public ApplicationContextFactory() {
+        String packageName = PropertiesUtils.load("/config/flash.properties");
+        container.init(packageName);
     }
 
     /**
