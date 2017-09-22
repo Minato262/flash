@@ -21,7 +21,7 @@ public class ClassPathResourceTest extends BeforeTest {
         ClassPathResource classPathResource = new ClassPathResource();
         List<Class<?>> classes = classPathResource.getClasses("com.flash.cn");
         BeanFactory factory = new ApplicationContextFactory();
-        for(Class<?> clazz : classes){
+        for (Class<?> clazz : classes) {
             Bean people = factory.getBean(clazz.getName());
             assert people != null;
             System.out.println(people);

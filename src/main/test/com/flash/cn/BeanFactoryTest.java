@@ -34,6 +34,9 @@ public class BeanFactoryTest extends BeforeTest {
 
     @Test
     public void test1() {
-        //
+        People people = factory.getBean("2");
+        System.out.println(people);
+        System.out.println(people.getAge());
+        System.out.println(people.getName());
     }
 }

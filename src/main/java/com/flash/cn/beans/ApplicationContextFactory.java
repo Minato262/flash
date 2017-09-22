@@ -1,5 +1,7 @@
 package com.flash.cn.beans;
 
+import com.flash.cn.core.BeanContainer;
+
 /**
  * Application Context Factory.
  *
@@ -7,6 +9,12 @@ package com.flash.cn.beans;
  * @version v1.0
  */
 public class ApplicationContextFactory implements BeanFactory {
+
+    private BeanContainer container = BeanContainer.getInstance();
+
+    public ApplicationContextFactory(){
+        container.init("com.flash.cn");
+    }
 
     /**
      * get Bean.
@@ -19,12 +27,6 @@ public class ApplicationContextFactory implements BeanFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(String name) {
-        try {
-            Class<T> clazz = (Class<T>) Class.forName(name);
-            return clazz.newInstance();
-        }
-        catch (Exception e) {
-            throw new BeanCreateFailureException(e);
-        }
+        return (T) container.getValue(name);
     }
 }

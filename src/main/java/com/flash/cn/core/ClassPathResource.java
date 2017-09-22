@@ -116,14 +116,10 @@ public class ClassPathResource {
 
         List<Class<?>> result = new ArrayList<Class<?>>();
         for (Class<?> clazz : getClassesByUrl(dirs, packageName)) {
-            System.out.println(clazz.getName());
             Repository annotation = clazz.getAnnotation(Repository.class);
             if (annotation == null) {
                 continue;
             }
-
-            System.out.println(annotation);
-            System.out.println(annotation.value());
             result.add(clazz);
         }
         return result;
