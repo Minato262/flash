@@ -24,6 +24,7 @@ public class ClassPathResource {
      *
      * @param name 资源名称
      * @return URL 元素资源
+     * @throw ClassPathResourceException
      */
     private Enumeration<URL> getEnumeration(String name) {
         try {

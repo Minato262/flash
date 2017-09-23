@@ -13,22 +13,29 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanContainer {
 
+    private static final String FLASH_PACKAGE_NAME = PropertiesUtils.load("/config/flash.properties", "packageName");
+
+    private static final String FLASH_CONTAINER = PropertiesUtils.load("/config/flash.properties", "containerModes");
+
     private static BeanContainer instance = new BeanContainer();
 
     public static synchronized BeanContainer getInstance() {
-        return instance;
+        if ("multiple".equals(FLASH_CONTAINER)) {
+            return new BeanContainer();
+        }
+        else {
+            return instance;
+        }
     }
 
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
-
-    private static final String packageName = PropertiesUtils.load("/config/flash.properties");
 
     private BeanContainer() {
     }
 
     public void init() {
         ClassPathResource resource = new ClassPathResource();
-        List<Class<?>> list = resource.getClasses(packageName);
+        List<Class<?>> list = resource.getClasses(FLASH_PACKAGE_NAME);
 
         BeanDefinitionRegistry beanDefinition = new BeanDefinitionRegistry();
         for (Class clazz : list) {
