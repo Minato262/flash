@@ -9,7 +9,7 @@ package com.flash.cn.beans;
 public class BeanCreateFailureException extends BeanException {
 
     /**
-     *
+     * 默认构造器。
      */
     public BeanCreateFailureException() {
         super();

@@ -1,6 +1,7 @@
 package com.flash.cn.core;
 
 import com.flash.cn.annotation.Repository;
+import com.flash.cn.util.PropertiesUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -12,18 +13,20 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanContainer {
 
-    private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
-
     private static BeanContainer instance = new BeanContainer();
 
     public static synchronized BeanContainer getInstance() {
         return instance;
     }
 
+    private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
+
+    private static final String packageName = PropertiesUtils.load("/config/flash.properties");
+
     private BeanContainer() {
     }
 
-    public void init(String packageName) {
+    public void init() {
         ClassPathResource resource = new ClassPathResource();
         List<Class<?>> list = resource.getClasses(packageName);
 
@@ -35,16 +38,16 @@ public final class BeanContainer {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public <T> T getValue(String key) {
+        return (T) container.get(key);
+    }
+
     public void println() {
         for (Map.Entry<String, Object> entry : container.entrySet()) {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
             System.out.println("Size=" + container.size());
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T> T getValue(String key) {
-        return (T) container.get(key);
     }
 }

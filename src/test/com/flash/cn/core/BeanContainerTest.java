@@ -3,6 +3,8 @@ package com.flash.cn.core;
 import org.junit.Test;
 
 /**
+ * {@link BeanContainer} Test.
+ *
  * @author kay
  * @version v1.0
  */
@@ -21,9 +23,16 @@ public class BeanContainerTest {
         @Override
         public void run() {
             BeanContainer container = BeanContainer.getInstance();
-            container.init("com.flash.cn");
+            container.init();
             container.println();
         }
+    }
+
+    @Test
+    public void test1() {
+        BeanContainer container = BeanContainer.getInstance();
+        container.init();
+        container.println();
     }
 }
 

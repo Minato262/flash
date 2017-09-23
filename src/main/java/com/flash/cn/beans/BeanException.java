@@ -9,7 +9,7 @@ import com.flash.cn.NestedRuntimeException;
 public class BeanException extends NestedRuntimeException {
 
     /**
-     *
+     * Bean 异常，默认构造器。
      */
     public BeanException() {
         super();
