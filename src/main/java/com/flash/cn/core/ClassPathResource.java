@@ -1,11 +1,9 @@
 package com.flash.cn.core;
 
-import com.flash.cn.annotation.Repository;
 import com.flash.cn.util.EncodingUtils;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -18,38 +16,6 @@ import java.util.List;
  * @version v1.0
  */
 public class ClassPathResource {
-
-    /**
-     * 根据来源获取，目标 URL 资源
-     *
-     * @param name 资源名称
-     * @return URL 元素资源
-     * @throw ClassPathResourceException
-     */
-    private Enumeration<URL> getEnumeration(String name) {
-        try {
-            return Thread.currentThread().getContextClassLoader().getResources(name);
-        }
-        catch (IOException e) {
-            throw new ClassPathResourceException();
-        }
-    }
-
-    /**
-     * 载入 Class 类
-     *
-     * @param name 资源名称
-     * @return 载入的 Class 类
-     */
-    private Class<?> loadClass(String name) {
-        try {
-            return Thread.currentThread().getContextClassLoader().loadClass(name);
-        }
-        catch (ClassNotFoundException e) {
-            throw new ClassPathResourceException();
-        }
-    }
-
 
     /**
      * 获取到 Class 类集合
@@ -100,7 +66,7 @@ public class ClassPathResource {
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(loadClass(packageName + "." + className));
+                classes.add(ClassUtils.loadClass(packageName + "." + className));
             }
         }
     }
@@ -113,16 +79,10 @@ public class ClassPathResource {
      */
     public List<Class<?>> getClasses(String packageName) {
         String packageDirName = packageName.replace('.', '/');
-        Enumeration<URL> dirs = getEnumeration(packageDirName);
+        Enumeration<URL> dirs = ClassUtils.getEnumeration(packageDirName);
 
         List<Class<?>> result = new ArrayList<Class<?>>();
-        for (Class<?> clazz : getClassesByUrl(dirs, packageName)) {
-            Repository annotation = clazz.getAnnotation(Repository.class);
-            if (annotation == null) {
-                continue;
-            }
-            result.add(clazz);
-        }
+        result.addAll(getClassesByUrl(dirs, packageName));
         return result;
     }
 }

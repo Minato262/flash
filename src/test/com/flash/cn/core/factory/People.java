@@ -8,7 +8,7 @@ import com.flash.cn.annotation.Repository;
  * @author kay
  * @version v0.0.1
  */
-@Repository("2")
+@Repository("people")
 public class People extends Bean {
 
     public People(){

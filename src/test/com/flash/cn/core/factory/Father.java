@@ -8,6 +8,6 @@ import com.flash.cn.annotation.Repository;
  * @author kay
  * @version v1.0
  */
-@Repository("1")
+@Repository("father")
 public class Father extends Bean {
 }

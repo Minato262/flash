@@ -6,7 +6,7 @@ package com.flash.cn.core.factory;
  * @author kay
  * @version v1.0
  */
-public abstract class Bean {
+public class Bean {
     private String name;
     private int age;
 
