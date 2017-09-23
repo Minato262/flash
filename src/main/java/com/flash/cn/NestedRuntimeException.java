@@ -6,7 +6,7 @@ package com.flash.cn;
  * @author kay
  * @version v1.0
  */
-public class NestedRuntimeException extends RuntimeException {
+public abstract class NestedRuntimeException extends RuntimeException {
 
     /**
      * Nested Runtime Exception.
@@ -22,5 +22,12 @@ public class NestedRuntimeException extends RuntimeException {
      */
     public NestedRuntimeException(Throwable cause) {
         super(cause);
+    }
+
+    /**
+     * Bean 异常，默认构造器。
+     */
+    public NestedRuntimeException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

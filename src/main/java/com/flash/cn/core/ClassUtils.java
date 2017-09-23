@@ -1,7 +1,5 @@
 package com.flash.cn.core;
 
-import com.flash.cn.beans.BeanCreateFailureException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;

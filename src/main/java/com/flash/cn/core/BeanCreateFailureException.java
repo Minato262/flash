@@ -1,4 +1,4 @@
-package com.flash.cn.beans;
+package com.flash.cn.core;
 
 /**
  * Bean Create Failure Exception.
@@ -9,14 +9,6 @@ package com.flash.cn.beans;
 public class BeanCreateFailureException extends BeanException {
 
     /**
-     * 默认构造器。
-     */
-    public BeanCreateFailureException() {
-        super();
-    }
-
-    /**
-     *
      * @param cause
      */
     public BeanCreateFailureException(Throwable cause) {

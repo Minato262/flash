@@ -54,10 +54,7 @@ public final class BeanContainer {
         loadRepository();
         loadAutowired();
     }
-
-    /**
-     * 装载进入 Bean 容器
-     */
+    
     private void loadRepository() {
         ClassPathResource resource = new ClassPathResource();
         List<Class<?>> list = resource.getClasses(FLASH_PACKAGE_NAME);
@@ -77,13 +74,13 @@ public final class BeanContainer {
             Field[] fields = object.getClass().getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
-                Autowired hasAnnotation = field.getAnnotation(Autowired.class);
-                if (hasAnnotation != null) {
+                Autowired annotation = field.getAnnotation(Autowired.class);
+                if (annotation != null) {
                     try {
                         field.set(object, container.get(field.getName()));
                     }
                     catch (IllegalAccessException e) {
-                        continue;
+                        throw new BeanCreateFailureException(e);
                     }
                     hasAutowired = true;
                 }

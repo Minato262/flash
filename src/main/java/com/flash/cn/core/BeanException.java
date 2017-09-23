@@ -1,4 +1,4 @@
-package com.flash.cn.beans;
+package com.flash.cn.core;
 
 import com.flash.cn.NestedRuntimeException;
 
@@ -6,7 +6,7 @@ import com.flash.cn.NestedRuntimeException;
  * @author kay
  * @version v1.0
  */
-public class BeanException extends NestedRuntimeException {
+public abstract class BeanException extends NestedRuntimeException {
 
     /**
      * Bean 异常，默认构造器。
@@ -21,5 +21,12 @@ public class BeanException extends NestedRuntimeException {
      */
     public BeanException(Throwable cause) {
         super(cause);
+    }
+
+    /**
+     * Bean 异常，默认构造器。
+     */
+    public BeanException(String message, Throwable cause) {
+        super(message, cause);
     }
 }
