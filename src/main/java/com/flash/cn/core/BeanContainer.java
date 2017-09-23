@@ -1,8 +1,10 @@
 package com.flash.cn.core;
 
+import com.flash.cn.annotation.Autowired;
 import com.flash.cn.annotation.Repository;
 import com.flash.cn.util.PropertiesUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -49,22 +51,45 @@ public final class BeanContainer {
      * 初始化容器
      */
     public void init() {
-        ClassPathResource resource = new ClassPathResource();
-        List<Class<?>> list = resource.getClasses(FLASH_PACKAGE_NAME);
-        loadRepository(list);
+        loadRepository();
+        loadAutowired();
     }
 
     /**
      * 装载进入 Bean 容器
-     *
-     * @param list Class 清单
      */
-    private void loadRepository(List<Class<?>> list) {
+    private void loadRepository() {
+        ClassPathResource resource = new ClassPathResource();
+        List<Class<?>> list = resource.getClasses(FLASH_PACKAGE_NAME);
         for (Class clazz : list) {
             Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
             if (annotation != null) {
                 Object object = ClassUtils.newInstance(clazz.getName());
                 container.put(annotation.value(), object);
+            }
+        }
+    }
+
+    private void loadAutowired() {
+        for (Map.Entry<String, Object> entry : container.entrySet()) {
+            boolean hasAutowired = false;
+            Object object = container.get(entry.getKey());
+            Field[] fields = object.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                Autowired hasAnnotation = field.getAnnotation(Autowired.class);
+                if (hasAnnotation != null) {
+                    try {
+                        field.set(object, container.get(field.getName()));
+                    }
+                    catch (IllegalAccessException e) {
+                        continue;
+                    }
+                    hasAutowired = true;
+                }
+            }
+            if (hasAutowired) {
+                container.put(entry.getKey(), object);
             }
         }
     }
