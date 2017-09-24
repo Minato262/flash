@@ -14,7 +14,7 @@ import java.net.URLDecoder;
 public class EncodingUtils {
 
     /**
-     * 编码类型：UTF-8
+     * UTF-8
      */
     public static final String ENCODING_CODE_UTF8 = "UTF-8";
 

@@ -11,19 +11,24 @@ import com.flash.cn.beans.BeanFactory;
  */
 public class ApplicationContextFactory implements BeanFactory {
 
+    /**
+     * Bean 容器
+     */
     private BeanContainer container = BeanContainer.getInstance();
 
+    /**
+     * 默认构造器
+     */
     public ApplicationContextFactory() {
         container.init();
     }
 
     /**
-     * get Bean.
+     * 获取 Bean.
      *
-     * @param name the required of type
-     * @param <T>  new object
-     * @return bean object
-     * @throw BeanCreateFailureException
+     * @param name 想获取 Bean 的名称
+     * @param <T>  获取容器中的 Bean 对象
+     * @return bean 对象
      */
     @Override
     public <T> T getBean(String name) {

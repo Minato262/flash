@@ -34,6 +34,9 @@ public final class BeanContainer {
         }
     }
 
+    /**
+     * Bean 容器
+     */
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
 
     /**

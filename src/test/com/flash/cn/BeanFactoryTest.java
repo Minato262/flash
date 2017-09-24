@@ -58,7 +58,7 @@ public class BeanFactoryTest extends BeforeTest {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         Ioc ioc = factory.getBean("ioc");
         System.out.println(ioc);
         System.out.println(ioc.getFather());
@@ -68,8 +68,8 @@ public class BeanFactoryTest extends BeforeTest {
 
     @Test
     public void test4() throws ClassNotFoundException {
-        Object object = ClassUtils.newInstance("com.flash.cn.core.factory.Ioc");
-        System.out.println(Arrays.toString(object.getClass().getDeclaredFields()));
+        //Object object = ClassUtils.newInstance("com.flash.cn.core.factory.Ioc");
+        //System.out.println(Arrays.toString(object.getClass().getDeclaredFields()));
     }
 
     @Test

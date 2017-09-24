@@ -29,14 +29,14 @@ public class BeanContainerTest extends BeforeTest {
         @Override
         public void run() {
             BeanContainer container = BeanContainer.getInstance();
-            container.init();
+            System.out.println(container.getValue("ioc"));
         }
     }
 
     @Test
     public void test1() {
         BeanContainer container = BeanContainer.getInstance();
-        container.init();
+        System.out.println(container.getValue("ioc"));
     }
 
     @Test
