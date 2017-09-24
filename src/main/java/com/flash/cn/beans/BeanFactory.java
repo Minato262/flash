@@ -1,7 +1,7 @@
 package com.flash.cn.beans;
 
 /**
- * Bean Factory.
+ * Bean 工厂
  *
  * @author kay
  * @version v1.0
@@ -9,11 +9,11 @@ package com.flash.cn.beans;
 public interface BeanFactory {
 
     /**
-     * get Bean.
+     * 获取 Bean.
      *
-     * @param name the required of type
-     * @param <T>  new object
-     * @return bean object
+     * @param name 想获取 Bean 的名称
+     * @param <T>  获取容器中的 Bean 对象
+     * @return bean 对象
      */
     <T> T getBean(String name);
 }

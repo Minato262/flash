@@ -1,6 +1,6 @@
 package com.flash.cn;
 
-import com.flash.cn.beans.ApplicationContextFactory;
+import com.flash.cn.context.ApplicationContextFactory;
 import com.flash.cn.beans.BeanFactory;
 import org.junit.Before;
 

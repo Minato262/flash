@@ -1,6 +1,6 @@
 package com.flash.cn;
 
-import com.flash.cn.beans.ApplicationContextFactory;
+import com.flash.cn.context.ApplicationContextFactory;
 import com.flash.cn.beans.BeanFactory;
 import com.flash.cn.core.ClassUtils;
 import com.flash.cn.core.factory.Ioc;
@@ -70,5 +70,10 @@ public class BeanFactoryTest extends BeforeTest {
     public void test4() throws ClassNotFoundException {
         Object object = ClassUtils.newInstance("com.flash.cn.core.factory.Ioc");
         System.out.println(Arrays.toString(object.getClass().getDeclaredFields()));
+    }
+
+    @Test
+    public void test5() {
+        System.out.println(factory.getBean("1"));
     }
 }

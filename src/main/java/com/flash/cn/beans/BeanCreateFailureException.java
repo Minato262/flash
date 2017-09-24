@@ -1,4 +1,4 @@
-package com.flash.cn.core;
+package com.flash.cn.beans;
 
 /**
  * Bean Create Failure Exception.
@@ -9,7 +9,9 @@ package com.flash.cn.core;
 public class BeanCreateFailureException extends BeanException {
 
     /**
-     * @param cause
+     * 带有堆栈异常信息的构造器。
+     *
+     * @param cause 堆栈异常信息
      */
     public BeanCreateFailureException(Throwable cause) {
         super(cause);

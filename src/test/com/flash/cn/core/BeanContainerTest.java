@@ -2,6 +2,7 @@ package com.flash.cn.core;
 
 import com.flash.cn.BeforeTest;
 import com.flash.cn.annotation.Autowired;
+import com.flash.cn.beans.BeanContainer;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -29,7 +30,6 @@ public class BeanContainerTest extends BeforeTest {
         public void run() {
             BeanContainer container = BeanContainer.getInstance();
             container.init();
-            container.println();
         }
     }
 
@@ -37,13 +37,12 @@ public class BeanContainerTest extends BeforeTest {
     public void test1() {
         BeanContainer container = BeanContainer.getInstance();
         container.init();
-        container.println();
     }
 
     @Test
     public void test2() throws Exception {
         ClassPathResource classPathResource = new ClassPathResource();
-        List<Class<?>> classes = classPathResource.getClasses("com.flash.cn");
+        List<Class<?>> classes = classPathResource.getClasses();
         for (Class<?> clazz : classes) {
             Field[] fields = Class.forName(clazz.getName()).getDeclaredFields();
             for (Field field : fields) {

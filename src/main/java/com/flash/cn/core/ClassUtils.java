@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
+ * Class 类工具类
+ *
  * @author kay
  * @version v1.0
  */
@@ -22,7 +24,7 @@ public class ClassUtils {
             return Thread.currentThread().getContextClassLoader().getResources(name);
         }
         catch (IOException e) {
-            throw new ClassPathResourceException();
+            throw new ClassPathResourceException(e);
         }
     }
 
@@ -31,24 +33,14 @@ public class ClassUtils {
      *
      * @param name 资源名称
      * @return 载入的 Class 类
+     * @throw ClassPathResourceException
      */
     public static Class<?> loadClass(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassPathResourceException();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> T newInstance(String name) {
-        try {
-            Class<T> clazz = (Class<T>) Class.forName(name);
-            return clazz.newInstance();
-        }
-        catch (Exception e) {
-            throw new BeanCreateFailureException(e);
+            throw new ClassPathResourceException(e);
         }
     }
 }

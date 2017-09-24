@@ -1,6 +1,7 @@
-package com.flash.cn.beans;
+package com.flash.cn.context;
 
-import com.flash.cn.core.BeanContainer;
+import com.flash.cn.beans.BeanContainer;
+import com.flash.cn.beans.BeanFactory;
 
 /**
  * Application Context Factory.

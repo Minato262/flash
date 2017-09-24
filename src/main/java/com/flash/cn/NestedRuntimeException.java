@@ -9,25 +9,18 @@ package com.flash.cn;
 public abstract class NestedRuntimeException extends RuntimeException {
 
     /**
-     * Nested Runtime Exception.
+     * 默认构造器
      */
     public NestedRuntimeException() {
         super();
     }
 
     /**
-     * Nested Runtime Exception.
+     * 带有堆栈异常信息的构造器
      *
-     * @param cause 异常
+     * @param cause 堆栈信息
      */
     public NestedRuntimeException(Throwable cause) {
         super(cause);
-    }
-
-    /**
-     * Bean 异常，默认构造器。
-     */
-    public NestedRuntimeException(String message, Throwable cause) {
-        super(message, cause);
     }
 }
