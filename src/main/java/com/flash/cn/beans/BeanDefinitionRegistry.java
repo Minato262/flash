@@ -1,7 +1,9 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.annotation.Autowired;
+import com.flash.cn.annotation.Controller;
 import com.flash.cn.annotation.Repository;
+import com.flash.cn.annotation.Service;
 import com.flash.cn.core.ClassPathResource;
 
 import java.lang.reflect.Field;
@@ -36,7 +38,27 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 遍历 Class，载入 Repository 注释
+     * put 对象到 容器中
+     *
+     * @param container 容器
+     * @param key       容器关键字
+     * @param name      新建对象路径
+     * @throw BeanCreateFailureException Bean 初始化加载异常
+     */
+    private void put(Map<String, Object> container, String key, String name) {
+        if (container.containsKey(key)) {
+            throw new BeanCreateFailureException("Bean 已经存在了");
+        }
+
+        Object object = newInstance(name);
+        container.put(key, object);
+    }
+
+    /**
+     * 遍历 Class，载入 类注释
+     *
+     * @param container 容器
+     * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     private void loadRepository(Map<String, Object> container) {
         ClassPathResource resource = new ClassPathResource();
@@ -44,14 +66,25 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         for (Class clazz : list) {
             Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
             if (annotation != null) {
-                Object object = newInstance(clazz.getName());
-                container.put(annotation.value(), object);
+                put(container, annotation.value(), clazz.getName());
+                continue;
+            }
+            Service annotation1 = (Service) clazz.getAnnotation(Service.class);
+            if (annotation1 != null) {
+                put(container, annotation1.value(), clazz.getName());
+                continue;
+            }
+            Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
+            if (annotation2 != null) {
+                put(container, annotation2.value(), clazz.getName());
             }
         }
     }
 
     /**
-     * 遍历容器，载入 Autowired 注释
+     * 遍历容器，载入 方法注释
+     *
+     * @param container 容器
      */
     private void loadAutowired(Map<String, Object> container) {
         for (Map.Entry<String, Object> entry : container.entrySet()) {
@@ -81,6 +114,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      * 注册 Bean.
      *
      * @param container 容器
+     * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     @Override
     public void registry(Map<String, Object> container) {

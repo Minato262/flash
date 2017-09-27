@@ -1,14 +1,14 @@
 package com.flash.cn.core.factory;
 
 import com.flash.cn.annotation.Autowired;
-import com.flash.cn.annotation.Repository;
+import com.flash.cn.annotation.Controller;
 
 /**
  * @author kay
  * @version v1.0
  */
-@Repository("ioc")
-public class Ioc {
+@Controller("ioc")
+public class Ioc2 {
 
     @Autowired
     private Father father;

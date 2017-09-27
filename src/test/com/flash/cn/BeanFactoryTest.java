@@ -4,6 +4,8 @@ import com.flash.cn.context.ApplicationContextFactory;
 import com.flash.cn.beans.BeanFactory;
 import com.flash.cn.core.ClassUtils;
 import com.flash.cn.core.factory.Ioc;
+import com.flash.cn.core.factory.Ioc1;
+import com.flash.cn.core.factory.Ioc2;
 import com.flash.cn.core.factory.People;
 import org.junit.Test;
 
@@ -75,5 +77,23 @@ public class BeanFactoryTest extends BeforeTest {
     @Test
     public void test5() {
         System.out.println(factory.getBean("1"));
+    }
+
+    @Test
+    public void test6() {
+        Ioc1 ioc1 = factory.getBean("ioc1");
+        System.out.println(ioc1);
+        System.out.println(ioc1.getFather());
+        System.out.println(ioc1.getPeople());
+        System.out.println(ioc1.getUser());
+    }
+
+    @Test
+    public void test7() {
+        Ioc2 ioc2 = factory.getBean("ioc2");
+        System.out.println(ioc2);
+        System.out.println(ioc2.getFather());
+        System.out.println(ioc2.getPeople());
+        System.out.println(ioc2.getUser());
     }
 }
