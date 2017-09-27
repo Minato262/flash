@@ -38,7 +38,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * put 对象到 容器中
+     * put 对象到容器中
      *
      * @param container 容器
      * @param key       容器关键字
@@ -55,7 +55,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 遍历 Class，载入 类注释
+     * 遍历 Class，载入类注释
      *
      * @param container 容器
      * @throw BeanCreateFailureException Bean 初始化加载异常
@@ -82,7 +82,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 遍历容器，载入 方法注释
+     * 遍历容器，载入方法注释
      *
      * @param container 容器
      */

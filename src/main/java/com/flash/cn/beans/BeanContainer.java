@@ -23,17 +23,6 @@ public final class BeanContainer {
      */
     private static final String CONTAINER_MODES_MULTIPLE = "multiple";
 
-    private static BeanContainer instance = new BeanContainer();
-
-    public static synchronized BeanContainer getInstance() {
-        if (CONTAINER_MODES_MULTIPLE.equals(FLASH_CONTAINER_MODE)) {
-            return new BeanContainer();
-        }
-        else {
-            return instance;    // 容器，如果没有配置，默认单例模式
-        }
-    }
-
     /**
      * Bean 容器
      */
@@ -44,6 +33,17 @@ public final class BeanContainer {
      */
     private BeanContainer() {
         //
+    }
+
+    private static BeanContainer instance = new BeanContainer();
+
+    public static synchronized BeanContainer getInstance() {
+        if (CONTAINER_MODES_MULTIPLE.equals(FLASH_CONTAINER_MODE)) {
+            return new BeanContainer();
+        }
+        else {
+            return instance;    // 容器，如果没有配置，默认单例模式
+        }
     }
 
     /**
