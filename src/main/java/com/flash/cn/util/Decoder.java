@@ -11,7 +11,7 @@ import java.net.URLDecoder;
  * @author kay
  * @version v1.0
  */
-public class EncodingUtils {
+public class Decoder {
 
     /**
      * UTF-8
@@ -23,13 +23,14 @@ public class EncodingUtils {
      *
      * @param source 来源
      * @return 转译后的字符串
+     * @throw ClassPathResourceException
      */
     public static String decode(String source) {
         try {
             return URLDecoder.decode(source, ENCODING_CODE_UTF8);
         }
         catch (UnsupportedEncodingException e) {
-            throw new ClassPathResourceException();
+            throw new ClassPathResourceException(e);
         }
     }
 }

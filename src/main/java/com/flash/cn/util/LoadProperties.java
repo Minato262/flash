@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author kay
  * @version v1.0
  */
-public class PropertiesUtils {
+public class LoadProperties {
 
     /**
      * 载入配置，获取 Properties 配置值

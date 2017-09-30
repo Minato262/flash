@@ -1,7 +1,7 @@
 package com.flash.cn.core;
 
-import com.flash.cn.util.EncodingUtils;
-import com.flash.cn.util.PropertiesUtils;
+import com.flash.cn.util.Decoder;
+import com.flash.cn.util.LoadProperties;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -21,7 +21,7 @@ public class ClassPathResource {
     /**
      * 根据配置获取包名
      */
-    private static final String FLASH_PACKAGE_NAME = PropertiesUtils.load("/config/flash.properties", "packageName");
+    private static final String FLASH_PACKAGE_NAME = LoadProperties.load("/config/flash.properties", "packageName");
 
     /**
      * 检测全部 Class 类集合
@@ -70,7 +70,7 @@ public class ClassPathResource {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
             if ("file".equals(protocol)) {
-                String filePath = EncodingUtils.decode(url.getFile());
+                String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
             }
         }
