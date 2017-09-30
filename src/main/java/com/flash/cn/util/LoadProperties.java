@@ -12,6 +12,16 @@ import java.util.Properties;
 public class LoadProperties {
 
     /**
+     * 根据配置获取容器模式
+     */
+    public static final String FLASH_CONTAINER_MODE = LoadProperties.load("/config/flash.properties", "containerModes");
+
+    /**
+     * 根据配置获取包名
+     */
+    public static final String FLASH_PACKAGE_NAME = LoadProperties.load("/config/flash.properties", "packageName");
+
+    /**
      * 载入配置，获取 Properties 配置值
      *
      * @param propertyPath 配置路径

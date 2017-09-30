@@ -66,6 +66,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      * 遍历容器，载入方法注释
      *
      * @param container 容器
+     * @throw BeanCreateFailureException Bean 设置失败
      */
     private void loadAutowired(Map<String, Object> container) {
         for (Map.Entry<String, Object> entry : container.entrySet()) {

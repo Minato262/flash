@@ -19,11 +19,6 @@ import java.util.List;
 public class ClassPathResource {
 
     /**
-     * 根据配置获取包名
-     */
-    private static final String FLASH_PACKAGE_NAME = LoadProperties.load("/config/flash.properties", "packageName");
-
-    /**
      * 检测全部 Class 类集合
      *
      * @param packageName 包名称
@@ -83,8 +78,8 @@ public class ClassPathResource {
      * @return Class 类集合
      */
     public List<Class<?>> getClasses() {
-        String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
+        String packageDirName = LoadProperties.FLASH_PACKAGE_NAME.replace('.', '/');
         Enumeration<URL> dirs = ContextClassLoader.getEnumeration(packageDirName);
-        return getClasses(dirs, FLASH_PACKAGE_NAME);
+        return getClasses(dirs, LoadProperties.FLASH_PACKAGE_NAME);
     }
 }

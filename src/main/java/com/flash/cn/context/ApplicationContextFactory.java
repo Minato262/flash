@@ -1,7 +1,6 @@
 package com.flash.cn.context;
 
 import com.flash.cn.beans.BeanContainer;
-import com.flash.cn.beans.BeanFactory;
 
 /**
  * Application Context Factory.
@@ -9,7 +8,7 @@ import com.flash.cn.beans.BeanFactory;
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory implements BeanFactory {
+public class ApplicationContextFactory implements ApplicationContext {
 
     /**
      * Bean 容器

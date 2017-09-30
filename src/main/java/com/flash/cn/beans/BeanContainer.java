@@ -14,11 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BeanContainer {
 
     /**
-     * 根据配置获取容器模式
-     */
-    private static final String FLASH_CONTAINER_MODE = LoadProperties.load("/config/flash.properties", "containerModes");
-
-    /**
      * 容器模式————多例模式
      */
     private static final String CONTAINER_MODES_MULTIPLE = "multiple";
@@ -26,7 +21,7 @@ public final class BeanContainer {
     /**
      * 是否是单例模式
      */
-    private static final boolean isSingleton = !CONTAINER_MODES_MULTIPLE.equals(FLASH_CONTAINER_MODE);
+    private static final boolean isSingleton = !CONTAINER_MODES_MULTIPLE.equals(LoadProperties.FLASH_CONTAINER_MODE);
 
     /**
      * Bean 容器
