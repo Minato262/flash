@@ -16,7 +16,7 @@ public class LoadProperties {
      */
     private static final String FLASH_PATH = "/config/flash.properties";
 
-    public static final String FLASH_PROPERTIES_MODE = "containerModes";
+    private static final String FLASH_PROPERTIES_MODE = "containerModes";
 
     /**
      * 载入配置，获取 Properties 配置值
