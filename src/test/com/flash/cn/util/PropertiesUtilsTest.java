@@ -14,13 +14,13 @@ public class PropertiesUtilsTest {
 
     @Test
     public void test() throws IOException {
-        String packageName = LoadProperties.load("/config/flash.properties", "packageName");
+        String packageName = new LoadProperties().load("packageName");
         System.out.println(packageName);
     }
 
     @Test
     public void test1() throws IOException {
-        String containerModes = LoadProperties.load("/config/flash.properties", "containerModes");
+        String containerModes = new LoadProperties().load("containerModes");
         System.out.println(containerModes);
     }
 }

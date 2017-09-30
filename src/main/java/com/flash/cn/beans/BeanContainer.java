@@ -1,5 +1,6 @@
 package com.flash.cn.beans;
 
+import com.flash.cn.util.ContainerMode;
 import com.flash.cn.util.LoadProperties;
 
 import java.util.Map;
@@ -14,14 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BeanContainer {
 
     /**
-     * 容器模式————多例模式
-     */
-    private static final String CONTAINER_MODES_MULTIPLE = "multiple";
-
-    /**
      * 是否是单例模式
      */
-    private static final boolean isSingleton = !CONTAINER_MODES_MULTIPLE.equals(LoadProperties.FLASH_CONTAINER_MODE);
+    private static final ContainerMode CONTAINER_MODES = new LoadProperties().getContainerModes();
 
     /**
      * Bean 容器
@@ -38,7 +34,7 @@ public final class BeanContainer {
     private static BeanContainer instance = new BeanContainer();
 
     public static synchronized BeanContainer getInstance() {
-        return isSingleton ? instance : new BeanContainer();
+        return CONTAINER_MODES.isSingleton() ? instance : new BeanContainer();
     }
 
     /**
@@ -72,6 +68,6 @@ public final class BeanContainer {
      */
     @SuppressWarnings("unchecked")
     public <T> T getValue(String key) {
-        return isSingleton ? (T) newInstance(key) : (T) container.get(key);
+        return CONTAINER_MODES.isSingleton() ? (T) container.get(key) : (T) newInstance(key);
     }
 }

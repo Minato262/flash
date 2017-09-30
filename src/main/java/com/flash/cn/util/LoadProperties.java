@@ -12,14 +12,11 @@ import java.util.Properties;
 public class LoadProperties {
 
     /**
-     * 根据配置获取容器模式
+     * 配置路径
      */
-    public static final String FLASH_CONTAINER_MODE = LoadProperties.load("/config/flash.properties", "containerModes");
+    private static final String FLASH_PATH = "/config/flash.properties";
 
-    /**
-     * 根据配置获取包名
-     */
-    public static final String FLASH_PACKAGE_NAME = LoadProperties.load("/config/flash.properties", "packageName");
+    public static final String FLASH_PROPERTIES_MODE = "containerModes";
 
     /**
      * 载入配置，获取 Properties 配置值
@@ -29,7 +26,7 @@ public class LoadProperties {
      * @return 获取 Properties 配置值
      * @throws IOException I/O 异常
      */
-    private static String loadProperties(String propertyPath, String propertyName) throws IOException {
+    private String load(String propertyPath, String propertyName) throws IOException {
         Properties prop = new Properties();
         InputStream in = null;
         try {
@@ -52,16 +49,25 @@ public class LoadProperties {
     /**
      * 载入配置，获取 Properties 配置值
      *
-     * @param propertyPath 配置路径
      * @param propertyName 配置名称
      * @return 获取 Properties 配置值
      */
-    public static String load(String propertyPath, String propertyName) {
+    public String load(String propertyName) {
         try {
-            return loadProperties(propertyPath, propertyName);
+            return load(FLASH_PATH, propertyName);
         }
         catch (IOException e) {
             return "";
+        }
+    }
+
+    public ContainerMode getContainerModes() {
+        String mode = load(FLASH_PROPERTIES_MODE);
+        if (ContainerMode.SINGLETON.getMode().equals(mode)) {
+            return ContainerMode.SINGLETON;
+        }
+        else {
+            return ContainerMode.MULTIPLE;
         }
     }
 }

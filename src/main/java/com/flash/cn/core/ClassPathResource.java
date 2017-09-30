@@ -1,6 +1,5 @@
 package com.flash.cn.core;
 
-import com.flash.cn.util.Decoder;
 import com.flash.cn.util.LoadProperties;
 
 import java.io.File;
@@ -17,6 +16,15 @@ import java.util.List;
  * @version v1.0
  */
 public class ClassPathResource {
+
+    private ClassLoader contextClassLoader = new ClassLoader();
+
+    private static final String FLASH_PROPERTIES_PACKAGE_NAME = "packageName";
+
+    /**
+     * 根据配置获取包名
+     */
+    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load(FLASH_PROPERTIES_PACKAGE_NAME);
 
     /**
      * 检测全部 Class 类集合
@@ -47,7 +55,7 @@ public class ClassPathResource {
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(ContextClassLoader.loadClass(packageName + "." + className));
+                classes.add(contextClassLoader.loadClass(packageName + "." + className));
             }
         }
     }
@@ -65,7 +73,7 @@ public class ClassPathResource {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
             if ("file".equals(protocol)) {
-                String filePath = Decoder.decode(url.getFile());
+                String filePath = ClassURLDecoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
             }
         }
@@ -78,8 +86,8 @@ public class ClassPathResource {
      * @return Class 类集合
      */
     public List<Class<?>> getClasses() {
-        String packageDirName = LoadProperties.FLASH_PACKAGE_NAME.replace('.', '/');
-        Enumeration<URL> dirs = ContextClassLoader.getEnumeration(packageDirName);
-        return getClasses(dirs, LoadProperties.FLASH_PACKAGE_NAME);
+        String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
+        Enumeration<URL> dirs = contextClassLoader.getEnumeration(packageDirName);
+        return getClasses(dirs, FLASH_PACKAGE_NAME);
     }
 }

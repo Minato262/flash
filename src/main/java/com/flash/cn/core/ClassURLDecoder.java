@@ -1,6 +1,6 @@
-package com.flash.cn.util;
+package com.flash.cn.core;
 
-import com.flash.cn.core.ClassPathResourceException;
+import com.flash.cn.Encoding;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -11,12 +11,7 @@ import java.net.URLDecoder;
  * @author kay
  * @version v1.0
  */
-public class Decoder {
-
-    /**
-     * UTF-8
-     */
-    public static final String ENCODING_CODE_UTF8 = "UTF-8";
+public class ClassURLDecoder {
 
     /**
      * 转译成 uft-8 类型字符串
@@ -27,7 +22,7 @@ public class Decoder {
      */
     public static String decode(String source) {
         try {
-            return URLDecoder.decode(source, ENCODING_CODE_UTF8);
+            return URLDecoder.decode(source, Encoding.UTF8.getCode());
         }
         catch (UnsupportedEncodingException e) {
             throw new ClassPathResourceException(e);
