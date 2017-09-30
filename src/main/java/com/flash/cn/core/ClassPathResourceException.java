@@ -9,13 +9,6 @@ import com.flash.cn.NestedRuntimeException;
 public class ClassPathResourceException extends NestedRuntimeException {
 
     /**
-     * 默认构造器。
-     */
-    public ClassPathResourceException() {
-        super();
-    }
-
-    /**
      * 带有堆栈异常信息的构造器。
      *
      * @param cause 堆栈信息

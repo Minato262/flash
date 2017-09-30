@@ -24,6 +24,11 @@ public final class BeanContainer {
     private static final String CONTAINER_MODES_MULTIPLE = "multiple";
 
     /**
+     * 是否是单例模式
+     */
+    private static final boolean isSingleton = !CONTAINER_MODES_MULTIPLE.equals(FLASH_CONTAINER_MODE);
+
+    /**
      * Bean 容器
      */
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
@@ -38,12 +43,7 @@ public final class BeanContainer {
     private static BeanContainer instance = new BeanContainer();
 
     public static synchronized BeanContainer getInstance() {
-        if (CONTAINER_MODES_MULTIPLE.equals(FLASH_CONTAINER_MODE)) {
-            return new BeanContainer();
-        }
-        else {
-            return instance;    // 容器，如果没有配置，默认单例模式
-        }
+        return isSingleton ? instance : new BeanContainer();
     }
 
     /**
@@ -57,6 +57,18 @@ public final class BeanContainer {
     }
 
     /**
+     * 根据 key 获取容器中的对象的相对路径，然后根据相对路径反射生成新的对象
+     *
+     * @param key 容器关键字
+     * @param <T> 弱类型转换成强类型
+     * @return 返回容器中的对象
+     */
+    private <T> T newInstance(String key) {
+        String objectPath = container.get(key).getClass().getName();
+        return BeanReflect.newInstance(objectPath);
+    }
+
+    /**
      * 根据 key 获取容器中的对象
      *
      * @param key 容器关键字
@@ -65,6 +77,6 @@ public final class BeanContainer {
      */
     @SuppressWarnings("unchecked")
     public <T> T getValue(String key) {
-        return (T) container.get(key);
+        return isSingleton ? (T) newInstance(key) : (T) container.get(key);
     }
 }

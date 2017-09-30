@@ -13,11 +13,14 @@ public class Ioc1 {
     @Autowired
     private Father father;
 
-    //@Autowired
+    @Autowired
     private People people;
 
     @Autowired
     private User user;
+
+    @Autowired
+    private Ioc ioc;
 
     public Father getFather() {
         return father;
@@ -29,5 +32,9 @@ public class Ioc1 {
 
     public User getUser() {
         return user;
+    }
+
+    public Ioc getIoc() {
+        return ioc;
     }
 }

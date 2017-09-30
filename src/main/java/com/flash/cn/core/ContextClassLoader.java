@@ -5,12 +5,10 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
- * Class 类工具类
- *
  * @author kay
  * @version v1.0
  */
-public class ClassUtils {
+public class ContextClassLoader {
 
     /**
      * 根据来源获取，目标 URL 资源

@@ -52,7 +52,7 @@ public class ClassPathResource {
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(ClassUtils.loadClass(packageName + "." + className));
+                classes.add(ContextClassLoader.loadClass(packageName + "." + className));
             }
         }
     }
@@ -84,7 +84,7 @@ public class ClassPathResource {
      */
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
-        Enumeration<URL> dirs = ClassUtils.getEnumeration(packageDirName);
+        Enumeration<URL> dirs = ContextClassLoader.getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);
     }
 }

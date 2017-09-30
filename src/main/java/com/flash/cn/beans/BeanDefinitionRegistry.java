@@ -19,25 +19,6 @@ import java.util.Map;
 public class BeanDefinitionRegistry implements BeanDefinition {
 
     /**
-     * 反射生成新的对象
-     *
-     * @param name 反射对象的对象路径
-     * @param <T>  弱类型转成指定强类型
-     * @return 生成的新的对象
-     * @throw BeanCreateFailureException 对象生成失败异常
-     */
-    @SuppressWarnings("unchecked")
-    private <T> T newInstance(String name) {
-        try {
-            Class<T> clazz = (Class<T>) Class.forName(name);
-            return clazz.newInstance();
-        }
-        catch (Exception e) {
-            throw new BeanCreateFailureException(e);
-        }
-    }
-
-    /**
      * put 对象到容器中
      *
      * @param container 容器
@@ -47,10 +28,10 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      */
     private void put(Map<String, Object> container, String key, String name) {
         if (container.containsKey(key)) {
-            throw new BeanCreateFailureException("Bean 已经存在了");
+            throw new BeanCreateFailureException("Bean 相冲突");
         }
 
-        Object object = newInstance(name);
+        Object object = BeanReflect.newInstance(name);
         container.put(key, object);
     }
 

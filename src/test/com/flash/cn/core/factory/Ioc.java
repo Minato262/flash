@@ -13,7 +13,7 @@ public class Ioc {
     @Autowired
     private Father father;
 
-    //@Autowired
+    @Autowired
     private People people;
 
     @Autowired
