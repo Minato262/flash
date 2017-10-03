@@ -1,7 +1,6 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.util.ContainerMode;
-import com.flash.cn.util.LoadProperties;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +16,7 @@ public final class BeanContainer {
     /**
      * 是否是单例模式
      */
-    private static final ContainerMode CONTAINER_MODES = new LoadProperties().getContainerModes();
+    private static final ContainerMode CONTAINER_MODES = ContainerMode.getContainerModes();
 
     /**
      * Bean 容器

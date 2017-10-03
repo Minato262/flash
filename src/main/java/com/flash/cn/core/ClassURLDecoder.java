@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 /**
- * 编码工具类。
+ * Class 编码工具类。
  *
  * @author kay
  * @version v1.0

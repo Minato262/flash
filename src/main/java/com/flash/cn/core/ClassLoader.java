@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
+ * Class 资源载入
+ *
  * @author kay
  * @version v1.0
  */

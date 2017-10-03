@@ -10,21 +10,19 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * Class Path Resource.
+ * 根据路径，获取 Class 资源
  *
  * @author kay
  * @version v1.0
  */
 public class ClassPathResource {
 
-    private ClassLoader contextClassLoader = new ClassLoader();
-
-    private static final String FLASH_PROPERTIES_PACKAGE_NAME = "packageName";
-
     /**
      * 根据配置获取包名
      */
-    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load(FLASH_PROPERTIES_PACKAGE_NAME);
+    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
+
+    private ClassLoader contextClassLoader = new ClassLoader();
 
     /**
      * 检测全部 Class 类集合

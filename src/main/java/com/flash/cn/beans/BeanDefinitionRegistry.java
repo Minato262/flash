@@ -24,7 +24,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      * @param container 容器
      * @param key       容器关键字
      * @param name      新建对象路径
-     * @throw BeanCreateFailureException Bean 初始化加载异常
+     * @throw BeanCreateFailureException Bean 已经存在
      */
     private void put(Map<String, Object> container, String key, String name) {
         if (container.containsKey(key)) {

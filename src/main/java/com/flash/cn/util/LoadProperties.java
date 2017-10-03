@@ -16,8 +16,6 @@ public class LoadProperties {
      */
     private static final String FLASH_PATH = "/config/flash.properties";
 
-    private static final String FLASH_PROPERTIES_MODE = "containerModes";
-
     /**
      * 载入配置，获取 Properties 配置值
      *
@@ -58,16 +56,6 @@ public class LoadProperties {
         }
         catch (IOException e) {
             return "";
-        }
-    }
-
-    public ContainerMode getContainerModes() {
-        String mode = load(FLASH_PROPERTIES_MODE);
-        if (ContainerMode.SINGLETON.getMode().equals(mode)) {
-            return ContainerMode.SINGLETON;
-        }
-        else {
-            return ContainerMode.MULTIPLE;
         }
     }
 }

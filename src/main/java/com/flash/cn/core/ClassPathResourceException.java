@@ -3,6 +3,8 @@ package com.flash.cn.core;
 import com.flash.cn.NestedRuntimeException;
 
 /**
+ * Class 路径资源异常
+ *
  * @author kay
  * @version v1.0
  */
