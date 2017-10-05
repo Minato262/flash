@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author kay
  * @version v1.0
  */
-@Controller("ioc2")
+@Controller
 public class Ioc2 {
 
     @Autowired

@@ -5,6 +5,8 @@ import com.flash.cn.annotation.Controller;
 import com.flash.cn.annotation.Repository;
 import com.flash.cn.annotation.Service;
 import com.flash.cn.core.ClassPathResource;
+import com.flash.cn.util.Assert;
+import com.flash.cn.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -57,7 +59,9 @@ class BeanDefinitionRegistry implements BeanDefinition {
             }
             Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
             if (annotation2 != null) {
-                put(container, annotation2.value(), clazz.getName(), true);
+                String lowerCase = StringUtils.getLowerCase(clazz.getName());
+                String lowerCaseFirstOne = StringUtils.toLowerCaseFirstOne(lowerCase);
+                put(container, lowerCaseFirstOne, clazz.getName(), true);
             }
         }
     }
@@ -126,6 +130,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
     @Override
     public void registry(Map<String, Object> container, String key) {
         String name = container.get(key).getClass().getName();
+        Assert.isNotEmpty(name);
         put(container, key, name, false);
         loadAutowired(container, key);
     }
