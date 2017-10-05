@@ -16,7 +16,7 @@
 package com.flash.cn.util;
 
 /**
- * 断言工具类
+ * 断言工具类，使用 Assert 断言类可以简化方法入参检测的代码，也可以用于建立程序探针
  *
  * @author kay
  * @version v1.0
@@ -24,14 +24,14 @@ package com.flash.cn.util;
 public class Assert {
 
     /**
-     * 断言，判断字符串不能为 null
+     * 断言，判断字符串不能为空，当字符串为空时，会抛出异常
      *
      * @param str 需要判断的字符串
-     * @throw IllegalArgumentException 对象不能为空
+     * @throw IllegalArgumentException 字符串不能为空
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {
-            throw new IllegalArgumentException("the str must be not empty!");
+            throw new IllegalArgumentException("the string must be not empty!");
         }
     }
 }
