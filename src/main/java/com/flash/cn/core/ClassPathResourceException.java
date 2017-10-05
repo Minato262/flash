@@ -15,15 +15,13 @@
  */
 package com.flash.cn.core;
 
-import com.flash.cn.NestedRuntimeException;
-
 /**
  * Class 路径资源异常
  *
  * @author kay
  * @version v1.0
  */
-class ClassPathResourceException extends NestedRuntimeException {
+class ClassPathResourceException extends ClassLoaderFailureException {
 
     /**
      * 带有错误信息的构造器
@@ -32,14 +30,5 @@ class ClassPathResourceException extends NestedRuntimeException {
      */
     public ClassPathResourceException(String message) {
         super(message);
-    }
-
-    /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈信息
-     */
-    public ClassPathResourceException(Throwable cause) {
-        super(cause);
     }
 }

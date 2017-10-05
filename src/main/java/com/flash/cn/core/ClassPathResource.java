@@ -70,7 +70,6 @@ public class ClassPathResource extends ClassLoader implements Resource {
         if (files == null) {
             return;
         }
-
         for (File file : files) {
             if (file.isDirectory()) {
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
