@@ -63,12 +63,13 @@ abstract class ClassLoader implements Resource {
      * 获取所有当前包内 Class 类的集合类
      *
      * @return Class 类集合
+     * @throw ClassPathResourceException 没有在配置项中配置包路径
      */
     @Override
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
         if (StringUtils.isEmpty(packageDirName)) {
-            throw new ClassPathResourceException("没有在配置项中配置包路径");
+            throw new ClassLoaderException("没有在配置项中配置包路径");
         }
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);

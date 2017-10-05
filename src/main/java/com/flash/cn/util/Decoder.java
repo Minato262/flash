@@ -13,24 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn;
+package com.flash.cn.util;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
- * 编码
+ * 解码工具类
  *
  * @author kay
  * @version v1.0
  */
-public enum Encoding {
-    UTF8("UTF-8");
+public class Decoder {
 
-    private String code;
-
-    Encoding(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return this.code;
+    /**
+     * 转译成 uft-8 类型字符串
+     *
+     * @param source 来源
+     * @return 转译后的字符串
+     * @throw ClassPathResourceException 不支持 UTF-8 编码
+     */
+    public static String decode(String source) {
+        try {
+            return URLDecoder.decode(source, Encoding.UTF8.getCode());
+        }
+        catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 }

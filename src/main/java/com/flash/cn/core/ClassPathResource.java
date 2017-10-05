@@ -15,6 +15,8 @@
  */
 package com.flash.cn.core;
 
+import com.flash.cn.util.Decoder;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.net.URL;
@@ -94,7 +96,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
             if ("file".equals(protocol)) {
-                String filePath = ClassURLDecoder.decode(url.getFile());
+                String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
             }
         }
