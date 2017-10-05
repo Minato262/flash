@@ -16,19 +16,19 @@
 package com.flash.cn.core;
 
 /**
- * Class 资源载入异常
+ * Class 资源载入失败异常
  *
  * @author kay
  * @version v1.0
  */
-class ClassLoaderException extends ClassPathResourceException {
+class ClassLoaderFailureException extends ClassPathResourceException {
 
     /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息
      */
-    public ClassLoaderException(String message) {
+    public ClassLoaderFailureException(String message) {
         super(message);
     }
 
@@ -37,7 +37,7 @@ class ClassLoaderException extends ClassPathResourceException {
      *
      * @param cause 堆栈信息
      */
-    public ClassLoaderException(Throwable cause) {
+    public ClassLoaderFailureException(Throwable cause) {
         super(cause);
     }
 }

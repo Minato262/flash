@@ -44,7 +44,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassLoaderException(e);
+            throw new ClassLoaderFailureException(e);
         }
     }
 
