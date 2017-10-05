@@ -24,11 +24,11 @@ package com.flash.cn.beans;
 public interface BeanFactory {
 
     /**
-     * 获取 Bean
+     * 根据 Bean 的名称获取 Bean 实例对象
      *
      * @param name 想获取 Bean 的名称
      * @param <T>  获取容器中的 Bean 对象
-     * @return bean 对象
+     * @return bean 实例对象
      */
     <T> T getBean(String name);
 }

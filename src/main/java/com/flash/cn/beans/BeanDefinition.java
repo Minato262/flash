@@ -26,7 +26,7 @@ import java.util.Map;
 interface BeanDefinition {
 
     /**
-     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有对象
+     * 注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有 Bean
      *
      * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
- * Class 资源载入
+ * Class 资源载入工具类
  *
  * @author kay
  * @version v1.0
@@ -39,7 +39,7 @@ class ClassLoader {
             return Thread.currentThread().getContextClassLoader().getResources(name);
         }
         catch (IOException e) {
-            throw new ClassPathResourceException(e);
+            throw new ClassLoaderException(e);
         }
     }
 
@@ -55,7 +55,7 @@ class ClassLoader {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassPathResourceException(e);
+            throw new ClassLoaderException(e);
         }
     }
 }

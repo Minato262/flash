@@ -16,6 +16,7 @@
 package com.flash.cn.core;
 
 import com.flash.cn.util.LoadProperties;
+import com.flash.cn.util.StringUtils;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -70,7 +71,7 @@ public class ClassPathResource {
     }
 
     /**
-     * 获取到 Class 类集合
+     * 获取到 Class 类集合类
      *
      * @param urlElements url 入参
      * @param packageName 包名
@@ -90,12 +91,16 @@ public class ClassPathResource {
     }
 
     /**
-     * 获取 Class 名称
+     * 获取所有 Class 集合类
      *
      * @return Class 类集合
      */
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
+        if (StringUtils.isEmity(packageDirName)) {
+            throw new ClassPathResourceException("没有在配置项中配置包路径");
+        }
+
         Enumeration<URL> dirs = ClassLoader.getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);
     }

@@ -28,13 +28,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanContainer {
 
-    /** 容器模式（根据配置选择单例或者多例模式） */
+    /** 容器模式（根据配置获取容器模式，单例或者原型模式） */
     private static final ContainerMode CONTAINER_MODES = ContainerMode.getContainerModes();
 
     /** Bean 容器中的 map，Bean 资源主要存放在这个 map 中 */
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
 
-    /** Bean 容器的静态对象，单例模式下使用 */
+    /** Bean 容器的静态对象，用于仓储有注解的类的相关信息 */
     private static BeanContainer instance = new BeanContainer();
 
     /** Bean Definition 注册 */

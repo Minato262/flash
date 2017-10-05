@@ -18,7 +18,7 @@ package com.flash.cn.context;
 import com.flash.cn.beans.BeanContainer;
 
 /**
- * Application Context Factory.
+ * 应用关系环境工厂，包装容器，为容器提供使用环境
  *
  * @author kay
  * @version v1.0

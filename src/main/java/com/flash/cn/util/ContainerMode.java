@@ -16,13 +16,16 @@
 package com.flash.cn.util;
 
 /**
- * 容器模式
+ * 容器模式枚举，容器分为 单例和原型模式。
+ * 单例模式，容器启动时，创建所有的 Bean 实例，以后不会再创建新的实例。原型模式，会在使
+ * 用时，创建和载入相应的 Bean 实例。Bean 使用注解, 默认的是单例模式方式。
  *
  * @author kay
  * @version v1.0
  */
 public enum ContainerMode {
-    SINGLETON("singleton"), MULTIPLE("multiple");
+    SINGLETON("singleton"),     // 单例模式
+    PROTOTYPE("prototype");     // 原型模式
 
     private static final String FLASH_PROPERTIES_MODE = "containerModes";
 
@@ -42,7 +45,7 @@ public enum ContainerMode {
      * @return 是否是单例模式
      */
     public boolean isSingleton() {
-        return !ContainerMode.MULTIPLE.getMode().equals(this.mode);
+        return !ContainerMode.PROTOTYPE.getMode().equals(this.mode);
     }
 
     /**
@@ -52,11 +55,11 @@ public enum ContainerMode {
      */
     public static ContainerMode getContainerModes() {
         String mode = new LoadProperties().load(FLASH_PROPERTIES_MODE);
-        if (!ContainerMode.MULTIPLE.getMode().equals(mode)) {
+        if (!ContainerMode.PROTOTYPE.getMode().equals(mode)) {
             return ContainerMode.SINGLETON;
         }
         else {
-            return ContainerMode.MULTIPLE;
+            return ContainerMode.PROTOTYPE;
         }
     }
 }

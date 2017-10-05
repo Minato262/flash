@@ -20,7 +20,6 @@ import com.flash.cn.annotation.Controller;
 import com.flash.cn.annotation.Repository;
 import com.flash.cn.annotation.Service;
 import com.flash.cn.core.ClassPathResource;
-import com.flash.cn.util.Assert;
 import com.flash.cn.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -74,6 +73,8 @@ class BeanDefinitionRegistry implements BeanDefinition {
             }
             Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
             if (annotation2 != null) {
+                // Controller 注解载入 Bean 容器，容器会自动载入类名作为 key
+                // Controller 层作为 key 的关键字，会使用左驼峰命名
                 String lowerCase = StringUtils.getLowerCase(clazz.getName());
                 String lowerCaseFirstOne = StringUtils.toLowerCaseFirstOne(lowerCase);
                 put(container, lowerCaseFirstOne, clazz.getName(), true);
@@ -92,18 +93,19 @@ class BeanDefinitionRegistry implements BeanDefinition {
         boolean hasAutowired = false;
         Object object = container.get(key);
         Field[] fields = object.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Autowired annotation = field.getAnnotation(Autowired.class);
-            if (annotation != null) {
-                try {
+
+        try {
+            for (Field field : fields) {
+                field.setAccessible(true);
+                Autowired annotation = field.getAnnotation(Autowired.class);
+                if (annotation != null) {
                     field.set(object, container.get(field.getName()));
+                    hasAutowired = true;
                 }
-                catch (IllegalAccessException e) {
-                    throw new BeanCreateFailureException(e);
-                }
-                hasAutowired = true;
             }
+        }
+        catch (IllegalAccessException e) {
+            throw new BeanCreateFailureException(e);
         }
         return new BeanDefinitionWrap(hasAutowired, object);
     }
@@ -124,7 +126,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有对象
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有 Bean
      *
      * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常
@@ -144,9 +146,10 @@ class BeanDefinitionRegistry implements BeanDefinition {
      */
     @Override
     public void registry(Map<String, Object> container, String key) {
-        String name = container.get(key).getClass().getName();
-        Assert.isNotEmpty(name);
-        put(container, key, name, false);
-        loadAutowired(container, key);
+        if (container.containsKey(key)) {
+            String name = container.get(key).getClass().getName();
+            put(container, key, name, false);
+            loadAutowired(container, key);
+        }
     }
 }

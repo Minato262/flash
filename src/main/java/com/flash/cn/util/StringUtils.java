@@ -24,13 +24,22 @@ package com.flash.cn.util;
 public class StringUtils {
 
     /**
-     * 获取类名
+     * 判断字符串是否为空
+     *
+     * @param str 字符串
+     * @return 是否为空
+     */
+    public static boolean isEmity(String str) {
+        return str == null || "".equals(str);
+    }
+
+    /**
+     * 在class 类全路径名中获取相应的类名
      *
      * @param name class 类全路径名
-     * @return 小写的类型
+     * @return 获取的相应的类名
      */
     public static String getLowerCase(String name) {
-        Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
         return name.substring(i + 1, name.length());
     }
@@ -42,7 +51,6 @@ public class StringUtils {
      * @return 处理后的字符串
      */
     public static String toLowerCaseFirstOne(String str) {
-        Assert.isNotEmpty(str);
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
         }

@@ -13,32 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.beans;
+package com.flash.cn.core;
 
 /**
- * 反射工具类
+ * Class 资源载入异常
  *
  * @author kay
  * @version v1.0
  */
-class BeanReflect {
+class ClassLoaderException extends ClassPathResourceException {
 
     /**
-     * 根据对象的路径，反射生成新的对象
+     * 带有堆栈异常信息的构造器
      *
-     * @param name 反射对象的对象路径
-     * @param <T>  弱类型转成指定强类型
-     * @return 生成的新的对象
-     * @throw BeanCreateFailureException 对象生成失败异常
+     * @param cause 堆栈信息
      */
-    @SuppressWarnings("unchecked")
-    public static <T> T newInstance(String name) {
-        try {
-            Class<T> clazz = (Class<T>) Class.forName(name);
-            return clazz.newInstance();
-        }
-        catch (Exception e) {
-            throw new BeanCreateFailureException(e);
-        }
+    public ClassLoaderException(Throwable cause) {
+        super(cause);
     }
 }
