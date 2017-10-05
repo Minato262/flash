@@ -9,7 +9,7 @@ package com.flash.cn.beans;
 public interface BeanFactory {
 
     /**
-     * 获取 Bean.
+     * 获取 Bean
      *
      * @param name 想获取 Bean 的名称
      * @param <T>  获取容器中的 Bean 对象

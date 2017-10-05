@@ -1,7 +1,7 @@
 package com.flash.cn;
 
 /**
- * Nested Runtime Exception.
+ * Nested Runtime Exception
  *
  * @author kay
  * @version v1.0

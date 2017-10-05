@@ -20,7 +20,7 @@ public class ClassPathResourceException extends NestedRuntimeException {
     }
 
     /**
-     * 带有堆栈异常信息的构造器。
+     * 带有堆栈异常信息的构造器
      *
      * @param cause 堆栈信息
      */

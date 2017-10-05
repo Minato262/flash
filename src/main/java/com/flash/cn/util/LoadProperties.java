@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * 配置工具类。
+ * 配置工具类
  *
  * @author kay
  * @version v1.0

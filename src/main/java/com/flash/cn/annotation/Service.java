@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Service 注解，标记对象为 Bean 对象
+ * Service 注解，标记对象为 Bean 对象为 Service 层对象
  *
  * @author kay
  * @version v1.0

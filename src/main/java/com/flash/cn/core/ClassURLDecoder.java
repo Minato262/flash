@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 /**
- * Class 编码工具类。
+ * Class 编码工具类
  *
  * @author kay
  * @version v1.0
@@ -18,7 +18,7 @@ public class ClassURLDecoder {
      *
      * @param source 来源
      * @return 转译后的字符串
-     * @throw ClassPathResourceException
+     * @throw ClassPathResourceException 不支持 UTF-8 编码
      */
     public static String decode(String source) {
         try {

@@ -21,6 +21,11 @@ public enum ContainerMode {
         return this.mode;
     }
 
+    /**
+     * 判断容器模式，配置是否是单例模式
+     *
+     * @return 是否是单例模式
+     */
     public boolean isSingleton() {
         return !ContainerMode.MULTIPLE.getMode().equals(this.mode);
     }

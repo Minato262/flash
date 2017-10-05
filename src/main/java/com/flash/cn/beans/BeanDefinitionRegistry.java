@@ -21,15 +21,15 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * put 对象到容器中
      *
-     * @param container 容器
+     * @param container 需要载入注册的容器
      * @param key       容器关键字
      * @param name      新建对象路径
      * @param isCheck   是否需要检测 bean 是否冲突
-     * @throw BeanCreateFailureException Bean 已经存在
+     * @throw BeanCreateFailureException 相应的 Bean 已经存在
      */
     private void put(Map<String, Object> container, String key, String name, boolean isCheck) {
         if (container.containsKey(key) && isCheck) {
-            throw new BeanCreateFailureException("Bean 已经存在");
+            throw new BeanCreateFailureException("Bean 冲突，相应的 Bean 已经存在");
         }
         Object object = BeanReflect.newInstance(name);
         container.put(key, object);
@@ -38,7 +38,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * 遍历 Class，载入类注释
      *
-     * @param container 容器
+     * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     private void loadRepository(Map<String, Object> container) {
@@ -63,9 +63,9 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 根据容器 key，载入方法注释
+     * 根据容器中的key，载入方法注释
      *
-     * @param container 容器
+     * @param container 需要注册的容器
      * @param key       容器中的key
      * @throw BeanCreateFailureException Bean 设置失败
      */
@@ -92,7 +92,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * 遍历容器，载入方法注释
      *
-     * @param container 容器
+     * @param container 需要遍历载入的容器
      * @throw BeanCreateFailureException Bean 设置失败
      */
     private void loadAutowired(Map<String, Object> container) {
@@ -105,9 +105,9 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 注册 Bean.
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有对象
      *
-     * @param container 容器
+     * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     @Override
@@ -117,9 +117,9 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 注册 Bean.
+     * 多例模式下注册 Bean，每次获取容器中 bean，会重新载入相应对象
      *
-     * @param container 容器
+     * @param container 需要注册的容器
      * @param key       容器中的关键字
      * @throw BeanCreateFailureException Bean 初始化加载异常
      */

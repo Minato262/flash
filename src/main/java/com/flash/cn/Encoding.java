@@ -1,6 +1,8 @@
 package com.flash.cn;
 
 /**
+ * 编码
+ *
  * @author kay
  * @version v1.0
  */

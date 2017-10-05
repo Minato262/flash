@@ -22,5 +22,4 @@ public final class BeanDefinitionWrap {
     public Object getObject() {
         return object;
     }
-
 }
