@@ -10,16 +10,14 @@ import com.flash.cn.beans.BeanContainer;
  */
 public class ApplicationContextFactory implements ApplicationContext {
 
-    /**
-     * Bean 容器
-     */
+    /** Bean 容器 */
     private BeanContainer container = BeanContainer.getInstance();
 
     /**
      * 默认构造器
      */
     public ApplicationContextFactory() {
-        container.init();
+        //
     }
 
     /**

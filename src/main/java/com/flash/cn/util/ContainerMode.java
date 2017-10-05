@@ -22,7 +22,7 @@ public enum ContainerMode {
     }
 
     public boolean isSingleton() {
-        return ContainerMode.SINGLETON.getMode().equals(this.mode);
+        return !ContainerMode.MULTIPLE.getMode().equals(this.mode);
     }
 
     /**
@@ -32,7 +32,7 @@ public enum ContainerMode {
      */
     public static ContainerMode getContainerModes() {
         String mode = new LoadProperties().load(FLASH_PROPERTIES_MODE);
-        if (ContainerMode.SINGLETON.getMode().equals(mode)) {
+        if (!ContainerMode.MULTIPLE.getMode().equals(mode)) {
             return ContainerMode.SINGLETON;
         }
         else {

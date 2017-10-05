@@ -17,4 +17,13 @@ public interface BeanDefinition {
      * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     void registry(Map<String, Object> container);
+
+    /**
+     * 注册 Bean.
+     *
+     * @param container 容器
+     * @param key       容器的关键字
+     * @throw BeanCreateFailureException Bean 初始化加载异常
+     */
+    void registry(Map<String, Object> container, String key);
 }

@@ -1,7 +1,7 @@
 package com.flash.cn.beans;
 
 /**
- * Bean Create Failure Exception.
+ * Bean 创建失败异常
  *
  * @author kay
  * @version v1.0

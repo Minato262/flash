@@ -25,7 +25,7 @@ public class ClassURLDecoder {
             return URLDecoder.decode(source, Encoding.UTF8.getCode());
         }
         catch (UnsupportedEncodingException e) {
-            throw new ClassPathResourceException(e);
+            throw new ClassPathResourceException("不支持 UTF-8 编码");
         }
     }
 }
