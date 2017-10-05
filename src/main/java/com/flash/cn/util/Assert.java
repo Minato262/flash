@@ -16,7 +16,7 @@
 package com.flash.cn.util;
 
 /**
- * 断言工具类，使用 Assert 断言类可以简化方法入参检测的代码，也可以用于建立程序探针
+ * 断言工具类，使用断言可以简化方法入参检测的代码，也可以用于程序探针
  *
  * @author kay
  * @version v1.0
@@ -24,7 +24,7 @@ package com.flash.cn.util;
 public class Assert {
 
     /**
-     * 断言，判断字符串不能为空，当字符串为空时，会抛出异常
+     * 判断字符串不能为空，当字符串为空时，会抛出异常
      *
      * @param str 需要判断的字符串
      * @throw IllegalArgumentException 字符串不能为空
