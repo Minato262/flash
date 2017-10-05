@@ -35,7 +35,7 @@ public final class BeanContainer {
     }
 
     /**
-     * 默认构造器，初始化容器
+     * 默认构造器
      */
     private BeanContainer() {
         if (container.isEmpty()) {

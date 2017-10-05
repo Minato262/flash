@@ -6,7 +6,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public class BeanReflect {
+class BeanReflect {
 
     /**
      * 反射生成新的对象

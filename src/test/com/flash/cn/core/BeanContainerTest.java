@@ -3,6 +3,7 @@ package com.flash.cn.core;
 import com.flash.cn.BeforeTest;
 import com.flash.cn.annotation.Autowired;
 import com.flash.cn.beans.BeanContainer;
+import com.flash.cn.core.factory.Ioc;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -34,9 +35,13 @@ public class BeanContainerTest extends BeforeTest {
     }
 
     @Test
-    public void test1() {
+    public void test1() throws IllegalAccessException, InstantiationException {
         BeanContainer container = BeanContainer.getInstance();
-        System.out.println(container.getValue("ioc"));
+        Ioc ioc = container.getValue("ioc");
+        System.out.println(ioc);
+        System.out.println(ioc.getFather());
+        System.out.println(ioc.getPeople());
+        System.out.println(ioc.getUser());
     }
 
     @Test

@@ -8,7 +8,7 @@ import com.flash.cn.NestedRuntimeException;
  * @author kay
  * @version v1.0
  */
-public class ClassPathResourceException extends NestedRuntimeException {
+class ClassPathResourceException extends NestedRuntimeException {
 
     /**
      * 带有错误信息的构造器
