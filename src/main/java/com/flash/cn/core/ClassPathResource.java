@@ -15,9 +15,6 @@
  */
 package com.flash.cn.core;
 
-import com.flash.cn.util.LoadProperties;
-import com.flash.cn.util.StringUtils;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.net.URL;
@@ -31,10 +28,23 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
-public class ClassPathResource {
+public class ClassPathResource extends ClassLoader implements Resource {
 
-    /** 根据配置获取配置的包名 */
-    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
+    /**
+     * 载入 Class 类
+     *
+     * @param name 资源名称
+     * @return 载入的 Class 类
+     * @throw ClassPathResourceException Class 载入异常
+     */
+    private Class<?> loadClass(String name) {
+        try {
+            return Thread.currentThread().getContextClassLoader().loadClass(name);
+        }
+        catch (ClassNotFoundException e) {
+            throw new ClassLoaderException(e);
+        }
+    }
 
     /**
      * 检测全部 Class 类集合
@@ -65,7 +75,7 @@ public class ClassPathResource {
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(ClassLoader.loadClass(packageName + "." + className));
+                classes.add(loadClass(packageName + "." + className));
             }
         }
     }
@@ -77,7 +87,8 @@ public class ClassPathResource {
      * @param packageName 包名
      * @return Class 类集合
      */
-    private List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
+    @Override
+    protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
         List<Class<?>> classes = new ArrayList<Class<?>>();
         while (urlElements.hasMoreElements()) {
             URL url = urlElements.nextElement();
@@ -88,20 +99,5 @@ public class ClassPathResource {
             }
         }
         return classes;
-    }
-
-    /**
-     * 获取所有 Class 集合类
-     *
-     * @return Class 类集合
-     */
-    public List<Class<?>> getClasses() {
-        String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
-        if (StringUtils.isEmpty(packageDirName)) {
-            throw new ClassPathResourceException("没有在配置项中配置包路径");
-        }
-
-        Enumeration<URL> dirs = ClassLoader.getEnumeration(packageDirName);
-        return getClasses(dirs, FLASH_PACKAGE_NAME);
     }
 }

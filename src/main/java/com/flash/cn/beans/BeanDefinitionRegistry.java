@@ -20,6 +20,7 @@ import com.flash.cn.annotation.Controller;
 import com.flash.cn.annotation.Repository;
 import com.flash.cn.annotation.Service;
 import com.flash.cn.core.ClassPathResource;
+import com.flash.cn.core.Resource;
 import com.flash.cn.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -58,7 +59,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
      * @throw BeanCreateFailureException Bean 初始化加载异常
      */
     private void loadRepository(Map<String, Object> container) {
-        ClassPathResource resource = new ClassPathResource();
+        Resource resource = new ClassPathResource();
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
             Repository annotation = (Repository) clazz.getAnnotation(Repository.class);

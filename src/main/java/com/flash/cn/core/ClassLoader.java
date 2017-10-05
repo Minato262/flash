@@ -15,17 +15,24 @@
  */
 package com.flash.cn.core;
 
+import com.flash.cn.util.LoadProperties;
+import com.flash.cn.util.StringUtils;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.List;
 
 /**
- * Class 资源载入相关工具类
+ * Class 资源载入类
  *
  * @author kay
  * @version v1.0
  */
-class ClassLoader {
+abstract class ClassLoader implements Resource {
+
+    /** 根据配置获取配置的包名 */
+    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
 
     /**
      * 根据来源获取，目标 URL 资源
@@ -34,7 +41,7 @@ class ClassLoader {
      * @return URL 元素资源
      * @throw ClassPathResourceException Class 载入异常
      */
-    public static Enumeration<URL> getEnumeration(String name) {
+    private Enumeration<URL> getEnumeration(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().getResources(name);
         }
@@ -44,18 +51,27 @@ class ClassLoader {
     }
 
     /**
-     * 载入 Class 类
+     * 根据 URL元素和包名，获取所有当前包内 Class 类的集合类
      *
-     * @param name 资源名称
-     * @return 载入的 Class 类
-     * @throw ClassPathResourceException Class 载入异常
+     * @param urlElements url 元素
+     * @param packageName 包名
+     * @return Class 类集合
      */
-    public static Class<?> loadClass(String name) {
-        try {
-            return Thread.currentThread().getContextClassLoader().loadClass(name);
+    protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
+
+    /**
+     * 获取所有当前包内 Class 类的集合类
+     *
+     * @return Class 类集合
+     */
+    @Override
+    public List<Class<?>> getClasses() {
+        String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
+        if (StringUtils.isEmpty(packageDirName)) {
+            throw new ClassPathResourceException("没有在配置项中配置包路径");
         }
-        catch (ClassNotFoundException e) {
-            throw new ClassLoaderException(e);
-        }
+
+        Enumeration<URL> dirs = getEnumeration(packageDirName);
+        return getClasses(dirs, FLASH_PACKAGE_NAME);
     }
 }

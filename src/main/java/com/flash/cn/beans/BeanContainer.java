@@ -29,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanContainer {
 
-    /** 容器模式（根据配置获取容器模式，单例或者原型模式） */
+    /** 容器模式（根据配置获取容器模式，单例或者原型模式）*/
     private static final ContainerMode CONTAINER_MODES = ContainerMode.getContainerModes();
 
     /** Bean 容器中的 map，Bean 资源主要存放在这个 map 中 */
@@ -46,8 +46,13 @@ public final class BeanContainer {
      *
      * @return Bean 容器对象
      */
-    public static synchronized BeanContainer getInstance() {
-        return CONTAINER_MODES.isSingleton() ? instance : new BeanContainer();
+    public static BeanContainer getInstance() {
+        if (CONTAINER_MODES.isSingleton()) {
+            synchronized (BeanContainer.class) {
+                return instance;
+            }
+        }
+        return new BeanContainer();
     }
 
     /**
