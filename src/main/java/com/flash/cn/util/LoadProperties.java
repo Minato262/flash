@@ -26,7 +26,7 @@ import java.util.Properties;
  */
 public class LoadProperties {
 
-    /* 配置路径 */
+    /** 配置路径 */
     private static final String FLASH_PATH = "/config/flash.properties";
 
     /**

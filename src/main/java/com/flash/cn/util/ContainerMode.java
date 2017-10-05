@@ -54,7 +54,7 @@ public enum ContainerMode {
     /**
      * 获取容器配置模式
      *
-     * @return 单例或者多例模式
+     * @return 单例或者原型模式
      */
     public static ContainerMode getContainerModes() {
         String mode = new LoadProperties().load(FLASH_PROPERTIES_MODE);

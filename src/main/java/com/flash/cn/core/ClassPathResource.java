@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class ClassPathResource {
 
-    /* 根据配置获取配置的包名 */
+    /** 根据配置获取配置的包名 */
     private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
 
     /**
@@ -73,7 +73,7 @@ public class ClassPathResource {
     /**
      * 获取到 Class 类集合类
      *
-     * @param urlElements url 入参
+     * @param urlElements url 元素
      * @param packageName 包名
      * @return Class 类集合
      */

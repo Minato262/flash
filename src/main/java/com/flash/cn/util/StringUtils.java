@@ -54,8 +54,7 @@ public class StringUtils {
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
         }
-        else {
-            return (new StringBuilder()).append(Character.toLowerCase(str.charAt(0))).append(str.substring(1)).toString();
-        }
+        return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
+
     }
 }
