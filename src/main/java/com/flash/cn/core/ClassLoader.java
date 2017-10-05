@@ -46,7 +46,7 @@ abstract class ClassLoader implements Resource {
             return Thread.currentThread().getContextClassLoader().getResources(name);
         }
         catch (IOException e) {
-            throw new ClassLoaderFailureException(e);
+            throw new ClassPathResourceException(e);
         }
     }
 

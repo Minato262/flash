@@ -31,4 +31,13 @@ class ClassPathResourceException extends ClassLoaderFailureException {
     public ClassPathResourceException(String message) {
         super(message);
     }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    public ClassPathResourceException(Throwable cause) {
+        super(cause);
+    }
 }

@@ -63,13 +63,14 @@ public class ClassPathResource extends ClassLoader implements Resource {
 
         File[] files = dir.listFiles(new FileFilter() {
             public boolean accept(File file) {
-                return (file.isDirectory()) || (file.getName().endsWith(".class"));
+                return file.isDirectory() || file.getName().endsWith(".class");
             }
         });
 
         if (files == null) {
             return;
         }
+
         for (File file : files) {
             if (file.isDirectory()) {
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
