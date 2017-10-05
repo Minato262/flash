@@ -74,7 +74,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
             Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
             if (annotation2 != null) {
                 // Controller 注解载入 Bean 容器，容器会自动载入类名作为 key
-                // Controller 层作为 key 的关键字，会使用左驼峰命名
+                // Controller 层 Bean 作为 key 的关键字，会使用左驼峰命名
                 String lowerCase = StringUtils.getLowerCase(clazz.getName());
                 String lowerCaseFirstOne = StringUtils.toLowerCaseFirstOne(lowerCase);
                 put(container, lowerCaseFirstOne, clazz.getName(), true);
@@ -138,7 +138,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 多例模式下注册 Bean，每次获取容器中 bean，会重新载入相应对象
+     * 原型模式下注册的 Bean，会每次从容器中获取 bean，会重新载入相应对象
      *
      * @param container 需要注册的容器
      * @param key       容器中的关键字

@@ -16,7 +16,7 @@
 package com.flash.cn.beans;
 
 /**
- * 反射工具类
+ * 反射相关工具类
  *
  * @author kay
  * @version v1.0

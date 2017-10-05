@@ -29,7 +29,7 @@ public class StringUtils {
      * @param str 字符串
      * @return 是否为空
      */
-    public static boolean isEmity(String str) {
+    public static boolean isEmpty(String str) {
         return str == null || "".equals(str);
     }
 

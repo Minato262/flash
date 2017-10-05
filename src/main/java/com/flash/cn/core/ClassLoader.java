@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
- * Class 资源载入工具类
+ * Class 资源载入相关工具类
  *
  * @author kay
  * @version v1.0
@@ -32,7 +32,7 @@ class ClassLoader {
      *
      * @param name 资源名称
      * @return URL 元素资源
-     * @throw ClassPathResourceException
+     * @throw ClassPathResourceException Class 载入异常
      */
     public static Enumeration<URL> getEnumeration(String name) {
         try {
@@ -48,7 +48,7 @@ class ClassLoader {
      *
      * @param name 资源名称
      * @return 载入的 Class 类
-     * @throw ClassPathResourceException
+     * @throw ClassPathResourceException Class 载入异常
      */
     public static Class<?> loadClass(String name) {
         try {

@@ -15,6 +15,7 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.util.Assert;
 import com.flash.cn.util.ContainerMode;
 
 import java.util.Map;
@@ -50,23 +51,24 @@ public final class BeanContainer {
     }
 
     /**
-     * 默认构造器
+     * 默认构造器，初始化容器
      */
     private BeanContainer() {
         if (container.isEmpty()) {
-            registry.registry(container);       // 注册容器中的 Bean 对象
+            registry.registry(container);       // 注册容器中的所有 Bean 实例
         }
     }
 
     /**
      * 根据 key 获取容器中的对象
      *
-     * @param key 容器关键字
+     * @param key 容器关键字(一定不能为空)
      * @param <T> 弱类型转换成强类型
      * @return 返回容器中的对象
      */
     @SuppressWarnings("unchecked")
     public <T> T getValue(String key) {
+        Assert.isNotEmpty(key);
         if (CONTAINER_MODES.isSingleton()) {
             registry.registry(container, key);
         }

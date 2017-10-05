@@ -97,7 +97,7 @@ public class ClassPathResource {
      */
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
-        if (StringUtils.isEmity(packageDirName)) {
+        if (StringUtils.isEmpty(packageDirName)) {
             throw new ClassPathResourceException("没有在配置项中配置包路径");
         }
 

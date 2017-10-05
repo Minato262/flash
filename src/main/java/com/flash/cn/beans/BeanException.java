@@ -18,7 +18,7 @@ package com.flash.cn.beans;
 import com.flash.cn.NestedRuntimeException;
 
 /**
- * Bean 相关的异常
+ * Bean 相关异常
  *
  * @author kay
  * @version v1.0
