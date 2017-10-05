@@ -93,19 +93,18 @@ class BeanDefinitionRegistry implements BeanDefinition {
         boolean hasAutowired = false;
         Object object = container.get(key);
         Field[] fields = object.getClass().getDeclaredFields();
-
-        try {
-            for (Field field : fields) {
-                field.setAccessible(true);
-                Autowired annotation = field.getAnnotation(Autowired.class);
-                if (annotation != null) {
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Autowired annotation = field.getAnnotation(Autowired.class);
+            if (annotation != null) {
+                try {
                     field.set(object, container.get(field.getName()));
-                    hasAutowired = true;
                 }
+                catch (IllegalAccessException e) {
+                    throw new BeanCreateFailureException(e);
+                }
+                hasAutowired = true;
             }
-        }
-        catch (IllegalAccessException e) {
-            throw new BeanCreateFailureException(e);
         }
         return new BeanDefinitionWrap(hasAutowired, object);
     }
