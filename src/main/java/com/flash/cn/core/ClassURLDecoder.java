@@ -11,7 +11,7 @@ import java.net.URLDecoder;
  * @author kay
  * @version v1.0
  */
-public class ClassURLDecoder {
+class ClassURLDecoder {
 
     /**
      * 转译成 uft-8 类型字符串

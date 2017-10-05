@@ -8,7 +8,7 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinition {
+interface BeanDefinition {
 
     /**
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有对象

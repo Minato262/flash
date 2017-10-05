@@ -6,7 +6,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public final class BeanDefinitionWrap {
+final class BeanDefinitionWrap {
     private boolean hasAutowired;
     private Object object;
 

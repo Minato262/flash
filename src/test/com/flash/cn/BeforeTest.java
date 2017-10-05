@@ -5,7 +5,7 @@ import com.flash.cn.beans.BeanFactory;
 import org.junit.Before;
 
 /**
- * 容器启动。
+ * 容器启动
  *
  * @author kay
  * @version v1.0

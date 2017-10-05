@@ -17,12 +17,8 @@ import java.util.List;
  */
 public class ClassPathResource {
 
-    /**
-     * 根据配置获取包名
-     */
+    /** 根据配置获取配置的包名 */
     private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
-
-    private ClassLoader contextClassLoader = new ClassLoader();
 
     /**
      * 检测全部 Class 类集合
@@ -53,7 +49,7 @@ public class ClassPathResource {
             }
             else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(contextClassLoader.loadClass(packageName + "." + className));
+                classes.add(ClassLoader.loadClass(packageName + "." + className));
             }
         }
     }
@@ -85,7 +81,7 @@ public class ClassPathResource {
      */
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
-        Enumeration<URL> dirs = contextClassLoader.getEnumeration(packageDirName);
+        Enumeration<URL> dirs = ClassLoader.getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);
     }
 }

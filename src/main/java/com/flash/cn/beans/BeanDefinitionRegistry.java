@@ -16,7 +16,7 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionRegistry implements BeanDefinition {
+class BeanDefinitionRegistry implements BeanDefinition {
 
     /**
      * put 对象到容器中
