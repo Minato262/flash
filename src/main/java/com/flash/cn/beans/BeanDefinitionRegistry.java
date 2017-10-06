@@ -107,7 +107,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
                 hasAutowired = true;
             }
         }
-        return new BeanDefinitionWrap(hasAutowired, object);
+        return new BeanDefinitionWrap<Object>(hasAutowired, object);
     }
 
     /**
@@ -120,7 +120,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
         for (Map.Entry<String, Object> entry : container.entrySet()) {
             BeanDefinitionWrap warp = loadAutowired(container, entry.getKey());
             if (warp.isHasAutowired()) {
-                container.put(entry.getKey(), warp.getObject());
+                container.put(entry.getKey(), warp.getData());
             }
         }
     }

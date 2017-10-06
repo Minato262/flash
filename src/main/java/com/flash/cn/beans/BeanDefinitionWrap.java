@@ -21,20 +21,20 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-final class BeanDefinitionWrap {
+final class BeanDefinitionWrap<T> {
     private boolean hasAutowired;
-    private Object object;
+    private T date;
 
-    public BeanDefinitionWrap(boolean hasAutowired, Object object) {
+    public BeanDefinitionWrap(boolean hasAutowired, T date) {
         this.hasAutowired = hasAutowired;
-        this.object = object;
+        this.date = date;
     }
 
     public boolean isHasAutowired() {
         return hasAutowired;
     }
 
-    public Object getObject() {
-        return object;
+    public T getData() {
+        return date;
     }
 }
