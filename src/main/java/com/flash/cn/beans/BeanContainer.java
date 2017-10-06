@@ -16,7 +16,6 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.util.Assert;
-import com.flash.cn.util.ContainerMode;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BeanContainer {
 
     /** 容器模式（根据配置获取容器模式，单例或者原型模式）*/
-    private static final ContainerMode CONTAINER_MODES = ContainerMode.getContainerModes();
+    private static final BeanContainerMode CONTAINER_MODES = BeanContainerMode.getContainerModes();
 
     /** Bean 容器中的 map，Bean 资源主要存放在这个 map 中 */
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();

@@ -55,6 +55,5 @@ public class StringUtils {
             return str;
         }
         return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
-
     }
 }
