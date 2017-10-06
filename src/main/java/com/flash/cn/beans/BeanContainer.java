@@ -74,7 +74,7 @@ public final class BeanContainer {
     public <T> T getValue(String key) {
         Assert.isNotEmpty(key);
         if (CONTAINER_MODES.isSingleton()) {
-            registry.registry(container, key);
+            registry.registry(container, key);    // 注册容器中载入新的 Bean 实例
         }
         return (T) container.get(key);
     }
