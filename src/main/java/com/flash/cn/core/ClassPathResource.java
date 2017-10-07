@@ -36,7 +36,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
      * 载入 Class
      *
      * @param name 资源名称
-     * @return 载入的 Class 类
+     * @return 载入的 Class
      * @throw ClassPathResourceException 如果根据资源名称没有找到对应的类
      */
     private Class<?> loadClass(String name) {
