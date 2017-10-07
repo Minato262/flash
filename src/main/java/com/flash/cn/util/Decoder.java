@@ -15,6 +15,8 @@
  */
 package com.flash.cn.util;
 
+import com.flash.cn.Unicode;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -35,7 +37,7 @@ public class Decoder {
      */
     public static String decode(String source) {
         try {
-            return URLDecoder.decode(source, Encoding.UTF_8.getCode());
+            return URLDecoder.decode(source, Unicode.UTF_8.getCode());
         }
         catch (UnsupportedEncodingException e) {
             return "";

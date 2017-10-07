@@ -13,20 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.util;
+package com.flash.cn;
 
 /**
- * 编码枚举类
+ * Unicode 编码 常量枚举
  *
  * @author kay
  * @version v1.0
  */
-public enum Encoding {
+public enum Unicode {
     UTF_8("UTF-8");
 
     private String code;
 
-    Encoding(String code) {
+    Unicode(String code) {
         this.code = code;
     }
 

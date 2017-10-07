@@ -26,9 +26,9 @@ import java.util.List;
 public interface Resource {
 
     /**
-     * 获取所有当前包内 Class 类的清单
+     * 获取所有当前包内 Class 的清单
      *
-     * @return Class 类清单
+     * @return Class 清单
      */
     List<Class<?>> getClasses();
 }

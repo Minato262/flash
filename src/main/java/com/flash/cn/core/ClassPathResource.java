@@ -33,7 +33,7 @@ import java.util.List;
 public class ClassPathResource extends ClassLoader implements Resource {
 
     /**
-     * 载入 Class 类
+     * 载入 Class
      *
      * @param name 资源名称
      * @return 载入的 Class 类
@@ -49,11 +49,11 @@ public class ClassPathResource extends ClassLoader implements Resource {
     }
 
     /**
-     * 检测全部 Class 类列表
+     * 检测全部 Class 列表
      *
      * @param packageName 包名称
      * @param packagePath 包路径
-     * @param classes     Class 类列表
+     * @param classes     Class 列表
      */
     private void checkClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
@@ -83,11 +83,11 @@ public class ClassPathResource extends ClassLoader implements Resource {
     }
 
     /**
-     * 获取到 Class 类列表
+     * 获取到 Class 列表
      *
      * @param urlElements url 元素
      * @param packageName 包名
-     * @return Class 类列表
+     * @return Class 列表
      */
     @Override
     protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
