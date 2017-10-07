@@ -31,11 +31,11 @@ public class Decoder {
      *
      * @param source 来源
      * @return 转译后的字符串
-     * @throw ClassPathResourceException 不支持 UTF-8 编码
+     * @throw ClassPathResourceException 如果编码 uft-8 出错
      */
     public static String decode(String source) {
         try {
-            return URLDecoder.decode(source, Encoding.UTF8.getCode());
+            return URLDecoder.decode(source, Encoding.UTF_8.getCode());
         }
         catch (UnsupportedEncodingException e) {
             return "";

@@ -21,7 +21,7 @@ package com.flash.cn.core;
  * @author kay
  * @version v1.0
  */
-class ClassPathResourceException extends ClassLoaderFailureException {
+class ClassPathResourceException extends ResourceException {
 
     /**
      * 带有错误信息的构造器

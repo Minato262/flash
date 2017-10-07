@@ -15,24 +15,13 @@
  */
 package com.flash.cn.core;
 
-import com.flash.cn.NestedRuntimeException;
-
 /**
  * Class 资源载入失败异常
  *
  * @author kay
  * @version v1.0
  */
-class ClassLoaderFailureException extends NestedRuntimeException {
-
-    /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
-     */
-    public ClassLoaderFailureException(String message) {
-        super(message);
-    }
+class ClassLoaderFailureException extends ResourceException {
 
     /**
      * 带有堆栈异常信息的构造器

@@ -27,7 +27,7 @@ public class Assert {
      * 判断字符串不能为空，当字符串为空时，会抛出异常
      *
      * @param str 需要判断的字符串
-     * @throw IllegalArgumentException 字符串为空
+     * @throw IllegalArgumentException 如果字符串不为空
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {

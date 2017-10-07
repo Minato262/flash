@@ -19,6 +19,9 @@ import com.flash.cn.NestedRuntimeException;
 
 /**
  * Bean 相关异常
+ * <p>
+ * 这是一个抽象异常类，它定义了任何与 Bean 相关的异常的基础方法
+ * </p>
  *
  * @author kay
  * @version v1.0

@@ -37,7 +37,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
      *
      * @param name 资源名称
      * @return 载入的 Class 类
-     * @throw ClassPathResourceException Class 载入异常
+     * @throw ClassPathResourceException 如果根据资源名称没有找到对应的类
      */
     private Class<?> loadClass(String name) {
         try {
@@ -49,11 +49,11 @@ public class ClassPathResource extends ClassLoader implements Resource {
     }
 
     /**
-     * 检测全部 Class 类集合
+     * 检测全部 Class 类列表
      *
      * @param packageName 包名称
      * @param packagePath 包路径
-     * @param classes     Class 类集合
+     * @param classes     Class 类列表
      */
     private void checkClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
@@ -83,11 +83,11 @@ public class ClassPathResource extends ClassLoader implements Resource {
     }
 
     /**
-     * 获取到 Class 类集合类
+     * 获取到 Class 类列表
      *
      * @param urlElements url 元素
      * @param packageName 包名
-     * @return Class 类集合
+     * @return Class 类列表
      */
     @Override
     protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {

@@ -16,7 +16,11 @@
 package com.flash.cn;
 
 /**
- * Nested Runtime Exception
+ * 基础非受检性异常
+ * <p>
+ * 这是一个抽象异常类，它定义了任何与整个框架相关的异常的基础方法，并且将所有异常
+ * 转换成了非受检性异常
+ * </p>
  *
  * @author kay
  * @version v1.0

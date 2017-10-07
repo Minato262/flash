@@ -39,7 +39,7 @@ abstract class ClassLoader implements Resource {
      *
      * @param name 资源名称
      * @return URL 元素资源
-     * @throw ClassPathResourceException Class 载入异常
+     * @throw ClassPathResourceException 如果 I/O 异常
      */
     private Enumeration<URL> getEnumeration(String name) {
         try {
@@ -51,19 +51,19 @@ abstract class ClassLoader implements Resource {
     }
 
     /**
-     * 根据 URL元素和包名，获取所有当前包内 Class 类的集合类
+     * 根据 URL元素和包名，获取所有当前包内 Class 类的清单
      *
      * @param urlElements url 元素
      * @param packageName 包名
-     * @return Class 类集合
+     * @return Class 类清单
      */
     protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
 
     /**
-     * 获取所有当前包内 Class 类的集合类
+     * 获取所有当前包内 Class 类的清单
      *
-     * @return Class 类集合
-     * @throw ClassPathResourceException 没有在配置项中配置包路径
+     * @return Class 类清单
+     * @throw ClassPathResourceException 如果没有在配置项中配置包路径
      */
     @Override
     public List<Class<?>> getClasses() {

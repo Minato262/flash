@@ -13,24 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.util;
+package com.flash.cn.core;
+
+import com.flash.cn.NestedRuntimeException;
 
 /**
- * 编码枚举类
+ * 资源相关异常
+ * <p>
+ * 这是一个抽象异常类，它定义了任何与底层资源载入相关的异常的基础方法
+ * </p>
  *
  * @author kay
  * @version v1.0
  */
-public enum Encoding {
-    UTF_8("UTF-8");
+abstract class ResourceException extends NestedRuntimeException {
 
-    private String code;
-
-    Encoding(String code) {
-        this.code = code;
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public ResourceException(String message) {
+        super(message);
     }
 
-    public String getCode() {
-        return this.code;
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    public ResourceException(Throwable cause) {
+        super(cause);
     }
 }

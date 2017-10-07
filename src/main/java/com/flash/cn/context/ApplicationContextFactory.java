@@ -36,7 +36,7 @@ public class ApplicationContextFactory implements ApplicationContext {
     }
 
     /**
-     * 获取 Bean
+     * 根据 Bean 名称，获取 Bean 实例
      *
      * @param name 想获取 Bean 的名称
      * @param <T>  获取容器中的 Bean 对象

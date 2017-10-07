@@ -36,7 +36,7 @@ import java.util.Map;
 class BeanDefinitionRegistry implements BeanDefinition {
 
     /**
-     * put 对象到容器中
+     * 反射对象，然后将对象 put 对象进容器中
      *
      * @param container 需要载入注册的容器
      * @param key       容器关键字
@@ -53,7 +53,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 遍历 Class，载入类注释
+     * 遍历 Class，载入类注释并将对象放入容器的 value 中
      *
      * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常
@@ -84,7 +84,7 @@ class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 根据容器中的key，载入方法注释
+     * 根据容器中的key获取对象，载入方法注释
      *
      * @param container 需要注册的容器
      * @param key       容器中的key
@@ -126,7 +126,8 @@ class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所有 Bean
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
+     * 有 Bean
      *
      * @param container 需要注册的容器
      * @throw BeanCreateFailureException Bean 初始化加载异常

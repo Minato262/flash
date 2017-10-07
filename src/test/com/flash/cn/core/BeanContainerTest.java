@@ -34,10 +34,11 @@ public class BeanContainerTest extends BeforeTest {
 
     @Test
     public void test() {
-        MyThread t1 = new MyThread();
-        MyThread t2 = new MyThread();
-        t1.start();
-        t2.start();
+        MyThread[] array = new MyThread[10];
+        for (int i = 0; i < 10; i++) {
+            array[i] = new MyThread();
+            array[i].start();
+        }
     }
 
     private class MyThread extends Thread {
@@ -50,7 +51,7 @@ public class BeanContainerTest extends BeforeTest {
     }
 
     @Test
-    public void test1() throws IllegalAccessException, InstantiationException {
+    public void test1() {
         BeanContainer container = BeanContainer.getInstance();
         Ioc ioc = container.getValue("ioc");
         System.out.println(ioc);
