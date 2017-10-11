@@ -23,7 +23,7 @@ import com.flash.cn.beans.BeanContainer;
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory implements ApplicationContext {
+public class ApplicationContextFactory extends AbstractRefreshableApplicationContext implements ApplicationContext {
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainer.getInstance();
