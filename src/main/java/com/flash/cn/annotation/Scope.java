@@ -13,45 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.core.factory;
+package com.flash.cn.annotation;
 
-import com.flash.cn.annotation.Autowired;
-import com.flash.cn.annotation.Scope;
-import com.flash.cn.annotation.Service;
+import com.flash.cn.beans.BeanContainerMode;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
+ * Scope 注解，标记对象为 Bean 对象为单例还是原型对象
+ *
  * @author kay
  * @version v1.0
  */
-@Service("ioc1")
-@Scope("prototype")
-public class Ioc1 {
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Scope {
 
-    @Autowired
-    private Father father;
-
-    @Autowired
-    private People people;
-
-    @Autowired
-    private User user;
-
-    @Autowired
-    private Ioc ioc;
-
-    public Father getFather() {
-        return father;
-    }
-
-    public People getPeople() {
-        return people;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Ioc getIoc() {
-        return ioc;
-    }
+    String value() default BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
 }

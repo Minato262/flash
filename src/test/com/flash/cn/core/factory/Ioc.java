@@ -17,12 +17,14 @@ package com.flash.cn.core.factory;
 
 import com.flash.cn.annotation.Autowired;
 import com.flash.cn.annotation.Repository;
+import com.flash.cn.annotation.Scope;
 
 /**
  * @author kay
  * @version v1.0
  */
 @Repository("ioc")
+@Scope
 public class Ioc {
 
     @Autowired

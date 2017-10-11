@@ -72,7 +72,7 @@ public final class BeanContainer {
     /* ------------------------------ 常量区  ——————------------------------- */
 
     /** 容器模式（根据配置获取容器模式，单例或者原型模式）*/
-    private static final BeanContainerMode CONTAINER_MODES = BeanContainerMode.getContainerModes();
+    private static final BeanContainerMode CONTAINER_MODES = BeanContainerMode.getInstance();
 
     /* ------------------------------ 静态区  ——————------------------------- */
 
