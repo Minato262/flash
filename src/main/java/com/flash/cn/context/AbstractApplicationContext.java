@@ -19,5 +19,5 @@ package com.flash.cn.context;
  * @author kay
  * @version v1.0
  */
-public abstract class AbstractRefreshableApplicationContext {
+public abstract class AbstractApplicationContext {
 }
