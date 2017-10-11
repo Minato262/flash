@@ -29,7 +29,7 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
-abstract class ClassLoader implements Resource {
+public abstract class ClassLoader implements Resource {
 
     /** 根据配置获取配置的包名 */
     private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");

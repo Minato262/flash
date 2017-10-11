@@ -21,7 +21,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-class BeanCreateFailureException extends BeanException {
+public class BeanCreateFailureException extends BeanException {
 
     /**
      * 带有错误信息的构造器

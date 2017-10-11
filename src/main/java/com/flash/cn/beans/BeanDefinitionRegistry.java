@@ -33,7 +33,7 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-class BeanDefinitionRegistry implements BeanDefinition {
+public class BeanDefinitionRegistry implements BeanDefinition {
 
     /**
      * 反射对象，然后将对象 put 对象进容器中

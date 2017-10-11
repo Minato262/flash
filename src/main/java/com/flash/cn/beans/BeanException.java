@@ -26,7 +26,7 @@ import com.flash.cn.NestedRuntimeException;
  * @author kay
  * @version v1.0
  */
-abstract class BeanException extends NestedRuntimeException {
+public abstract class BeanException extends NestedRuntimeException {
 
     /**
      * 带有错误信息的构造器

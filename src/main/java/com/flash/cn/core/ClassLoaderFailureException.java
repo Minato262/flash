@@ -21,7 +21,7 @@ package com.flash.cn.core;
  * @author kay
  * @version v1.0
  */
-class ClassLoaderFailureException extends ResourceException {
+public class ClassLoaderFailureException extends ResourceException {
 
     /**
      * 带有堆栈异常信息的构造器

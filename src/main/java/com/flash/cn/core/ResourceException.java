@@ -26,7 +26,7 @@ import com.flash.cn.NestedRuntimeException;
  * @author kay
  * @version v1.0
  */
-abstract class ResourceException extends NestedRuntimeException {
+public abstract class ResourceException extends NestedRuntimeException {
 
     /**
      * 带有错误信息的构造器

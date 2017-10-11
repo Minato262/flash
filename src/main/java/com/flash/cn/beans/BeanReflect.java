@@ -21,7 +21,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-class BeanReflect {
+public class BeanReflect {
 
     /**
      * 根据对象的路径，反射生成新的对象

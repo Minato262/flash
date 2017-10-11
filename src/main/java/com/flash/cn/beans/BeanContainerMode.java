@@ -30,20 +30,29 @@ import com.flash.cn.util.LoadProperties;
  */
 public final class BeanContainerMode {
 
+    /** 配置模式 */
     private String mode;
 
-    private static BeanContainerMode containerMode = new BeanContainerMode();
-
+    /** 默认软件模式 */
     private static final String FLASH_PROPERTIES_MODE = "containerModes";
 
+    /** 单例模式 */
     public static final String FLASH_PROPERTIES_SINGLETON = "singleton";
 
+    /** 原型模式 */
     public static final String FLASH_PROPERTIES_PROTOTYPE = "prototype";
 
+    /** 静态对象 */
+    private static BeanContainerMode instance = new BeanContainerMode();
+
+    /** 单例模式生成对象 */
     public static BeanContainerMode getInstance() {
-        return containerMode;
+        return instance;
     }
 
+    /**
+     * 默认构造器，载入配置
+     */
     private BeanContainerMode() {
         mode = new LoadProperties().load(FLASH_PROPERTIES_MODE);
     }
@@ -51,7 +60,7 @@ public final class BeanContainerMode {
     /**
      * 获取容器配置模式
      *
-     * @return 单例或者原型模式
+     * @return 是否是单例模式
      */
     public boolean isSingleton() {
         return !FLASH_PROPERTIES_PROTOTYPE.equals(mode);
