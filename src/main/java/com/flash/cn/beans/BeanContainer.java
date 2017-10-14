@@ -71,15 +71,21 @@ public final class BeanContainer {
 
     /* ------------------------------ 常量区  ——————------------------------- */
 
-    /** 容器模式（根据配置获取容器模式，单例或者原型模式）*/
+    /**
+     * 容器模式（根据配置获取容器模式，单例或者原型模式）
+     */
     private static final BeanContainerMode CONTAINER_MODES = BeanContainerMode.getInstance();
 
     /* ------------------------------ 静态区  ——————------------------------- */
 
-    /** Bean 容器中的 map，Bean 资源主要存放在这个 map 中 */
+    /**
+     * Bean 容器中的 map，Bean 资源主要存放在这个 map 中
+     */
     private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
 
-    /** Bean 容器的静态对象，用于存储有注解的类的相关信息 */
+    /**
+     * Bean 容器的静态对象，用于存储有注解的类的相关信息
+     */
     private static BeanContainer instance = new BeanContainer();
 
     /**
@@ -98,16 +104,15 @@ public final class BeanContainer {
 
     /* ------------------------------ 方法区  ——————------------------------- */
 
-    /** Bean Definition 注册 */
-    private BeanDefinition registry = new BeanDefinitionRegistry();
-
     /**
      * 默认构造器，初始化容器
      */
     private BeanContainer() {
-        if (container.isEmpty()) {
-            registry.registry(container);     // 注册容器中的所有 Bean 实例
-        }
+
+    }
+
+    public void refresh() {
+
     }
 
     /**
@@ -120,9 +125,10 @@ public final class BeanContainer {
     @SuppressWarnings("unchecked")
     public <T> T getValue(String key) {
         Assert.isNotEmpty(key);
-        if (CONTAINER_MODES.isSingleton()) {
-            registry.registry(container, key);    // 注册容器中载入新的 Bean 实例
-        }
         return (T) container.get(key);
+    }
+
+    public void clear() {
+        container.clear();
     }
 }

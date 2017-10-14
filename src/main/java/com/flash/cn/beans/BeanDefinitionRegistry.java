@@ -16,71 +16,35 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.annotation.Autowired;
-import com.flash.cn.annotation.Controller;
-import com.flash.cn.annotation.Repository;
-import com.flash.cn.annotation.Service;
-import com.flash.cn.core.ClassPathResource;
-import com.flash.cn.core.Resource;
-import com.flash.cn.util.StringUtils;
+import com.flash.cn.util.Assert;
 
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 /**
- * Bean Definition 注册
- *
  * @author kay
  * @version v1.0
  */
 public class BeanDefinitionRegistry implements BeanDefinition {
 
-    /**
-     * 反射对象，然后将对象 put 对象进容器中
-     *
-     * @param container 需要载入注册的容器
-     * @param key       容器关键字
-     * @param name      新建对象路径
-     * @param isCheck   是否需要检测 bean 是否冲突
-     * @throw BeanCreateFailureException 相应的 Bean 已经存在
-     */
-    private void put(Map<String, Object> container, String key, String name, boolean isCheck) {
-        if (container.containsKey(key) && isCheck) {
-            throw new BeanCreateFailureException("Bean 冲突，相应的 Bean 已经存在");
-        }
-        Object object = BeanReflect.newInstance(name);
-        container.put(key, object);
+    private BeanContainer container;
+
+    private BeanDefinitionTable table;
+
+    public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
+        Assert.isNotNull(table);
+        Assert.isNotNull(container);
+        this.table = table;
+        this.container = container;
     }
 
-    /**
-     * 遍历 Class，载入类注释并将对象放入容器的 value 中
-     *
-     * @param container 需要注册的容器
-     * @throw BeanCreateFailureException Bean 初始化加载异常
-     */
-    private void loadRepository(Map<String, Object> container) {
-        Resource resource = new ClassPathResource();
-        List<Class<?>> list = resource.getClasses();
-        for (Class clazz : list) {
-            Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
-            if (annotation != null) {
-                put(container, annotation.value(), clazz.getName(), true);
-                continue;
-            }
-            Service annotation1 = (Service) clazz.getAnnotation(Service.class);
-            if (annotation1 != null) {
-                put(container, annotation1.value(), clazz.getName(), true);
-                continue;
-            }
-            Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
-            if (annotation2 != null) {
-                // Controller 注解载入 Bean 容器，容器会自动载入类名作为 key
-                // Controller 层 Bean 作为 key 的关键字，会使用左驼峰命名
-                String lowerCase = StringUtils.getLowerCase(clazz.getName());
-                String lowerCaseFirstOne = StringUtils.toLowerCaseFirstOne(lowerCase);
-                put(container, lowerCaseFirstOne, clazz.getName(), true);
-            }
-        }
+    private void registry(){
+        Map<String, Class> registryTable = table.getTable();
+        loadAnnotation(registryTable);
+    }
+
+    private void loadAnnotation(Map<String, Class> registryTable){
+
     }
 
     /**
@@ -125,32 +89,9 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         }
     }
 
-    /**
-     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
-     * 有 Bean
-     *
-     * @param container 需要注册的容器
-     * @throw BeanCreateFailureException Bean 初始化加载异常
-     */
     @Override
-    public void registry(Map<String, Object> container) {
-        loadRepository(container);
-        loadAutowired(container);
-    }
-
-    /**
-     * 原型模式下注册的 Bean，会每次从容器中获取 bean，会重新载入相应对象
-     *
-     * @param container 需要注册的容器
-     * @param key       容器中的关键字
-     * @throw BeanCreateFailureException Bean 初始化加载异常
-     */
-    @Override
-    public void registry(Map<String, Object> container, String key) {
-        if (container.containsKey(key)) {
-            String name = container.get(key).getClass().getName();
-            put(container, key, name, false);
-            loadAutowired(container, key);
-        }
+    public void refresh() {
+        table.refresh();
+        registry();
     }
 }

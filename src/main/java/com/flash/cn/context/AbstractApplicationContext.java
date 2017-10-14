@@ -15,9 +15,32 @@
  */
 package com.flash.cn.context;
 
+import com.flash.cn.beans.*;
+import com.flash.cn.core.ClassPathResource;
+import com.flash.cn.core.Resource;
+
 /**
  * @author kay
  * @version v1.0
  */
 public abstract class AbstractApplicationContext {
+
+    /**
+     * Bean 容器
+     */
+    protected BeanContainer container = BeanContainer.getInstance();
+
+    protected void init() {
+        Resource resource = new ClassPathResource();
+        BeanDefinitionTable beanDefinitionTable = new BeanDefinitionResolution(resource);
+        try {
+            beanDefinitionTable = new BeanDefinitionResolution(resource);
+            BeanDefinition beanDefinition = new BeanDefinitionRegistry(beanDefinitionTable, container);
+            beanDefinition.refresh();
+        }
+        catch (BeanException e) {
+            beanDefinitionTable.clear();
+            container.clear();
+        }
+    }
 }

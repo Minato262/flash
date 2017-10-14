@@ -15,8 +15,6 @@
  */
 package com.flash.cn.beans;
 
-import java.util.Map;
-
 /**
  * Bean Definition 接口
  *
@@ -26,20 +24,10 @@ import java.util.Map;
 public interface BeanDefinition {
 
     /**
-     * 注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载
-     * 入所有 Bean
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
+     * 有 Bean
      *
-     * @param container 需要注册的容器
-     * @throw BeanCreateFailureException Bean 初始化加载异常
+     * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
-    void registry(Map<String, Object> container);
-
-    /**
-     * 多例模式下注册 Bean，每次获取容器中 bean，会重新载入相应对象
-     *
-     * @param container 需要注册的容器
-     * @param key       容器中的关键字
-     * @throw BeanCreateFailureException Bean 初始化加载异常
-     */
-    void registry(Map<String, Object> container, String key);
+    void refresh();
 }

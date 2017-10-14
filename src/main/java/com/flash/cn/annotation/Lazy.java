@@ -13,32 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.context;
+package com.flash.cn.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * 应用关系环境工厂，包装容器，为容器提供使用环境
+ * Lazy 注解，标记对象为 Bean 对象加载模式
  *
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory extends AbstractApplicationContext implements ApplicationContext {
-
-    /**
-     * 默认构造器
-     */
-    public ApplicationContextFactory() {
-        super.init();
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例
-     *
-     * @param name 想获取 Bean 的名称
-     * @param <T>  获取容器中的 Bean 对象
-     * @return bean 对象
-     */
-    @Override
-    public <T> T getBean(String name) {
-        return container.getValue(name);
-    }
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Lazy {
 }

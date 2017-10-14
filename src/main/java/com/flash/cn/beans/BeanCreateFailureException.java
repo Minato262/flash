@@ -24,15 +24,6 @@ package com.flash.cn.beans;
 public class BeanCreateFailureException extends BeanException {
 
     /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
-     */
-    public BeanCreateFailureException(String message) {
-        super(message);
-    }
-
-    /**
      * 带有堆栈异常信息的构造器
      *
      * @param cause 堆栈异常信息

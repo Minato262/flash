@@ -13,32 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.context;
+package com.flash.cn.beans;
 
 /**
- * 应用关系环境工厂，包装容器，为容器提供使用环境
+ * Bean Definition 冲突异常
  *
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactory extends AbstractApplicationContext implements ApplicationContext {
+public class BeanDefinitionConflictException extends BeanException  {
 
     /**
-     * 默认构造器
-     */
-    public ApplicationContextFactory() {
-        super.init();
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例
+     * 带有错误信息的构造器
      *
-     * @param name 想获取 Bean 的名称
-     * @param <T>  获取容器中的 Bean 对象
-     * @return bean 对象
+     * @param message 错误信息
      */
-    @Override
-    public <T> T getBean(String name) {
-        return container.getValue(name);
+    public BeanDefinitionConflictException(String message) {
+        super(message);
     }
 }
