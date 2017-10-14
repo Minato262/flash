@@ -16,6 +16,8 @@
 package com.flash.cn.core.factory;
 
 import com.flash.cn.annotation.Repository;
+import com.flash.cn.annotation.Scope;
+import com.flash.cn.beans.BeanContainerMode;
 
 /**
  * {@link User} Test.
@@ -24,5 +26,6 @@ import com.flash.cn.annotation.Repository;
  * @version v1.0
  */
 @Repository("user")
+@Scope(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE)
 public class User extends Bean {
 }

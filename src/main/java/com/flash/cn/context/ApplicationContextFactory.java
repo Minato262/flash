@@ -15,6 +15,8 @@
  */
 package com.flash.cn.context;
 
+import com.flash.cn.beans.BeanReflect;
+
 /**
  * 应用关系环境工厂，包装容器，为容器提供使用环境
  *
@@ -37,8 +39,13 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(String name) {
+        if(container.get(name) instanceof Class){
+            Class clazz = container.get(name);
+            return (T) BeanReflect.getInstance().loadAutowired(clazz);
+        }
         return container.get(name);
     }
 }

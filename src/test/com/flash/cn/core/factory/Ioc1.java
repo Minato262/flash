@@ -18,13 +18,14 @@ package com.flash.cn.core.factory;
 import com.flash.cn.annotation.Autowired;
 import com.flash.cn.annotation.Scope;
 import com.flash.cn.annotation.Service;
+import com.flash.cn.beans.BeanContainerMode;
 
 /**
  * @author kay
  * @version v1.0
  */
 @Service("ioc1")
-@Scope("prototype")
+@Scope(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE)
 public class Ioc1 {
 
     @Autowired

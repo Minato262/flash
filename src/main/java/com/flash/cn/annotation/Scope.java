@@ -32,5 +32,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scope {
 
-    String value() default BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
+    BeanContainerMode value() default BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
 }

@@ -15,12 +15,10 @@
  */
 package com.flash.cn.beans;
 
-import com.flash.cn.annotation.Autowired;
 import com.flash.cn.annotation.Lazy;
 import com.flash.cn.annotation.Scope;
 import com.flash.cn.util.Assert;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 
 /**
@@ -32,6 +30,8 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     private BeanContainer container;
 
     private BeanDefinitionTable table;
+
+    private BeanReflect beanReflect = BeanReflect.getInstance();
 
     public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
         Assert.isNotNull(table);
@@ -64,41 +64,11 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      */
     private void loadAutowired(Map<String, Class> registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            Object object = container.get(entry.getKey());
-            BeanDefinitionWrap wrap = loadAutowired(object);
+            BeanDefinitionWrap wrap = beanReflect.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
             }
         }
-    }
-
-    private Object getValue(String key){
-        Object object = container.get(key);
-        if (object instanceof Class) {
-            Class clazz = (Class) object;
-            object = BeanReflect.newInstance(clazz.getName());
-            container.put(key, object);
-        }
-        return container.get(key);
-    }
-
-    private BeanDefinitionWrap<Object> loadAutowired(Object object) {
-        boolean hasAutowired = false;
-        Field[] fields = object.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Autowired annotation = field.getAnnotation(Autowired.class);
-            if (annotation != null) {
-                try {
-                    field.set(object, getValue(field.getName()));
-                }
-                catch (IllegalAccessException e) {
-                    throw new BeanCreateFailureException(e);
-                }
-                hasAutowired = true;
-            }
-        }
-        return new BeanDefinitionWrap<Object>(hasAutowired, object);
     }
 
     @Override

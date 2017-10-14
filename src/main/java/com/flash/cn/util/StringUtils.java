@@ -34,16 +34,6 @@ public class StringUtils {
     }
 
     /**
-     * 判断字符串是否为空
-     *
-     * @param str 字符串
-     * @return 是否为空
-     */
-    public static boolean isNotEmpty(String str) {
-        return !isEmpty(str);
-    }
-
-    /**
      * 在class 类全路径名中获取相应的类名
      *
      * @param name class 类全路径名
