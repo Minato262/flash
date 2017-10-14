@@ -16,6 +16,8 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.annotation.Autowired;
+import com.flash.cn.annotation.Lazy;
+import com.flash.cn.annotation.Scope;
 import com.flash.cn.util.Assert;
 
 import java.lang.reflect.Field;
@@ -38,32 +40,57 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         this.container = container;
     }
 
-    private void registry(){
-        Map<String, Class> registryTable = table.getTable();
-        loadAnnotation(registryTable);
-    }
-
-    private void loadAnnotation(Map<String, Class> registryTable){
-
+    private void loadRepository(Map<String, Class> registryTable) {
+        for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
+            Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
+            if (scope != null && BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.equals(scope.value())) {
+                container.put(entry.getKey(), entry.getValue());
+                continue;
+            }
+            Lazy lazy = (Lazy) entry.getValue().getAnnotation(Lazy.class);
+            if (lazy != null) {
+                container.put(entry.getKey(), entry.getValue());
+                continue;
+            }
+            Object object = BeanReflect.newInstance(entry.getValue().getName());
+            container.put(entry.getKey(), object);
+        }
     }
 
     /**
      * 根据容器中的key获取对象，载入方法注释
      *
-     * @param container 需要注册的容器
-     * @param key       容器中的key
      * @throw BeanCreateFailureException Bean 设置失败
      */
-    private BeanDefinitionWrap loadAutowired(Map<String, Object> container, String key) {
-        boolean hasAutowired = false;
+    private void loadAutowired(Map<String, Class> registryTable) {
+        for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
+            Object object = container.get(entry.getKey());
+            BeanDefinitionWrap wrap = loadAutowired(object);
+            if (wrap.isHasAutowired()) {
+                container.put(entry.getKey(), wrap.getData());
+            }
+        }
+    }
+
+    private Object getValue(String key){
         Object object = container.get(key);
+        if (object instanceof Class) {
+            Class clazz = (Class) object;
+            object = BeanReflect.newInstance(clazz.getName());
+            container.put(key, object);
+        }
+        return container.get(key);
+    }
+
+    private BeanDefinitionWrap<Object> loadAutowired(Object object) {
+        boolean hasAutowired = false;
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             Autowired annotation = field.getAnnotation(Autowired.class);
             if (annotation != null) {
                 try {
-                    field.set(object, container.get(field.getName()));
+                    field.set(object, getValue(field.getName()));
                 }
                 catch (IllegalAccessException e) {
                     throw new BeanCreateFailureException(e);
@@ -74,24 +101,12 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         return new BeanDefinitionWrap<Object>(hasAutowired, object);
     }
 
-    /**
-     * 遍历容器，载入方法注释
-     *
-     * @param container 需要遍历载入的容器
-     * @throw BeanCreateFailureException Bean 设置失败
-     */
-    private void loadAutowired(Map<String, Object> container) {
-        for (Map.Entry<String, Object> entry : container.entrySet()) {
-            BeanDefinitionWrap warp = loadAutowired(container, entry.getKey());
-            if (warp.isHasAutowired()) {
-                container.put(entry.getKey(), warp.getData());
-            }
-        }
-    }
-
     @Override
     public void refresh() {
         table.refresh();
-        registry();
+
+        Map<String, Class> registryTable = table.getTable();
+        loadRepository(registryTable);
+        loadAutowired(registryTable);
     }
 }

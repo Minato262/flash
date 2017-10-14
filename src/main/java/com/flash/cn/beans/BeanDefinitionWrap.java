@@ -15,6 +15,8 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.util.Assert;
+
 /**
  * Bean Definition 包装类
  *
@@ -26,6 +28,7 @@ final class BeanDefinitionWrap<T> {
     private T date;
 
     public BeanDefinitionWrap(boolean hasAutowired, T date) {
+        Assert.isNotNull(date);
         this.hasAutowired = hasAutowired;
         this.date = date;
     }

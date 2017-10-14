@@ -121,7 +121,39 @@ public class BeanFactoryTest extends BeforeTest {
 
     @Test
     public void test8() {
-        Ioc2 ioc2 = factory.getBean("ioc2");
-        System.out.println(ioc2.getClass().getName());
+        Ioc2 ioc21 = factory.getBean("ioc2");
+        System.out.println(ioc21);
+        System.out.println(ioc21.getClass().getName());
+        Ioc2 ioc22 = factory.getBean("ioc2");
+        System.out.println(ioc22);
+        System.out.println(ioc22.getClass().getName());
+        Ioc2 ioc23 = factory.getBean("ioc2");
+        System.out.println(ioc23);
+        System.out.println(ioc23.getClass().getName());
+        Ioc2 ioc24 = factory.getBean("ioc2");
+        System.out.println(ioc24);
+        System.out.println(ioc24.getClass().getName());
+        Ioc2 ioc25 = factory.getBean("ioc2");
+        System.out.println(ioc25);
+        System.out.println(ioc25.getClass().getName());
+    }
+
+    @Test
+    public void test9() {
+        Ioc1 ioc21 = factory.getBean("ioc1");
+        System.out.println(ioc21);
+        System.out.println(ioc21.getClass().getName());
+        Ioc1 ioc22 = factory.getBean("ioc1");
+        System.out.println(ioc22);
+        System.out.println(ioc22.getClass().getName());
+        Ioc1 ioc23 = factory.getBean("ioc1");
+        System.out.println(ioc23);
+        System.out.println(ioc23.getClass().getName());
+        Ioc1 ioc24 = factory.getBean("ioc1");
+        System.out.println(ioc24);
+        System.out.println(ioc24.getClass().getName());
+        Ioc1 ioc25 = factory.getBean("ioc1");
+        System.out.println(ioc25);
+        System.out.println(ioc25.getClass().getName());
     }
 }

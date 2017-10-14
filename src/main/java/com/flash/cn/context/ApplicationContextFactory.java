@@ -39,6 +39,6 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      */
     @Override
     public <T> T getBean(String name) {
-        return container.getValue(name);
+        return container.get(name);
     }
 }

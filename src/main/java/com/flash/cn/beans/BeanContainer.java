@@ -123,9 +123,21 @@ public final class BeanContainer {
      * @return 返回容器中的对象
      */
     @SuppressWarnings("unchecked")
-    public <T> T getValue(String key) {
+    public <T> T get(String key) {
         Assert.isNotEmpty(key);
         return (T) container.get(key);
+    }
+
+    /**
+     * 根据 key 获取容器中的对象
+     *
+     * @param key 容器关键字(一定不能为空)
+     * @param object 存储对象
+     */
+    @SuppressWarnings("unchecked")
+    public void put(String key,Object object) {
+        Assert.isNotEmpty(key);
+        container.put(key, object);
     }
 
     public void clear() {
