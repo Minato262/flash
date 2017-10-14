@@ -42,8 +42,12 @@ public enum BeanContainerMode {
         return mode;
     }
 
-    /** 默认软件模式 */
+    /**
+     * 默认软件模式
+     */
     private static final String FLASH_PROPERTIES_MODE = "containerModes";
+
+    private static final String FLASH_PROPERTIES_LOAD = new LoadProperties().load(FLASH_PROPERTIES_MODE);
 
     /**
      * 判断是否是单例模式
@@ -51,8 +55,7 @@ public enum BeanContainerMode {
      * @return 是否是单例模式
      */
     public boolean isSingleton() {
-        String load = new LoadProperties().load(FLASH_PROPERTIES_MODE);
-        return !BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode().equals(load);
+        return !BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode().equals(FLASH_PROPERTIES_LOAD);
     }
 
     /**
@@ -61,10 +64,11 @@ public enum BeanContainerMode {
      * @return 获取容器的配置模式
      */
     public static BeanContainerMode getBeanContainerMode() {
-        String load = new LoadProperties().load(FLASH_PROPERTIES_MODE);
-        if (load.equals(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode())) {
+        if (FLASH_PROPERTIES_LOAD.equals(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode())) {
             return BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE;
         }
-        return BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
+        else {
+            return BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
+        }
     }
 }

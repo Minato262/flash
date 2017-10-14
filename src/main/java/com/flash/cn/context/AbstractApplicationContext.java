@@ -23,12 +23,14 @@ import com.flash.cn.core.Resource;
  * @author kay
  * @version v1.0
  */
-public abstract class AbstractApplicationContext {
+public abstract class AbstractApplicationContext implements ApplicationContext {
 
-    /**
-     * Bean 容器
-     */
-    protected BeanContainer container = BeanContainer.getInstance();
+    /** Bean 容器 */
+    private BeanContainer container = BeanContainer.getInstance();
+
+    public AbstractApplicationContext() {
+        init();
+    }
 
     protected void init() {
         Resource resource = new ClassPathResource();
@@ -42,5 +44,34 @@ public abstract class AbstractApplicationContext {
             beanDefinitionTable.clear();
             container.clear();
         }
+    }
+
+    protected boolean checkBean(String name) {
+        return container.get(name) instanceof Class;
+    }
+
+    /**
+     * 根据 Bean 名称，获取 Bean 实例
+     *
+     * @param name 想获取 Bean 的名称
+     * @param <T>  获取容器中的 Bean 对象
+     * @return bean 对象
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> T getInstance(String name) {
+        Class clazz = container.get(name);
+        return (T) BeanReflect.getInstance().loadAutowired(clazz);
+    }
+
+    /**
+     * 根据 Bean 名称，获取 Bean 实例
+     *
+     * @param name 想获取 Bean 的名称
+     * @param <T>  获取容器中的 Bean 对象
+     * @return bean 对象
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> T get(String name) {
+        return container.get(name);
     }
 }
