@@ -45,7 +45,6 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         Resource resource = new ClassPathResource();
         BeanDefinitionTable beanDefinitionTable = new BeanDefinitionResolution(resource);
         try {
-            beanDefinitionTable = new BeanDefinitionResolution(resource);
             BeanDefinition beanDefinition = new BeanDefinitionRegistry(beanDefinitionTable, container);
             beanDefinition.refresh();  // 扫描 解析 注册 Bean Definition，初始化 Bean 容器
         }
