@@ -15,8 +15,6 @@
  */
 package com.flash.cn.beans;
 
-import com.flash.cn.util.LoadProperties;
-
 /**
  * 容器模式枚举，容器分为 单例和原型模式。
  * <p>
@@ -29,46 +27,6 @@ import com.flash.cn.util.LoadProperties;
  * @version v1.0
  */
 public enum BeanContainerMode {
-    FLASH_PROPERTIES_SINGLETON("singleton"),
-    FLASH_PROPERTIES_PROTOTYPE("prototype");
-
-    private String mode;
-
-    BeanContainerMode(String mode) {
-        this.mode = mode;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    /**
-     * 默认软件模式
-     */
-    private static final String FLASH_PROPERTIES_MODE = "containerModes";
-
-    private static final String FLASH_PROPERTIES_LOAD = new LoadProperties().load(FLASH_PROPERTIES_MODE);
-
-    /**
-     * 判断是否是单例模式
-     *
-     * @return 是否是单例模式
-     */
-    public boolean isSingleton() {
-        return !BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode().equals(FLASH_PROPERTIES_LOAD);
-    }
-
-    /**
-     * 获取容器配置模式
-     *
-     * @return 获取容器的配置模式
-     */
-    public static BeanContainerMode getBeanContainerMode() {
-        if (FLASH_PROPERTIES_LOAD.equals(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.getMode())) {
-            return BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE;
-        }
-        else {
-            return BeanContainerMode.FLASH_PROPERTIES_SINGLETON;
-        }
-    }
+    FLASH_PROPERTIES_SINGLETON(),
+    FLASH_PROPERTIES_PROTOTYPE()
 }

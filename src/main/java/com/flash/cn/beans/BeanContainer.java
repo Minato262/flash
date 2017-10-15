@@ -69,13 +69,6 @@ public final class BeanContainer {
      *
      */
 
-    /* ------------------------------ 常量区  ——————------------------------- */
-
-    /**
-     * 容器模式（根据配置获取容器模式，单例或者原型模式）
-     */
-    private static final BeanContainerMode CONTAINER_MODES = BeanContainerMode.getBeanContainerMode();
-
     /* ------------------------------ 静态区  ——————------------------------- */
 
     /**
@@ -94,12 +87,9 @@ public final class BeanContainer {
      * @return Bean 容器对象
      */
     public static BeanContainer getInstance() {
-        if (CONTAINER_MODES.isSingleton()) {
-            synchronized (BeanContainer.class) {
-                return instance;
-            }
+        synchronized (BeanContainer.class) {
+            return instance;
         }
-        return new BeanContainer();
     }
 
     /* ------------------------------ 方法区  ——————------------------------- */
@@ -120,10 +110,10 @@ public final class BeanContainer {
     /**
      * 根据 key 获取容器中的对象
      *
-     * @param key 容器关键字(一定不能为空)
+     * @param key    容器关键字(一定不能为空)
      * @param object 存储对象
      */
-    public void put(String key,Object object) {
+    public void put(String key, Object object) {
         Assert.isNotEmpty(key);
         container.put(key, object);
     }
