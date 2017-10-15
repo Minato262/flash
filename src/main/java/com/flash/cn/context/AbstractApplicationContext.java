@@ -75,7 +75,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     @SuppressWarnings("unchecked")
     private <T> T loadAutowired(String name) {
         Class clazz = container.get(name);
-        return (T) BeanReflectMethod.getInstance().loadAutowired(clazz);
+        return (T) BeanReflectAutowired.getInstance().loadAutowired(clazz);
     }
 
     /**

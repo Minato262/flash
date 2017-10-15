@@ -21,24 +21,32 @@ import com.flash.cn.util.Assert;
 import java.lang.reflect.Field;
 
 /**
- * 反射方法相关工具类
+ * 自动反射工作类
  *
  * @author kay
  * @version v1.0
  */
-public class BeanReflectMethod {
+public final class BeanReflectAutowired {
 
-    private static BeanReflectMethod instance = new BeanReflectMethod();
+    /** 静态自动反射工作类 */
+    private static BeanReflectAutowired instance = new BeanReflectAutowired();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
      *
      * @return Bean 容器对象
      */
-    public static BeanReflectMethod getInstance() {
-        synchronized (BeanReflectMethod.class) {
+    public static BeanReflectAutowired getInstance() {
+        synchronized (BeanReflectAutowired.class) {
             return instance;
         }
+    }
+
+    /**
+     * 默认构造器
+     */
+    private BeanReflectAutowired(){
+        //
     }
 
     /** Bean 容器 */
