@@ -8,6 +8,11 @@ package com.flash.cn.beans;
  */
 public class BeanContainerInitFailureException extends BeanException {
 
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
     public BeanContainerInitFailureException(Throwable cause) {
         super(cause);
     }

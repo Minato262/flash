@@ -29,8 +29,7 @@ package com.flash.cn.beans;
 public enum BeanContainerMode {
 
     /*
-     *
-     *
+     * 概况
      */
 
     /**

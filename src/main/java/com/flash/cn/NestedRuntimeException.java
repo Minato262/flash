@@ -28,7 +28,7 @@ package com.flash.cn;
 public abstract class NestedRuntimeException extends RuntimeException {
 
     /*
-     *
+     * 概况
      */
 
     /**
