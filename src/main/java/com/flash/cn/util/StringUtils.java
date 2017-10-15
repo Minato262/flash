@@ -36,10 +36,11 @@ public class StringUtils {
     /**
      * 在class 类全路径名中获取相应的类名
      *
-     * @param name class 类全路径名
+     * @param name class 类全路径名（一定不能为空）
      * @return 获取的相应的类名
      */
     public static String getLowerCase(String name) {
+        Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
         return name.substring(i + 1, name.length());
     }
@@ -47,10 +48,11 @@ public class StringUtils {
     /**
      * 字符串首字母小写
      *
-     * @param str 需要首字母小写的字符串
+     * @param str 需要首字母小写的字符串（一定不能为空）
      * @return 处理后的字符串
      */
     public static String toLowerCaseFirstOne(String str) {
+        Assert.isNotEmpty(str);
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
         }

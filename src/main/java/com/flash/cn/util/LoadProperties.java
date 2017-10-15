@@ -60,10 +60,11 @@ public class LoadProperties {
     /**
      * 载入配置，获取 Properties 配置值
      *
-     * @param propertyName 配置名称
+     * @param propertyName 配置名称（一定不能为空）
      * @return 获取 Properties 配置值
      */
     public String load(String propertyName) {
+        Assert.isNotEmpty(propertyName);
         try {
             return load(FLASH_PATH, propertyName);
         }
