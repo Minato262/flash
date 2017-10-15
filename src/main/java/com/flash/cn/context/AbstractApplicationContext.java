@@ -28,9 +28,7 @@ import com.flash.cn.util.Assert;
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
 
-    /**
-     * Bean 容器
-     */
+    /** Bean 容器 */
     private BeanContainer container = BeanContainer.getInstance();
 
     /**
@@ -68,7 +66,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     /**
-     * 根据 Bean 名称，获取 Bean 实例
+     * 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
      *
      * @param name 想获取 Bean 的名称
      * @param <T>  获取容器中的 Bean 对象
@@ -77,7 +75,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     @SuppressWarnings("unchecked")
     private <T> T loadAutowired(String name) {
         Class clazz = container.get(name);
-        return (T) BeanReflect.getInstance().loadAutowired(clazz);
+        return (T) BeanReflectMethod.getInstance().loadAutowired(clazz);
     }
 
     /**

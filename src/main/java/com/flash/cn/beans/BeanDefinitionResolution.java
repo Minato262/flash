@@ -32,14 +32,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class BeanDefinitionResolution implements BeanDefinitionTable {
 
-    /**
-     * Bean Definition 注册表
-     */
+    /** Bean Definition 注册表 */
     private static Map<String, Class> registryTable = new ConcurrentHashMap<String, Class>();
 
-    /**
-     * 资源解析相关接口
-     */
+    /** 资源解析相关 */
     private Resource resource;
 
     /**

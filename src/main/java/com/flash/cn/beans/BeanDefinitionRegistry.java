@@ -71,7 +71,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      */
     private void loadAutowired(Map<String, Class> registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            BeanDefinitionWrap wrap = BeanReflect.getInstance().loadAutowired(entry.getKey());
+            BeanDefinitionWrap wrap = BeanReflectMethod.getInstance().loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
             }
