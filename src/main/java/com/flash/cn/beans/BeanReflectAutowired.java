@@ -97,7 +97,7 @@ public final class BeanReflectAutowired {
     /**
      * 根据容器 key，载入方法注解
      *
-     * @param key 容器 key
+     * @param key 容器 key（一定不能为空）
      * @return Bean 对应并载入方法注解的对象
      */
     public BeanDefinitionWrap<Object> loadAutowired(String key) {
@@ -109,7 +109,7 @@ public final class BeanReflectAutowired {
     /**
      * 根据实例信息，载入方法注解
      *
-     * @param clazz 实例信息
+     * @param clazz 实例信息（一定不能为null）
      * @return Bean 对应并载入方法注解的对象
      */
     public Object loadAutowired(Class clazz) {

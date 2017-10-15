@@ -33,7 +33,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
     /**
      * 根据 Bean 名称，获取 Bean 实例
      *
-     * @param name 想获取 Bean 的名称
+     * @param name 想获取 Bean 的名称（一定不能为空）
      * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */

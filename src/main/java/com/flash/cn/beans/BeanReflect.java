@@ -28,7 +28,7 @@ public class BeanReflect {
     /**
      * 根据对象的路径，反射生成新的对象
      *
-     * @param name 反射对象的对象路径
+     * @param name 反射对象的对象路径（一定不能为空）
      * @param <T>  弱类型转成指定强类型
      * @return 生成的新的对象
      * @throw BeanCreateFailureException 如果对象新建失败

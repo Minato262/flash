@@ -31,7 +31,7 @@ final class BeanDefinitionWrap<T> {
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
      * @param hasAutowired 是否有方法注解
-     * @param date         私有类载入的对象
+     * @param date         私有类载入的对象（一定不能为null）
      */
     public BeanDefinitionWrap(boolean hasAutowired, T date) {
         Assert.isNotNull(date);

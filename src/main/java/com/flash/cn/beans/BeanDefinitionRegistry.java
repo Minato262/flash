@@ -35,8 +35,8 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * 带有 Bean Definition 注册的构造器
      *
-     * @param table     Bean Definition 注册表
-     * @param container Bean 容器
+     * @param table     Bean Definition 注册表（一定不能为null）
+     * @param container Bean 容器（一定不能为null）
      */
     public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
         Assert.isNotNull(table);
