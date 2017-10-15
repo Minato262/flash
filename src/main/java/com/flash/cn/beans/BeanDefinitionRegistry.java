@@ -15,13 +15,14 @@
  */
 package com.flash.cn.beans;
 
-import com.flash.cn.annotation.Lazy;
 import com.flash.cn.annotation.Scope;
 import com.flash.cn.util.Assert;
 
 import java.util.Map;
 
 /**
+ * Bean Definition 注册
+ *
  * @author kay
  * @version v1.0
  */
@@ -31,8 +32,12 @@ public class BeanDefinitionRegistry implements BeanDefinition {
 
     private BeanDefinitionTable table;
 
-    private BeanReflect beanReflect = BeanReflect.getInstance();
-
+    /**
+     * 带有 Bean Definition 注册的构造器
+     *
+     * @param table Bean Definition 注册表
+     * @param container Bean 容器
+     */
     public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
         Assert.isNotNull(table);
         Assert.isNotNull(container);
@@ -40,15 +45,15 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         this.container = container;
     }
 
+    /**
+     * 载入 类注解
+     *
+     * @param registryTable 注册表
+     */
     private void loadRepository(Map<String, Class> registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.equals(scope.value())) {
-                container.put(entry.getKey(), entry.getValue());
-                continue;
-            }
-            Lazy lazy = (Lazy) entry.getValue().getAnnotation(Lazy.class);
-            if (lazy != null) {
                 container.put(entry.getKey(), entry.getValue());
                 continue;
             }
@@ -64,13 +69,19 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      */
     private void loadAutowired(Map<String, Class> registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            BeanDefinitionWrap wrap = beanReflect.loadAutowired(entry.getKey());
+            BeanDefinitionWrap wrap = BeanReflect.getInstance().loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
             }
         }
     }
 
+    /**
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
+     * 有 Bean
+     *
+     * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
+     */
     @Override
     public void refresh() {
         table.refresh();

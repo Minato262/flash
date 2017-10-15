@@ -27,6 +27,14 @@ package com.flash.cn.beans;
  * @version v1.0
  */
 public enum BeanContainerMode {
+
+    /**
+     * 单例模式
+     */
     FLASH_PROPERTIES_SINGLETON(),
+
+    /**
+     * 原型模式
+     */
     FLASH_PROPERTIES_PROTOTYPE()
 }

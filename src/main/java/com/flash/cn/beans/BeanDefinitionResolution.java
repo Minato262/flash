@@ -32,10 +32,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class BeanDefinitionResolution implements BeanDefinitionTable {
 
-    /** Bean Definition 注册表 */
+    /**
+     * Bean Definition 注册表
+     */
     private static Map<String, Class> registryTable = new ConcurrentHashMap<String, Class>();
 
-    /** 资源解析相关接口 */
+    /**
+     * 资源解析相关接口
+     */
     private Resource resource;
 
     /**
@@ -44,19 +48,22 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
      * @param resource 资源解析接口
      * @throw IllegalArgumentException 如果字符串为null
      */
-    public BeanDefinitionResolution(Resource resource){
+    public BeanDefinitionResolution(Resource resource) {
         Assert.isNotNull(resource);
         this.resource = resource;
     }
 
-    private void init(){
+    /**
+     * 初始化注册表
+     */
+    private void init() {
         registryTable.clear();
     }
 
     /**
      * 放入 Bean Definition 清单中
      *
-     * @param key 注册表 key
+     * @param key   注册表 key
      * @param clazz 注册对象内容
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
@@ -108,11 +115,19 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
         loadRepository();
     }
 
+    /**
+     * 获取注册表
+     *
+     * @return 返回注册表
+     */
     @Override
     public Map<String, Class> getTable() {
         return registryTable;
     }
 
+    /**
+     * 清理注册表
+     */
     @Override
     public void clear() {
         init();

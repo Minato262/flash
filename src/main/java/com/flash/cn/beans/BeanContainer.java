@@ -118,6 +118,9 @@ public final class BeanContainer {
         container.put(key, object);
     }
 
+    /**
+     * 清理容器
+     */
     public void clear() {
         container.clear();
     }
