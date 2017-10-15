@@ -111,8 +111,8 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
      */
     @Override
     public void refresh() {
-        init();
-        loadRepository();
+        init();   // 初始化注册表
+        loadRepository();   // 载入类注释
     }
 
     /**

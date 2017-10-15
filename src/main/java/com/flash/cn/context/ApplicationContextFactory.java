@@ -27,7 +27,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      * 默认构造器
      */
     public ApplicationContextFactory() {
-        super.init();
+        super();
     }
 
     /**
@@ -37,9 +37,8 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
-    @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(String name) {
-        return (T) (checkBean(name) ? getInstance(name) : get(name));
+        return get(name);
     }
 }

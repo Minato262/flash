@@ -18,7 +18,7 @@ package com.flash.cn.context;
 import com.flash.cn.beans.BeanFactory;
 
 /**
- * 应用关系环境接口，包装容器，为容器提供使用环境
+ * 应用上下文环境接口，包装容器，为容器提供使用环境
  *
  * @author kay
  * @version v1.0

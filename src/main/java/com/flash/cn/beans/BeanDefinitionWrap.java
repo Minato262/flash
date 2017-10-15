@@ -18,7 +18,7 @@ package com.flash.cn.beans;
 import com.flash.cn.util.Assert;
 
 /**
- * Bean Definition 包装类
+ * 带有是否有方法注解和私有类载入的对象的 Bean Definition 包装类
  *
  * @author kay
  * @version v1.0
@@ -27,16 +27,32 @@ final class BeanDefinitionWrap<T> {
     private boolean hasAutowired;
     private T date;
 
+    /**
+     * 带有是否有方法注解和私有类载入的对象的构造器
+     *
+     * @param hasAutowired 是否有方法注解
+     * @param date         私有类载入的对象
+     */
     public BeanDefinitionWrap(boolean hasAutowired, T date) {
         Assert.isNotNull(date);
         this.hasAutowired = hasAutowired;
         this.date = date;
     }
 
+    /**
+     * 判断是否有方法注解
+     *
+     * @return 是否有方法注解
+     */
     public boolean isHasAutowired() {
         return hasAutowired;
     }
 
+    /**
+     * 私有类载入的对象
+     *
+     * @return 私有类载入的对象
+     */
     public T getData() {
         return date;
     }

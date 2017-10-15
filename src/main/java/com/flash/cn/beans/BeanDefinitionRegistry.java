@@ -35,7 +35,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * 带有 Bean Definition 注册的构造器
      *
-     * @param table Bean Definition 注册表
+     * @param table     Bean Definition 注册表
      * @param container Bean 容器
      */
     public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
@@ -46,7 +46,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     }
 
     /**
-     * 载入 类注解
+     * 载入类注解
      *
      * @param registryTable 注册表
      */
@@ -54,6 +54,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.equals(scope.value())) {
+                // scope 注解标记的实例，在初始化时，引入对象的 class 作为标记
                 container.put(entry.getKey(), entry.getValue());
                 continue;
             }
@@ -65,6 +66,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
     /**
      * 根据容器中的key获取对象，载入方法注释
      *
+     * @param registryTable 注册表
      * @throw BeanCreateFailureException Bean 设置失败
      */
     private void loadAutowired(Map<String, Class> registryTable) {
@@ -84,8 +86,10 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      */
     @Override
     public void refresh() {
+        // 注册表刷新
         table.refresh();
 
+        // 载入类和方法注解
         Map<String, Class> registryTable = table.getTable();
         loadRepository(registryTable);
         loadAutowired(registryTable);

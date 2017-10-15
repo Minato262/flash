@@ -16,6 +16,7 @@
 package com.flash.cn.beans;
 
 import com.flash.cn.annotation.Autowired;
+import com.flash.cn.util.Assert;
 
 import java.lang.reflect.Field;
 
@@ -50,6 +51,7 @@ public class BeanReflect {
      */
     @SuppressWarnings("unchecked")
     public static <T> T newInstance(String name) {
+        Assert.isNotEmpty(name);
         try {
             Class<T> clazz = (Class<T>) Class.forName(name);
             return clazz.newInstance();
@@ -95,11 +97,13 @@ public class BeanReflect {
     }
 
     public BeanDefinitionWrap<Object> loadAutowired(String key) {
+        Assert.isNotEmpty(key);
         Object object = container.get(key);
         return loadAutowired(object);
     }
 
     public Object loadAutowired(Class clazz) {
+        Assert.isNotNull(clazz);
         Object object = BeanReflect.newInstance(clazz.getName());
         BeanDefinitionWrap<Object> beanDefinitionWrap = loadAutowired(object);
         return beanDefinitionWrap.getData();
