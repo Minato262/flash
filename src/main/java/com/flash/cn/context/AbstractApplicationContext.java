@@ -28,6 +28,10 @@ import com.flash.cn.util.Assert;
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
 
+    /*
+     *
+     */
+
     /** Bean 容器 */
     private BeanContainer container = BeanContainer.getInstance();
 
@@ -35,7 +39,9 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * 默认构造器
      */
     public AbstractApplicationContext() {
-        init();
+        if(container.isEmpty()) {
+            init();
+        }
     }
 
     /**
@@ -46,11 +52,11 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         BeanDefinitionTable beanDefinitionTable = new BeanDefinitionResolution(resource);
         try {
             BeanDefinition beanDefinition = new BeanDefinitionRegistry(beanDefinitionTable, container);
-            beanDefinition.refresh();  // 扫描 解析 注册 Bean Definition，初始化 Bean 容器
+            beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
         }
         catch (BeanException e) {
             beanDefinitionTable.clear();  // 清空 Bean Definition 注册表
-            container.clear();  // Bean 容器
+            container.clear();  // 清空 Bean 容器
         }
     }
 

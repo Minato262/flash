@@ -16,7 +16,7 @@
 package com.flash.cn.beans;
 
 /**
- * 容器模式枚举，容器分为 单例和原型模式。
+ * 容器模式枚举，容器分为单例和原型模式。
  * <p>
  * 单例模式，容器启动时，创建所有的 Bean 实例，以后不会再创建新的实例。
  * 原型模式，会在使用时，创建和载入相应的 Bean 实例。
@@ -27,6 +27,11 @@ package com.flash.cn.beans;
  * @version v1.0
  */
 public enum BeanContainerMode {
+
+    /*
+     *
+     *
+     */
 
     /**
      * 单例模式，一个应用只能有一个实例

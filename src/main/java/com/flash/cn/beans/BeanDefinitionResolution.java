@@ -39,7 +39,7 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
     private Resource resource;
 
     /**
-     * 带有资源解析的 Bean Definition 解析构造器
+     * 带有资源解析的 Bean Definition 解析的构造器
      *
      * @param resource 资源解析接口
      * @throw IllegalArgumentException 如果字符串为null
@@ -47,13 +47,6 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
     public BeanDefinitionResolution(Resource resource) {
         Assert.isNotNull(resource);
         this.resource = resource;
-    }
-
-    /**
-     * 初始化注册表
-     */
-    private void init() {
-        registryTable.clear();
     }
 
     /**
@@ -107,7 +100,7 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
      */
     @Override
     public void refresh() {
-        init();   // 初始化注册表
+        clear();   // 初始化注册表
         loadRepository();   // 载入类注释
     }
 
@@ -126,6 +119,6 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
      */
     @Override
     public void clear() {
-        init();
+        registryTable.clear();
     }
 }

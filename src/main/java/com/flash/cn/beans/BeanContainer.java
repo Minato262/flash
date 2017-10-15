@@ -119,6 +119,15 @@ public final class BeanContainer {
     }
 
     /**
+     * 判断容器是否为空
+     *
+     * @return 是否为空
+     */
+    public boolean isEmpty(){
+        return container.isEmpty();
+    }
+
+    /**
      * 清理容器
      */
     public void clear() {
