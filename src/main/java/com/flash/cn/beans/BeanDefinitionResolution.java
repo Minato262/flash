@@ -57,6 +57,13 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void put(String key, Class clazz) {
+        if (StringUtils.isEmpty(key)) {
+            // 类注解载入 Bean 容器，容器会自动载入类名作为 key
+            // Bean 会作为 key 的关键字，会使用左驼峰命名
+            String lowerCase = StringUtils.getLowerCase(clazz.getName());
+            key = StringUtils.toLowerCaseFirstOne(lowerCase);
+        }
+
         if (registryTable.containsKey(key)) {
             throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
         }
@@ -83,11 +90,7 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
             }
             Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
             if (annotation2 != null) {
-                // Controller 注解载入 Bean 容器，容器会自动载入类名作为 key
-                // Controller 层 Bean 作为 key 的关键字，会使用左驼峰命名
-                String lowerCase = StringUtils.getLowerCase(clazz.getName());
-                String lowerCaseFirstOne = StringUtils.toLowerCaseFirstOne(lowerCase);
-                put(lowerCaseFirstOne, clazz);
+                put("", clazz);
             }
         }
     }
