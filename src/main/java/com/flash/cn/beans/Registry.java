@@ -21,7 +21,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinition {
+public interface Registry {
 
     /**
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所

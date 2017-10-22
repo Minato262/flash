@@ -15,25 +15,24 @@
  */
 package com.flash.cn.beans;
 
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Bean Definition 注册表接口
- *
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionTable extends BeanDefinition {
+public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionMap, Resolution {
 
-    /**
-     * 获取注册表
-     *
-     * @return 返回注册表
-     */
-    Map<String, Class> getTable();
+    @Override
+    public Class put(String key, Class value) {
+        if (super.containsKey(key)) {
+            throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
+        }
+        return super.put(key, value);
+    }
 
-    /**
-     * 清理注册表
-     */
-    void clear();
+    @Override
+    public void refresh() {
+        super.clear();
+    }
 }

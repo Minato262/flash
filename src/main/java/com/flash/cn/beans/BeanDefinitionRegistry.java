@@ -26,11 +26,13 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionRegistry implements BeanDefinition {
+public class BeanDefinitionRegistry implements Registry {
 
     private BeanContainer container;
 
-    private BeanDefinitionTable table;
+    private Resolution table;
+
+    private BeanDefinitionMap registryTable = BeanDefinitionTableAware.getInstance().getTable();
 
     /**
      * 带有 Bean Definition 注册的构造器
@@ -38,11 +40,11 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      * @param table     Bean Definition 注册表（一定不能为null）
      * @param container Bean 容器（一定不能为null）
      */
-    public BeanDefinitionRegistry(BeanDefinitionTable table, BeanContainer container) {
+    public BeanDefinitionRegistry(Resolution table, BeanContainer container) {
         Assert.isNotNull(table);
         Assert.isNotNull(container);
-        this.table = table;
         this.container = container;
+        this.table = table;
     }
 
     /**
@@ -50,7 +52,7 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      *
      * @param registryTable 注册表
      */
-    private void loadRepository(Map<String, Class> registryTable) {
+    private void loadRepository(BeanDefinitionMap registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.equals(scope.value())) {
@@ -69,9 +71,9 @@ public class BeanDefinitionRegistry implements BeanDefinition {
      * @param registryTable 注册表
      * @throw BeanCreateFailureException Bean 设置失败
      */
-    private void loadAutowired(Map<String, Class> registryTable) {
+    private void loadAutowired(BeanDefinitionMap registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            BeanDefinitionWrap wrap = BeanReflectAutowired.getInstance().loadAutowired(entry.getKey());
+            BeanDefinitionWrap<Object> wrap = BeanReflectAutowired.getInstance().loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
             }
@@ -90,7 +92,6 @@ public class BeanDefinitionRegistry implements BeanDefinition {
         table.refresh();
 
         // 载入类和方法注解
-        Map<String, Class> registryTable = table.getTable();
         loadRepository(registryTable);
         loadAutowired(registryTable);
     }

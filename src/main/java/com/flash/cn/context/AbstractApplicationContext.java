@@ -49,13 +49,13 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private void init() {
         Resource resource = new ClassPathResource();
-        BeanDefinitionTable beanDefinitionTable = new BeanDefinitionResolution(resource);
+        Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource);
         try {
-            BeanDefinition beanDefinition = new BeanDefinitionRegistry(beanDefinitionTable, container);
+            Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution, container);
             beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
         }
         catch (BeanException e) {
-            beanDefinitionTable.clear();  // 清空 Bean Definition 注册表
+            beanDefinitionResolution.clear();  // 清空 Bean Definition 注册表
             container.clear();  // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);
         }

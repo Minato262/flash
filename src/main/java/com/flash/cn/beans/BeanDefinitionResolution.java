@@ -21,8 +21,6 @@ import com.flash.cn.util.Assert;
 import com.flash.cn.util.StringUtils;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Bean Definition 解析
@@ -30,10 +28,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionResolution implements BeanDefinitionTable {
+public class BeanDefinitionResolution implements Resolution {
 
     /** Bean Definition 注册表 */
-    private static Map<String, Class> registryTable = new ConcurrentHashMap<String, Class>();
+    private BeanDefinitionMap registryTable = BeanDefinitionTableAware.getInstance().getTable();
 
     /** 资源解析相关 */
     private Resource resource;
@@ -62,10 +60,6 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
             // Bean 会作为 key 的关键字，会使用左驼峰命名
             String lowerCase = StringUtils.getLowerCase(clazz.getName());
             key = StringUtils.toLowerCaseFirstOne(lowerCase);
-        }
-
-        if (registryTable.containsKey(key)) {
-            throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
         }
         registryTable.put(key, clazz);
     }
@@ -105,16 +99,6 @@ public class BeanDefinitionResolution implements BeanDefinitionTable {
     public void refresh() {
         clear();   // 初始化注册表
         loadRepository();   // 载入类注释
-    }
-
-    /**
-     * 获取注册表
-     *
-     * @return 返回注册表
-     */
-    @Override
-    public Map<String, Class> getTable() {
-        return registryTable;
     }
 
     /**
