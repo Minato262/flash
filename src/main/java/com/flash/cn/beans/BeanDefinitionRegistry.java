@@ -37,7 +37,7 @@ public class BeanDefinitionRegistry implements Registry {
     /**
      * 带有 Bean Definition 注册的构造器
      *
-     * @param resolution     Bean Definition 解析
+     * @param resolution Bean Definition 解析
      */
     public BeanDefinitionRegistry(Resolution resolution) {
         Assert.isNotNull(resolution);
@@ -86,8 +86,8 @@ public class BeanDefinitionRegistry implements Registry {
      */
     @Override
     public void refresh() {
-        // 注册表刷新
-        resolution.refresh();
+        // 注册表载入
+        resolution.load();
 
         // 载入类和方法注解
         loadRepository(registryTable);

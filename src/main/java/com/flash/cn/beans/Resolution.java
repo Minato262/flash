@@ -16,7 +16,7 @@
 package com.flash.cn.beans;
 
 /**
- * Bean Definition 注册表接口
+ * Bean Definition 解析接口
  *
  * @author kay
  * @version v1.0
@@ -29,7 +29,7 @@ public interface Resolution {
      *
      * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
-    void refresh();
+    void load();
 
     /**
      * 清理注册表

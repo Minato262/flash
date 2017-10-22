@@ -96,7 +96,7 @@ public class BeanDefinitionResolution implements Resolution {
      * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
     @Override
-    public void refresh() {
+    public void load() {
         clear();   // 初始化注册表
         loadRepository();   // 载入类注释
     }
