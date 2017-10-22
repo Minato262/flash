@@ -16,7 +16,7 @@
 package com.flash.cn.beans;
 
 /**
- * Bean 核心容器
+ * Bean 核心容器单例模式
  * <p>
  * 容器是用来管理对象的生命周期的。在框架中，定义好的对象的名称，如何产生对象（单例模式
  * 或者原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容
@@ -79,6 +79,9 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
      */
     private static BeanContainerAware instance = new BeanContainerAware();
 
+    /**
+     * 默认构造器
+     */
     private BeanContainerAware(){
         //
     }
@@ -88,7 +91,7 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
      *
      * @return Bean 容器对象
      */
-    public static BeanContainerAware getInstance() {
+    public static BeanDefinitionAware<BeanContainer> getInstance() {
         synchronized (BeanContainerAware.class) {
             return instance;
         }
@@ -96,6 +99,11 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
 
     /* ------------------------------ 方法区  ——————------------------------- */
 
+    /**
+     * 获取表对象
+     *
+     * @return 返回注册表
+     */
     @Override
     public BeanContainer getTable(){
         return container;

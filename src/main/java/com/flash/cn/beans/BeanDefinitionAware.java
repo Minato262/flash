@@ -18,13 +18,15 @@ package com.flash.cn.beans;
 import com.flash.cn.Aware;
 
 /**
+ * Bean Definition 的支援接口
+ *
  * @author kay
  * @version v1.0
  */
 public interface BeanDefinitionAware<T> extends Aware {
 
     /**
-     * 获取注册表
+     * 获取表对象
      *
      * @return 返回注册表
      */

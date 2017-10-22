@@ -25,10 +25,11 @@ public class ConcurrentBeanContainerMap extends ConcurrentHashMap<String, Object
     }
 
     /**
-     * 根据 key 获取容器中的对象
+     * 根据关键字存放对象进入容器
      *
-     * @param key    容器关键字(一定不能为空)
-     * @param object 存储对象
+     * @param key    容器的关键字
+     * @param object 放入容器的关键字
+     * @return 放入容器的对象
      */
     @Override
     public Object put(String key, Object object) {

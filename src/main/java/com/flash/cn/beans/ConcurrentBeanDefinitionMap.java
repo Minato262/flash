@@ -23,6 +23,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable {
 
+    /**
+     * 放入注册表
+     *
+     * @param key   关键字
+     * @param value value 值
+     * @return Put 成功的 value 值
+     */
     @Override
     public Class put(String key, Class value) {
         if (super.containsKey(key)) {

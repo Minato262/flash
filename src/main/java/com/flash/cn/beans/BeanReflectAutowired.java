@@ -37,12 +37,12 @@ public class BeanReflectAutowired {
      * @param key 容器 key
      * @return Bean 对应的对象
      */
-    private Object getValue(String key) {
+    private <V> V getValue(String key) {
         Object object = container.get(key);
         if (object instanceof Class) {
             Class clazz = (Class) object;
-            Object newObject = BeanReflect.newInstance(clazz.getName());
-            BeanDefinitionWrap<Object> beanDefinitionWrap = loadAutowired(newObject);
+            V newObject = BeanReflect.newInstance(clazz.getName());
+            BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(newObject);
             return beanDefinitionWrap.getData();
         }
         return container.get(key);
@@ -54,7 +54,7 @@ public class BeanReflectAutowired {
      * @param object 需要检测的对象
      * @return Bean Definition 的封装类
      */
-    private BeanDefinitionWrap<Object> loadAutowired(Object object) {
+    private <V> BeanDefinitionWrap<V> loadAutowired(V object) {
         boolean hasAutowired = false;
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -70,7 +70,7 @@ public class BeanReflectAutowired {
                 hasAutowired = true;
             }
         }
-        return new BeanDefinitionWrap<Object>(hasAutowired, object);
+        return new BeanDefinitionWrap<V>(hasAutowired, object);
     }
 
     /**
@@ -79,9 +79,9 @@ public class BeanReflectAutowired {
      * @param key 容器 key（一定不能为空）
      * @return Bean 对应并载入方法注解的对象
      */
-    public BeanDefinitionWrap<Object> loadAutowired(String key) {
+    public <V> BeanDefinitionWrap<V> loadAutowired(String key) {
         Assert.isNotEmpty(key);
-        Object object = container.get(key);
+        V object = container.get(key);
         return loadAutowired(object);
     }
 
@@ -91,10 +91,10 @@ public class BeanReflectAutowired {
      * @param clazz 实例信息（一定不能为null）
      * @return Bean 对应并载入方法注解的对象
      */
-    public Object loadAutowired(Class clazz) {
+    public <V> V loadAutowired(Class clazz) {
         Assert.isNotNull(clazz);
-        Object object = BeanReflect.newInstance(clazz.getName());
-        BeanDefinitionWrap<Object> beanDefinitionWrap = loadAutowired(object);
+        V object = BeanReflect.newInstance(clazz.getName());
+        BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(object);
         return beanDefinitionWrap.getData();
     }
 }

@@ -18,10 +18,19 @@ package com.flash.cn.beans;
 import java.util.concurrent.ConcurrentMap;
 
 /**
+ * Bean Definition 注册表
+ *
  * @author kay
  * @version v1.0
  */
 public interface BeanDefinitionTable extends ConcurrentMap<String, Class> {
 
+    /**
+     * 放入注册表
+     *
+     * @param key   关键字
+     * @param value value 值
+     * @return Put 成功的 value 值
+     */
     Class put(String key, Class value);
 }

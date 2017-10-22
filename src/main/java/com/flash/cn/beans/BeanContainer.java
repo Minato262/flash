@@ -18,12 +18,28 @@ package com.flash.cn.beans;
 import java.util.Map;
 
 /**
+ * Bean 容器接口，定义Bean 容器的基本行为
+ *
  * @author kay
  * @version v1.0
  */
 public interface BeanContainer extends Map<String, Object> {
 
+    /**
+     * 根据关键字获取对象
+     *
+     * @param key 容器的关键字
+     * @param <T> 强类型对象
+     * @return 根据关键字获取对象
+     */
     <T> T get(String key);
 
+    /**
+     * 根据关键字存放对象进入容器
+     *
+     * @param key    容器的关键字
+     * @param object 放入容器的关键字
+     * @return 放入容器的对象
+     */
     Object put(String key, Object object);
 }

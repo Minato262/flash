@@ -80,10 +80,9 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
-    @SuppressWarnings("unchecked")
     private <T> T loadAutowired(String name) {
         Class clazz = container.get(name);
-        return (T) autowired.loadAutowired(clazz);
+        return autowired.loadAutowired(clazz);
     }
 
     /**
@@ -93,7 +92,6 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
-    @SuppressWarnings("unchecked")
     private <T> T getInstance(String name) {
         return container.get(name);
     }

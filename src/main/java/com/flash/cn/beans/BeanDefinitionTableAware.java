@@ -16,6 +16,8 @@
 package com.flash.cn.beans;
 
 /**
+ * Bean Definition 注册表单例类
+ *
  * @author kay
  * @version v1.0
  */
@@ -26,16 +28,24 @@ public final class BeanDefinitionTableAware implements BeanDefinitionAware<BeanD
 
     private static BeanDefinitionTableAware aware = new BeanDefinitionTableAware();
 
+    /**
+     * 默认构造器
+     */
     private BeanDefinitionTableAware(){
         //
     }
 
-    public static BeanDefinitionTableAware getInstance(){
+    public static BeanDefinitionAware<BeanDefinitionTable> getInstance(){
         synchronized (BeanDefinitionTableAware.class){
             return aware;
         }
     }
 
+    /**
+     * 获取表对象
+     *
+     * @return 返回注册表
+     */
     @Override
     public BeanDefinitionTable getTable() {
         return registryTable;
