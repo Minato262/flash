@@ -15,11 +15,6 @@
  */
 package com.flash.cn.beans;
 
-import com.flash.cn.util.Assert;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * Bean 核心容器
  * <p>
@@ -32,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainer {
+public final class BeanContainerAware {
 
     /*
      * 概况
@@ -77,63 +72,31 @@ public final class BeanContainer {
     /**
      * Bean 容器中的 map，Bean 资源主要存放在这个 map 中
      */
-    private static Map<String, Object> container = new ConcurrentHashMap<String, Object>();
+    private static BeanContainerMap container = new ConcurrentBeanContainerMap();
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static BeanContainer instance = new BeanContainer();
+    private static BeanContainerAware instance = new BeanContainerAware();
+
+    private BeanContainerAware(){
+        //
+    }
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
      *
      * @return Bean 容器对象
      */
-    public static BeanContainer getInstance() {
-        synchronized (BeanContainer.class) {
+    public static BeanContainerAware getInstance() {
+        synchronized (BeanContainerAware.class) {
             return instance;
         }
     }
 
     /* ------------------------------ 方法区  ——————------------------------- */
 
-    /**
-     * 根据 key 获取容器中的对象
-     *
-     * @param key 容器关键字(一定不能为空)
-     * @param <T> 弱类型转换成强类型
-     * @return 返回容器中的对象
-     */
-    @SuppressWarnings("unchecked")
-    public <T> T get(String key) {
-        Assert.isNotEmpty(key);
-        return (T) container.get(key);
-    }
-
-    /**
-     * 根据 key 获取容器中的对象
-     *
-     * @param key    容器关键字(一定不能为空)
-     * @param object 存储对象
-     */
-    public void put(String key, Object object) {
-        Assert.isNotEmpty(key);
-        container.put(key, object);
-    }
-
-    /**
-     * 判断容器是否为空
-     *
-     * @return 是否为空
-     */
-    public boolean isEmpty(){
-        return container.isEmpty();
-    }
-
-    /**
-     * 清理容器
-     */
-    public void clear() {
-        container.clear();
+    public BeanContainerMap getContainer(){
+        return container;
     }
 }

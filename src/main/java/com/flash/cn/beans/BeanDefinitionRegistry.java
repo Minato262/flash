@@ -28,23 +28,20 @@ import java.util.Map;
  */
 public class BeanDefinitionRegistry implements Registry {
 
-    private BeanContainer container;
+    private Resolution resolution;
 
-    private Resolution table;
+    private BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
 
     private BeanDefinitionMap registryTable = BeanDefinitionTableAware.getInstance().getTable();
 
     /**
      * 带有 Bean Definition 注册的构造器
      *
-     * @param table     Bean Definition 注册表（一定不能为null）
-     * @param container Bean 容器（一定不能为null）
+     * @param resolution     Bean Definition 解析
      */
-    public BeanDefinitionRegistry(Resolution table, BeanContainer container) {
-        Assert.isNotNull(table);
-        Assert.isNotNull(container);
-        this.container = container;
-        this.table = table;
+    public BeanDefinitionRegistry(Resolution resolution) {
+        Assert.isNotNull(resolution);
+        this.resolution = resolution;
     }
 
     /**
@@ -89,7 +86,7 @@ public class BeanDefinitionRegistry implements Registry {
     @Override
     public void refresh() {
         // 注册表刷新
-        table.refresh();
+        resolution.refresh();
 
         // 载入类和方法注解
         loadRepository(registryTable);

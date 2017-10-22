@@ -15,16 +15,15 @@
  */
 package com.flash.cn.beans;
 
+import java.util.Map;
+
 /**
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionAware extends Aware {
+public interface BeanContainerMap extends Map<String, Object> {
 
-    /**
-     * 获取注册表
-     *
-     * @return 返回注册表
-     */
-    BeanDefinitionMap getTable();
+    <T> T get(String key);
+
+    Object put(String key, Object object);
 }

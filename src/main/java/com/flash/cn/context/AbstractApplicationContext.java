@@ -33,7 +33,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      */
 
     /** Bean 容器 */
-    private BeanContainer container = BeanContainer.getInstance();
+    private BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
 
     /**
      * 默认构造器
@@ -51,7 +51,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         Resource resource = new ClassPathResource();
         Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource);
         try {
-            Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution, container);
+            Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution);
             beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
         }
         catch (BeanException e) {

@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionMap, Resolution {
+public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionMap {
 
     @Override
     public Class put(String key, Class value) {
@@ -29,10 +29,5 @@ public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class
             throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
         }
         return super.put(key, value);
-    }
-
-    @Override
-    public void refresh() {
-        super.clear();
     }
 }
