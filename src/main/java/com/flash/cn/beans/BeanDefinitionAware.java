@@ -15,16 +15,18 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.Aware;
+
 /**
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionAware extends Aware {
+public interface BeanDefinitionAware<T> extends Aware {
 
     /**
      * 获取注册表
      *
      * @return 返回注册表
      */
-    BeanDefinitionTable getTable();
+    T getTable();
 }

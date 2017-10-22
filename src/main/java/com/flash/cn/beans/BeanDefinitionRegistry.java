@@ -30,7 +30,7 @@ public class BeanDefinitionRegistry implements Registry {
 
     private Resolution resolution;
 
-    private BeanContainer container = BeanContainerAware.getInstance().getContainer();
+    private BeanContainer container = BeanContainerAware.getInstance().getTable();
 
     private BeanDefinitionTable registryTable = BeanDefinitionTableAware.getInstance().getTable();
 

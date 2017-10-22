@@ -46,14 +46,14 @@ public class BeanContainerTest extends BeforeTest {
 
         @Override
         public void run() {
-            BeanContainer container = BeanContainerAware.getInstance().getContainer();
+            BeanContainer container = BeanContainerAware.getInstance().getTable();
             System.out.println(container.get("ioc"));
         }
     }
 
     @Test
     public void test1() {
-        BeanContainer container = BeanContainerAware.getInstance().getContainer();
+        BeanContainer container = BeanContainerAware.getInstance().getTable();
         Ioc ioc = container.get("ioc");
         System.out.println(ioc);
         System.out.println(ioc.getFather());

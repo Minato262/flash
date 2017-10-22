@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 public class BeanReflectAutowired {
 
     /** Bean 容器 */
-    private BeanContainer container = BeanContainerAware.getInstance().getContainer();
+    private BeanContainer container = BeanContainerAware.getInstance().getTable();
 
     /**
      * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象

@@ -27,7 +27,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainerAware {
+public final class BeanContainerAware implements BeanDefinitionAware<BeanContainer> {
 
     /*
      * 概况
@@ -96,7 +96,8 @@ public final class BeanContainerAware {
 
     /* ------------------------------ 方法区  ——————------------------------- */
 
-    public BeanContainer getContainer(){
+    @Override
+    public BeanContainer getTable(){
         return container;
     }
 }
