@@ -26,5 +26,5 @@ public interface BeanDefinitionAware extends Aware {
      *
      * @return 返回注册表
      */
-    BeanDefinitionMap getTable();
+    BeanDefinitionTable getTable();
 }

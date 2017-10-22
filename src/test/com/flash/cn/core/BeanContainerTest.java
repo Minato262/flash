@@ -18,7 +18,7 @@ package com.flash.cn.core;
 import com.flash.cn.BeforeTest;
 import com.flash.cn.annotation.Autowired;
 import com.flash.cn.beans.BeanContainerAware;
-import com.flash.cn.beans.BeanContainerMap;
+import com.flash.cn.beans.BeanContainer;
 import com.flash.cn.core.factory.Ioc;
 import org.junit.Test;
 
@@ -46,14 +46,14 @@ public class BeanContainerTest extends BeforeTest {
 
         @Override
         public void run() {
-            BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
+            BeanContainer container = BeanContainerAware.getInstance().getContainer();
             System.out.println(container.get("ioc"));
         }
     }
 
     @Test
     public void test1() {
-        BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
+        BeanContainer container = BeanContainerAware.getInstance().getContainer();
         Ioc ioc = container.get("ioc");
         System.out.println(ioc);
         System.out.println(ioc.getFather());

@@ -31,7 +31,7 @@ import java.util.List;
 public class BeanDefinitionResolution implements Resolution {
 
     /** Bean Definition 注册表 */
-    private BeanDefinitionMap registryTable = BeanDefinitionTableAware.getInstance().getTable();
+    private BeanDefinitionTable registryTable = BeanDefinitionTableAware.getInstance().getTable();
 
     /** 资源解析相关 */
     private Resource resource;

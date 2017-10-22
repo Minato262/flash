@@ -72,7 +72,7 @@ public final class BeanContainerAware {
     /**
      * Bean 容器中的 map，Bean 资源主要存放在这个 map 中
      */
-    private static BeanContainerMap container = new ConcurrentBeanContainerMap();
+    private static BeanContainer container = new ConcurrentBeanContainerMap();
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
@@ -96,7 +96,7 @@ public final class BeanContainerAware {
 
     /* ------------------------------ 方法区  ——————------------------------- */
 
-    public BeanContainerMap getContainer(){
+    public BeanContainer getContainer(){
         return container;
     }
 }

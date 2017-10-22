@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public class ConcurrentBeanContainerMap extends ConcurrentHashMap<String, Object> implements BeanContainerMap {
+public class ConcurrentBeanContainerMap extends ConcurrentHashMap<String, Object> implements BeanContainer {
 
     /**
      * 根据 key 获取容器中的对象
@@ -18,6 +18,7 @@ public class ConcurrentBeanContainerMap extends ConcurrentHashMap<String, Object
      * @return 返回容器中的对象
      */
     @SuppressWarnings("unchecked")
+    @Override
     public <T> T get(String key) {
         Assert.isNotEmpty(key);
         return (T) super.get(key);

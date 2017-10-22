@@ -22,7 +22,7 @@ package com.flash.cn.beans;
 public final class BeanDefinitionTableAware implements BeanDefinitionAware {
 
     /** Bean Definition 注册表 */
-    private BeanDefinitionMap registryTable = new ConcurrentBeanDefinitionMap();
+    private static BeanDefinitionTable registryTable = new ConcurrentBeanDefinitionMap();
 
     private static BeanDefinitionAware aware = new BeanDefinitionTableAware();
 
@@ -37,7 +37,7 @@ public final class BeanDefinitionTableAware implements BeanDefinitionAware {
     }
 
     @Override
-    public BeanDefinitionMap getTable() {
+    public BeanDefinitionTable getTable() {
         return registryTable;
     }
 }

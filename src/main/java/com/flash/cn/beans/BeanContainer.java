@@ -15,13 +15,15 @@
  */
 package com.flash.cn.beans;
 
-import java.util.concurrent.ConcurrentMap;
+import java.util.Map;
 
 /**
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionMap extends ConcurrentMap<String, Class> {
+public interface BeanContainer extends Map<String, Object> {
 
-    Class put(String key, Class value);
+    <T> T get(String key);
+
+    Object put(String key, Object object);
 }

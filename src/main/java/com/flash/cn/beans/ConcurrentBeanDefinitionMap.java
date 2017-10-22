@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionMap {
+public class ConcurrentBeanDefinitionMap extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable {
 
     @Override
     public Class put(String key, Class value) {

@@ -26,31 +26,10 @@ import java.lang.reflect.Field;
  * @author kay
  * @version v1.0
  */
-public final class BeanReflectAutowired {
-
-    /** 静态自动反射工作类 */
-    private static BeanReflectAutowired instance = new BeanReflectAutowired();
-
-    /**
-     * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
-     *
-     * @return Bean 容器对象
-     */
-    public static BeanReflectAutowired getInstance() {
-        synchronized (BeanReflectAutowired.class) {
-            return instance;
-        }
-    }
-
-    /**
-     * 默认构造器
-     */
-    private BeanReflectAutowired(){
-        //
-    }
+public class BeanReflectAutowired {
 
     /** Bean 容器 */
-    private BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
+    private BeanContainer container = BeanContainerAware.getInstance().getContainer();
 
     /**
      * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象

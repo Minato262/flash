@@ -33,7 +33,9 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      */
 
     /** Bean 容器 */
-    private BeanContainerMap container = BeanContainerAware.getInstance().getContainer();
+    private BeanContainer container = BeanContainerAware.getInstance().getContainer();
+
+    private BeanReflectAutowired autowired = new BeanReflectAutowired();
 
     /**
      * 默认构造器
@@ -81,7 +83,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     @SuppressWarnings("unchecked")
     private <T> T loadAutowired(String name) {
         Class clazz = container.get(name);
-        return (T) BeanReflectAutowired.getInstance().loadAutowired(clazz);
+        return (T) autowired.loadAutowired(clazz);
     }
 
     /**
