@@ -46,6 +46,7 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
      * @param key   关键字
      * @param value value 值
      * @return Put 成功的 value 值
+     * @throw BeanDefinitionConflictException 如果 Bean Definition 相冲突
      */
     @Override
     public Class put(String key, Class value) {

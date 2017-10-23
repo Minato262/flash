@@ -31,6 +31,7 @@ public interface BeanDefinitionTable extends Map<String, Class> {
      * @param key   关键字
      * @param value 包含 Class 信息的对象值
      * @return Put 成功的 value 值
+     * @throw BeanDefinitionConflictException 如果 Bean Definition 相冲突
      */
     Class put(String key, Class value);
 }
