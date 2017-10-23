@@ -53,7 +53,7 @@ public class StringUtils {
      */
     public static String toLowerCaseFirstOne(String str) {
         Assert.isNotEmpty(str);
-        if (Character.isLowerCase(str.charAt(0))) {
+        if (Character.isLowerCase(str.charAt(0)) || str.length() < 1) {
             return str;
         }
         return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
