@@ -27,7 +27,21 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable, Aware {
 
-    private static BeanDefinitionTableAware aware = new BeanDefinitionTableAware();
+    /*
+     * 概况
+     */
+
+    /* ------------------------------  静态区  ——————------------------------- */
+
+    private static BeanDefinitionTable aware = new BeanDefinitionTableAware();
+
+    public static BeanDefinitionTable getInstance() {
+        synchronized (BeanDefinitionTableAware.class) {
+            return aware;
+        }
+    }
+
+    /* ------------------------------  构造区  ——————------------------------- */
 
     /**
      * 默认构造器
@@ -36,17 +50,13 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
         //
     }
 
-    public static BeanDefinitionTable getInstance() {
-        synchronized (BeanDefinitionTableAware.class) {
-            return aware;
-        }
-    }
+    /* ------------------------------  方法区  ——————------------------------- */
 
     /**
-     * 放入注册表
+     * 将扫描出的对象信息，放入注册表
      *
      * @param key   关键字
-     * @param value value 值
+     * @param value 包含 Class 信息的对象值
      * @return Put 成功的 value 值
      * @throw BeanDefinitionConflictException 如果 Bean Definition 相冲突
      */

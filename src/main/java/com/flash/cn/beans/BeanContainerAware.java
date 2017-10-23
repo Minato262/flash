@@ -73,19 +73,12 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      *
      */
 
-    /* ------------------------------ 静态区  ——————------------------------- */
+    /* ------------------------------  静态区  ——————------------------------- */
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static BeanContainerAware instance = new BeanContainerAware();
-
-    /**
-     * 默认构造器
-     */
-    private BeanContainerAware() {
-        //
-    }
+    private static BeanContainer instance = new BeanContainerAware();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
@@ -98,7 +91,16 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
         }
     }
 
-    /* ------------------------------ 方法区  ——————------------------------- */
+    /* ------------------------------  构造区  ——————------------------------- */
+
+    /**
+     * 默认构造器
+     */
+    private BeanContainerAware() {
+        //
+    }
+
+    /* ------------------------------  方法区  ——————------------------------- */
 
     /**
      * 根据 key 获取容器中的对象
