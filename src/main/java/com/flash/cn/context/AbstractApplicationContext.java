@@ -35,6 +35,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
+    /** Bean Definition 反射工具类 */
     private BeanReflectAutowired autowired = new BeanReflectAutowired();
 
     /**

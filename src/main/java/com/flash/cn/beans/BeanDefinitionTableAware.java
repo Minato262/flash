@@ -33,11 +33,17 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
 
     /* ------------------------------  静态区  ——————------------------------- */
 
-    private static BeanDefinitionTable aware = new BeanDefinitionTableAware();
+    /** Bean Definition 注册表 */
+    private static BeanDefinitionTable table = new BeanDefinitionTableAware();
 
+    /**
+     * 获取 Bean Definition 注册表对象，单例模式下获取的是静态对象，原型模式下新建对象
+     *
+     * @return Bean Definition 注册表接口
+     */
     public static BeanDefinitionTable getInstance() {
         synchronized (BeanDefinitionTableAware.class) {
-            return aware;
+            return table;
         }
     }
 

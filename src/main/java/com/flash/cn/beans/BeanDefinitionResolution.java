@@ -31,7 +31,7 @@ import java.util.List;
 public class BeanDefinitionResolution implements Resolution {
 
     /** Bean Definition 注册表 */
-    private BeanDefinitionTable registryTable = BeanDefinitionTableAware.getInstance();
+    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /** 资源解析接口 */
     private Resource resource;
@@ -61,7 +61,7 @@ public class BeanDefinitionResolution implements Resolution {
             String lowerCase = StringUtils.getLowerCase(clazz.getName());
             key = StringUtils.toLowerCaseFirstOne(lowerCase);
         }
-        registryTable.put(key, clazz);
+        table.put(key, clazz);
     }
 
     /**
@@ -106,6 +106,6 @@ public class BeanDefinitionResolution implements Resolution {
      */
     @Override
     public void clear() {
-        registryTable.clear();
+        table.clear();
     }
 }

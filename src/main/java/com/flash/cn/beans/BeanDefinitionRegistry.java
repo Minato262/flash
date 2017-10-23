@@ -28,10 +28,13 @@ import java.util.Map;
  */
 public class BeanDefinitionRegistry implements Registry {
 
+    /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
-    private BeanDefinitionTable registryTable = BeanDefinitionTableAware.getInstance();
+    /** Bean Definition 注册表 */
+    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
+    /** Bean Definition 注册表 */
     private Resolution resolution;
 
     /**
@@ -90,7 +93,7 @@ public class BeanDefinitionRegistry implements Registry {
         resolution.load();
 
         // 载入类和方法注解
-        loadRepository(registryTable);
-        loadAutowired(registryTable);
+        loadRepository(table);
+        loadAutowired(table);
     }
 }
