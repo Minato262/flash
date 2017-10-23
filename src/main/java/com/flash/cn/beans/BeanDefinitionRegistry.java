@@ -28,11 +28,11 @@ import java.util.Map;
  */
 public class BeanDefinitionRegistry implements Registry {
 
-    private Resolution resolution;
-
     private BeanContainer container = BeanContainerAware.getInstance();
 
     private BeanDefinitionTable registryTable = BeanDefinitionTableAware.getInstance();
+
+    private Resolution resolution;
 
     /**
      * 带有 Bean Definition 注册的构造器

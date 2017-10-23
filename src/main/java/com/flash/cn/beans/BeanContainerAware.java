@@ -15,6 +15,7 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.Aware;
 import com.flash.cn.util.Assert;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,7 +32,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
+public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer, Aware {
 
     /*
      * 概况
