@@ -21,7 +21,7 @@ import com.flash.cn.util.Assert;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Bean 核心容器单例类
+ * Bean 核心容器辅助类，单例模式。
  * <p>
  * 容器是用来管理对象的生命周期的。在框架中，定义好的对象的名称，如何产生对象（单例模式
  * 或者原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容

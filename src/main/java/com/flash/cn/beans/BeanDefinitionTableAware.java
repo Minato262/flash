@@ -20,7 +20,7 @@ import com.flash.cn.Aware;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Bean Definition 注册表单例类
+ * Bean Definition 注册表辅助类，单例模式。
  *
  * @author kay
  * @version v1.0

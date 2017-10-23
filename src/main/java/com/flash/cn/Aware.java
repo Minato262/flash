@@ -16,6 +16,8 @@
 package com.flash.cn;
 
 /**
+ * 辅助标记类
+ *
  * @author kay
  * @version v1.0
  */
