@@ -15,39 +15,43 @@
  */
 package com.flash.cn.beans;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Bean Definition 注册表单例类
  *
  * @author kay
  * @version v1.0
  */
-public final class BeanDefinitionTableAware implements BeanDefinitionAware<BeanDefinitionTable> {
-
-    /** Bean Definition 注册表 */
-    private static BeanDefinitionTable registryTable = new ConcurrentBeanDefinitionMap();
+public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable {
 
     private static BeanDefinitionTableAware aware = new BeanDefinitionTableAware();
 
     /**
      * 默认构造器
      */
-    private BeanDefinitionTableAware(){
+    private BeanDefinitionTableAware() {
         //
     }
 
-    public static BeanDefinitionAware<BeanDefinitionTable> getInstance(){
-        synchronized (BeanDefinitionTableAware.class){
+    public static BeanDefinitionTable getInstance() {
+        synchronized (BeanDefinitionTableAware.class) {
             return aware;
         }
     }
 
     /**
-     * 获取表对象
+     * 放入注册表
      *
-     * @return 返回注册表
+     * @param key   关键字
+     * @param value value 值
+     * @return Put 成功的 value 值
      */
     @Override
-    public BeanDefinitionTable getTable() {
-        return registryTable;
+    public Class put(String key, Class value) {
+        if (super.containsKey(key)) {
+            throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
+        }
+        return super.put(key, value);
     }
 }

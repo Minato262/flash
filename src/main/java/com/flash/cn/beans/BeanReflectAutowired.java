@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 public class BeanReflectAutowired {
 
     /** Bean 容器 */
-    private BeanContainer container = BeanContainerAware.getInstance().getTable();
+    private BeanContainer container = BeanContainerAware.getInstance();
 
     /**
      * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象
@@ -41,8 +41,8 @@ public class BeanReflectAutowired {
         Object object = container.get(key);
         if (object instanceof Class) {
             Class clazz = (Class) object;
-            V newObject = BeanReflect.newInstance(clazz.getName());
-            BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(newObject);
+            V value = BeanReflect.newInstance(clazz.getName());
+            BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
             return beanDefinitionWrap.getData();
         }
         return container.get(key);
@@ -51,18 +51,18 @@ public class BeanReflectAutowired {
     /**
      * 根据检测的对象，载入方法注解
      *
-     * @param object 需要检测的对象
+     * @param value 需要检测的对象
      * @return Bean Definition 的封装类
      */
-    private <V> BeanDefinitionWrap<V> loadAutowired(V object) {
+    private <V> BeanDefinitionWrap<V> loadAutowired(V value) {
         boolean hasAutowired = false;
-        Field[] fields = object.getClass().getDeclaredFields();
+        Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             Autowired annotation = field.getAnnotation(Autowired.class);
             if (annotation != null) {
                 try {
-                    field.set(object, getValue(field.getName()));
+                    field.set(value, getValue(field.getName()));
                 }
                 catch (IllegalAccessException e) {
                     throw new BeanCreateFailureException(e);
@@ -70,7 +70,7 @@ public class BeanReflectAutowired {
                 hasAutowired = true;
             }
         }
-        return new BeanDefinitionWrap<V>(hasAutowired, object);
+        return new BeanDefinitionWrap<V>(hasAutowired, value);
     }
 
     /**
@@ -81,8 +81,8 @@ public class BeanReflectAutowired {
      */
     public <V> BeanDefinitionWrap<V> loadAutowired(String key) {
         Assert.isNotEmpty(key);
-        V object = container.get(key);
-        return loadAutowired(object);
+        V value = container.get(key);
+        return loadAutowired(value);
     }
 
     /**
@@ -93,8 +93,8 @@ public class BeanReflectAutowired {
      */
     public <V> V loadAutowired(Class clazz) {
         Assert.isNotNull(clazz);
-        V object = BeanReflect.newInstance(clazz.getName());
-        BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(object);
+        V value = BeanReflect.newInstance(clazz.getName());
+        BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
         return beanDefinitionWrap.getData();
     }
 }

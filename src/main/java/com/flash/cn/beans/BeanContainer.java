@@ -23,14 +23,22 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
-public interface BeanContainer extends Map<String, Object> {
+public interface BeanContainer extends Map {
 
     /**
      * 根据关键字获取对象
      *
      * @param key 容器的关键字
-     * @param <T> 强类型对象
+     * @param <V> value,强类型对象
      * @return 根据关键字获取对象
      */
-    <T> T get(String key);
+    <V> V get(String key);
+
+    /**
+     * 根据容器的关键字放入对象
+     *
+     * @param key   容器的关键字
+     * @param value 容器存入的对象
+     */
+    <V> void put(String key, V value);
 }

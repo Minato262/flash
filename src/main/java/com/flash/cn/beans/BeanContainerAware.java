@@ -15,8 +15,12 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.util.Assert;
+
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
- * Bean 核心容器单例模式
+ * Bean 核心容器单例类
  * <p>
  * 容器是用来管理对象的生命周期的。在框架中，定义好的对象的名称，如何产生对象（单例模式
  * 或者原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容
@@ -27,7 +31,7 @@ package com.flash.cn.beans;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainerAware implements BeanDefinitionAware<BeanContainer> {
+public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
 
     /*
      * 概况
@@ -65,14 +69,10 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
      * 接口。POJO 与 JavaBean 之间的主要区别在于 JavaBean 并没有严格的规范，从理论上讲，
      * 任何一个 Java 类都可以构成一个 Bean。而 POJO 用来代指那些没有遵从特定的Java对象模
      * 型,约定，框架等。理想地讲，一个POJO是一个不受任何限制的Java对象（除了Java语言规范）。
+     *
      */
 
     /* ------------------------------ 静态区  ——————------------------------- */
-
-    /**
-     * Bean 容器中的 map，Bean 资源主要存放在这个 map 中
-     */
-    private static BeanContainer container = new ConcurrentBeanContainerMap();
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
@@ -82,7 +82,7 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
     /**
      * 默认构造器
      */
-    private BeanContainerAware(){
+    private BeanContainerAware() {
         //
     }
 
@@ -91,7 +91,7 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
      *
      * @return Bean 容器对象
      */
-    public static BeanDefinitionAware<BeanContainer> getInstance() {
+    public static BeanContainer getInstance() {
         synchronized (BeanContainerAware.class) {
             return instance;
         }
@@ -100,12 +100,29 @@ public final class BeanContainerAware implements BeanDefinitionAware<BeanContain
     /* ------------------------------ 方法区  ——————------------------------- */
 
     /**
-     * 获取表对象
+     * 根据 key 获取容器中的对象
      *
-     * @return 返回注册表
+     * @param key 容器关键字(一定不能为空)
+     * @param <V> value,弱类型转换成强类型
+     * @return 返回容器中的对象
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public BeanContainer getTable(){
-        return container;
+    public <V> V get(String key) {
+        Assert.isNotEmpty(key);
+        return (V) super.get(key);
+    }
+
+    /**
+     * 根据关键字存放对象进入容器
+     *
+     * @param key   容器的关键字
+     * @param value 放入容器的关键字
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <V> void put(String key, V value) {
+        Assert.isNotEmpty(key);
+        super.put(key, value);
     }
 }

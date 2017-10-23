@@ -32,7 +32,7 @@ public interface Resolution {
     void load();
 
     /**
-     * 清理注册表
+     * 清理 Bean Definition 注册表
      */
     void clear();
 }
