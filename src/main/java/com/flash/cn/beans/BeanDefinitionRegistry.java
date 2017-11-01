@@ -55,7 +55,7 @@ public class BeanDefinitionRegistry implements Registry {
     private <V> void loadRepository(BeanDefinitionTable registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
-            if (scope != null && BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE.equals(scope.value())) {
+            if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
                 // scope 注解标记的实例，在初始化时，引入对象的 class 作为标记
                 container.put(entry.getKey(), entry.getValue());
                 continue;

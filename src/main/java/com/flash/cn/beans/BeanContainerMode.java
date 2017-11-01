@@ -35,10 +35,10 @@ public enum BeanContainerMode {
     /**
      * 单例模式，一个应用只能有一个实例
      */
-    FLASH_PROPERTIES_SINGLETON(),
+    SINGLETON(),
 
     /**
      * 原型模式，每次调用时调用多个实例
      */
-    FLASH_PROPERTIES_PROTOTYPE()
+    PROTOTYPE()
 }

@@ -26,6 +26,6 @@ import com.flash.cn.beans.BeanContainerMode;
  * @version v1.0
  */
 @Repository("user")
-@Scope(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE)
+@Scope(BeanContainerMode.PROTOTYPE)
 public class User extends Bean {
 }

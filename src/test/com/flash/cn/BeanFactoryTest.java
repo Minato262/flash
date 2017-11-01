@@ -105,18 +105,18 @@ public class BeanFactoryTest extends BeforeTest {
     @Test
     public void test7() {
         Ioc2 ioc2 = factory.getBean("ioc2");
-        System.out.println(ioc2);
-        System.out.println(ioc2.getFather());
-        System.out.println(ioc2.getPeople());
-        System.out.println(ioc2.getUser());
-        System.out.println(ioc2.getIoc1());
-        System.out.println(ioc2.getIoc1().getFather());
-        System.out.println(ioc2.getIoc1().getPeople());
-        System.out.println(ioc2.getIoc1().getUser());
-        System.out.println(ioc2.getIoc1().getIoc());
-        System.out.println(ioc2.getIoc1().getIoc().getUser());
-        System.out.println(ioc2.getIoc1().getIoc().getPeople());
-        System.out.println(ioc2.getIoc1().getIoc().getFather());
+        assert ioc2 != null;
+        assert ioc2.getFather() != null;
+        assert ioc2.getPeople() != null;
+        assert ioc2.getUser() != null;
+        assert ioc2.getIoc1() != null;
+        assert ioc2.getIoc1().getFather() != null;
+        assert ioc2.getIoc1().getPeople() != null;
+        assert ioc2.getIoc1().getUser() != null;
+        assert ioc2.getIoc1().getIoc() != null;
+        assert ioc2.getIoc1().getIoc().getUser() != null;
+        assert ioc2.getIoc1().getIoc().getPeople() != null;
+        assert ioc2.getIoc1().getIoc().getFather() != null;
     }
 
     @Test

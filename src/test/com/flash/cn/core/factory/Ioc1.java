@@ -25,7 +25,7 @@ import com.flash.cn.beans.BeanContainerMode;
  * @version v1.0
  */
 @Service("ioc1")
-@Scope(BeanContainerMode.FLASH_PROPERTIES_PROTOTYPE)
+@Scope(BeanContainerMode.PROTOTYPE)
 public class Ioc1 {
 
     @Autowired
