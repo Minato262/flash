@@ -156,4 +156,18 @@ public class BeanFactoryTest extends BeforeTest {
         System.out.println(ioc25);
         System.out.println(ioc25.getClass().getName());
     }
+
+    @Test
+    public void test10() {
+        Ioc2 ioc2 = factory.getBean("ioc2");
+        System.out.println(ioc2);
+        System.out.println(ioc2.getIoc1());
+        System.out.println(ioc2.getFather());
+        System.out.println(ioc2.getPeople());
+        System.out.println(ioc2.getUser());
+        System.out.println(ioc2.getIoc1().getIoc());
+        System.out.println(ioc2.getIoc1().getUser());
+        System.out.println(ioc2.getIoc1().getPeople());
+        System.out.println(ioc2.getIoc1().getFather());
+    }
 }
