@@ -38,14 +38,14 @@ public class BeanReflectAutowired {
      * @return Bean 对应的对象
      */
     private <V> V getValue(String key) {
-        Object object = container.get(key);
+        V object = container.get(key);
         if (object instanceof Class) {
             Class clazz = (Class) object;
             V value = BeanReflect.newInstance(clazz.getName());
             BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
             return beanDefinitionWrap.getData();
         }
-        return container.get(key);
+        return object;
     }
 
     /**
@@ -53,6 +53,7 @@ public class BeanReflectAutowired {
      *
      * @param value 需要检测的对象
      * @return Bean Definition 的封装类
+     * throw BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> loadAutowired(V value) {
         boolean hasAutowired = false;
