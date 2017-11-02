@@ -17,6 +17,7 @@ package com.flash.cn.beans;
 
 import com.flash.cn.Aware;
 import com.flash.cn.util.Assert;
+import com.flash.cn.util.StringUtils;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -124,7 +125,9 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     @SuppressWarnings("unchecked")
     @Override
     public <V> void put(String key, V value) {
-        Assert.isNotEmpty(key);
+        if (StringUtils.isEmpty(key)) {
+            throw new BeanContainerInitFailureException("Bean Name must be not empty!");
+        }
         super.put(key, value);
     }
 }

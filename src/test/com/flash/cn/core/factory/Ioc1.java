@@ -24,7 +24,7 @@ import com.flash.cn.beans.BeanContainerMode;
  * @author kay
  * @version v1.0
  */
-@Service("ioc1")
+@Service
 @Scope(BeanContainerMode.PROTOTYPE)
 public class Ioc1 {
 

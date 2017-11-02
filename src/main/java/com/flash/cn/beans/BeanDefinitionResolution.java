@@ -30,11 +30,11 @@ import java.util.List;
  */
 public class BeanDefinitionResolution implements Resolution {
 
-    /** Bean Definition 注册表 */
-    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
-
     /** 资源解析接口 */
     private Resource resource;
+
+    /** Bean Definition 注册表 */
+    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
@@ -50,17 +50,25 @@ public class BeanDefinitionResolution implements Resolution {
     /**
      * 放入 Bean Definition 清单中
      *
+     * @param clazz 注册对象内容
+     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     */
+    private void put(Class clazz) {
+        // 类注解载入 Bean 容器，容器会自动载入类名作为 key
+        // Bean 会作为 key 的关键字，会使用左驼峰命名
+        String lowerCase = StringUtils.getLowerCase(clazz.getName());
+        String key = StringUtils.toLowerCaseFirstOne(lowerCase);
+        put(key, clazz);
+    }
+
+    /**
+     * 放入 Bean Definition 清单中
+     *
      * @param key   注册表 key
      * @param clazz 注册对象内容
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void put(String key, Class clazz) {
-        if (StringUtils.isEmpty(key)) {
-            // 类注解载入 Bean 容器，容器会自动载入类名作为 key
-            // Bean 会作为 key 的关键字，会使用左驼峰命名
-            String lowerCase = StringUtils.getLowerCase(clazz.getName());
-            key = StringUtils.toLowerCaseFirstOne(lowerCase);
-        }
         table.put(key, clazz);
     }
 
@@ -84,7 +92,7 @@ public class BeanDefinitionResolution implements Resolution {
             }
             Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
             if (annotation2 != null) {
-                put("", clazz);
+                put(clazz);
             }
         }
     }
