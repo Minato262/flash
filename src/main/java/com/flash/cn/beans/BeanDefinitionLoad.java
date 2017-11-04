@@ -31,7 +31,7 @@ public class BeanDefinitionLoad extends BeanDefinition {
     /**
      * 默认构造器
      */
-    public BeanDefinitionLoad(){
+    public BeanDefinitionLoad() {
         super();
     }
 
@@ -53,6 +53,7 @@ public class BeanDefinitionLoad extends BeanDefinition {
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
+     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     public void load(Class clazz) {
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);

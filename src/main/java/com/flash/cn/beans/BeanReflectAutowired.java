@@ -34,7 +34,7 @@ public class BeanReflectAutowired {
     /**
      * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象
      *
-     * @param key 容器 key
+     * @param key 容器的关键字
      * @return Bean 对应的对象
      */
     private <V> V getValue(String key) {
