@@ -59,7 +59,7 @@ public class Ioc2 {
     @Test
     public void test(){
         ApplicationContext factory = new ApplicationContextFactory();
-        Ioc2 ioc2 = factory.getBean("ioc2");
+        Ioc2 ioc2 = (Ioc2) factory.getBean("ioc2");
         System.out.println(ioc2);
         System.out.println(ioc2.getFather());
         System.out.println(ioc2.getPeople());

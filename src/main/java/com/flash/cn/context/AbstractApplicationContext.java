@@ -79,7 +79,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * @return bean 对象
      */
     private <T> T loadAutowired(String name) {
-        Class clazz = container.get(name);
+        Class clazz = (Class) container.get(name);
         BeanReflectAutowired autowired = new BeanReflectAutowired();
         return autowired.loadAutowired(clazz);
     }
@@ -88,10 +88,9 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * 根据 Bean 名称，获取 Bean 实例
      *
      * @param name 想获取 Bean 的名称
-     * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
-    private <T> T getInstance(String name) {
+    private Object getInstance(String name) {
         return container.get(name);
     }
 
@@ -99,12 +98,10 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * 根据 Bean 名称，获取 Bean 实例
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
-     * @param <T>  获取容器中的 Bean 对象
      * @return bean 对象
      */
-    @SuppressWarnings("unchecked")
-    protected <T> T get(String name) {
+    protected Object get(String name) {
         Assert.isNotEmpty(name);
-        return (T) (checkBean(name) ? loadAutowired(name) : getInstance(name));
+        return (checkBean(name) ? loadAutowired(name) : getInstance(name));
     }
 }

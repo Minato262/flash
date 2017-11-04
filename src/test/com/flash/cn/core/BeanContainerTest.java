@@ -54,7 +54,7 @@ public class BeanContainerTest extends BeforeTest {
     @Test
     public void test1() {
         BeanContainer container = BeanContainerAware.getInstance();
-        Ioc ioc = container.get("ioc");
+        Ioc ioc = (Ioc) container.get("ioc");
         System.out.println(ioc);
         System.out.println(ioc.getFather());
         System.out.println(ioc.getPeople());

@@ -29,10 +29,9 @@ public interface BeanContainer extends Map {
      * 根据关键字获取对象
      *
      * @param key 容器的关键字
-     * @param <V> value,强类型对象
      * @return 根据关键字获取对象
      */
-    <V> V get(String key);
+    Object get(String key);
 
     /**
      * 根据容器的关键字放入对象

@@ -68,10 +68,10 @@ public class BeanDefinitionRegistry implements Registry {
      * @param registryTable 需要注入的注册对象信息
      * @throw BeanCreateFailureException Bean 设置失败
      */
-    private <V> void loadAutowired(BeanDefinitionTable registryTable) {
+    private void loadAutowired(BeanDefinitionTable registryTable) {
         BeanReflectAutowired autowired = new BeanReflectAutowired();
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            BeanDefinitionWrap<V> wrap = autowired.loadAutowired(entry.getKey());
+            BeanDefinitionWrap wrap = autowired.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
             }

@@ -106,14 +106,13 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 根据 key 获取容器中的对象
      *
      * @param key 容器关键字(一定不能为空)
-     * @param <V> value,弱类型转换成强类型
      * @return 返回容器中的对象
      */
     @SuppressWarnings("unchecked")
     @Override
-    public <V> V get(String key) {
+    public Object get(String key) {
         Assert.isNotEmpty(key);
-        return (V) super.get(key);
+        return super.get(key);
     }
 
     /**

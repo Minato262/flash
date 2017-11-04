@@ -37,12 +37,12 @@ public class BeanReflectAutowired {
      * @param key 容器的关键字
      * @return Bean 对应的对象
      */
-    private <V> V getValue(String key) {
-        V object = container.get(key);
+    private Object getValue(String key) {
+        Object object = container.get(key);
         if (object instanceof Class) {
             Class clazz = (Class) object;
-            V value = BeanReflect.newInstance(clazz.getName());
-            BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
+            Object value = BeanReflect.newInstance(clazz.getName());
+            BeanDefinitionWrap beanDefinitionWrap = loadAutowired(value);
             return beanDefinitionWrap.getData();
         }
         return object;
@@ -80,9 +80,9 @@ public class BeanReflectAutowired {
      * @param key 容器 key（一定不能为空）
      * @return Bean 对应并载入方法注解的对象
      */
-    public <V> BeanDefinitionWrap<V> loadAutowired(String key) {
+    public BeanDefinitionWrap loadAutowired(String key) {
         Assert.isNotEmpty(key);
-        V value = container.get(key);
+        Object value = container.get(key);
         return loadAutowired(value);
     }
 

@@ -37,7 +37,7 @@ public class ClassPathResourceTest extends BeforeTest {
         List<Class<?>> classes = classPathResource.getClasses();
         BeanFactory factory = new ApplicationContextFactory();
         for (Class<?> clazz : classes) {
-            Bean people = factory.getBean(clazz.getName());
+            Bean people = (Bean) factory.getBean(clazz.getName());
             assert people != null;
             System.out.println(people);
             System.out.println(people.getAge());

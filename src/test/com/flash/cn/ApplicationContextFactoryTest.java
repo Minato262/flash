@@ -38,7 +38,8 @@ public class ApplicationContextFactoryTest extends BeforeTest {
 
     @Test
     public void test() {
-        ApplicationContextFactoryTest test = factory.getBean("applicationContextFactoryTest");
+        ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory
+                .getBean("applicationContextFactoryTest");
         System.out.println(test.father.getAge());
         System.out.println(test.people.getAge());
         System.out.println(test.user.getAge());

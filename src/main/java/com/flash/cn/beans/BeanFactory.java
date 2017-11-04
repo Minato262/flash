@@ -27,9 +27,7 @@ public interface BeanFactory {
      * 根据 Bean 的名称获取 Bean 实例对象
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
-     * @param <T>  获取容器中的 Bean 对象
      * @return 获取 bean 实例对象
-     * @throw ClassCastException 如果 Class 对象冲突
      */
-    <T> T getBean(String name);
+    Object getBean(String name);
 }
