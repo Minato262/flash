@@ -108,7 +108,6 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * @param key 容器关键字(一定不能为空)
      * @return 返回容器中的对象
      */
-    @SuppressWarnings("unchecked")
     @Override
     public Object get(String key) {
         Assert.isNotEmpty(key);
