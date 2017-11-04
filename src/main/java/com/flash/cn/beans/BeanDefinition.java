@@ -15,6 +15,8 @@
  */
 package com.flash.cn.beans;
 
+import com.flash.cn.util.Assert;
+
 /**
  * 这是一个抽象类，主要存放 Bean Definition 注册表相关的操作
  *
@@ -41,6 +43,7 @@ public abstract class BeanDefinition {
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     protected void put(String key, Class clazz) {
+        Assert.isNotEmpty(key);
         table.put(key, clazz);
     }
 
