@@ -18,6 +18,7 @@ package com.flash.cn.beans;
 import com.flash.cn.annotation.Controller;
 import com.flash.cn.annotation.Repository;
 import com.flash.cn.annotation.Service;
+import com.flash.cn.util.Assert;
 import com.flash.cn.util.StringUtils;
 
 /**
@@ -53,9 +54,11 @@ public class BeanDefinitionLoad extends BeanDefinition {
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
+     * @throw IllegalArgumentException 如果字符串为null
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     public void load(Class clazz) {
+        Assert.isNotNull(clazz);
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
             super.put(annotation.value(), clazz);
