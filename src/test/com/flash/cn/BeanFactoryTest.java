@@ -199,7 +199,7 @@ public class BeanFactoryTest extends BeforeTest {
         System.out.println(ioc2.getUser());
         System.out.println();
 
-        Ioc2 ioc4 = factory.getBean("ioc1");
+        Ioc1 ioc4 = factory.getBean("ioc1");
         System.out.println(ioc4);
         System.out.println(ioc4.getFather());
         System.out.println(ioc4.getPeople());

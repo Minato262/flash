@@ -31,10 +31,7 @@ public class BeanDefinitionRegistry implements Registry {
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
-    /** Bean Definition 注册表 */
-    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
-
-    /** Bean Definition 注册表 */
+    /** Bean Definition 解析接口 */
     private Resolution resolution;
 
     /**
@@ -48,7 +45,7 @@ public class BeanDefinitionRegistry implements Registry {
     }
 
     /**
-     * 载入类注解
+     * 单例，原型模式，载入类注解
      *
      * @param registryTable 需要注入的注册对象信息
      */
@@ -72,8 +69,8 @@ public class BeanDefinitionRegistry implements Registry {
      * @throw BeanCreateFailureException Bean 设置失败
      */
     private <V> void loadAutowired(BeanDefinitionTable registryTable) {
+        BeanReflectAutowired autowired = new BeanReflectAutowired();
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
-            BeanReflectAutowired autowired = new BeanReflectAutowired();
             BeanDefinitionWrap<V> wrap = autowired.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
@@ -93,6 +90,7 @@ public class BeanDefinitionRegistry implements Registry {
         resolution.load();
 
         // 载入类和方法注解
+        BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
         loadRepository(table);
         loadAutowired(table);
     }

@@ -13,46 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.flash.cn.core.factory;
-
-import com.flash.cn.annotation.Autowired;
-import com.flash.cn.annotation.Scope;
-import com.flash.cn.annotation.Service;
-import com.flash.cn.beans.BeanContainerMode;
+package com.flash.cn.beans;
 
 /**
+ * 这是一个抽象类，主要存放 Bean Definition 注册表相关的操作
+ *
  * @author kay
  * @version v1.0
  */
-@Service("ioc1")
-@Scope(BeanContainerMode.PROTOTYPE)
-public class Ioc1 {
+public abstract class BeanDefinition {
 
-    @Autowired
-    private Father father;
+    /** Bean Definition 注册表 */
+    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
-    @Autowired
-    private People people;
-
-    @Autowired
-    private User user;
-
-    @Autowired
-    private Ioc ioc;
-
-    public Father getFather() {
-        return father;
+    /**
+     * 放入 Bean Definition 注册表中
+     *
+     * @param key   注册表 key
+     * @param clazz 注册对象内容
+     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     */
+    protected void put(String key, Class clazz) {
+        table.put(key, clazz);
     }
 
-    public People getPeople() {
-        return people;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Ioc getIoc() {
-        return ioc;
+    /**
+     * 清理注册表
+     */
+    protected void clear() {
+        table.clear();
     }
 }

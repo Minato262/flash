@@ -15,10 +15,8 @@
  */
 package com.flash.cn.beans;
 
-import com.flash.cn.annotation.*;
 import com.flash.cn.core.Resource;
 import com.flash.cn.util.Assert;
-import com.flash.cn.util.StringUtils;
 
 import java.util.List;
 
@@ -28,13 +26,10 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionResolution implements Resolution {
+public class BeanDefinitionResolution extends BeanDefinition implements Resolution {
 
     /** 资源解析接口 */
     private Resource resource;
-
-    /** Bean Definition 注册表 */
-    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
@@ -48,52 +43,15 @@ public class BeanDefinitionResolution implements Resolution {
     }
 
     /**
-     * 放入 Bean Definition 清单中
-     *
-     * @param clazz 注册对象内容
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
-     */
-    private void put(Class clazz) {
-        // 类注解载入 Bean 容器，容器会自动载入类名作为 key
-        // Bean 会作为 key 的关键字，会使用左驼峰命名
-        String lowerCase = StringUtils.getLowerCase(clazz.getName());
-        String key = StringUtils.toLowerCaseFirstOne(lowerCase);
-        put(key, clazz);
-    }
-
-    /**
-     * 放入 Bean Definition 清单中
-     *
-     * @param key   注册表 key
-     * @param clazz 注册对象内容
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
-     */
-    private void put(String key, Class clazz) {
-        table.put(key, clazz);
-    }
-
-    /**
      * 遍历 Class，载入类注释并将对象放入容器的 value 中
      *
      * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void loadRepository() {
+        BeanDefinitionLoad load = new BeanDefinitionLoad();
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
-            Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
-            if (annotation != null) {
-                put(annotation.value(), clazz);
-                continue;
-            }
-            Service annotation1 = (Service) clazz.getAnnotation(Service.class);
-            if (annotation1 != null) {
-                put(annotation1.value(), clazz);
-                continue;
-            }
-            Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
-            if (annotation2 != null) {
-                put(clazz);
-            }
+            load.load(clazz);
         }
     }
 
@@ -114,6 +72,6 @@ public class BeanDefinitionResolution implements Resolution {
      */
     @Override
     public void clear() {
-        table.clear();
+        super.clear();
     }
 }
