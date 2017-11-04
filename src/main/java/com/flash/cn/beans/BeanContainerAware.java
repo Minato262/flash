@@ -97,7 +97,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 默认构造器
      */
     private BeanContainerAware() {
-        //
+        super();
     }
 
     /* ------------------------------  方法区  ——————------------------------- */

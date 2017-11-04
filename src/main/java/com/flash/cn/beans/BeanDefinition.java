@@ -27,6 +27,13 @@ public abstract class BeanDefinition {
     private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /**
+     * 默认构造器
+     */
+    public BeanDefinition(){
+        //
+    }
+
+    /**
      * 放入 Bean Definition 注册表中
      *
      * @param key   注册表 key

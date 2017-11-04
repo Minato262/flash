@@ -53,7 +53,7 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
      * 默认构造器
      */
     private BeanDefinitionTableAware() {
-        //
+        super();
     }
 
     /* ------------------------------  方法区  ——————------------------------- */

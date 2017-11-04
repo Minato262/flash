@@ -29,6 +29,13 @@ import com.flash.cn.util.StringUtils;
 public class BeanDefinitionLoad extends BeanDefinition {
 
     /**
+     * 默认构造器
+     */
+    public BeanDefinitionLoad(){
+        super();
+    }
+
+    /**
      * 放入 Bean Definition 清单中
      *
      * @param clazz 注册对象内容
@@ -39,7 +46,7 @@ public class BeanDefinitionLoad extends BeanDefinition {
         // Bean 会作为 key 的关键字，会使用左驼峰命名
         String lowerCase = StringUtils.getLowerCase(clazz.getName());
         String key = StringUtils.toLowerCaseFirstOne(lowerCase);
-        put(key, clazz);
+        super.put(key, clazz);
     }
 
     /**
@@ -50,12 +57,12 @@ public class BeanDefinitionLoad extends BeanDefinition {
     public void load(Class clazz) {
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            put(annotation.value(), clazz);
+            super.put(annotation.value(), clazz);
             return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            put(annotation1.value(), clazz);
+            super.put(annotation1.value(), clazz);
             return;
         }
         Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
