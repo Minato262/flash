@@ -19,15 +19,33 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * 配置工具类
+ * 配置工具类，载入配置
  *
  * @author kay
  * @version v1.0
  */
-public class LoadProperties {
+public enum LoadProperties {
+    INSTANCE("/config/flash.properties");
 
-    /** 配置路径 */
-    private static final String FLASH_PATH = "/config/flash.properties";
+    private String path;
+
+    /**
+     * 带有配置文件路径的构造器
+     *
+     * @param path 配置文件路径
+     */
+    LoadProperties(String path){
+        this.path = path;
+    }
+
+    /**
+     * 获取配置文件路径
+     *
+     * @return 文件路径
+     */
+    public String getPath() {
+        return path;
+    }
 
     /**
      * 载入配置，获取 Properties 配置值
@@ -66,7 +84,7 @@ public class LoadProperties {
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
         try {
-            return load(FLASH_PATH, propertyName);
+            return load(LoadProperties.INSTANCE.getPath(), propertyName);
         }
         catch (IOException e) {
             return "";

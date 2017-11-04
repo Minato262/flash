@@ -29,13 +29,13 @@ public class PropertiesUtilsTest {
 
     @Test
     public void test() throws IOException {
-        String packageName = new LoadProperties().load("packageName");
+        String packageName = LoadProperties.INSTANCE.load("packageName");
         System.out.println(packageName);
     }
 
     @Test
     public void test1() throws IOException {
-        String containerModes = new LoadProperties().load("containerModes");
+        String containerModes = LoadProperties.INSTANCE.load("containerModes");
         System.out.println(containerModes);
     }
 }

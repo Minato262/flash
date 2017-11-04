@@ -32,7 +32,7 @@ import java.util.List;
 public abstract class ClassLoader implements Resource {
 
     /** 根据配置获取配置的包名 */
-    private static final String FLASH_PACKAGE_NAME = new LoadProperties().load("packageName");
+    private static final String FLASH_PACKAGE_NAME = LoadProperties.INSTANCE.load("packageName");
 
     /**
      * 根据来源获取，目标 URL 资源
