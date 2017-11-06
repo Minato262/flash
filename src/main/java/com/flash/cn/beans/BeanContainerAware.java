@@ -86,9 +86,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * @return Bean 容器接口
      */
     public static BeanContainer getInstance() {
-        synchronized (BeanContainerAware.class) {
-            return container;
-        }
+        return container;
     }
 
     /* ------------------------------  构造区  ——————------------------------- */
@@ -97,7 +95,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 默认构造器
      */
     private BeanContainerAware() {
-        super();
+        //
     }
 
     /* ------------------------------  方法区  ——————------------------------- */
@@ -107,6 +105,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      *
      * @param key 容器关键字(一定不能为空)
      * @return 返回容器中的对象
+     * @throws IllegalArgumentException 如果字符串为空
      */
     @Override
     public Object get(String key) {
@@ -119,6 +118,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      *
      * @param key   容器的关键字
      * @param value 放入容器的关键字
+     * @throws BeanContainerInitFailureException 如果 Bean 的名称为空
      */
     @SuppressWarnings("unchecked")
     @Override

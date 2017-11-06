@@ -38,6 +38,7 @@ public class StringUtils {
      *
      * @param name class 类全路径名（一定不能为空）
      * @return 获取的相应的类名
+     * @throws IllegalArgumentException 如果字符串为空
      */
     public static String getLowerCase(String name) {
         Assert.isNotEmpty(name);
@@ -50,6 +51,7 @@ public class StringUtils {
      *
      * @param str 需要首字母小写的字符串（一定不能为空）
      * @return 处理后的字符串
+     * @throws IllegalArgumentException 如果字符串为空
      */
     public static String toLowerCaseFirstOne(String str) {
         Assert.isNotEmpty(str);

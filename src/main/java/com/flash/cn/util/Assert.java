@@ -27,7 +27,7 @@ public class Assert {
      * 判断对象不能为空，当对象为null时，会抛出异常
      *
      * @param object 需要判断的对象
-     * @throw IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果字符串为null
      */
     public static void isNotNull(Object object) {
         if (object == null) {
@@ -39,7 +39,7 @@ public class Assert {
      * 判断字符串不能为空，当字符串为空时，会抛出异常
      *
      * @param str 需要判断的字符串
-     * @throw IllegalArgumentException 如果字符串为空
+     * @throws IllegalArgumentException 如果字符串为空
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {

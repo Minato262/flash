@@ -26,7 +26,7 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionResolution extends BeanDefinition implements Resolution {
+public class BeanDefinitionResolution extends BeanDefinitionTableContext implements Resolution {
 
     /** 资源解析接口 */
     private Resource resource;

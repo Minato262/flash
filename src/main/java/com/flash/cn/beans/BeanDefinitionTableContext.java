@@ -23,15 +23,15 @@ import com.flash.cn.util.Assert;
  * @author kay
  * @version v1.0
  */
-public abstract class BeanDefinition {
+public abstract class BeanDefinitionTableContext {
 
-    /** Bean Definition 注册表 */
+    /** Bean Definition 注册表  */
     private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /**
      * 默认构造器
      */
-    public BeanDefinition(){
+    public BeanDefinitionTableContext() {
         //
     }
 
@@ -40,7 +40,8 @@ public abstract class BeanDefinition {
      *
      * @param key   注册表 key
      * @param clazz 注册对象内容
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws IllegalArgumentException        如果字符串为
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     protected void put(String key, Class clazz) {
         Assert.isNotEmpty(key);

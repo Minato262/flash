@@ -66,7 +66,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 根据容器中的 key 注入对象，载入方法注释
      *
      * @param registryTable 需要注入的注册对象信息
-     * @throw BeanCreateFailureException Bean 设置失败
+     * @throws BeanCreateFailureException Bean 设置失败
      */
     private void loadAutowired(BeanDefinitionTable registryTable) {
         BeanReflectAutowired autowired = new BeanReflectAutowired();
@@ -82,7 +82,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
      * 有 Bean
      *
-     * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
+     * @throws BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
     @Override
     public void refresh() {

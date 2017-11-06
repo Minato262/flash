@@ -31,7 +31,8 @@ public class BeanReflect {
      * @param name 反射对象的对象路径（一定不能为空）
      * @param <T>  弱类型转成指定强类型
      * @return 生成的新的对象
-     * @throw BeanCreateFailureException 如果对象新建失败
+     * @throws IllegalArgumentException   如果字符串为null
+     * @throws BeanCreateFailureException 如果对象新建失败
      */
     @SuppressWarnings("unchecked")
     public static <T> T newInstance(String name) {

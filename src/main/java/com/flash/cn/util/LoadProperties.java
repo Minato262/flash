@@ -80,6 +80,7 @@ public enum LoadProperties {
      *
      * @param propertyName 配置名称（一定不能为空）
      * @return 获取 Properties 配置值
+     * @throws IllegalArgumentException 如果字符串为空
      */
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);

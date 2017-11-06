@@ -27,20 +27,20 @@ import com.flash.cn.util.StringUtils;
  * @author kay
  * @version v1.0
  */
-public class BeanDefinitionLoad extends BeanDefinition {
+public class BeanDefinitionLoad extends BeanDefinitionTableContext {
 
     /**
      * 默认构造器
      */
     public BeanDefinitionLoad() {
-        super();
+        //
     }
 
     /**
      * 放入 Bean Definition 清单中
      *
      * @param clazz 注册对象内容
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void put(Class clazz) {
         // 类注解载入 Bean 容器，容器会自动载入类名作为 key
@@ -54,8 +54,8 @@ public class BeanDefinitionLoad extends BeanDefinition {
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
-     * @throw IllegalArgumentException 如果字符串为null
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws IllegalArgumentException        如果字符串为null
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     public void load(Class clazz) {
         Assert.isNotNull(clazz);

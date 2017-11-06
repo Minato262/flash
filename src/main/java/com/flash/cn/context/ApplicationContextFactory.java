@@ -15,6 +15,8 @@
  */
 package com.flash.cn.context;
 
+import com.flash.cn.beans.BeanCreateFailureException;
+
 /**
  * 应用关系环境工厂，包装容器，为容器提供使用环境
  *
@@ -35,6 +37,8 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return 获取 bean 对象
+     * @throws IllegalArgumentException 如果字符串为空
+     * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override
     public Object getBean(String name) {

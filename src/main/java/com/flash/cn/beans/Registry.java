@@ -26,8 +26,6 @@ public interface Registry {
     /**
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
      * 有 Bean
-     *
-     * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
     void refresh();
 }

@@ -37,7 +37,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
      *
      * @param name 资源名称
      * @return 载入的 Class
-     * @throw ClassPathResourceException 如果根据资源名称没有找到对应的类
+     * @throws ClassLoaderFailureException 如果根据资源名称载入没有找到对应的类
      */
     private Class<?> loadClass(String name) {
         try {
@@ -91,10 +91,12 @@ public class ClassPathResource extends ClassLoader implements Resource {
      */
     @Override
     protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
-        List<Class<?>> classes = new ArrayList<Class<?>>();
+        List<Class<?>> classes = new ArrayList<>();
         while (urlElements.hasMoreElements()) {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
+
+            // 暂时不支持扫描 jar
             if ("file".equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);

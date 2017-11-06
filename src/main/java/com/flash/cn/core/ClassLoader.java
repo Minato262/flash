@@ -39,7 +39,7 @@ public abstract class ClassLoader implements Resource {
      *
      * @param name 资源名称
      * @return URL 元素资源
-     * @throw ClassPathResourceException 如果 I/O 异常
+     * @throws ClassPathResourceException 如果 I/O 出现异常
      */
     private Enumeration<URL> getEnumeration(String name) {
         try {
@@ -63,7 +63,7 @@ public abstract class ClassLoader implements Resource {
      * 获取所有当前包内 Class 类的清单
      *
      * @return Class 类清单
-     * @throw ClassPathResourceException 如果没有在配置项中配置包路径
+     * @throws ClassPathResourceException 如果没有在配置项中配置包路径
      */
     @Override
     public List<Class<?>> getClasses() {

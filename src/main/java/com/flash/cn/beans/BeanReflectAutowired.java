@@ -21,7 +21,7 @@ import com.flash.cn.util.Assert;
 import java.lang.reflect.Field;
 
 /**
- * 自动反射工作类
+ * 自动反射工具类
  *
  * @author kay
  * @version v1.0
@@ -38,14 +38,14 @@ public class BeanReflectAutowired {
      * @return Bean 对应的对象
      */
     private Object getValue(String key) {
-        Object object = container.get(key);
-        if (object instanceof Class) {
-            Class clazz = (Class) object;
-            Object value = BeanReflect.newInstance(clazz.getName());
-            BeanDefinitionWrap beanDefinitionWrap = loadAutowired(value);
+        Object value = container.get(key);
+        if (value instanceof Class) {
+            Class clazz = (Class) value;
+            Object newValue = BeanReflect.newInstance(clazz.getName());
+            BeanDefinitionWrap beanDefinitionWrap = loadAutowired(newValue);
             return beanDefinitionWrap.getData();
         }
-        return object;
+        return value;
     }
 
     /**
@@ -53,7 +53,7 @@ public class BeanReflectAutowired {
      *
      * @param value 需要检测的对象
      * @return Bean Definition 的封装类
-     * throw BeanCreateFailureException 如果 Bean 创建失败
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> loadAutowired(V value) {
         boolean hasAutowired = false;
@@ -71,7 +71,7 @@ public class BeanReflectAutowired {
                 hasAutowired = true;
             }
         }
-        return new BeanDefinitionWrap<V>(hasAutowired, value);
+        return new BeanDefinitionWrap<>(hasAutowired, value);
     }
 
     /**
@@ -79,6 +79,8 @@ public class BeanReflectAutowired {
      *
      * @param key 容器 key（一定不能为空）
      * @return Bean 对应并载入方法注解的对象
+     * @throws IllegalArgumentException   如果字符串为空
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     public BeanDefinitionWrap loadAutowired(String key) {
         Assert.isNotEmpty(key);
@@ -91,6 +93,8 @@ public class BeanReflectAutowired {
      *
      * @param clazz 实例信息（一定不能为null）
      * @return Bean 对应并载入方法注解的对象
+     * @throws IllegalArgumentException   如果字符串为null
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     public <V> V loadAutowired(Class clazz) {
         Assert.isNotNull(clazz);

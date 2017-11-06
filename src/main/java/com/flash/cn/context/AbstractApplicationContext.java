@@ -99,9 +99,10 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return bean 对象
+     * @throws IllegalArgumentException 如果字符串为空
      */
     protected Object get(String name) {
         Assert.isNotEmpty(name);
-        return (checkBean(name) ? loadAutowired(name) : getInstance(name));
+        return checkBean(name) ? loadAutowired(name) : getInstance(name);
     }
 }
