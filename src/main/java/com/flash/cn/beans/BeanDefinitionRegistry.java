@@ -38,6 +38,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 带有 Bean Definition 注册的构造器
      *
      * @param resolution Bean Definition 解析
+     * @throws IllegalArgumentException 如果字符串为null
      */
     public BeanDefinitionRegistry(Resolution resolution) {
         Assert.isNotNull(resolution);
@@ -45,7 +46,7 @@ public class BeanDefinitionRegistry implements Registry {
     }
 
     /**
-     * 单例，原型模式，载入类注解
+     * 单例或者原型模式，载入类注解
      *
      * @param registryTable 需要注入的注册对象信息
      */
@@ -53,7 +54,7 @@ public class BeanDefinitionRegistry implements Registry {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
-                // scope 注解标记的实例，在初始化时，引入对象的 class 作为标记
+                // scope 注解标记的多例，在初始化时，引入对象的 class 信息作为标记
                 container.put(entry.getKey(), entry.getValue());
                 continue;
             }

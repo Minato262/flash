@@ -35,7 +35,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      * 带有资源解析的 Bean Definition 解析的构造器
      *
      * @param resource 资源解析接口
-     * @throw IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果字符串为null
      */
     public BeanDefinitionResolution(Resource resource) {
         Assert.isNotNull(resource);
@@ -45,7 +45,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     /**
      * 遍历 Class，载入类注释并将对象放入容器的 value 中
      *
-     * @throw BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void loadRepository() {
         BeanDefinitionLoad load = new BeanDefinitionLoad();
@@ -59,7 +59,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
      * 有 Bean
      *
-     * @throw BeanDefinitionConflictException 如果 Bean 对象已经存在
+     * @throws BeanDefinitionConflictException 如果 Bean 对象已经存在
      */
     @Override
     public void load() {

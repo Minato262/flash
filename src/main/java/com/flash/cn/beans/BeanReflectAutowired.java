@@ -75,20 +75,6 @@ public class BeanReflectAutowired {
     }
 
     /**
-     * 根据容器 key，载入方法注解
-     *
-     * @param key 容器 key（一定不能为空）
-     * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果字符串为空
-     * @throws BeanCreateFailureException 如果 Bean 创建失败
-     */
-    public BeanDefinitionWrap loadAutowired(String key) {
-        Assert.isNotEmpty(key);
-        Object value = container.get(key);
-        return loadAutowired(value);
-    }
-
-    /**
      * 根据实例信息，载入方法注解
      *
      * @param clazz 实例信息（一定不能为null）
@@ -101,5 +87,19 @@ public class BeanReflectAutowired {
         V value = BeanReflect.newInstance(clazz.getName());
         BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
         return beanDefinitionWrap.getData();
+    }
+
+    /**
+     * 根据容器 key，载入方法注解
+     *
+     * @param key 容器 key（一定不能为空）
+     * @return Bean 对应并载入方法注解的对象
+     * @throws IllegalArgumentException   如果字符串为空
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
+     */
+    public BeanDefinitionWrap loadAutowired(String key) {
+        Assert.isNotEmpty(key);
+        Object value = container.get(key);
+        return loadAutowired(value);
     }
 }

@@ -16,7 +16,7 @@
 package com.flash.cn.beans;
 
 /**
- * Bean 工厂接口
+ * Bean 工厂接口，IOC 框架中最核心的接口
  *
  * @author kay
  * @version v1.0

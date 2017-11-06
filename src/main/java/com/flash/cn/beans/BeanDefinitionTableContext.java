@@ -40,7 +40,7 @@ public abstract class BeanDefinitionTableContext {
      *
      * @param key   注册表 key
      * @param clazz 注册对象内容
-     * @throws IllegalArgumentException        如果字符串为
+     * @throws IllegalArgumentException        如果字符串为空
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     protected void put(String key, Class clazz) {
