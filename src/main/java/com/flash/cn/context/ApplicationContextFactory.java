@@ -16,6 +16,8 @@
 package com.flash.cn.context;
 
 import com.flash.cn.beans.BeanCreateFailureException;
+import com.flash.cn.beans.BeanReflectAutowired;
+import com.flash.cn.util.Assert;
 
 /**
  * 应用关系环境工厂，包装容器，为容器提供使用环境
@@ -33,15 +35,42 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
     }
 
     /**
+     * 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
+     *
+     * @param name 想获取 Bean 的名称
+     * @param <T>  获取容器中的 Bean 对象
+     * @return bean 对象
+     */
+    private <T> T loadAutowired(String name) {
+        Class clazz = (Class) container.get(name);
+        BeanReflectAutowired autowired = new BeanReflectAutowired();
+        return autowired.loadAutowired(clazz);
+    }
+
+    /**
+     * 根据 Bean 名称，获取 Bean 实例
+     *
+     * @param name 想获取 Bean 的名称
+     * @return bean 对象
+     */
+    private Object getInstance(String name) {
+        return container.get(name);
+    }
+
+    /**
      * 根据 Bean 名称，获取 Bean 实例
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return 获取 bean 对象
-     * @throws IllegalArgumentException 如果字符串为空
+     * @throws IllegalArgumentException   如果字符串为空
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override
     public Object getBean(String name) {
-        return super.get(name);
+        Assert.isNotEmpty(name);
+        if (container.get(name) instanceof Class) {
+            return loadAutowired(name);
+        }
+        return getInstance(name);
     }
 }

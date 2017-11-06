@@ -70,7 +70,6 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 接口。POJO 与 JavaBean 之间的主要区别在于 JavaBean 并没有严格的规范，从理论上讲，
      * 任何一个 Java 类都可以构成一个 Bean。而 POJO 用来代指那些没有遵从特定的Java对象模
      * 型,约定，框架等。理想地讲，一个POJO是一个不受任何限制的Java对象（除了Java语言规范）。
-     *
      */
 
     /* ------------------------------  静态区  ——————------------------------- */
@@ -124,7 +123,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     @Override
     public <V> void put(String key, V value) {
         if (StringUtils.isEmpty(key)) {
-            throw new BeanContainerInitFailureException("Bean Name must be not empty!");
+            throw new BeanContainerInitFailureException("Bean name must be not empty!");
         }
         super.put(key, value);
     }

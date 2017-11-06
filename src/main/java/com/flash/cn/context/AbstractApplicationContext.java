@@ -18,7 +18,6 @@ package com.flash.cn.context;
 import com.flash.cn.beans.*;
 import com.flash.cn.core.ClassPathResource;
 import com.flash.cn.core.Resource;
-import com.flash.cn.util.Assert;
 
 /**
  * 应用上下环境抽象类
@@ -33,7 +32,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      */
 
     /** Bean 容器 */
-    private BeanContainer container = BeanContainerAware.getInstance();
+    protected BeanContainer container = BeanContainerAware.getInstance();
 
     /**
      * 默认构造器
@@ -59,50 +58,5 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
             container.clear();  // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);
         }
-    }
-
-    /**
-     * 检测 Bean 是否为 Class 类
-     *
-     * @param name Bean 名称
-     * @return 返回 Bean 是否为 Class 类
-     */
-    private boolean checkBean(String name) {
-        return container.get(name) instanceof Class;
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
-     *
-     * @param name 想获取 Bean 的名称
-     * @param <T>  获取容器中的 Bean 对象
-     * @return bean 对象
-     */
-    private <T> T loadAutowired(String name) {
-        Class clazz = (Class) container.get(name);
-        BeanReflectAutowired autowired = new BeanReflectAutowired();
-        return autowired.loadAutowired(clazz);
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例
-     *
-     * @param name 想获取 Bean 的名称
-     * @return bean 对象
-     */
-    private Object getInstance(String name) {
-        return container.get(name);
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例
-     *
-     * @param name 想获取 Bean 的名称（一定不能为空）
-     * @return bean 对象
-     * @throws IllegalArgumentException 如果字符串为空
-     */
-    protected Object get(String name) {
-        Assert.isNotEmpty(name);
-        return checkBean(name) ? loadAutowired(name) : getInstance(name);
     }
 }
