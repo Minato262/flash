@@ -72,7 +72,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 型,约定，框架等。理想地讲，一个POJO是一个不受任何限制的Java对象（除了Java语言规范）。
      */
 
-    /* ------------------------------  静态区  ——————------------------------- */
+    /* ------------------------------  静态区  ------------------------------- */
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
@@ -88,7 +88,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
         return container;
     }
 
-    /* ------------------------------  构造区  ——————------------------------- */
+    /* ------------------------------  构造区  ------------------------------- */
 
     /**
      * 默认构造器
@@ -97,7 +97,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
         //
     }
 
-    /* ------------------------------  方法区  ——————------------------------- */
+    /* ------------------------------  方法区  ------------------------------- */
 
     /**
      * 根据 key 获取容器中的对象
