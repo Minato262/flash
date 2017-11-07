@@ -42,6 +42,8 @@ public class BeanReflectAutowired {
         if (value instanceof Class) {
             Class clazz = (Class) value;
             Object newValue = BeanReflect.newInstance(clazz.getName());
+
+            // 重新载入方法注解
             BeanDefinitionWrap beanDefinitionWrap = loadAutowired(newValue);
             return beanDefinitionWrap.getData();
         }

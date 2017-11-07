@@ -38,13 +38,15 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
      * 默认构造器
      */
     public AbstractApplicationContext() {
-        if(container.isEmpty()) {
+        if (container.isEmpty()) {
             init();
         }
     }
 
     /**
      * 初始化上下文环境
+     *
+     * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
         Resource resource = new ClassPathResource();
