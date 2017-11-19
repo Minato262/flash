@@ -28,10 +28,6 @@ package com.flash.cn.beans;
  */
 public enum BeanContainerMode {
 
-    /*
-     * 概况
-     */
-
     /**
      * 单例模式，一个应用只能有一个实例
      */

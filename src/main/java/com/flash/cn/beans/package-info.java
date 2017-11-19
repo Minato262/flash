@@ -15,6 +15,8 @@
  */
 
 /**
+ * Bean 的相关处理模块
+ *
  * @author kay
  * @version v1.0
  */
