@@ -21,7 +21,7 @@ import com.flash.cn.util.Assert;
 import java.lang.reflect.Field;
 
 /**
- * 自动反射工具类
+ * 自动反射扫描工具类
  *
  * @author kay
  * @version v1.0
