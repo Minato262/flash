@@ -40,7 +40,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     public AbstractApplicationContext() {
         if (container.isEmpty()) {
             init();
-        }x`
+        }
     }
 
     /**
