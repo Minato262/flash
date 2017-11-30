@@ -15,9 +15,11 @@
  */
 package org.flashframework.web;
 
+import javax.servlet.http.HttpServlet;
+
 /**
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public class DispatcherServlet {
+public class DispatcherServlet extends HttpServlet {
 }

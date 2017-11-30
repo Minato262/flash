@@ -24,7 +24,7 @@ package org.flashframework.util;
 public class Assert {
 
     /**
-     * 判断对象不能为空，当对象为null时，会抛出异常
+     * 判断对象不能为null，当对象为null时，会抛出异常
      *
      * @param object 需要判断的对象
      * @throws IllegalArgumentException 如果字符串为null
