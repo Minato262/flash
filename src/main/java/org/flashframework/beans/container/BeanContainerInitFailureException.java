@@ -13,20 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.annotation;
+package org.flashframework.beans.container;
 
-import java.lang.annotation.*;
+import org.flashframework.beans.BeanException;
 
 /**
- * Autowired 注释，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作
- * 通过 @Autowired 的使用来消除 set，get方法
+ * Bean 容器初始化失败异常
  *
  * @author kay
  * @version v1.0
  */
-@Documented
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.FIELD})
-public @interface Autowired {
+public class BeanContainerInitFailureException extends BeanException {
+
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public BeanContainerInitFailureException(String message) {
+        super(message);
+    }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
+    public BeanContainerInitFailureException(Throwable cause) {
+        super(cause);
+    }
 }

@@ -15,9 +15,9 @@
  */
 package org.flashframework.core.factory;
 
-import org.flashframework.annotation.Autowired;
-import org.flashframework.annotation.Repository;
-import org.flashframework.annotation.Scope;
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.annotation.Scope;
 
 /**
  * @author kay

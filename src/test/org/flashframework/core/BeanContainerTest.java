@@ -16,9 +16,9 @@
 package org.flashframework.core;
 
 import org.flashframework.BeforeTest;
-import org.flashframework.annotation.Autowired;
-import org.flashframework.beans.BeanContainerAware;
-import org.flashframework.beans.BeanContainer;
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.beans.container.BeanContainerAware;
+import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.core.factory.Ioc;
 import org.junit.Test;
 

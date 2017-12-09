@@ -15,8 +15,8 @@
  */
 package org.flashframework;
 
-import org.flashframework.annotation.Autowired;
-import org.flashframework.annotation.Repository;
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.beans.annotation.Repository;
 import org.flashframework.core.factory.Father;
 import org.flashframework.core.factory.People;
 import org.flashframework.core.factory.User;

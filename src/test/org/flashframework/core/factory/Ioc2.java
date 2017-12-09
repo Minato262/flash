@@ -15,8 +15,8 @@
  */
 package org.flashframework.core.factory;
 
-import org.flashframework.annotation.Autowired;
-import org.flashframework.annotation.Controller;
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.beans.annotation.Controller;
 import org.flashframework.context.ApplicationContext;
 import org.flashframework.context.ApplicationContextFactory;
 import org.junit.Test;

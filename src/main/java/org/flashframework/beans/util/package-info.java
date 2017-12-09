@@ -13,21 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.factory;
-
-import org.flashframework.beans.annotation.Repository;
 
 /**
- * {@link People} Test.
+ * Bean 模块工具类
  *
  * @author kay
- * @version v0.0.1
+ * @version v1.0
  */
-@Repository("people")
-public class People extends Bean {
-
-    public People(){
-        this.setName("123");
-        this.setAge(12);
-    }
-}
+package org.flashframework.beans.util;

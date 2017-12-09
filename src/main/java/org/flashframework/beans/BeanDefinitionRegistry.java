@@ -15,7 +15,11 @@
  */
 package org.flashframework.beans;
 
-import org.flashframework.annotation.Scope;
+import org.flashframework.beans.annotation.Scope;
+import org.flashframework.beans.container.BeanContainer;
+import org.flashframework.beans.container.BeanContainerAware;
+import org.flashframework.beans.container.BeanContainerMode;
+import org.flashframework.beans.util.BeanReflect;
 import org.flashframework.util.Assert;
 
 import java.util.Map;

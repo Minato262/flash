@@ -13,31 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.annotation;
 
-import java.util.Map;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * Bean 容器接口，定义Bean 容器的基本行为
+ * Controller 注解，标记对象为 Bean 对象为 controller 层对象
  *
  * @author kay
  * @version v1.0
  */
-public interface BeanContainer extends Map {
-
-    /**
-     * 根据关键字获取对象
-     *
-     * @param key 容器的关键字
-     * @return 根据关键字获取对象
-     */
-    Object get(String key);
-
-    /**
-     * 根据容器的关键字放入对象
-     *
-     * @param key   容器的关键字
-     * @param value 容器存入的对象
-     */
-    <V> void put(String key, V value);
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Controller {
 }

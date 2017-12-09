@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.container;
+
+import java.util.Map;
 
 /**
- * 容器模式枚举，容器分为单例和原型模式。
- * <p>
- * 单例模式，容器启动时，创建所有的 Bean 实例，以后不会再创建新的实例。
- * 原型模式，会在使用时，创建和载入相应的 Bean 实例。
- * </p>
- * Bean 使用注解, 默认的是单例模式方式。
+ * Bean 容器接口，定义Bean 容器的基本行为
  *
  * @author kay
  * @version v1.0
  */
-public enum BeanContainerMode {
+public interface BeanContainer extends Map {
 
     /**
-     * 单例模式，一个应用只能有一个实例
+     * 根据关键字获取对象
+     *
+     * @param key 容器的关键字
+     * @return 根据关键字获取对象
      */
-    SINGLETON(),
+    Object get(String key);
 
     /**
-     * 原型模式，每次调用时调用多个实例
+     * 根据容器的关键字放入对象
+     *
+     * @param key   容器的关键字
+     * @param value 容器存入的对象
      */
-    PROTOTYPE()
+    <V> void put(String key, V value);
 }

@@ -15,9 +15,9 @@
  */
 package org.flashframework.beans;
 
-import org.flashframework.annotation.Controller;
-import org.flashframework.annotation.Repository;
-import org.flashframework.annotation.Service;
+import org.flashframework.beans.annotation.Controller;
+import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.annotation.Service;
 import org.flashframework.util.Assert;
 import org.flashframework.util.StringUtils;
 

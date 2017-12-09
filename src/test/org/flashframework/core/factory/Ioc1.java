@@ -15,10 +15,10 @@
  */
 package org.flashframework.core.factory;
 
-import org.flashframework.annotation.Autowired;
-import org.flashframework.annotation.Scope;
-import org.flashframework.annotation.Service;
-import org.flashframework.beans.BeanContainerMode;
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.beans.annotation.Scope;
+import org.flashframework.beans.annotation.Service;
+import org.flashframework.beans.container.BeanContainerMode;
 
 /**
  * @author kay

@@ -13,22 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package org.flashframework.beans.container;
 
 /**
- * Repository 注解，标记对象为 Bean 对象为 dao 层或者其他层对象
+ * 容器模式枚举，容器分为单例和原型模式。
+ * <p>
+ * 单例模式，容器启动时，创建所有的 Bean 实例，以后不会再创建新的实例。
+ * 原型模式，会在使用时，创建和载入相应的 Bean 实例。
+ * </p>
+ * Bean 使用注解, 默认的是单例模式方式。
  *
  * @author kay
  * @version v1.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Repository {
+public enum BeanContainerMode {
 
-    String value() default "";
+    /**
+     * 单例模式，一个应用只能有一个实例
+     */
+    SINGLETON(),
+
+    /**
+     * 原型模式，每次调用时调用多个实例
+     */
+    PROTOTYPE()
 }

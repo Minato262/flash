@@ -13,11 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.flashframework.beans.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * 注解相关模块
+ * Service 注解，标记对象为 Bean 对象为 Service 层对象
  *
  * @author kay
  * @version v1.0
  */
-package org.flashframework.annotation;
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Service {
+
+    String value() default "";
+}

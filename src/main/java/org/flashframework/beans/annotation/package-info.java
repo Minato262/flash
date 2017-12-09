@@ -13,24 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.annotation;
-
-import org.flashframework.beans.BeanContainerMode;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 
 /**
- * Scope 注解，标记对象为 Bean 对象为单例还是原型对象
+ * 注解相关模块
  *
  * @author kay
  * @version v1.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Scope {
-
-    BeanContainerMode value() default BeanContainerMode.SINGLETON;
-}
+package org.flashframework.beans.annotation;

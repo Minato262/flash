@@ -15,7 +15,7 @@
  */
 package org.flashframework.core.factory;
 
-import org.flashframework.annotation.Repository;
+import org.flashframework.beans.annotation.Repository;
 
 /**
  * {@link Father} Test.

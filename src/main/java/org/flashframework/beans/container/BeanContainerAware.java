@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.container;
 
 import org.flashframework.Aware;
 import org.flashframework.util.Assert;

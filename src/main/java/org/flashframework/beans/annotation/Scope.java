@@ -13,31 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.annotation;
+
+import org.flashframework.beans.container.BeanContainerMode;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * Bean 容器初始化失败异常
+ * Scope 注解，标记对象为 Bean 对象为单例还是原型对象
  *
  * @author kay
  * @version v1.0
  */
-public class BeanContainerInitFailureException extends BeanException {
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Scope {
 
-    /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
-     */
-    public BeanContainerInitFailureException(String message) {
-        super(message);
-    }
-
-    /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈异常信息
-     */
-    public BeanContainerInitFailureException(Throwable cause) {
-        super(cause);
-    }
+    BeanContainerMode value() default BeanContainerMode.SINGLETON;
 }

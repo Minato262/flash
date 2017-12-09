@@ -15,9 +15,9 @@
  */
 package org.flashframework.core.factory;
 
-import org.flashframework.annotation.Repository;
-import org.flashframework.annotation.Scope;
-import org.flashframework.beans.BeanContainerMode;
+import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.annotation.Scope;
+import org.flashframework.beans.container.BeanContainerMode;
 
 /**
  * {@link User} Test.
