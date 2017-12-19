@@ -16,7 +16,7 @@
 package org.flashframework;
 
 import org.flashframework.context.ApplicationContextFactory;
-import org.flashframework.beans.BeanFactory;
+import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.core.factory.Ioc;
 import org.flashframework.core.factory.Ioc1;
 import org.flashframework.core.factory.Ioc2;

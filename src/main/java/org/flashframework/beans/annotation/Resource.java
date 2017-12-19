@@ -13,15 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.context;
+package org.flashframework.beans.annotation;
 
-import org.flashframework.beans.factory.BeanFactory;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * 应用上下文环境接口，包装容器，为容器提供使用环境
+ * Resource 注解，标记对象为 Bean 对象
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public interface ApplicationContext extends BeanFactory {
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Resource {
+
+    String value() default "";
 }

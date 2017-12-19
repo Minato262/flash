@@ -123,7 +123,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     @Override
     public <V> void put(String key, V value) {
         if (StringUtils.isEmpty(key)) {
-            throw new BeanContainerInitFailureException("Bean name must be not empty!");
+            throw new BeanContainerInitFailureException("The name of bean must be not empty!");
         }
         super.put(key, value);
     }

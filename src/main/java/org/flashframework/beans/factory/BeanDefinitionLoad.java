@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.factory;
 
+import org.flashframework.beans.BeanDefinitionConflictException;
 import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
 import org.flashframework.util.Assert;
 import org.flashframework.util.StringUtils;
@@ -25,7 +27,7 @@ import org.flashframework.util.StringUtils;
  * 只是一个工具类，主要作用是载入类注解
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
 public class BeanDefinitionLoad extends BeanDefinitionTableContext {
 
@@ -61,17 +63,23 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
         Assert.isNotNull(clazz);
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            super.put(annotation.value(), clazz);
+            super.put(annotation.value(), clazz);   // 存放 dao 层对象
             return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            super.put(annotation1.value(), clazz);
+            super.put(annotation1.value(), clazz);  // 存放 service 层对象
             return;
         }
         Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
         if (annotation2 != null) {
-            put(clazz);
+            put(clazz);   // 存放 controller 层对象
+            return;
+        }
+
+        Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);
+        if (annotation3 != null) {
+            super.put(annotation3.value(), clazz);   // 存放标记对象，可以是任意层
         }
     }
 }

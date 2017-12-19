@@ -16,7 +16,7 @@
 package org.flashframework.context;
 
 import org.flashframework.beans.BeanCreateFailureException;
-import org.flashframework.beans.BeanReflectAutowired;
+import org.flashframework.beans.factory.BeanReflectAutowired;
 import org.flashframework.util.Assert;
 
 /**

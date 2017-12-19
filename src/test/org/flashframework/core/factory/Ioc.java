@@ -17,13 +17,14 @@ package org.flashframework.core.factory;
 
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Scope;
 
 /**
  * @author kay
  * @version v1.0
  */
-@Repository("ioc")
+@Resource("ioc")
 @Scope
 public class Ioc {
 

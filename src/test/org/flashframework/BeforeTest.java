@@ -16,7 +16,7 @@
 package org.flashframework;
 
 import org.flashframework.context.ApplicationContextFactory;
-import org.flashframework.beans.BeanFactory;
+import org.flashframework.beans.factory.BeanFactory;
 import org.junit.Before;
 
 /**

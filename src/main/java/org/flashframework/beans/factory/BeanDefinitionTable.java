@@ -13,21 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.factory;
+
+import java.util.Map;
 
 /**
- * Bean 工厂接口，IOC 中最核心的接口
+ * Bean Definition 注册表接口
  *
  * @author kay
  * @version v1.0
  */
-public interface BeanFactory {
+public interface BeanDefinitionTable extends Map<String, Class> {
 
     /**
-     * 根据 Bean 的名称获取 Bean 实例对象
+     * 将扫描出的对象信息，放入注册表
      *
-     * @param name 想获取 Bean 的名称（一定不能为空）
-     * @return 获取 bean 实例对象
+     * @param key   关键字
+     * @param value 包含 Class 信息的对象值
+     * @return Put 成功的 value 值
      */
-    Object getBean(String name);
+    Class put(String key, Class value);
 }

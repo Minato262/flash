@@ -13,24 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
-
-import java.util.Map;
 
 /**
- * Bean Definition 注册表接口
+ * Bean 工厂
  *
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionTable extends Map<String, Class> {
-
-    /**
-     * 将扫描出的对象信息，放入注册表
-     *
-     * @param key   关键字
-     * @param value 包含 Class 信息的对象值
-     * @return Put 成功的 value 值
-     */
-    Class put(String key, Class value);
-}
+package org.flashframework.beans.factory;

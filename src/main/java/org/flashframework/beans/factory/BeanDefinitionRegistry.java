@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.factory;
 
+import org.flashframework.beans.*;
 import org.flashframework.beans.annotation.Scope;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;

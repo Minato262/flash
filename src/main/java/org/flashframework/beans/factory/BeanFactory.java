@@ -13,15 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.context;
-
-import org.flashframework.beans.factory.BeanFactory;
+package org.flashframework.beans.factory;
 
 /**
- * 应用上下文环境接口，包装容器，为容器提供使用环境
+ * Bean 工厂接口，IOC 中最核心的接口
  *
  * @author kay
  * @version v1.0
  */
-public interface ApplicationContext extends BeanFactory {
+public interface BeanFactory {
+
+    /**
+     * 根据 Bean 的名称获取 Bean 实例对象
+     *
+     * @param name 想获取 Bean 的名称（一定不能为空）
+     * @return 获取 bean 实例对象
+     */
+    Object getBean(String name);
 }
