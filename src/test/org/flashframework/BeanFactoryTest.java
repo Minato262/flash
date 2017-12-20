@@ -21,6 +21,7 @@ import org.flashframework.core.factory.Ioc;
 import org.flashframework.core.factory.Ioc1;
 import org.flashframework.core.factory.Ioc2;
 import org.flashframework.core.factory.People;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -36,50 +37,48 @@ public class BeanFactoryTest extends BeforeTest {
     @Test
     public void test() {
         People people = (People) factory.getBean("2");
-        assert people != null;
-        System.out.println(people);
-        System.out.println(people.getAge());
-        System.out.println(people.getName());
+        Assert.assertNotNull(people);
+        Assert.assertNotNull(people.getAge());
+        Assert.assertNotNull(people.getName());
 
         people.setAge(1);
         people.setName("name");
 
         People people1 = (People) factory.getBean("2");
-        assert people1 != null;
-        System.out.println(people1);
-        System.out.println(people1.getAge());
-        System.out.println(people1.getName());
+        Assert.assertNotNull(people1);
+        Assert.assertNotNull(people1.getAge());
+        Assert.assertNotNull(people1.getName());
     }
 
     @Test
     public void test1() {
         BeanFactory factory = new ApplicationContextFactory();
         People people = (People) factory.getBean("people");
-        System.out.println(people);
-        System.out.println(people.getAge());
-        System.out.println(people.getName());
+        Assert.assertNotNull(people);
+        Assert.assertNotNull(people.getAge());
+        Assert.assertNotNull(people.getName());
 
         people.setAge(2);
 
         BeanFactory factory1 = new ApplicationContextFactory();
         People people1 = (People) factory1.getBean("people");
-        System.out.println(people1);
-        System.out.println(people1.getAge());
-        System.out.println(people1.getName());
+        Assert.assertNotNull(people1);
+        Assert.assertNotNull(people1.getAge());
+        Assert.assertNotNull(people1.getName());
     }
 
     @Test
     public void test2() throws ClassNotFoundException {
-        System.out.println(Arrays.toString(Class.forName("org.flashframework.core.factory.Ioc").getDeclaredFields()));
+        Assert.assertNotNull(Arrays.toString(Class.forName("org.flashframework.core.factory.Ioc").getDeclaredFields()));
     }
 
     @Test
     public void test3() {
         Ioc ioc = (Ioc) factory.getBean("ioc");
-        System.out.println(ioc);
-        System.out.println(ioc.getFather());
-        System.out.println(ioc.getPeople());
-        System.out.println(ioc.getUser());
+        Assert.assertNotNull(ioc);
+        Assert.assertNotNull(ioc.getFather());
+        Assert.assertNotNull(ioc.getPeople());
+        Assert.assertNotNull(ioc.getUser());
     }
 
     @Test
@@ -96,10 +95,10 @@ public class BeanFactoryTest extends BeforeTest {
     @Test
     public void test6() {
         Ioc1 ioc1 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc1);
-        System.out.println(ioc1.getFather());
-        System.out.println(ioc1.getPeople());
-        System.out.println(ioc1.getUser());
+        Assert.assertNotNull(ioc1);
+        Assert.assertNotNull(ioc1.getFather());
+        Assert.assertNotNull(ioc1.getPeople());
+        Assert.assertNotNull(ioc1.getUser());
     }
 
     @Test
@@ -122,70 +121,76 @@ public class BeanFactoryTest extends BeforeTest {
     @Test
     public void test8() {
         Ioc2 ioc21 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc21);
-        System.out.println(ioc21.getClass().getName());
+        Assert.assertNotNull(ioc21);
+        Assert.assertNotNull(ioc21.getClass().getName());
+
         Ioc2 ioc22 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc22);
-        System.out.println(ioc22.getClass().getName());
+        Assert.assertNotNull(ioc22);
+        Assert.assertNotNull(ioc22.getClass().getName());
+
         Ioc2 ioc23 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc23);
-        System.out.println(ioc23.getClass().getName());
+        Assert.assertNotNull(ioc23);
+        Assert.assertNotNull(ioc23.getClass().getName());
+
         Ioc2 ioc24 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc24);
-        System.out.println(ioc24.getClass().getName());
+        Assert.assertNotNull(ioc24);
+        Assert.assertNotNull(ioc24.getClass().getName());
+
         Ioc2 ioc25 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc25);
-        System.out.println(ioc25.getClass().getName());
+        Assert.assertNotNull(ioc25);
+        Assert.assertNotNull(ioc25.getClass().getName());
     }
 
     @Test
     public void test9() {
         Ioc1 ioc21 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc21);
-        System.out.println(ioc21.getClass().getName());
+        Assert.assertNotNull(ioc21);
+        Assert.assertNotNull(ioc21.getClass().getName());
+
         Ioc1 ioc22 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc22);
-        System.out.println(ioc22.getClass().getName());
+        Assert.assertNotNull(ioc22);
+        Assert.assertNotNull(ioc22.getClass().getName());
+
         Ioc1 ioc23 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc23);
-        System.out.println(ioc23.getClass().getName());
+        Assert.assertNotNull(ioc23);
+        Assert.assertNotNull(ioc23.getClass().getName());
+
         Ioc1 ioc24 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc24);
-        System.out.println(ioc24.getClass().getName());
+        Assert.assertNotNull(ioc24);
+        Assert.assertNotNull(ioc24.getClass().getName());
+
         Ioc1 ioc25 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc25);
-        System.out.println(ioc25.getClass().getName());
+        Assert.assertNotNull(ioc25);
+        Assert.assertNotNull(ioc25.getClass().getName());
     }
 
     @Test
     public void test10() {
         Ioc2 ioc2 = (Ioc2) factory.getBean("ioc2");
-        System.out.println(ioc2);
-        System.out.println(ioc2.getIoc1());
-        System.out.println(ioc2.getFather());
-        System.out.println(ioc2.getPeople());
-        System.out.println(ioc2.getUser());
-        System.out.println(ioc2.getIoc1().getIoc());
-        System.out.println(ioc2.getIoc1().getUser());
-        System.out.println(ioc2.getIoc1().getPeople());
-        System.out.println(ioc2.getIoc1().getFather());
+        Assert.assertNotNull(ioc2);
+        Assert.assertNotNull(ioc2.getIoc1());
+        Assert.assertNotNull(ioc2.getFather());
+        Assert.assertNotNull(ioc2.getPeople());
+        Assert.assertNotNull(ioc2.getUser());
+        Assert.assertNotNull(ioc2.getIoc1().getIoc());
+        Assert.assertNotNull(ioc2.getIoc1().getUser());
+        Assert.assertNotNull(ioc2.getIoc1().getPeople());
+        Assert.assertNotNull(ioc2.getIoc1().getFather());
     }
 
     @Test
     public void test11() {
         Ioc1 ioc1 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc1);
-        System.out.println(ioc1.getFather());
-        System.out.println(ioc1.getPeople());
-        System.out.println(ioc1.getUser());
-        System.out.println();
+        Assert.assertNotNull(ioc1);
+        Assert.assertNotNull(ioc1.getFather());
+        Assert.assertNotNull(ioc1.getPeople());
+        Assert.assertNotNull(ioc1.getUser());
 
         Ioc1 ioc2 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc2);
-        System.out.println(ioc2.getFather());
-        System.out.println(ioc2.getPeople());
-        System.out.println(ioc2.getUser());
-        System.out.println();
+        Assert.assertNotNull(ioc2);
+        Assert.assertNotNull(ioc2.getFather());
+        Assert.assertNotNull(ioc2.getPeople());
+        Assert.assertNotNull(ioc2.getUser());
 
         System.out.println(ioc1);
         System.out.println(ioc1.getFather());
@@ -200,9 +205,9 @@ public class BeanFactoryTest extends BeforeTest {
         System.out.println();
 
         Ioc1 ioc4 = (Ioc1) factory.getBean("ioc1");
-        System.out.println(ioc4);
-        System.out.println(ioc4.getFather());
-        System.out.println(ioc4.getPeople());
-        System.out.println(ioc4.getUser());
+        Assert.assertNotNull(ioc4);
+        Assert.assertNotNull(ioc4.getFather());
+        Assert.assertNotNull(ioc4.getPeople());
+        Assert.assertNotNull(ioc4.getUser());
     }
 }

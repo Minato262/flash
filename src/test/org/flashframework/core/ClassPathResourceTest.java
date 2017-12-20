@@ -19,6 +19,7 @@ import org.flashframework.BeforeTest;
 import org.flashframework.context.ApplicationContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.core.factory.Bean;
+import org.flashframework.util.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -38,10 +39,9 @@ public class ClassPathResourceTest extends BeforeTest {
         BeanFactory factory = new ApplicationContextFactory();
         for (Class<?> clazz : classes) {
             Bean people = (Bean) factory.getBean(clazz.getName());
-            assert people != null;
-            System.out.println(people);
-            System.out.println(people.getAge());
-            System.out.println(people.getName());
+            Assert.isNotNull(people);
+            Assert.isNotNull(people.getAge());
+            Assert.isNotNull(people.getName());
         }
     }
 }

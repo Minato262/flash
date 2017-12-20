@@ -20,6 +20,7 @@ import org.flashframework.beans.annotation.Repository;
 import org.flashframework.core.factory.Father;
 import org.flashframework.core.factory.People;
 import org.flashframework.core.factory.User;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -42,8 +43,8 @@ public class ApplicationContextFactoryTest extends BeforeTest {
     public void test() {
         ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory
                 .getBean("applicationContextFactoryTest");
-        System.out.println(test.father.getAge());
-        System.out.println(test.people.getAge());
-        System.out.println(test.user.getAge());
+        Assert.assertNotNull(test.father.getAge());
+        Assert.assertNotNull(test.people.getAge());
+        Assert.assertNotNull(test.user.getAge());
     }
 }

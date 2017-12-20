@@ -20,6 +20,7 @@ import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.core.factory.Ioc;
+import org.flashframework.util.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -47,7 +48,7 @@ public class BeanContainerTest extends BeforeTest {
         @Override
         public void run() {
             BeanContainer container = BeanContainerAware.getInstance();
-            System.out.println(container.get("ioc"));
+            Assert.isNotNull(container.get("ioc"));
         }
     }
 
@@ -55,10 +56,11 @@ public class BeanContainerTest extends BeforeTest {
     public void test1() {
         BeanContainer container = BeanContainerAware.getInstance();
         Ioc ioc = (Ioc) container.get("ioc");
-        System.out.println(ioc);
-        System.out.println(ioc.getFather());
-        System.out.println(ioc.getPeople());
-        System.out.println(ioc.getUser());
+        Assert.isNotNull(ioc);
+        Assert.isNotNull(ioc);
+        Assert.isNotNull(ioc.getFather());
+        Assert.isNotNull(ioc.getPeople());
+        Assert.isNotNull(ioc.getUser());
     }
 
     @Test
@@ -72,11 +74,11 @@ public class BeanContainerTest extends BeforeTest {
                 Autowired hasAnnotation = field.getAnnotation(Autowired.class);
                 if (hasAnnotation != null) {
                     Object obj = Class.forName(clazz.getName()).newInstance();
-                    System.out.println(field.getName());
-                    System.out.println(clazz);
-                    System.out.println(field.get(obj));
+                    Assert.isNotNull(field.getName());
+                    Assert.isNotNull(clazz);
+                    Assert.isNotNull(field.get(obj));
                     field.set(obj, factory.getBean(field.getName()));
-                    System.out.println(field.get(obj));
+                    Assert.isNotNull(field.get(obj));
                 }
             }
         }

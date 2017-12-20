@@ -30,12 +30,12 @@ public class PropertiesUtilsTest {
     @Test
     public void test() throws IOException {
         String packageName = LoadProperties.INSTANCE.load("packageName");
-        System.out.println(packageName);
+        Assert.isNotEmpty(packageName);
     }
 
     @Test
     public void test1() throws IOException {
         String containerModes = LoadProperties.INSTANCE.load("containerModes");
-        System.out.println(containerModes);
+        Assert.isNotEmpty(containerModes);
     }
 }
