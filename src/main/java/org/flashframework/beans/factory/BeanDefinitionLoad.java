@@ -15,7 +15,6 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanDefinitionConflictException;
 import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;

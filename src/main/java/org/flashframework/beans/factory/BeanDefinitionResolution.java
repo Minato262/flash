@@ -15,7 +15,6 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanDefinitionConflictException;
 import org.flashframework.beans.Resolution;
 import org.flashframework.core.Resource;
 import org.flashframework.util.Assert;

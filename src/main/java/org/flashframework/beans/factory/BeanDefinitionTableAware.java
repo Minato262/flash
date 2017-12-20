@@ -16,7 +16,6 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.Aware;
-import org.flashframework.beans.BeanDefinitionConflictException;
 
 import java.util.concurrent.ConcurrentHashMap;
 

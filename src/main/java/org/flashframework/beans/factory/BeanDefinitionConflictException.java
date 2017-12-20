@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.factory;
+
+import org.flashframework.beans.BeanException;
 
 /**
  * Bean Definition 冲突异常
