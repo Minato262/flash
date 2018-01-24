@@ -19,7 +19,6 @@ import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
-import org.flashframework.beans.factory.BeanDefinitionWrap;
 import org.flashframework.beans.util.BeanReflect;
 import org.flashframework.util.Assert;
 
