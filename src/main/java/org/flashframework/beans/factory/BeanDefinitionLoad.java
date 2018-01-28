@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.annotation.Controller;
+import org.flashframework.web.annotation.RestController;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
@@ -70,7 +70,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
             super.put(annotation1.value(), clazz);  // 存放 service 层对象
             return;
         }
-        Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
+        RestController annotation2 = (RestController) clazz.getAnnotation(RestController.class);
         if (annotation2 != null) {
             put(clazz);   // 存放 controller 层对象
             return;

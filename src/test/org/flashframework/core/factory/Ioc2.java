@@ -16,7 +16,7 @@
 package org.flashframework.core.factory;
 
 import org.flashframework.beans.annotation.Autowired;
-import org.flashframework.beans.annotation.Controller;
+import org.flashframework.web.annotation.RestController;
 import org.flashframework.context.ApplicationContext;
 import org.flashframework.context.ApplicationContextFactory;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import org.junit.Test;
  * @author kay
  * @version v1.0
  */
-@Controller
+@RestController
 public class Ioc2 {
 
     @Autowired
