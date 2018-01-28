@@ -17,8 +17,6 @@ package org.flashframework.util;
 
 import org.junit.Test;
 
-import java.io.IOException;
-
 /**
  * {@link LoadProperties} Test.
  *
@@ -28,13 +26,13 @@ import java.io.IOException;
 public class PropertiesUtilsTest {
 
     @Test
-    public void test() throws IOException {
+    public void test() {
         String packageName = LoadProperties.INSTANCE.load("packageName");
         Assert.isNotEmpty(packageName);
     }
 
     @Test
-    public void test1() throws IOException {
+    public void test1() {
         String containerModes = LoadProperties.INSTANCE.load("containerModes");
         Assert.isNotEmpty(containerModes);
     }

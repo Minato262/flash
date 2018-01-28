@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 核心 Servlet.
+ *
  * @author kay
  * @version v2.0
  */

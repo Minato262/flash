@@ -38,16 +38,12 @@ public class BeanFactoryTest extends BeforeTest {
     public void test() {
         People people = (People) factory.getBean("2");
         Assert.assertNotNull(people);
-        Assert.assertNotNull(people.getAge());
-        Assert.assertNotNull(people.getName());
 
         people.setAge(1);
         people.setName("name");
 
         People people1 = (People) factory.getBean("2");
         Assert.assertNotNull(people1);
-        Assert.assertNotNull(people1.getAge());
-        Assert.assertNotNull(people1.getName());
     }
 
     @Test
@@ -55,16 +51,12 @@ public class BeanFactoryTest extends BeforeTest {
         BeanFactory factory = new ApplicationContextFactory();
         People people = (People) factory.getBean("people");
         Assert.assertNotNull(people);
-        Assert.assertNotNull(people.getAge());
-        Assert.assertNotNull(people.getName());
 
         people.setAge(2);
 
         BeanFactory factory1 = new ApplicationContextFactory();
         People people1 = (People) factory1.getBean("people");
         Assert.assertNotNull(people1);
-        Assert.assertNotNull(people1.getAge());
-        Assert.assertNotNull(people1.getName());
     }
 
     @Test
@@ -79,12 +71,6 @@ public class BeanFactoryTest extends BeforeTest {
         Assert.assertNotNull(ioc.getFather());
         Assert.assertNotNull(ioc.getPeople());
         Assert.assertNotNull(ioc.getUser());
-    }
-
-    @Test
-    public void test4() throws ClassNotFoundException {
-        //Object object = ClassUtils.newInstance("Ioc");
-        //System.out.println(Arrays.toString(object.getClass().getDeclaredFields()));
     }
 
     @Test

@@ -17,6 +17,7 @@ package org.flashframework;
 
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.annotation.Repository;
+import org.flashframework.context.ApplicationContextFactory;
 import org.flashframework.core.factory.Father;
 import org.flashframework.core.factory.People;
 import org.flashframework.core.factory.User;
@@ -24,6 +25,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
+ * {@link ApplicationContextFactory} Test
+ *
  * @author kay
  * @version v1.0
  */
@@ -43,8 +46,8 @@ public class ApplicationContextFactoryTest extends BeforeTest {
     public void test() {
         ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory
                 .getBean("applicationContextFactoryTest");
-        Assert.assertNotNull(test.father.getAge());
-        Assert.assertNotNull(test.people.getAge());
-        Assert.assertNotNull(test.user.getAge());
+        Assert.assertNotNull(test.father);
+        Assert.assertNotNull(test.people);
+        Assert.assertNotNull(test.user);
     }
 }
