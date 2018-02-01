@@ -15,9 +15,15 @@
  */
 package org.flashframework.web.annotation;
 
+import java.lang.annotation.*;
+
 /**
  * @author kay
  * @version v2.0
  */
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
 public @interface RequestParam {
+    String value() default "";
 }
