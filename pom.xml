@@ -3,30 +3,71 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>flash-core</module>
+        <module>flash-context</module>
+        <module>flash-web</module>
+        <module>flash-beans</module>
+    </modules>
+
     <groupId>org.flashframework</groupId>
-    <artifactId>Flash Framework</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>flashframework</artifactId>
+    <packaging>pom</packaging>
     <version>2.0-SNAPSHOT</version>
 
-    <name>Flash Framework</name>
+    <name>flashframework</name>
     <url>http://maven.apache.org</url>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- flash framework -->
+            <dependency>
+                <groupId>org.flashframework</groupId>
+                <artifactId>flash-core</artifactId>
+                <version>2.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flashframework</groupId>
+                <artifactId>flash-beans</artifactId>
+                <version>2.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flashframework</groupId>
+                <artifactId>flash-context</artifactId>
+                <version>2.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flashframework</groupId>
+                <artifactId>flash-web</artifactId>
+                <version>2.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- servlet -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+
+            <!-- testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
-        <finalName>Flash Framework</finalName>
+        <finalName>flashframework</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
