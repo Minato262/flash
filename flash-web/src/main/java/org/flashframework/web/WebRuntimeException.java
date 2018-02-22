@@ -15,26 +15,34 @@
  */
 package org.flashframework.web;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.flashframework.NestedRuntimeException;
 
 /**
- * 核心 Servlet.
+ * Web 相关异常
+ * <p>
+ * 这是一个抽象异常类，它定义了任何与 Web 相关的异常的基础方法
+ * </p>
  *
  * @author kay
  * @version v2.0
  */
-public class DispatcherServlet extends FrameworkServlet {
+public abstract class WebRuntimeException extends NestedRuntimeException {
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        //
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public WebRuntimeException(String message) {
+        super(message);
     }
 
-    @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        //
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
+    public WebRuntimeException(Throwable cause) {
+        super(cause);
     }
 }

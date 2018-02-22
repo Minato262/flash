@@ -21,7 +21,7 @@ package org.flashframework.beans;
  * @author kay
  * @version v1.0
  */
-public class BeanCreateFailureException extends BeanException {
+public class BeanCreateFailureException extends BeanRuntimeException {
 
     /**
      * 带有堆栈异常信息的构造器

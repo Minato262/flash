@@ -16,7 +16,7 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.beans.*;
-import org.flashframework.beans.annotation.Scope;
+import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;

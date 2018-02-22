@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.annotation;
-
-import org.flashframework.beans.container.BeanContainerMode;
+package org.flashframework.beans.container;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

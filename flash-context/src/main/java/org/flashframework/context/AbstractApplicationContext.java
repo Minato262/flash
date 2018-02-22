@@ -60,7 +60,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution);
             beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
         }
-        catch (BeanException e) {
+        catch (BeanRuntimeException e) {
             beanDefinitionResolution.clear();  // 清空 Bean Definition 注册表
             container.clear();  // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);

@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.container;
 
-import org.flashframework.beans.BeanException;
+import org.flashframework.beans.BeanRuntimeException;
 
 /**
  * Bean 容器初始化失败异常
@@ -23,7 +23,7 @@ import org.flashframework.beans.BeanException;
  * @author kay
  * @version v1.0
  */
-public class BeanContainerInitFailureException extends BeanException {
+public class BeanContainerInitFailureException extends BeanRuntimeException {
 
     /**
      * 带有错误信息的构造器

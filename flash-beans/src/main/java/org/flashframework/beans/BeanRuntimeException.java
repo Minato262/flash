@@ -13,28 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web;
+package org.flashframework.beans;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.flashframework.NestedRuntimeException;
 
 /**
- * 核心 Servlet.
+ * Bean 相关异常
+ * <p>
+ * 这是一个抽象异常类，它定义了任何与 Bean 相关的异常的基础方法
+ * </p>
  *
  * @author kay
- * @version v2.0
+ * @version v1.0
  */
-public class DispatcherServlet extends FrameworkServlet {
+public abstract class BeanRuntimeException extends NestedRuntimeException {
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        //
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public BeanRuntimeException(String message) {
+        super(message);
     }
 
-    @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        //
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
+    public BeanRuntimeException(Throwable cause) {
+        super(cause);
     }
 }

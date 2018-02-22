@@ -16,7 +16,7 @@
 package org.flashframework.core.factory;
 
 import org.flashframework.beans.annotation.Autowired;
-import org.flashframework.beans.annotation.Scope;
+import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.annotation.Service;
 import org.flashframework.beans.container.BeanContainerMode;
 

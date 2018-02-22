@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanException;
+import org.flashframework.beans.BeanRuntimeException;
 
 /**
  * Bean Definition 冲突异常
@@ -23,7 +23,7 @@ import org.flashframework.beans.BeanException;
  * @author kay
  * @version v1.0
  */
-class BeanDefinitionConflictException extends BeanException {
+class BeanDefinitionConflictException extends BeanRuntimeException {
 
     /**
      * 带有错误信息的构造器
