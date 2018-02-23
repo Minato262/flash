@@ -15,7 +15,7 @@
  */
 
 /**
- *
+ * HTTP 相关类包
  *
  * @author kay
  * @version v2.0

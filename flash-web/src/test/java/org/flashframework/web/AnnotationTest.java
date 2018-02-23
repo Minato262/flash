@@ -15,9 +15,102 @@
  */
 package org.flashframework.web;
 
+import org.flashframework.web.annotation.RequestMapping;
+import org.flashframework.web.annotation.RequestParam;
+import org.flashframework.web.http.RequestMethod;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+
 /**
+ * {@link RequestMapping} 和 {@link RequestParam} 注解的测试类
+ *
  * @author kay
  * @version v2.0
  */
 public class AnnotationTest {
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void annotationTest() throws InvocationTargetException, IllegalAccessException {
+        Annotation annotationTest = new Annotation();
+        Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
+
+        RequestMapping annotation = clazz.getAnnotation(RequestMapping.class);
+        Assert.assertEquals(annotation.value(), "annotation");
+        Assert.assertEquals(annotation.method(), RequestMethod.GET);
+
+        Method[] methods = clazz.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(RequestMapping.class)) {
+                RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
+                System.out.println(requestMapping);
+            }
+
+            Parameter[] params = method.getParameters();
+            if (params.length != 0) {
+                method.invoke(annotationTest, 1L);
+            }
+
+            for (Parameter param : params) {
+                if (param.isAnnotationPresent(RequestParam.class)) {
+                    RequestParam requestParam = param.getAnnotation(RequestParam.class);
+                    System.out.println(param);
+                    System.out.println(requestParam);
+                }
+            }
+        }
+
+        System.out.println(annotationTest.getGetId());
+        System.out.println(annotationTest.getPostId());
+        System.out.println(annotationTest.getPutId());
+        System.out.println(annotationTest.getDeleteId());
+    }
+}
+
+@RequestMapping(value = "annotation")
+class Annotation {
+    private Long getId;
+    private Long postId;
+    private Long putId;
+    private Long deleteId;
+
+    public Long getGetId() {
+        return getId;
+    }
+
+    @RequestMapping(value = "get", method = RequestMethod.GET)
+    public void setGetId(@RequestParam("getId") Long getId) {
+        this.getId = getId;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    @RequestMapping(value = "post", method = RequestMethod.POST)
+    public void setPostId(@RequestParam("postId") Long postId) {
+        this.postId = postId;
+    }
+
+    public Long getPutId() {
+        return putId;
+    }
+
+    @RequestMapping(value = "put", method = RequestMethod.PUT)
+    public void setPutId(@RequestParam("putId") Long putId) {
+        this.putId = putId;
+    }
+
+    public Long getDeleteId() {
+        return deleteId;
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.DELETE)
+    public void setDeleteId(@RequestParam("deleteId") Long deleteId) {
+        this.deleteId = deleteId;
+    }
 }

@@ -24,7 +24,7 @@ import java.lang.annotation.*;
  * @author kay
  * @version v2.0
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RequestParam {

@@ -41,7 +41,7 @@ public @interface RequestMapping {
     /**
      * url 映射的请求方式
      *
-     * @return 请求方式
+     * @return 请求方式 默认为 GET 请求
      */
-    RequestMethod method();
+    RequestMethod method() default RequestMethod.GET;
 }

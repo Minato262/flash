@@ -15,6 +15,8 @@
  */
 
 /**
+ * web 过滤器类包
+ *
  * @author kay
  * @version v2.0
  */

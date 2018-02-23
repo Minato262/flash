@@ -15,11 +15,9 @@
  */
 
 /**
- * web Servlet 相关类包
- *
- * <p>Servlet 是在服务器上运行的小程序。它也是 Java Web 的基础</p>
+ * web 拦截器相关类包
  *
  * @author kay
  * @version v2.0
  */
-package org.flashframework.web.servlet;
+package org.flashframework.web.handler;
