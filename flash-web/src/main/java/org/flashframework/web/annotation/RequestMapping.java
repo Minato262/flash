@@ -15,11 +15,13 @@
  */
 package org.flashframework.web.annotation;
 
+import org.flashframework.web.http.RequestMethod;
+
 import java.lang.annotation.*;
 
 /**
  * {@link RequestMapping} 会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。
- * 注解可以在控制器类的级别和/或其中的方法的级别上使用
+ * 同时也可以在控制器类的级别和/或其中的方法的级别上使用
  *
  * @author kay
  * @version v2.0
@@ -29,5 +31,17 @@ import java.lang.annotation.*;
 @Documented
 public @interface RequestMapping {
 
+    /**
+     * 标识控制来进行请求url向物理视图的映射
+     *
+     * @return 标识控制来进行请求url 默认为空
+     */
     String value() default "";
+
+    /**
+     * url 映射的请求方式
+     *
+     * @return 请求方式
+     */
+    RequestMethod method();
 }

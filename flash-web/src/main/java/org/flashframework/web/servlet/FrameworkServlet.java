@@ -13,26 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web;
+package org.flashframework.web.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 核心 Servlet.
+ * 框架核心 Servlet
  *
  * @author kay
  * @version v2.0
  */
-public class DispatcherServlet extends FrameworkServlet {
+public abstract class FrameworkServlet extends HttpServlet {
 
+    /**
+     *
+     *
+     * @param config
+     * @throws ServletException
+     */
     @Override
     public void init(ServletConfig config) throws ServletException {
         //
     }
 
+    /**
+     *
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     */
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         //

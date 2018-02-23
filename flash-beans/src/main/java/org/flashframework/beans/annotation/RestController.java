@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * RestController 注解，标记对象为 Bean 对象为 controller 层对象
+ * {@link RestController} 注解，标记对象为 Bean 对象为 controller 层对象
  *
  * @author kay
  * @version v2.0

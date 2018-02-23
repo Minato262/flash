@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Resource 注解，标记对象为 Bean 对象
+ * {@link Resource} 注解，标记对象为 Bean 对象
  *
  * @author kay
  * @version v2.0

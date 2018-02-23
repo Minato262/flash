@@ -13,29 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
- * 框架核心 Servlet
+ * Servlet 是在服务器上运行的小程序。它也是 Java Web 的基础
  *
  * @author kay
  * @version v2.0
  */
-public abstract class FrameworkServlet extends HttpServlet {
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        //
-    }
-
-    @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        //
-    }
-}
+package org.flashframework.web.servlet;

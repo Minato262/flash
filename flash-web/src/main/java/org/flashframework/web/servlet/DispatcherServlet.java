@@ -13,26 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.annotation;
+package org.flashframework.web.servlet;
 
-import java.lang.annotation.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * {@link RequestParam} 注解配合 {@link RequestMapping} 注解一起使用，可以将请求
- * 的参数同处理方法的参数绑定在一起。
+ * 核心 Servlet.
  *
  * @author kay
  * @version v2.0
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface RequestParam {
+public class DispatcherServlet extends FrameworkServlet {
 
     /**
-     * 设置请求参数
      *
-     * @return 请求参数 默认为空
+     *
+     * @param config
+     * @throws ServletException
      */
-    String value() default "";
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        //
+    }
+
+    /**
+     *
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     */
+    @Override
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        //
+    }
 }

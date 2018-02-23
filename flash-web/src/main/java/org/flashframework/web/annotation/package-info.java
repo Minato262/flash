@@ -15,6 +15,8 @@
  */
 
 /**
+ * web 相关的注解类
+ *
  * @author kay
  * @version v2.0
  */

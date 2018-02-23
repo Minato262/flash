@@ -18,8 +18,8 @@ package org.flashframework.beans.annotation;
 import java.lang.annotation.*;
 
 /**
- * Autowired 注释，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作
- * 通过
+ * {@link Autowired} 注释，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的
+ * 工作通过
  *
  * @author kay
  * @version v1.0
