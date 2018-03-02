@@ -13,26 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.annotation;
-
-import java.lang.annotation.*;
+package org.flashframework.web.fiter;
 
 /**
- * {@link RequestParam} 注解配合 {@link RequestMapping} 注解一起使用，可以将请求
- * 的参数同处理方法的参数绑定在一起。
+ * 框架基础拦截器
  *
  * @author kay
  * @version v2.0
  */
-@Target({ElementType.PARAMETER})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface RequestParam {
-
-    /**
-     * 设置请求参数
-     *
-     * @return 请求参数 默认为空
-     */
-    String value() default "";
+public abstract class FrameworkFiter {
 }

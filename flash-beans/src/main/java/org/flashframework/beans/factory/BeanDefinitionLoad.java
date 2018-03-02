@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.annotation.RestController;
+import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
@@ -62,23 +62,23 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
         Assert.isNotNull(clazz);
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            super.put(annotation.value(), clazz);   // 存放 dao 层对象
+            super.put(annotation.value(), clazz);
             return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            super.put(annotation1.value(), clazz);  // 存放 service 层对象
+            super.put(annotation1.value(), clazz);
             return;
         }
-        RestController annotation2 = (RestController) clazz.getAnnotation(RestController.class);
+        Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
         if (annotation2 != null) {
-            put(clazz);   // 存放 controller 层对象
+            put(clazz);
             return;
         }
 
         Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);
         if (annotation3 != null) {
-            super.put(annotation3.value(), clazz);   // 存放标记对象，可以是任意层
+            super.put(annotation3.value(), clazz);
         }
     }
 }

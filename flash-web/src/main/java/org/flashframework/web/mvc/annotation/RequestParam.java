@@ -13,20 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.annotation;
+package org.flashframework.web.mvc.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
- * {@link RestController} 注解，标记对象为 Bean 对象为 controller 层对象
+ * {@link RequestParam} 注解配合 {@link RequestMapping} 注解一起使用，可以将请求
+ * 的参数同处理方法的参数绑定在一起。
  *
  * @author kay
  * @version v2.0
  */
-@Target(ElementType.TYPE)
+@Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RestController {
+@Documented
+public @interface RequestParam {
+
+    /**
+     * 设置请求参数
+     *
+     * @return 请求参数 默认为空
+     */
+    String value() default "";
 }

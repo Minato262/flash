@@ -20,4 +20,4 @@
  * @author kay
  * @version v2.0
  */
-package org.flashframework.web.annotation;
+package org.flashframework.web.mvc.annotation;

@@ -15,8 +15,8 @@
  */
 package org.flashframework.web;
 
-import org.flashframework.web.annotation.RequestMapping;
-import org.flashframework.web.annotation.RequestParam;
+import org.flashframework.web.mvc.annotation.RequestMapping;
+import org.flashframework.web.mvc.annotation.RequestParam;
 import org.flashframework.web.http.RequestMethod;
 import org.junit.Assert;
 import org.junit.Test;

@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.annotation;
-
-import org.flashframework.web.http.RequestMethod;
+package org.flashframework.web.mvc.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * {@link RequestMapping} 会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。
- * 同时也可以在控制器类的级别和/或其中的方法的级别上使用
+ * {@link RequestHeader}
  *
  * @author kay
  * @version v2.0
@@ -29,19 +26,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface RequestMapping {
-
-    /**
-     * 标识控制来进行请求url向物理视图的映射
-     *
-     * @return 标识控制来进行请求url 默认为空
-     */
-    String value() default "";
-
-    /**
-     * url 映射的请求方式
-     *
-     * @return 请求方式 默认为 GET 请求
-     */
-    RequestMethod method() default RequestMethod.GET;
+public @interface RequestHeader {
 }
