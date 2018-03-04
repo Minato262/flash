@@ -15,13 +15,18 @@
  */
 package org.flashframework.web.mvc.annotation;
 
+import org.flashframework.beans.annotation.Controller;
+
 import java.lang.annotation.*;
 
 /**
- * {@link ResponseBody}
+ * {@link ResponseBody} 注解的作用是将 {@link Controller} 的方法返回的对象通过适
+ * 当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据
+ * 或者是XML.
  *
  * @author kay
  * @version v2.0
+ * @see Controller
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

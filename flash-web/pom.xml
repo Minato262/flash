@@ -37,6 +37,14 @@
             <groupId>org.flashframework</groupId>
             <artifactId>flash-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-context</artifactId>
+        </dependency>
 
         <!-- servlet -->
         <dependency>

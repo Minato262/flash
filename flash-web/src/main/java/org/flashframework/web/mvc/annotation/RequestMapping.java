@@ -36,14 +36,14 @@ public @interface RequestMapping {
      *
      * @return 标识控制来进行请求url 默认为空
      */
-    String value() default "";
+    String[] value() default "";
 
     /**
      * url 映射的请求方式
      *
      * @return 请求方式 默认为 GET 请求
      */
-    RequestMethod method() default RequestMethod.GET;
+    RequestMethod[] method() default {};
 
     /**
      * HTTP 请求 消息头

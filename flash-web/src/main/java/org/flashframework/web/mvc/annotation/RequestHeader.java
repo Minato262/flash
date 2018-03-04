@@ -18,7 +18,7 @@ package org.flashframework.web.mvc.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link RequestHeader}
+ * {@link RequestHeader} 注释，用于映射控制器参数以请求头值
  *
  * @author kay
  * @version v2.0

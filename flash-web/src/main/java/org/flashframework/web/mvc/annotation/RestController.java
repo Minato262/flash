@@ -15,13 +15,18 @@
  */
 package org.flashframework.web.mvc.annotation;
 
+import org.flashframework.beans.annotation.Controller;
+
 import java.lang.annotation.*;
 
 /**
- * {@link RestController} 注解，标记对象为 Bean 对象为 controller 层对象
+ * {@link RestController} 注解，相当于 {@link ResponseBody} ＋ {@link Controller}
+ * 合在一起的作用
  *
  * @author kay
  * @version v2.0
+ * @see Controller
+ * @see ResponseBody
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

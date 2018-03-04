@@ -16,6 +16,8 @@
 package org.flashframework.web.mvc.handler;
 
 /**
+ * 处理适配器，用于调用具体的方法对用户发来的请求来进行处理
+ *
  * @author kay
  * @version v2.0
  */

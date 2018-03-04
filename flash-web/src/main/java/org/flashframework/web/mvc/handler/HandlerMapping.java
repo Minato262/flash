@@ -15,9 +15,14 @@
  */
 package org.flashframework.web.mvc.handler;
 
+import org.flashframework.beans.annotation.Controller;
+
 /**
+ * 映射处理器，根据http请求选择合适的 controller
+ *
  * @author kay
  * @version v2.0
+ * @see Controller
  */
 public interface HandlerMapping {
 }

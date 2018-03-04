@@ -23,6 +23,7 @@ import java.lang.annotation.*;
  *
  * @author kay
  * @version v2.0
+ * @see RequestMapping
  */
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -35,4 +36,11 @@ public @interface RequestParam {
      * @return 请求参数 默认为空
      */
     String value() default "";
+
+    /**
+     * 是否是必要请求参数
+     *
+     * @return 是否是请求参数
+     */
+    boolean request() default false;
 }
