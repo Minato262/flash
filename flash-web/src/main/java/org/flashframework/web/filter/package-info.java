@@ -20,4 +20,4 @@
  * @author kay
  * @version v2.0
  */
-package org.flashframework.web.fiter;
+package org.flashframework.web.filter;

@@ -37,7 +37,7 @@ public class AnnotationTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    public void annotationTest() throws InvocationTargetException, IllegalAccessException {
+    public void annotation() throws InvocationTargetException, IllegalAccessException {
         Annotation annotationTest = new Annotation();
         Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
 
@@ -70,6 +70,7 @@ public class AnnotationTest {
         System.out.println(annotationTest.getPostId());
         System.out.println(annotationTest.getPutId());
         System.out.println(annotationTest.getDeleteId());
+        System.out.println(annotationTest.getHandler());
     }
 }
 
@@ -80,7 +81,7 @@ class Annotation {
     private Long putId;
     private Long deleteId;
 
-    private String handler;
+    private Long handler;
 
     public Long getGetId() {
         return getId;
@@ -120,12 +121,12 @@ class Annotation {
 
     @RequestHeader
     @ResponseBody
-    public String getHandler() {
+    public Long getHandler() {
         return handler;
     }
 
     @RequestMapping(value = "post", method = {RequestMethod.POST}, headers = "")
-    public void setHandler(String handler) {
+    public void setHandler(Long handler) {
         this.handler = handler;
     }
 }

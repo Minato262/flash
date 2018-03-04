@@ -55,7 +55,7 @@ public @interface RequestMapping {
     /**
      * 用于指定返回值类型
      *
-     * @return  指定返回值类型
+     * @return 指定返回值类型
      */
     String produces() default "";
 }

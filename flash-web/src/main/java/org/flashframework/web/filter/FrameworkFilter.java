@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.fiter;
+package org.flashframework.web.filter;
 
 /**
- * 框架基础拦截器
+ * 框架基础过滤器
  *
  * @author kay
  * @version v2.0
  */
-public abstract class FrameworkFiter {
+public abstract class FrameworkFilter {
 }
