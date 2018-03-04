@@ -15,8 +15,7 @@
  */
 
 /**
- * web Servlet 相关模块
- *
+ * web Servlet 相关模块:
  * <p>Servlet 是在服务器上运行的小程序。它也是 Java Web 的基础</p>
  *
  * @author kay
