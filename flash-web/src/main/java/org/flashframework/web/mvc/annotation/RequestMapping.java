@@ -36,7 +36,7 @@ public @interface RequestMapping {
      *
      * @return 标识控制来进行请求url 默认为空
      */
-    String[] value() default "";
+    String value() default "";
 
     /**
      * url 映射的请求方式
@@ -51,4 +51,11 @@ public @interface RequestMapping {
      * @return 请求头
      */
     String[] headers() default {};
+
+    /**
+     * 用于指定返回值类型
+     *
+     * @return  指定返回值类型
+     */
+    String produces() default "";
 }

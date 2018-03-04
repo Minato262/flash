@@ -15,9 +15,11 @@
  */
 package org.flashframework.web;
 
+import org.flashframework.web.mvc.annotation.RequestHeader;
 import org.flashframework.web.mvc.annotation.RequestMapping;
 import org.flashframework.web.mvc.annotation.RequestParam;
 import org.flashframework.web.http.RequestMethod;
+import org.flashframework.web.mvc.annotation.ResponseBody;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,14 +42,15 @@ public class AnnotationTest {
         Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
 
         RequestMapping annotation = clazz.getAnnotation(RequestMapping.class);
+        Assert.assertNotEquals(annotation.value(), null);
         Assert.assertEquals(annotation.value(), "annotation");
-        Assert.assertEquals(annotation.method(), RequestMethod.GET);
+        Assert.assertNotEquals(annotation.method(), null);
 
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             if (method.isAnnotationPresent(RequestMapping.class)) {
                 RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
-                System.out.println(requestMapping);
+                Assert.assertNotEquals(requestMapping, null);
             }
 
             Parameter[] params = method.getParameters();
@@ -58,8 +61,7 @@ public class AnnotationTest {
             for (Parameter param : params) {
                 if (param.isAnnotationPresent(RequestParam.class)) {
                     RequestParam requestParam = param.getAnnotation(RequestParam.class);
-                    System.out.println(param);
-                    System.out.println(requestParam);
+                    Assert.assertNotEquals(requestParam, null);
                 }
             }
         }
@@ -78,11 +80,13 @@ class Annotation {
     private Long putId;
     private Long deleteId;
 
+    private String handler;
+
     public Long getGetId() {
         return getId;
     }
 
-    @RequestMapping(value = "get", method = RequestMethod.GET)
+    @RequestMapping(value = "get", method = {RequestMethod.GET})
     public void setGetId(@RequestParam("getId") Long getId) {
         this.getId = getId;
     }
@@ -91,7 +95,7 @@ class Annotation {
         return postId;
     }
 
-    @RequestMapping(value = "post", method = RequestMethod.POST)
+    @RequestMapping(value = "post", method = {RequestMethod.POST})
     public void setPostId(@RequestParam("postId") Long postId) {
         this.postId = postId;
     }
@@ -100,7 +104,7 @@ class Annotation {
         return putId;
     }
 
-    @RequestMapping(value = "put", method = RequestMethod.PUT)
+    @RequestMapping(value = "put", method = {RequestMethod.PUT})
     public void setPutId(@RequestParam("putId") Long putId) {
         this.putId = putId;
     }
@@ -109,8 +113,19 @@ class Annotation {
         return deleteId;
     }
 
-    @RequestMapping(value = "delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "delete", method = {RequestMethod.DELETE})
     public void setDeleteId(@RequestParam("deleteId") Long deleteId) {
         this.deleteId = deleteId;
+    }
+
+    @RequestHeader
+    @ResponseBody
+    public String getHandler() {
+        return handler;
+    }
+
+    @RequestMapping(value = "post", method = {RequestMethod.POST}, headers = "")
+    public void setHandler(String handler) {
+        this.handler = handler;
     }
 }
