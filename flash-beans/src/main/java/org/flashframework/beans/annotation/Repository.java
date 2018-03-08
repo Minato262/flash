@@ -30,5 +30,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Repository {
 
+    /**
+     * 标记对象名称
+     *
+     * @return 标记的 Bean 名称
+     */
     String value() default "";
 }

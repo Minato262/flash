@@ -30,5 +30,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scope {
 
+    /**
+     * 标记 controller Bean 对象，单例还是多例模式
+     *
+     * @return 默认单例模式
+     */
     BeanContainerMode value() default BeanContainerMode.SINGLETON;
 }
