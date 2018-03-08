@@ -15,7 +15,7 @@
  */
 
 /**
- * Bean 工厂
+ * Bean 工厂模块
  *
  * @author kay
  * @version v1.0

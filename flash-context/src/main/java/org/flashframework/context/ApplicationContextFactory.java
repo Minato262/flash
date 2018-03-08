@@ -16,6 +16,8 @@
 package org.flashframework.context;
 
 import org.flashframework.beans.BeanCreateFailureException;
+import org.flashframework.beans.container.BeanContainer;
+import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.factory.BeanReflectAutowired;
 import org.flashframework.util.Assert;
 
@@ -27,11 +29,15 @@ import org.flashframework.util.Assert;
  */
 public class ApplicationContextFactory extends AbstractApplicationContext implements ApplicationContext {
 
+    /** Bean 容器 */
+    private BeanContainer container = BeanContainerAware.getInstance();
+
     /**
      * 默认构造器
      */
     public ApplicationContextFactory() {
         super();
+        init(container);
     }
 
     /**

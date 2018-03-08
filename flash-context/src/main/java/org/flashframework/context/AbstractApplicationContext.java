@@ -26,6 +26,7 @@ import org.flashframework.beans.*;
 
 /**
  * 应用上下环境抽象类
+ * <p>初始化上下文，开启容器</p>
  *
  * @author kay
  * @version v1.0
@@ -37,15 +38,13 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
 
     /** Bean 容器 */
-    BeanContainer container = BeanContainerAware.getInstance();
+    private BeanContainer container;
 
     /**
      * 默认构造器
      */
     AbstractApplicationContext() {
-        if (container.isEmpty()) {
-            init();
-        }
+        //
     }
 
     /**
@@ -64,6 +63,18 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             beanDefinitionResolution.clear();  // 清空 Bean Definition 注册表
             container.clear();  // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);
+        }
+    }
+
+    /**
+     * 初始化上下文环境
+     *
+     * @param container Bean 容器
+     */
+    protected void init(BeanContainer container) {
+        if (container.isEmpty()) {
+            this.container = container;
+            init();
         }
     }
 }
