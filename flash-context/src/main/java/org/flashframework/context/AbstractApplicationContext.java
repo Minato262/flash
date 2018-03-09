@@ -16,13 +16,13 @@
 package org.flashframework.context;
 
 import org.flashframework.beans.container.BeanContainer;
-import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
 import org.flashframework.core.ClassPathResource;
 import org.flashframework.core.Resource;
 import org.flashframework.beans.*;
+import org.flashframework.util.Assert;
 
 /**
  * 应用上下环境抽象类
@@ -70,8 +70,10 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * 初始化上下文环境
      *
      * @param container Bean 容器
+     * @throws IllegalArgumentException 如果字符串为null
      */
     protected void init(BeanContainer container) {
+        Assert.isNotNull(container);
         if (container.isEmpty()) {
             this.container = container;
             init();

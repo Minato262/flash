@@ -29,12 +29,12 @@ package org.flashframework.beans.container;
 public enum BeanContainerMode {
 
     /**
-     * 单例模式，一个应用只能有一个实例
+     * 单例模式，一个Bean 只能拥有有一个实例
      */
     SINGLETON(),
 
     /**
-     * 原型模式，每次调用时调用多个实例
+     * 原型模式，每次调用时会新建一个实例
      */
     PROTOTYPE()
 }

@@ -15,11 +15,13 @@
  */
 package org.flashframework.web.filter;
 
+import javax.servlet.Filter;
+
 /**
  * 框架基础过滤器
  *
  * @author kay
  * @version v2.0
  */
-public abstract class FrameworkFilter {
+public abstract class FrameworkFilter implements Filter {
 }

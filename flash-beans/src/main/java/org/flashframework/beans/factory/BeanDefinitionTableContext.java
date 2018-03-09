@@ -15,8 +15,6 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.util.Assert;
-
 /**
  * 这是一个抽象类，主要存放 Bean Definition 注册表相关的操作
  *
@@ -31,7 +29,7 @@ public abstract class BeanDefinitionTableContext {
     /**
      * 默认构造器
      */
-    BeanDefinitionTableContext() {
+    public BeanDefinitionTableContext() {
         //
     }
 
@@ -40,18 +38,16 @@ public abstract class BeanDefinitionTableContext {
      *
      * @param key   注册表 key
      * @param clazz 注册对象内容
-     * @throws IllegalArgumentException        如果字符串为空
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
-    void put(String key, Class clazz) {
-        Assert.isNotEmpty(key);
+    protected void put(String key, Class clazz) {
         table.put(key, clazz);
     }
 
     /**
      * 清理注册表
      */
-    protected void clear() {
+    public void clear() {
         table.clear();
     }
 }

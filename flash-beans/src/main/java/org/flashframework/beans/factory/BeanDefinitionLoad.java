@@ -33,7 +33,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
     /**
      * 默认构造器
      */
-    BeanDefinitionLoad() {
+    public BeanDefinitionLoad() {
         //
     }
 
@@ -44,10 +44,23 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
     private void put(Class clazz) {
-        // 类注解载入 Bean 容器，容器会自动载入类名作为 key
-        // Bean 会作为 key 的关键字，会使用左驼峰命名
-        String lowerCase = StringUtils.getLowerCase(clazz.getName());
-        String key = StringUtils.toLowerCaseFirstOne(lowerCase);
+        put(null, clazz);
+    }
+
+    /**
+     * 放入 Bean Definition 清单中
+     *
+     * @param key   注册关键字
+     * @param clazz 注册对象内容
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     */
+    protected void put(String key, Class clazz) {
+        if (StringUtils.isEmpty(key)) {
+            // 类注解载入 Bean 容器，容器会自动载入类名作为 key
+            // Bean 会作为 key 的关键字，会使用左驼峰命名
+            String lowerCase = StringUtils.getLowerCase(clazz.getName());
+            key = StringUtils.toLowerCaseFirstOne(lowerCase);
+        }
         super.put(key, clazz);
     }
 
@@ -62,12 +75,12 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
         Assert.isNotNull(clazz);
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            super.put(annotation.value(), clazz);
+            put(annotation.value(), clazz);
             return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            super.put(annotation1.value(), clazz);
+            put(annotation1.value(), clazz);
             return;
         }
         Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
@@ -78,7 +91,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
 
         Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);
         if (annotation3 != null) {
-            super.put(annotation3.value(), clazz);
+            put(annotation3.value(), clazz);
         }
     }
 }
