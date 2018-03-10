@@ -27,9 +27,14 @@
         <servlet.version>3.1.0</servlet.version>
         <junit.version>4.12</junit.version>
 
-        <!-- plugins -->
+        <!-- jvm -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- plugins -->
+        <compiler.version>3.3</compiler.version>
+        <install.version>2.5.2</install.version>
+        <surefire.version>2.20.1</surefire.version>
     </properties>
 
     <dependencyManagement>
@@ -72,14 +77,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.3</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>flashframework</finalName>
         <plugins>
@@ -90,12 +87,12 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
-                <version>3.3</version>
+                <version>${compiler.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
+                <version>${install.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,7 +100,7 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
-                <version>2.20.1</version>
+                <version>${surefire.version}</version>
             </plugin>
         </plugins>
     </build>
