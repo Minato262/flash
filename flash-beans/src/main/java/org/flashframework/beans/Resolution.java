@@ -15,22 +15,19 @@
  */
 package org.flashframework.beans;
 
+import org.flashframework.beans.factory.BeanDefinitionAware;
+
 /**
  * Bean Definition 解析接口
  *
  * @author kay
  * @version v1.0
  */
-public interface Resolution {
+public interface Resolution extends BeanDefinitionAware {
 
     /**
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
      * 有 Bean
      */
     void load();
-
-    /**
-     * 清理 Bean Definition 注册表
-     */
-    void clear();
 }

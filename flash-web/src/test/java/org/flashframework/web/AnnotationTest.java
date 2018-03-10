@@ -15,11 +15,8 @@
  */
 package org.flashframework.web;
 
-import org.flashframework.web.mvc.annotation.RequestHeader;
-import org.flashframework.web.mvc.annotation.RequestMapping;
-import org.flashframework.web.mvc.annotation.RequestParam;
+import org.flashframework.web.mvc.annotation.*;
 import org.flashframework.web.http.RequestMethod;
-import org.flashframework.web.mvc.annotation.ResponseBody;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -51,6 +48,17 @@ public class AnnotationTest {
             if (method.isAnnotationPresent(RequestMapping.class)) {
                 RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
                 Assert.assertNotEquals(requestMapping, null);
+
+                Assert.assertNotEquals(requestMapping.value(), null);
+                Assert.assertNotEquals(requestMapping.method(), null);
+                Assert.assertNotEquals(requestMapping.params(), null);
+                Assert.assertNotEquals(requestMapping.headers(), null);
+                Assert.assertNotEquals(requestMapping.consumes(), null);
+                Assert.assertNotEquals(requestMapping.produces(), null);
+            }
+            if (method.isAnnotationPresent(ResponseBody.class)) {
+                ResponseBody responseBody = method.getAnnotation(ResponseBody.class);
+                Assert.assertNotEquals(responseBody, null);
             }
 
             Parameter[] params = method.getParameters();
@@ -74,6 +82,7 @@ public class AnnotationTest {
     }
 }
 
+@RestController
 @RequestMapping(value = "annotation")
 class Annotation {
     private Long getId;
@@ -88,6 +97,7 @@ class Annotation {
     }
 
     @RequestMapping(value = "get", method = {RequestMethod.GET})
+    @ResponseBody
     public void setGetId(@RequestParam("getId") Long getId) {
         this.getId = getId;
     }
@@ -97,6 +107,7 @@ class Annotation {
     }
 
     @RequestMapping(value = "post", method = {RequestMethod.POST})
+    @ResponseBody
     public void setPostId(@RequestParam("postId") Long postId) {
         this.postId = postId;
     }
@@ -106,6 +117,7 @@ class Annotation {
     }
 
     @RequestMapping(value = "put", method = {RequestMethod.PUT})
+    @ResponseBody
     public void setPutId(@RequestParam("putId") Long putId) {
         this.putId = putId;
     }
@@ -115,6 +127,7 @@ class Annotation {
     }
 
     @RequestMapping(value = "delete", method = {RequestMethod.DELETE})
+    @ResponseBody
     public void setDeleteId(@RequestParam("deleteId") Long deleteId) {
         this.deleteId = deleteId;
     }
@@ -126,6 +139,7 @@ class Annotation {
     }
 
     @RequestMapping(value = "post", method = {RequestMethod.POST}, headers = "")
+    @ResponseBody
     public void setHandler(Long handler) {
         this.handler = handler;
     }

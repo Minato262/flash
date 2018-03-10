@@ -24,9 +24,9 @@ import java.lang.annotation.*;
  * @author kay
  * @version v1.0
  */
-@Documented
-@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.FIELD})
+@Documented
+@Inherited
 public @interface Autowired {
 }

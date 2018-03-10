@@ -15,10 +15,7 @@
  */
 package org.flashframework.beans.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * {@link Repository} 注解，标记对象为 Bean 对象为 dao 层或者其他层对象
@@ -28,6 +25,8 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
 public @interface Repository {
 
     /**

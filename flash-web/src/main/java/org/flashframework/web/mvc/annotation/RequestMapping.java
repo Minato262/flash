@@ -29,6 +29,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Inherited
 public @interface RequestMapping {
 
     /**
@@ -53,9 +54,24 @@ public @interface RequestMapping {
     String[] headers() default {};
 
     /**
-     * 用于指定返回值类型
+     * 指定request中必须包含某些参数值是，才让该方法处理。
+     *
+     * @return 指定request中必须包含某些参数值
+     */
+    String[] params() default {};
+
+    /**
+     * 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回
      *
      * @return 指定返回值类型
      */
-    String produces() default "";
+    String[] produces() default {};
+
+    /**
+     * 指定处理请求的提交内容类型（Content-Type）
+     * <p>eg: application/json, text/html;</p>
+     *
+     * @return 指定处理请求的提交内容类型
+     */
+    String[] consumes() default {};
 }

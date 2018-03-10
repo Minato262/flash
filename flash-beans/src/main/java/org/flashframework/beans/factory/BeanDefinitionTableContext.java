@@ -21,7 +21,7 @@ package org.flashframework.beans.factory;
  * @author kay
  * @version v1.0
  */
-public abstract class BeanDefinitionTableContext {
+public abstract class BeanDefinitionTableContext implements BeanDefinitionAware {
 
     /** Bean Definition 注册表  */
     private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
@@ -47,6 +47,7 @@ public abstract class BeanDefinitionTableContext {
     /**
      * 清理注册表
      */
+    @Override
     public void clear() {
         table.clear();
     }
