@@ -15,9 +15,9 @@
  */
 
 /**
- * HTTP 相关模块
+ * HTTP 模块
  *
  * @author kay
  * @version v2.0
  */
-package org.flashframework.web.http;
+package org.flashframework.http;

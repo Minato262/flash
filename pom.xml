@@ -8,6 +8,7 @@
         <module>flash-context</module>
         <module>flash-web</module>
         <module>flash-beans</module>
+        <module>flash-http</module>
     </modules>
 
     <groupId>org.flashframework</groupId>
@@ -53,6 +54,11 @@
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-context</artifactId>
+                <version>${flash.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flashframework</groupId>
+                <artifactId>flash-http</artifactId>
                 <version>${flash.version}</version>
             </dependency>
             <dependency>

@@ -15,6 +15,7 @@
     <name>flash-context</name>
 
     <dependencies>
+        <!-- flash framework -->
         <dependency>
             <groupId>org.flashframework</groupId>
             <artifactId>flash-beans</artifactId>

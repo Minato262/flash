@@ -10,14 +10,13 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>flash-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>flash-core</name>
+    <name>flash-http</name>
+    <artifactId>flash-http</artifactId>
 
     <build>
-        <finalName>flash-core</finalName>
+        <finalName>flash-http</finalName>
     </build>
 
 </project>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.http;
+package org.flashframework.http;
 
 /**
  * HTTP请求方式，HTTP请求可以使用多种请求方法:

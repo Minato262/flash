@@ -15,7 +15,7 @@
  */
 package org.flashframework.web.mvc.annotation;
 
-import org.flashframework.web.http.RequestMethod;
+import org.flashframework.http.RequestMethod;
 
 import java.lang.annotation.*;
 

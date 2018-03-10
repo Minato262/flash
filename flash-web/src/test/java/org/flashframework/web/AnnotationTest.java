@@ -15,8 +15,8 @@
  */
 package org.flashframework.web;
 
+import org.flashframework.http.RequestMethod;
 import org.flashframework.web.mvc.annotation.*;
-import org.flashframework.web.http.RequestMethod;
 import org.junit.Assert;
 import org.junit.Test;
 
