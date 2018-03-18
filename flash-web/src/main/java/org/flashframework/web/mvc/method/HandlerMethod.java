@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.handler;
+package org.flashframework.web.mvc.method;
 
 /**
- * 处理适配器，用于调用具体的方法对用户发来的请求来进行处理
- *
  * @author kay
  * @version v2.0
  */
-public interface HandlerAdapter {
+public interface HandlerMethod {
 }

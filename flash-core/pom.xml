@@ -16,6 +16,14 @@
 
     <name>flash-core</name>
 
+    <dependencies>
+        <!-- testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>flash-core</finalName>
     </build>

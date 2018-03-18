@@ -22,12 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 框架核心 Servlet
- *
  * @author kay
  * @version v2.0
  */
-public abstract class FrameworkServlet extends HttpServletBean {
+public abstract class HttpServletBean extends HttpServlet {
 
     /**
      *
