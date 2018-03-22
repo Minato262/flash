@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.handler;
 
 /**
  * @author kay
  * @version v2.0
  */
-public abstract class AbstractHandlerMapping {
-}
+package org.flashframework.web.mvc.view;

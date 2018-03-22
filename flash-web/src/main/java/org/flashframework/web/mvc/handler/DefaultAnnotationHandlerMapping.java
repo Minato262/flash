@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.method;
-
-import org.flashframework.web.mvc.HandlerAdapter;
+package org.flashframework.web.mvc.handler;
 
 /**
  * @author kay
  * @version v2.0
  */
-public class RequestMappingHandlerAdapter implements HandlerAdapter {
+public class DefaultAnnotationHandlerMapping {
 }

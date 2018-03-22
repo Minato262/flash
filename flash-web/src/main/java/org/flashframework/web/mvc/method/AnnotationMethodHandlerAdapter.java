@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.handler;
+package org.flashframework.web.mvc.method;
 
 /**
  * @author kay
  * @version v2.0
  */
-public abstract class AbstractUrlHandlerMapping {
+public class AnnotationMethodHandlerAdapter {
 }
