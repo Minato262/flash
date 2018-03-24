@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 /**
- * 解码工具类
+ * 解码常用工具类
  *
  * @author kay
  * @version v1.0

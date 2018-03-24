@@ -19,7 +19,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * 配置工具类，载入配置
+ * 配置工具类，单例模式，用于载入默认配置
  *
  * @author kay
  * @version v1.0

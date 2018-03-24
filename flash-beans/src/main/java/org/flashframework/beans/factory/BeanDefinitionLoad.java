@@ -48,6 +48,19 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
     }
 
     /**
+     * 根据 class 类全路径名中获取相应的类名
+     *
+     * @param name class 类全路径名（一定不能为空）
+     * @return 获取的相应的类名
+     * @throws IllegalArgumentException 如果字符串为空
+     */
+    public static String getLowerCase(String name) {
+        Assert.isNotEmpty(name);
+        int i = name.lastIndexOf(".");
+        return name.substring(i + 1, name.length());
+    }
+
+    /**
      * 放入 Bean Definition 清单中
      *
      * @param key   注册关键字
@@ -58,7 +71,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
         if (StringUtils.isEmpty(key)) {
             // 类注解载入 Bean 容器，容器会自动载入类名作为 key
             // Bean 会作为 key 的关键字，会使用左驼峰命名
-            String lowerCase = StringUtils.getLowerCase(clazz.getName());
+            String lowerCase = getLowerCase(clazz.getName());
             key = StringUtils.toLowerCaseFirstOne(lowerCase);
         }
         super.put(key, clazz);

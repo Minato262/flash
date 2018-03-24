@@ -16,20 +16,40 @@
 package org.flashframework;
 
 /**
- * 基础非受检性异常
+ * {@code NestedRuntimeException} 是整个框架的抽象非受检性异常
  * <p>
- * 这是一个抽象异常类，它定义了任何与整个框架相关的异常的基础方法，并且将所有异常
- * 转换成了非受检性异常
+ *    它用于定义整个框架相关的异常的基础方法，并且将所有捕获到的受检性异常转换成了非受检性异常
+ * </p>
+ * <p>
+ *    继承于她的异常包括有：
+ *    <br>WebRuntimeException  用于定于 web  相关的抽象异常</br>
+ *    <br>BeanRuntimeException 用于定于 bean 相关的抽象异常</br>
+ *    <br>ResourceException    用于定于 资源  相关的抽象异常</br>
  * </p>
  *
  * @author kay
  * @version v1.0
+ * @see java.io.Serializable
  */
 public abstract class NestedRuntimeException extends RuntimeException {
 
+    private static final long serialVersionUID = 1;
+
     /*
-     * 概况
+     * 概述：
+     *    受检性异常与非受检性异常（也有翻译成 检查异常和非检查异常）。
+     *    检查异常，其实是一种相对落后的异常结构，如果处理不好，他会导致系统的突然崩溃，从语言
+     * 的角度来讲 Java 的使用者，不应该在程序没有提示的情况下突然崩溃。所以在接触这类异常时，
+     * 都需要经过有效处理或通过重试以恢复正常状态。但很多时候，去捕获这类异常其实是毫无益处的。
+     * 所以，从编程的代码结构以及可读性的角度来讲，都是推荐使用非受检性异常的。
      */
+
+    /**
+     * 默认构造器，异常信息没有进行初始化
+     */
+    public NestedRuntimeException() {
+        super();
+    }
 
     /**
      * 带有错误信息的构造器

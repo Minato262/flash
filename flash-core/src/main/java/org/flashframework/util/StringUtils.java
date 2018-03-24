@@ -16,7 +16,10 @@
 package org.flashframework.util;
 
 /**
- * 字符串工具
+ * 字符串常用工具类
+ * <p>
+ *     用于简化对字符串的常规处理
+ * </p>
  *
  * @author kay
  * @version v1.0
@@ -25,33 +28,34 @@ public class StringUtils {
 
     /**
      * 判断字符串是否为空
+     * <p>
+     *    eg:
+     *    <br>StringUtils.isEmpty(null)   = true  </br>
+     *    <br>StringUtils.isEmpty("")     = true  </br>
+     *    <br>StringUtils.isEmpty("null") = false </br>
+     *    <br>StringUtils.isEmpty("aBCS") = false </br>
+     * </p>
      *
-     * @param str 字符串
-     * @return 是否为空
+     * @param str 需要判断的字符串
+     * @return 判断是否为空
      */
     public static boolean isEmpty(String str) {
         return str == null || "".equals(str);
     }
 
     /**
-     * 在class 类全路径名中获取相应的类名
-     *
-     * @param name class 类全路径名（一定不能为空）
-     * @return 获取的相应的类名
-     * @throws IllegalArgumentException 如果字符串为空
-     */
-    public static String getLowerCase(String name) {
-        Assert.isNotEmpty(name);
-        int i = name.lastIndexOf(".");
-        return name.substring(i + 1, name.length());
-    }
-
-    /**
-     * 字符串首字母小写
+     * 将字符串的首字母变为小写
+     * <p>
+     *    eg:
+     *    <br>StringUtils.toLowerCaseFirstOne("0")    = "0"   </br>
+     *    <br>StringUtils.toLowerCaseFirstOne("10")   = "10"  </br>
+     *    <br>StringUtils.toLowerCaseFirstOne("ABCS") = "aBCS"</br>
+     *    <br>StringUtils.toLowerCaseFirstOne("aBCS") = "aBCS"</br>
+     * </p>
      *
      * @param str 需要首字母小写的字符串（一定不能为空）
-     * @return 处理后的字符串
-     * @throws IllegalArgumentException 如果字符串为空
+     * @return 处理后的字符串（首字母为小写）
+     * @throws IllegalArgumentException 如果字符串为空，则抛出异常
      */
     public static String toLowerCaseFirstOne(String str) {
         Assert.isNotEmpty(str);

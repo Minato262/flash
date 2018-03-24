@@ -16,7 +16,10 @@
 package org.flashframework.util;
 
 /**
- * 断言工具类，使用断言可以简化方法入参检测的代码，也可以用作程序探针
+ * 断言常用工具类
+ * <p>
+ *     常使用断言可以简化方法入参时的检测代码，也可以用作程序的探针
+ * </p>
  *
  * @author kay
  * @version v1.0
@@ -25,9 +28,16 @@ public class Assert {
 
     /**
      * 判断对象不能为null，当对象为null时，会抛出异常
+     * <p>
+     *    eg:
+     *    <br>Assert.isNotNull(null)   = true  </br>
+     *    <br>Assert.isNotNull("")     = false </br>
+     *    <br>Assert.isNotNull("null") = false </br>
+     *    <br>Assert.isNotNull("aBCS") = false </br>
+     * </p>
      *
      * @param object 需要判断的对象
-     * @throws IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果字符串为null，则抛出异常
      */
     public static void isNotNull(Object object) {
         if (object == null) {
@@ -37,9 +47,16 @@ public class Assert {
 
     /**
      * 判断字符串不能为空，当字符串为空时，会抛出异常
+     * <p>
+     *    eg:
+     *    <br>Assert.isNotEmpty(null)   = true  </br>
+     *    <br>Assert.isNotEmpty("")     = true  </br>
+     *    <br>Assert.isNotEmpty("null") = false </br>
+     *    <br>Assert.isNotEmpty("aBCS") = false </br>
+     * </p>
      *
      * @param str 需要判断的字符串
-     * @throws IllegalArgumentException 如果字符串为空
+     * @throws IllegalArgumentException 如果字符串为空，则抛出异常
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {

@@ -24,11 +24,9 @@ package org.flashframework.core;
 class ClassLoaderFailureException extends ResourceException {
 
     /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈信息
+     * 默认构造器
      */
-    ClassLoaderFailureException(Throwable cause) {
-        super(cause);
+    ClassLoaderFailureException() {
+        super();
     }
 }

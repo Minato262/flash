@@ -27,6 +27,13 @@ import org.flashframework.NestedRuntimeException;
 abstract class ResourceException extends NestedRuntimeException {
 
     /**
+     * 默认构造器，异常信息没有进行初始化
+     */
+    ResourceException() {
+        super();
+    }
+
+    /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息

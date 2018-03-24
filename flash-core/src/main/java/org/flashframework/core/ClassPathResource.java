@@ -34,23 +34,23 @@ import java.util.List;
 public class ClassPathResource extends ClassLoader implements Resource {
 
     /**
-     * 载入 Class 资源
+     * 根据类的名称，载入类的资源
      *
-     * @param name 资源名称
+     * @param name 类的名称
      * @return 载入的 Class
-     * @throws ClassLoaderFailureException 如果根据资源名称载入没有找到对应的类
+     * @throws ClassLoaderFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     private Class<?> loadClass(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassLoaderFailureException(e);
+            throw new ClassLoaderFailureException();
         }
     }
 
     /**
-     * 检测全部 Class 资源清单
+     * 递归扫描，全部 Class 的资源列表
      *
      * @param packageName 相对路径包名称
      * @param packagePath 相对包路径
@@ -63,6 +63,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
         }
 
         File[] files = dir.listFiles(new FileFilter() {
+            @Override
             public boolean accept(File file) {
                 return file.isDirectory() || file.getName().endsWith(".class");
             }
@@ -84,10 +85,10 @@ public class ClassPathResource extends ClassLoader implements Resource {
     }
 
     /**
-     * 获取到 Class 资源列表
+     * 扫描并获取到 Class 资源列表，暂不支持扫描 jar 包
      *
      * @param urlElements url 元素
-     * @param packageName 相对路径包名
+     * @param packageName 相对路径包名（不能为空）
      * @return Class 资源列表
      */
     @Override
@@ -97,7 +98,7 @@ public class ClassPathResource extends ClassLoader implements Resource {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
 
-            // 暂时不支持扫描 jar
+            // 暂时不支持扫描 jar 包
             if ("file".equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
