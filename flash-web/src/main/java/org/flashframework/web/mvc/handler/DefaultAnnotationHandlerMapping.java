@@ -15,9 +15,11 @@
  */
 package org.flashframework.web.mvc.handler;
 
+import org.flashframework.web.mvc.HandlerMapping;
+
 /**
  * @author kay
  * @version v2.0
  */
-public class DefaultAnnotationHandlerMapping {
+public class DefaultAnnotationHandlerMapping implements HandlerMapping {
 }

@@ -15,9 +15,11 @@
  */
 package org.flashframework.web.mvc.method;
 
+import org.flashframework.web.mvc.HandlerAdapter;
+
 /**
  * @author kay
  * @version v2.0
  */
-public class AnnotationMethodHandlerAdapter {
+public class AnnotationMethodHandlerAdapter implements HandlerAdapter {
 }
