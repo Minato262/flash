@@ -22,7 +22,7 @@ import org.flashframework.util.Assert;
 import java.util.List;
 
 /**
- * Bean Definition 解析
+ * Bean Definition 的解析
  *
  * @author kay
  * @version v1.0
@@ -32,24 +32,30 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     /** 资源解析接口 */
     private Resource resource;
 
+    /** BeanDefinition 载入接口 */
+    private BeanDefinitionLoad load;
+
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
      *
-     * @param resource 资源解析接口
-     * @throws IllegalArgumentException 如果字符串为null
+     * @param resource 资源解析接口（不能为null）
+     * @param load BeanDefinition 载入接口（不能为null）
+     * @throws IllegalArgumentException 如果资源解析接口为null
      */
-    public BeanDefinitionResolution(Resource resource) {
+    public BeanDefinitionResolution(Resource resource, BeanDefinitionLoad load) {
+        Assert.isNotNull(load);
         Assert.isNotNull(resource);
+        this.load = load;
         this.resource = resource;
     }
 
     /**
      * 遍历 Class，载入类注释并将对象放入容器的 value 中
      *
+     * @param load 载入
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
-    private void loadRepository() {
-        BeanDefinitionLoad load = new BeanDefinitionLoad();
+    private void loadRepository(BeanDefinitionLoad load) {
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
             load.load(clazz);
@@ -64,8 +70,8 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      */
     @Override
     public void load() {
-        clear();   // 初始化注册表
-        loadRepository();   // 载入类注释
+        clear();   // 清理和初始化注册表
+        loadRepository(load);   // 载入类注释
     }
 
     /**

@@ -16,13 +16,15 @@
 package org.flashframework.context;
 
 import org.flashframework.beans.container.BeanContainer;
+import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
+import org.flashframework.beans.factory.BeanDefinitionFactory;
+import org.flashframework.beans.factory.BeanDefinitionLoad;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
 import org.flashframework.core.ClassPathResource;
 import org.flashframework.core.Resource;
 import org.flashframework.beans.*;
-import org.flashframework.util.Assert;
 
 /**
  * 应用上下环境抽象类
@@ -38,7 +40,10 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
 
     /** Bean 容器 */
-    private BeanContainer container;
+    private BeanContainer container = BeanContainerAware.getInstance();
+
+    /** BeanDefinition 载入接口 */
+    private BeanDefinitionLoad load = loadBeanDefinition();
 
     /**
      * 默认构造器
@@ -48,13 +53,20 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     /**
+     * 载入 BeanDefinition
+     *
+     * @return BeanDefinition 工厂
+     */
+    protected abstract BeanDefinitionFactory loadBeanDefinition();
+
+    /**
      * 初始化上下文环境
      *
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
-    private void init() {
+    private void initContainer() {
         Resource resource = new ClassPathResource();
-        Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource);
+        Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource, load);
         try {
             Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution);
             beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
@@ -69,14 +81,20 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /**
      * 初始化上下文环境
      *
-     * @param container Bean 容器
      * @throws IllegalArgumentException 如果字符串为null
      */
-    protected void init(BeanContainer container) {
-        Assert.isNotNull(container);
+    protected void init() {
         if (container.isEmpty()) {
-            this.container = container;
-            init();
+            initContainer();
         }
+    }
+
+    /**
+     * 获取 Bean 容器
+     *
+     * @return Bean 容器
+     */
+    public BeanContainer getBeanContainer() {
+        return container;
     }
 }

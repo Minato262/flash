@@ -32,7 +32,7 @@ final class BeanDefinitionWrap<T> {
      *
      * @param hasAutowired 是否有方法注解
      * @param date         私有类载入的对象（一定不能为null）
-     * @throws IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果载入对象为null
      */
     BeanDefinitionWrap(boolean hasAutowired, T date) {
         Assert.isNotNull(date);

@@ -18,7 +18,8 @@ package org.flashframework.beans.factory;
 import org.flashframework.beans.BeanRuntimeException;
 
 /**
- * Bean Definition 冲突异常
+ * Bean Definition 冲突异常, 用于标示 Bean Definition 在内部解析中的抛出
+ * 的异常
  *
  * @author kay
  * @version v1.0

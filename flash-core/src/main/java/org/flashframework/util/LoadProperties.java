@@ -48,7 +48,7 @@ public enum LoadProperties {
     }
 
     /**
-     * 载入配置，获取 Properties 配置值
+     * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
      *
      * @param propertyPath 配置路径
      * @param propertyName 配置名称

@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Scope 注解，标记对象为 Bean 对象为单例还是原型对象
+ * {@code Scope} 注解，用于标记 Bean 对象为单例还是多例对象
  *
  * @author kay
  * @version v1.0

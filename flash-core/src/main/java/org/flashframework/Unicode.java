@@ -24,8 +24,8 @@ package org.flashframework;
 public enum Unicode {
 
     /**
-     * UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码。
-     * 标准化为RFC 3629
+     * UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，
+     * 又称万国码。标准化为RFC 3629
      */
     UTF_8("UTF-8");
 
