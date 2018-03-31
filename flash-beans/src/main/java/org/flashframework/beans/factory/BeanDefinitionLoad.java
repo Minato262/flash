@@ -23,7 +23,7 @@ import org.flashframework.util.Assert;
 import org.flashframework.util.StringUtils;
 
 /**
- * 只是一个工具类，主要作用是载入类注解
+ * 只是一个工具类，主要作用是用于载入类注解
  *
  * @author kay
  * @version v2.0
@@ -54,7 +54,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
      * @return 获取的相应的类名
      * @throws IllegalArgumentException 如果字符串为空
      */
-    public static String getLowerCase(String name) {
+    public String getLowerCase(String name) {
         Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
         return name.substring(i + 1, name.length());
