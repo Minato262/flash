@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.context;
 
 import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
-import org.flashframework.beans.factory.BeanDefinitionFactory;
+import org.flashframework.beans.factory.BeanDefinitionTableLoad;
 import org.flashframework.util.Assert;
 
 /**
@@ -28,7 +28,7 @@ import org.flashframework.util.Assert;
  * @author kay
  * @version v2.0
  */
-public class DefaultBeanDefinitionFactory extends BeanDefinitionFactory {
+public class DefaultBeanDefinitionLoad extends BeanDefinitionTableLoad {
 
     /**
      * 根据 Class，载入类注解信息

@@ -33,7 +33,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     private Resource resource;
 
     /** BeanDefinition 载入接口 */
-    private BeanDefinitionLoad load;
+    private BeanDefinitionFactory load;
 
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
@@ -42,7 +42,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      * @param load BeanDefinition 载入接口（不能为null）
      * @throws IllegalArgumentException 如果资源解析接口为null
      */
-    public BeanDefinitionResolution(Resource resource, BeanDefinitionLoad load) {
+    public BeanDefinitionResolution(Resource resource, BeanDefinitionFactory load) {
         Assert.isNotNull(load);
         Assert.isNotNull(resource);
         this.load = load;
@@ -52,10 +52,9 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     /**
      * 遍历 Class，载入类注释并将对象放入容器的 value 中
      *
-     * @param load 载入
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
-    private void loadRepository(BeanDefinitionLoad load) {
+    private void loadRepository() {
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
             load.load(clazz);
@@ -71,7 +70,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     @Override
     public void load() {
         clear();   // 清理和初始化注册表
-        loadRepository(load);   // 载入类注释
+        loadRepository();   // 载入类注释
     }
 
     /**

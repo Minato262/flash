@@ -18,8 +18,8 @@ package org.flashframework.context;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
+import org.flashframework.beans.factory.BeanDefinitionTableLoad;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
-import org.flashframework.beans.factory.BeanDefinitionLoad;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
 import org.flashframework.core.ClassPathResource;
@@ -56,7 +56,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private void initContainer() {
         Resource resource = new ClassPathResource();
-        BeanDefinitionLoad beanDefinitionFactory = loadBeanDefinition();
+        BeanDefinitionFactory beanDefinitionFactory = loadBeanDefinition();
         Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource, beanDefinitionFactory);
         try {
             Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution);
