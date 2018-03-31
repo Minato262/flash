@@ -85,7 +85,7 @@ public class BeanReflectAutowired {
      *
      * @param clazz 实例信息（一定不能为null）
      * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果字符串为null
+     * @throws IllegalArgumentException   如果对象为null
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     public <V> V loadAutowired(Class clazz) {

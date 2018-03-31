@@ -42,9 +42,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
-    /** BeanDefinition 载入接口 */
-    private BeanDefinitionLoad load = loadBeanDefinition();
-
     /**
      * 默认构造器
      */
@@ -53,20 +50,14 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     /**
-     * 载入 BeanDefinition
-     *
-     * @return BeanDefinition 工厂
-     */
-    protected abstract BeanDefinitionFactory loadBeanDefinition();
-
-    /**
      * 初始化上下文环境
      *
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void initContainer() {
         Resource resource = new ClassPathResource();
-        Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource, load);
+        BeanDefinitionLoad beanDefinitionFactory = loadBeanDefinition();
+        Resolution beanDefinitionResolution = new BeanDefinitionResolution(resource, beanDefinitionFactory);
         try {
             Registry beanDefinition = new BeanDefinitionRegistry(beanDefinitionResolution);
             beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
@@ -88,6 +79,13 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             initContainer();
         }
     }
+
+    /**
+     * 载入 BeanDefinition
+     *
+     * @return BeanDefinition 工厂
+     */
+    protected abstract BeanDefinitionFactory loadBeanDefinition();
 
     /**
      * 获取 Bean 容器

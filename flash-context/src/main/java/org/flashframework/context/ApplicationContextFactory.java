@@ -18,7 +18,7 @@ package org.flashframework.context;
 import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
-import org.flashframework.beans.DefaultDefinitionFactory;
+import org.flashframework.beans.DefaultBeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanReflectAutowired;
 import org.flashframework.util.Assert;
 
@@ -42,16 +42,6 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
     }
 
     /**
-     * 载入 BeanDefinition
-     *
-     * @return BeanDefinition 工厂
-     */
-    @Override
-    protected BeanDefinitionFactory loadBeanDefinition() {
-        return new DefaultDefinitionFactory();
-    }
-
-    /**
      * 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
      *
      * @param name 想获取 Bean 的名称
@@ -72,6 +62,16 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      */
     private Object getInstance(String name) {
         return container.get(name);
+    }
+
+    /**
+     * 载入 BeanDefinition
+     *
+     * @return BeanDefinition 工厂
+     */
+    @Override
+    protected BeanDefinitionFactory loadBeanDefinition() {
+        return new DefaultBeanDefinitionFactory();
     }
 
     /**

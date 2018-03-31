@@ -28,13 +28,16 @@ import org.flashframework.util.Assert;
  * @author kay
  * @version v2.0
  */
-public class DefaultDefinitionFactory extends BeanDefinitionFactory {
+public class DefaultBeanDefinitionFactory extends BeanDefinitionFactory {
 
     /**
      * 根据 Class，载入类注解信息
+     * <p>
+     *     默认载入 Repository，Service，Controller，Resource 注解
+     * </p>
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果Class为null
      */
     @Override
     public void load(Class clazz) {
