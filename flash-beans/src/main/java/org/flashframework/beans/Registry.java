@@ -16,7 +16,7 @@
 package org.flashframework.beans;
 
 /**
- * Bean Definition 接口
+ * Bean Definition 注册接口
  *
  * @author kay
  * @version v1.0

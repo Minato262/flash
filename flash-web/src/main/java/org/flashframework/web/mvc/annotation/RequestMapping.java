@@ -20,7 +20,7 @@ import org.flashframework.http.RequestMethod;
 import java.lang.annotation.*;
 
 /**
- * {@link RequestMapping} 会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。
+ * {@code RequestMapping} 会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。
  * <p>同时也可以在控制器类的级别和/或其中的方法的级别上使用</p>
  *
  * @author kay

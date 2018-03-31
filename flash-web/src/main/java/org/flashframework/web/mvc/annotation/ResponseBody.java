@@ -20,7 +20,7 @@ import org.flashframework.beans.annotation.Controller;
 import java.lang.annotation.*;
 
 /**
- * {@link ResponseBody} 注解的作用是将 {@link Controller} 的方法返回的对象通过适
+ * {@code ResponseBody} 注解的作用是将 {@code Controller} 的方法返回的对象通过适
  * 当的转换器转换为指定的格式之后，写入到 response 对象的 body 区，通常用来返回 JSON
  * 数据或者是 XML.
  *

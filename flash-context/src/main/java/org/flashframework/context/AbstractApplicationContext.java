@@ -26,7 +26,7 @@ import org.flashframework.util.Assert;
 
 /**
  * 应用上下环境抽象类
- * <p>初始化上下文，开启容器</p>
+ * <p>用于初始化上下文，开启容器</p>
  *
  * @author kay
  * @version v1.0

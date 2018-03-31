@@ -54,7 +54,7 @@ public class BeanDefinitionLoad extends BeanDefinitionTableContext {
      * @return 获取的相应的类名
      * @throws IllegalArgumentException 如果字符串为空
      */
-    public String getLowerCase(String name) {
+    private String getLowerCase(String name) {
         Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
         return name.substring(i + 1, name.length());

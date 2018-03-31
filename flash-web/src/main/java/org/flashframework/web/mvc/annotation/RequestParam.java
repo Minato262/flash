@@ -18,7 +18,7 @@ package org.flashframework.web.mvc.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link RequestParam} 注解配合 {@link RequestMapping} 注解一起使用，可以将请求
+ * {@code RequestParam} 注解配合 {@code RequestMapping} 注解一起使用，可以将请求
  * 的参数同处理方法的参数绑定在一起。
  *
  * @author kay

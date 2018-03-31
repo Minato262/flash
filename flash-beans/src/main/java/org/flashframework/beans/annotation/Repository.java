@@ -18,7 +18,7 @@ package org.flashframework.beans.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link Repository} 注解，标记对象为 Bean 对象为 dao 层或者其他层对象
+ * {@code Repository} 注解，标记对象为 Bean 对象为 dao 层或者其他层对象
  *
  * @author kay
  * @version v1.0

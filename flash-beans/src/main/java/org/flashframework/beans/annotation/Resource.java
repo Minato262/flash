@@ -18,7 +18,7 @@ package org.flashframework.beans.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link Resource} 注解，标记对象为 Bean 对象
+ * {@code Resource} 注解，标记对象为 Bean 对象
  *
  * @author kay
  * @version v2.0

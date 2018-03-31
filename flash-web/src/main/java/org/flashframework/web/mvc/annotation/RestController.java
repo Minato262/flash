@@ -20,7 +20,7 @@ import org.flashframework.beans.annotation.Controller;
 import java.lang.annotation.*;
 
 /**
- * {@link RestController} 注解，相当于 {@link ResponseBody} ＋ {@link Controller}
+ * {@code RestController} 注解，相当于 {@code ResponseBody} ＋ {@code Controller}
  * 合在一起的作用
  *
  * @author kay

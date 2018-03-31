@@ -18,7 +18,7 @@ package org.flashframework.beans.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link Service} 注解，标记对象为 Bean 对象为 Service 层对象
+ * {@code Service} 注解，标记对象为 Bean 对象为 Service 层对象
  *
  * @author kay
  * @version v1.0

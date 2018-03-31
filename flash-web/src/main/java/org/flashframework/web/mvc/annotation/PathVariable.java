@@ -18,7 +18,7 @@ package org.flashframework.web.mvc.annotation;
 import java.lang.annotation.*;
 
 /**
- * {@link PathVariable}
+ * {@code PathVariable}
  *
  * @author kay
  * @version v2.0
