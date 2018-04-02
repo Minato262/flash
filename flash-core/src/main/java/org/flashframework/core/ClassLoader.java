@@ -51,7 +51,7 @@ public abstract class ClassLoader implements Resource {
     }
 
     /**
-     * 根据 URL元素和包名，获取所有当前包内 Class 类的清单
+     * 根据 URL元素和包名，获取所有当前包内 Class 类的列表
      *
      * @param urlElements url 元素
      * @param packageName 包名
@@ -60,7 +60,7 @@ public abstract class ClassLoader implements Resource {
     protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
 
     /**
-     * 获取所有当前包内 Class 类的清单
+     * 获取所有当前包内 Class 类的列表
      *
      * @return Class 类清单
      * @throws ClassPathResourceException 如果没有在配置项中配置包路径

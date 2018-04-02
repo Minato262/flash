@@ -18,7 +18,6 @@ package org.flashframework.context;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
-import org.flashframework.beans.factory.BeanDefinitionTableLoad;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;

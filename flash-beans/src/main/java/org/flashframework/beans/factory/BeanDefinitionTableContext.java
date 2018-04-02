@@ -16,7 +16,7 @@
 package org.flashframework.beans.factory;
 
 /**
- * 这是一个抽象类，主要存放 Bean Definition 注册表相关的操作
+ * 这是一个抽象环境类，主要用于存放 Bean Definition 注册表相关的操作
  *
  * @author kay
  * @version v1.0
