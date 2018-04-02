@@ -53,6 +53,7 @@ public abstract class BeanDefinitionTableLoad extends BeanDefinitionTableContext
      * @param clazz 注册对象内容
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
+    @Override
     protected void put(String key, Class clazz) {
         if (StringUtils.isEmpty(key)) {
             // 类注解载入 Bean 容器，容器会自动载入类名作为 key
@@ -64,12 +65,13 @@ public abstract class BeanDefinitionTableLoad extends BeanDefinitionTableContext
     }
 
     /**
-     * 放入 Bean Definition 清单中
+     * 根据 Class，载入类注解信息
      *
-     * @param clazz 注册对象内容
+     * @param clazz class 信息
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
-    protected void put(Class clazz) {
-        put(null, clazz);
+    @Override
+    public void load(Class clazz) {
+        throw new BeanDefinitionConflictException();
     }
 }

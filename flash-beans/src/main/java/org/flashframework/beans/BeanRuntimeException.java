@@ -27,6 +27,13 @@ import org.flashframework.NestedRuntimeException;
 public abstract class BeanRuntimeException extends NestedRuntimeException {
 
     /**
+     * 默认构造器
+     */
+    public BeanRuntimeException() {
+        super();
+    }
+
+    /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息

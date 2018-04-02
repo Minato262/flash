@@ -31,9 +31,18 @@ import org.flashframework.util.Assert;
 public class DefaultBeanDefinitionLoad extends BeanDefinitionTableLoad {
 
     /**
+     * 放入 Bean Definition 清单中
+     *
+     * @param clazz 注册对象内容
+     */
+    private void put(Class clazz) {
+        super.put(null, clazz);
+    }
+
+    /**
      * 根据 Class，载入类注解信息
      * <p>
-     *     默认载入 Repository，Service，Controller，Resource 注解
+     * 默认载入 Repository，Service，Controller，Resource 注解
      * </p>
      *
      * @param clazz class 信息
@@ -44,12 +53,12 @@ public class DefaultBeanDefinitionLoad extends BeanDefinitionTableLoad {
         Assert.isNotNull(clazz);
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            put(annotation.value(), clazz);
+            super.put(annotation.value(), clazz);
             return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            put(annotation1.value(), clazz);
+            super.put(annotation1.value(), clazz);
             return;
         }
         Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
@@ -60,7 +69,7 @@ public class DefaultBeanDefinitionLoad extends BeanDefinitionTableLoad {
 
         Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);
         if (annotation3 != null) {
-            put(annotation3.value(), clazz);
+            super.put(annotation3.value(), clazz);
         }
     }
 }

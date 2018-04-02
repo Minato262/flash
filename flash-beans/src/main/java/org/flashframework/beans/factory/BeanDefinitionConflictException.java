@@ -27,6 +27,13 @@ import org.flashframework.beans.BeanRuntimeException;
 class BeanDefinitionConflictException extends BeanRuntimeException {
 
     /**
+     * 默认的构造器
+     */
+    BeanDefinitionConflictException() {
+        super();
+    }
+
+    /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息
