@@ -45,7 +45,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * 默认构造器
      */
     AbstractApplicationContext() {
-        //
+        init();
     }
 
     /**
@@ -73,7 +73,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @throws IllegalArgumentException 如果字符串为null
      */
-    protected void init() {
+    private void init() {
         if (container.isEmpty()) {
             initContainer();
         }
@@ -93,5 +93,18 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     public BeanContainer getBeanContainer() {
         return container;
+    }
+
+    /**
+     * 根据 Bean 名称，获取 Bean 实例
+     *
+     * @param name 想获取 Bean 的名称（一定不能为空）
+     * @return 获取 bean 对象
+     * @throws IllegalArgumentException   如果字符串为空
+     * @throws BeanCreateFailureException 如果对象新建失败
+     */
+    @Override
+    public Object getBean(String name) {
+        throw new BeanContainerInitFailureException();
     }
 }

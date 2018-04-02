@@ -37,7 +37,6 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      */
     public ApplicationContextFactory() {
         super();
-        init();
     }
 
     /**

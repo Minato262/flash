@@ -35,7 +35,7 @@ public class Assert {
      * </p>
      *
      * @param object 需要判断的对象
-     * @throws IllegalArgumentException 如果字符串为null，则抛出异常
+     * @throws IllegalArgumentException 如果对象为null，则抛出异常
      */
     public static void isNotNull(Object object) {
         if (object == null) {

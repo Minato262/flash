@@ -26,6 +26,13 @@ import org.flashframework.beans.BeanRuntimeException;
 public class BeanContainerInitFailureException extends BeanRuntimeException {
 
     /**
+     * 默认构造器
+     */
+    public BeanContainerInitFailureException() {
+        super();
+    }
+
+    /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息
