@@ -24,12 +24,12 @@ import org.flashframework.util.StringUtils;
  * @author kay
  * @version v2.0
  */
-public abstract class BeanDefinitionTableLoad extends BeanDefinitionTableContext implements BeanDefinitionFactory {
+public abstract class BeanDefinitionTableFactory extends BeanDefinitionTableContext implements BeanDefinitionFactory {
 
     /**
      * 默认构造器
      */
-    public BeanDefinitionTableLoad() {
+    public BeanDefinitionTableFactory() {
         //
     }
 
@@ -47,7 +47,7 @@ public abstract class BeanDefinitionTableLoad extends BeanDefinitionTableContext
     }
 
     /**
-     * 放入 Bean Definition 清单中
+     * 放入 Bean Definition 列表中
      *
      * @param key   注册关键字
      * @param clazz 注册对象内容

@@ -60,7 +60,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     /**
-     * 初始化上下文环境
+     * 初始化容器
      *
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */

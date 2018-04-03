@@ -69,7 +69,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext implem
      */
     @Override
     protected BeanDefinitionFactory loadBeanDefinition() {
-        return new DefaultBeanDefinitionLoad();
+        return new DefaultBeanDefinitionFactory();
     }
 
     /**

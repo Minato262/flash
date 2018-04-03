@@ -19,7 +19,7 @@ import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
-import org.flashframework.beans.factory.BeanDefinitionTableLoad;
+import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.util.Assert;
 
 /**
@@ -28,7 +28,7 @@ import org.flashframework.util.Assert;
  * @author kay
  * @version v2.0
  */
-public class DefaultBeanDefinitionLoad extends BeanDefinitionTableLoad {
+public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
 
     /**
      * 放入 Bean Definition 清单中

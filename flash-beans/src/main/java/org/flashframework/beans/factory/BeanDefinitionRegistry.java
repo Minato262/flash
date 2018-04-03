@@ -55,7 +55,7 @@ public class BeanDefinitionRegistry implements Registry {
      *
      * @param registryTable 需要注入的注册对象信息
      */
-    private <V> void loadRepository(BeanDefinitionTable registryTable) {
+    private <V> void loadScope(BeanDefinitionTable registryTable) {
         for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
@@ -97,7 +97,7 @@ public class BeanDefinitionRegistry implements Registry {
 
         // 载入类和方法注解
         BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
-        loadRepository(table);
+        loadScope(table);
         loadAutowired(table);
     }
 }
