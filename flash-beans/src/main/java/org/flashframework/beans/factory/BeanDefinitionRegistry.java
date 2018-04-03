@@ -40,7 +40,7 @@ public class BeanDefinitionRegistry implements Registry {
     private Resolution resolution;
 
     /**
-     * 带有 Bean Definition 注册的构造器
+     * 带有 Bean Definition 解析接口的构造器
      *
      * @param resolution Bean Definition 解析
      * @throws IllegalArgumentException 如果字符串为null
@@ -72,7 +72,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 根据容器中的 key 注入对象，载入方法注释
      *
      * @param registryTable 需要注入的注册对象信息
-     * @throws BeanCreateFailureException Bean 设置失败
+     * @throws BeanCreateFailureException Bean 创建失败
      */
     private void loadAutowired(BeanDefinitionTable registryTable) {
         BeanReflectAutowired autowired = new BeanReflectAutowired();

@@ -51,6 +51,17 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /**
      * 初始化上下文环境
      *
+     * @throws IllegalArgumentException 如果字符串为null
+     */
+    private void init() {
+        if (container.isEmpty()) {
+            initContainer();
+        }
+    }
+
+    /**
+     * 初始化上下文环境
+     *
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void initContainer() {
@@ -65,17 +76,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             beanDefinitionResolution.clear();  // 清空 Bean Definition 注册表
             container.clear();  // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);
-        }
-    }
-
-    /**
-     * 初始化上下文环境
-     *
-     * @throws IllegalArgumentException 如果字符串为null
-     */
-    private void init() {
-        if (container.isEmpty()) {
-            initContainer();
         }
     }
 
