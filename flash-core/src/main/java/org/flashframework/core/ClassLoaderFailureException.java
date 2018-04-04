@@ -23,6 +23,8 @@ package org.flashframework.core;
  */
 class ClassLoaderFailureException extends ResourceException {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * 默认构造器
      */

@@ -25,19 +25,19 @@ import org.flashframework.util.Assert;
  */
 final class BeanDefinitionWrap<T> {
     private boolean hasAutowired;
-    private T date;
+    private T data;
 
     /**
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
      * @param hasAutowired 是否有方法注解
-     * @param date         私有类载入的对象（一定不能为null）
+     * @param data         私有类载入的对象（一定不能为null）
      * @throws IllegalArgumentException 如果载入对象为null
      */
-    BeanDefinitionWrap(boolean hasAutowired, T date) {
-        Assert.isNotNull(date);
+    BeanDefinitionWrap(boolean hasAutowired, T data) {
+        Assert.isNotNull(data);
         this.hasAutowired = hasAutowired;
-        this.date = date;
+        this.data = data;
     }
 
     /**
@@ -55,6 +55,6 @@ final class BeanDefinitionWrap<T> {
      * @return 私有类载入的对象
      */
     public T getData() {
-        return date;
+        return data;
     }
 }

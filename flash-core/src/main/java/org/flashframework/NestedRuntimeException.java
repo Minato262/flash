@@ -15,8 +15,6 @@
  */
 package org.flashframework;
 
-import java.io.Serializable;
-
 /**
  * {@code NestedRuntimeException} 是整个框架的抽象非受检性异常
  * <p>
