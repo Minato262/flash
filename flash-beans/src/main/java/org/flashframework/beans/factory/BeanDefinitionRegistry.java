@@ -53,10 +53,10 @@ public class BeanDefinitionRegistry implements Registry {
     /**
      * 单例或者原型模式，载入类注解
      *
-     * @param registryTable 需要注入的注册对象信息
+     * @param table 需要注入的注册对象信息
      */
-    private <V> void loadScope(BeanDefinitionTable registryTable) {
-        for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
+    private <V> void loadScope(BeanDefinitionTable table) {
+        for (Map.Entry<String, Class> entry : table.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
                 // scope 注解标记的多例，在初始化时，引入对象的 class 信息作为标记
@@ -71,12 +71,12 @@ public class BeanDefinitionRegistry implements Registry {
     /**
      * 根据容器中的 key 注入对象，载入方法注释
      *
-     * @param registryTable 需要注入的注册对象信息
+     * @param table 需要注入的注册对象信息
      * @throws BeanCreateFailureException Bean 创建失败
      */
-    private void loadAutowired(BeanDefinitionTable registryTable) {
+    private void loadAutowired(BeanDefinitionTable table) {
         BeanReflectAutowired autowired = new BeanReflectAutowired();
-        for (Map.Entry<String, Class> entry : registryTable.entrySet()) {
+        for (Map.Entry<String, Class> entry : table.entrySet()) {
             BeanDefinitionWrap wrap = autowired.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
                 container.put(entry.getKey(), wrap.getData());
