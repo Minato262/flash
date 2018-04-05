@@ -26,7 +26,7 @@ import org.flashframework.util.Assert;
 import java.util.Map;
 
 /**
- * Bean Definition 注册
+ * Bean Definition 的注册
  *
  * @author kay
  * @version v1.0

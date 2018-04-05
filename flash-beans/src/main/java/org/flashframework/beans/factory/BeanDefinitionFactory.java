@@ -16,7 +16,7 @@
 package org.flashframework.beans.factory;
 
 /**
- * Bean Definition 载入
+ * Bean Definition 的工厂接口
  *
  * @author kay
  * @version v1.0

@@ -25,16 +25,16 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * {@link ClassPathResource} Test.
+ * {@link ClassResourceLoader} Test.
  *
  * @author kay
  * @version v1.0
  */
-public class ClassPathResourceTest extends BeforeTest {
+public class ClassResourceLoaderTest extends BeforeTest {
 
     @Test
     public void test() {
-        ClassPathResource classPathResource = new ClassPathResource();
+        ClassResourceLoader classPathResource = new ClassResourceLoader();
         List<Class<?>> classes = classPathResource.getClasses();
         BeanFactory factory = new ApplicationContextFactory();
         for (Class<?> clazz : classes) {

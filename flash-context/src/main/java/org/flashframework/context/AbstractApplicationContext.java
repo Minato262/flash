@@ -21,7 +21,7 @@ import org.flashframework.beans.container.BeanContainerInitFailureException;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
-import org.flashframework.core.ClassPathResource;
+import org.flashframework.core.ClassResourceLoader;
 import org.flashframework.core.Resource;
 import org.flashframework.beans.*;
 
@@ -65,7 +65,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void initContainer() {
-        Resource resource = new ClassPathResource();
+        Resource resource = new ClassResourceLoader();
         BeanDefinitionFactory factory = loadBeanDefinition();
         Resolution resolution = new BeanDefinitionResolution(resource, factory);
         try {

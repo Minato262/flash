@@ -17,10 +17,10 @@ package org.flashframework.http;
 
 /**
  * HTTP请求方式，HTTP请求可以使用多种请求方法:
- * <p>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。</p>
- * <p>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
- * 其中:
- * <p>GET，POST，PUT 以及 DELETE 是最为常用的</p>
+ *
+ * <p><br>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。
+ * <br>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。
+ * <br>其中: GET，POST，PUT 以及 DELETE 是最为常用的
  *
  * @author kay
  * @version v2.0

@@ -65,7 +65,7 @@ public class BeanContainerTest extends BeforeTest {
 
     @Test
     public void test2() throws Exception {
-        ClassPathResource classPathResource = new ClassPathResource();
+        ClassResourceLoader classPathResource = new ClassResourceLoader();
         List<Class<?>> classes = classPathResource.getClasses();
         for (Class<?> clazz : classes) {
             Field[] fields = Class.forName(clazz.getName()).getDeclaredFields();

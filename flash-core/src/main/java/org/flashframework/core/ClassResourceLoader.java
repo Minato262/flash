@@ -31,21 +31,21 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
-public class ClassPathResource extends ClassLoader implements Resource {
+public class ClassResourceLoader extends AbstractClassResource implements Resource {
 
     /**
      * 根据类的名称，载入类的资源
      *
      * @param name 类的名称
      * @return 载入的 Class
-     * @throws ClassLoaderFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
+     * @throws ClassResourceLoaderFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     private Class<?> loadClass(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassLoaderFailureException();
+            throw new ClassResourceLoaderFailureException();
         }
     }
 
