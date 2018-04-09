@@ -32,7 +32,7 @@ public @interface Service {
     /**
      * 标记对象名称
      *
-     * @return 标记的 Bean 名称
+     * @return 被标记的 Bean 名称
      */
     String value() default "";
 }
