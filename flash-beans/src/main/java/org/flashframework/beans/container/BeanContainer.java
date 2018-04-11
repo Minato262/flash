@@ -19,7 +19,6 @@ import java.util.Map;
 
 /**
  * Bean 容器接口，定义Bean 容器的基本行为
- *
  * <p>这个接口继承于map 接口，在映射的基础上增加了常用的操作方法
  *
  * @author kay

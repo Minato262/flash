@@ -22,7 +22,7 @@ import org.flashframework.util.Assert;
 import java.util.List;
 
 /**
- * Bean Definition 的解析
+ * Bean Definition 的解析类
  *
  * @author kay
  * @version v1.0
@@ -39,8 +39,8 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      * 带有资源解析的 Bean Definition 解析的构造器
      *
      * @param resource 资源解析接口（不能为null）
-     * @param factory BeanDefinition 载入接口（不能为null）
-     * @throws IllegalArgumentException 如果资源解析接口为null
+     * @param factory  BeanDefinition 工厂接口（不能为null）
+     * @throws IllegalArgumentException 如果资源解析接口或工厂接口为null
      */
     public BeanDefinitionResolution(Resource resource, BeanDefinitionFactory factory) {
         Assert.isNotNull(factory);

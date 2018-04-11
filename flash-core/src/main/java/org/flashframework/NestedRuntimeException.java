@@ -17,15 +17,13 @@ package org.flashframework;
 
 /**
  * {@code NestedRuntimeException} 是整个框架的抽象非受检性异常
- * <p>
- *    它用于定义整个框架相关的异常的基础方法，并且将所有捕获到的受检性异常转换成了非受检性异常
- * </p>
- * <p>
- *    继承于她的异常包括有：
- *    <br>WebRuntimeException  用于定于 web  相关的抽象异常</br>
- *    <br>BeanRuntimeException 用于定于 bean 相关的抽象异常</br>
- *    <br>ResourceException    用于定于 资源  相关的抽象异常</br>
- * </p>
+ *
+ * <p>它用于定义整个框架相关的异常的基础方法，并且将所有捕获到的受检性异常转换成了非受检性异常
+ *
+ * <p>继承于她的异常包括有：
+ * <br>WebRuntimeException  用于定于 web  相关的抽象异常</br>
+ * <br>BeanRuntimeException 用于定于 bean 相关的抽象异常</br>
+ * <br>ResourceException    用于定于 资源  相关的抽象异常</br>
  *
  * @author kay
  * @version v1.0

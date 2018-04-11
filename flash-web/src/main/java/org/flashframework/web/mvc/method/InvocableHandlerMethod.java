@@ -19,5 +19,5 @@ package org.flashframework.web.mvc.method;
  * @author kay
  * @version v2.0
  */
-public class InvocableHandlerMethod {
+public class InvocableHandlerMethod implements HandlerMethod {
 }

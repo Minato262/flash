@@ -17,7 +17,8 @@ package org.flashframework.util;
 
 /**
  * 断言常用工具类
- * <p>常使用断言可以简化方法入参时的检测代码，也可以用作程序的探针</p>
+ *
+ * <p>常使用断言可以简化方法入参时的检测代码，也可以用作程序的探针
  *
  * @author kay
  * @version v1.0

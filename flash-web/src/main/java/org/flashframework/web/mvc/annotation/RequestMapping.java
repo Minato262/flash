@@ -44,7 +44,7 @@ public @interface RequestMapping {
      *
      * @return 请求方式 默认为 GET 请求
      */
-    RequestMethod[] method() default {};
+    RequestMethod[] method() default {RequestMethod.GET};
 
     /**
      * HTTP 请求 消息头

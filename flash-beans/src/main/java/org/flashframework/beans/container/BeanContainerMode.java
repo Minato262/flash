@@ -17,7 +17,6 @@ package org.flashframework.beans.container;
 
 /**
  * 容器模式枚举，容器分为单例和原型模式。
- *
  * <p>Bean 使用注解, 默认的是单例模式方式。
  * <br>单例模式，容器启动时，创建所有的 Bean 实例，以后不会再创建新的实例。</br>
  * <br>原型模式，会在使用时，创建和载入相应的 Bean 实例。</br>
