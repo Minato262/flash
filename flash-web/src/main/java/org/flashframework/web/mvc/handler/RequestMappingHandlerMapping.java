@@ -13,35 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc;
-
-import org.flashframework.web.WebRuntimeException;
+package org.flashframework.web.mvc.handler;
 
 /**
- * MVC 相关异常
- *
- * <p>这是一个抽象异常类，它定义了任何与 MVC 相关的异常的基础方法
- *
  * @author kay
  * @version v2.0
  */
-public class MvcRuntimeException extends WebRuntimeException {
-
-    /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
-     */
-    public MvcRuntimeException(String message) {
-        super(message);
-    }
-
-    /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈异常信息
-     */
-    public MvcRuntimeException(Throwable cause) {
-        super(cause);
-    }
+public class RequestMappingHandlerMapping extends DefaultAnnotationHandlerMapping {
 }

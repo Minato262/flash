@@ -18,8 +18,10 @@ package org.flashframework.web.mvc.handler;
 import org.flashframework.web.mvc.HandlerMapping;
 
 /**
+ * 默认载入注解映射
+ *
  * @author kay
  * @version v2.0
  */
-public class DefaultAnnotationHandlerMapping implements HandlerMapping {
+public abstract class DefaultAnnotationHandlerMapping implements HandlerMapping {
 }

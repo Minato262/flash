@@ -16,6 +16,8 @@
 package org.flashframework.web.mvc;
 
 /**
+ * 异常适配器，用于捕获和处理异常
+ *
  * @author kay
  * @version v2.0
  */

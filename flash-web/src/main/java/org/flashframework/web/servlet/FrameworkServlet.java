@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author kay
  * @version v2.0
  */
-public abstract class FrameworkServlet extends HttpServletBean {
+public abstract class FrameworkServlet extends HttpServlet {
 
     /**
      *

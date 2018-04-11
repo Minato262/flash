@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.annotation;
+package org.flashframework.web.mvc.handler;
 
-import java.lang.annotation.*;
+import org.flashframework.web.mvc.MvcRuntimeException;
 
 /**
- * {@code PathVariable}
+ * 捕获映射相关异常
  *
  * @author kay
  * @version v2.0
  */
-@Target({ElementType.PARAMETER})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-public @interface PathVariable {
+public class HandlerMappingException extends MvcRuntimeException {
+
+    /**
+     * 带有错误信息的捕获映射异常
+     *
+     * @param message 错误信息
+     */
+    public HandlerMappingException(String message) {
+        super(message);
+    }
 }

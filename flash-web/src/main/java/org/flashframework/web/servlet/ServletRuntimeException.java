@@ -19,7 +19,8 @@ import org.flashframework.web.WebRuntimeException;
 
 /**
  * Servlet 相关基础异常
- * <p>这是一个抽象异常类，它定义了任何与 Servlet 相关的异常的基础方法</p>
+ *
+ * <p>这是一个抽象异常类，它定义了任何与 Servlet 相关的异常的基础方法
  *
  * @author kay
  * @version v2.0

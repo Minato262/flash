@@ -18,6 +18,8 @@ package org.flashframework.web.mvc.method;
 import org.flashframework.web.mvc.HandlerAdapter;
 
 /**
+ * 载入方法映射
+ *
  * @author kay
  * @version v2.0
  */
