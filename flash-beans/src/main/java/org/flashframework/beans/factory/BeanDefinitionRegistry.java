@@ -51,7 +51,7 @@ public class BeanDefinitionRegistry implements Registry {
     }
 
     /**
-     * 单例或者原型模式，载入类注解
+     * 单例或者原型模式，载入{@code Scope}类注解
      *
      * @param table 需要注入的注册对象信息
      */

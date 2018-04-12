@@ -39,6 +39,10 @@ public class DispatcherServlet extends FrameworkServlet {
         //
     }
 
+    private void initHandlerMapping() {
+
+    }
+
     /**
      *
      *
