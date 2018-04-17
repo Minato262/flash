@@ -36,6 +36,9 @@ public class BeanDefinitionRegistry implements Registry {
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
+    /** Bean 注册表 */
+    private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
+
     /** Bean Definition 解析接口 */
     private Resolution resolution;
 
@@ -52,10 +55,8 @@ public class BeanDefinitionRegistry implements Registry {
 
     /**
      * 单例或者原型模式，载入{@code Scope}类注解
-     *
-     * @param table 需要注入的注册对象信息
      */
-    private <V> void loadScope(BeanDefinitionTable table) {
+    private <V> void loadScope() {
         for (Map.Entry<String, Class> entry : table.entrySet()) {
             Scope scope = (Scope) entry.getValue().getAnnotation(Scope.class);
             if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
@@ -71,10 +72,9 @@ public class BeanDefinitionRegistry implements Registry {
     /**
      * 根据容器中的 key 注入对象，载入方法注释
      *
-     * @param table 需要注入的注册对象信息
      * @throws BeanCreateFailureException Bean 创建失败
      */
-    private void loadAutowired(BeanDefinitionTable table) {
+    private void loadAutowired() {
         BeanReflectAutowired autowired = new BeanReflectAutowired();
         for (Map.Entry<String, Class> entry : table.entrySet()) {
             BeanDefinitionWrap wrap = autowired.loadAutowired(entry.getKey());
@@ -96,8 +96,7 @@ public class BeanDefinitionRegistry implements Registry {
         resolution.load();
 
         // 载入类和方法注解
-        BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
-        loadScope(table);
-        loadAutowired(table);
+        loadScope();
+        loadAutowired();
     }
 }

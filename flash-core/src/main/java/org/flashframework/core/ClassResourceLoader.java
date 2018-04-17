@@ -76,11 +76,10 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
         for (File file : files) {
             if (file.isDirectory()) {
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
+                continue;
             }
-            else {
-                String className = file.getName().substring(0, file.getName().length() - 6);
-                classes.add(loadClass(packageName + "." + className));
-            }
+            String className = file.getName().substring(0, file.getName().length() - 6);
+            classes.add(loadClass(packageName + "." + className));
         }
     }
 

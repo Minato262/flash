@@ -15,10 +15,7 @@
  */
 package org.flashframework.beans.container;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * {@code Scope} 注解，用于标记 Bean 对象为单例还是多例对象
@@ -28,6 +25,8 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
 public @interface Scope {
 
     /**
