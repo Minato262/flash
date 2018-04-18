@@ -23,6 +23,8 @@ package org.flashframework.beans;
  */
 public class BeanCreateFailureException extends BeanRuntimeException {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * 带有堆栈异常信息的构造器
      *

@@ -27,6 +27,8 @@ import org.flashframework.web.WebRuntimeException;
  */
 public class ServletRuntimeException extends WebRuntimeException {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * 带有错误信息的构造器
      *

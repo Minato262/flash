@@ -25,6 +25,8 @@ import org.flashframework.web.mvc.MvcRuntimeException;
  */
 public class HandlerMethodException extends MvcRuntimeException {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * 带有错误信息的捕获方法异常
      *

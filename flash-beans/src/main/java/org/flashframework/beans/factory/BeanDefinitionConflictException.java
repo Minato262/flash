@@ -26,6 +26,8 @@ import org.flashframework.beans.BeanRuntimeException;
  */
 class BeanDefinitionConflictException extends BeanRuntimeException {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * 默认的构造器
      */

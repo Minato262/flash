@@ -62,13 +62,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             return;
         }
 
-        File[] files = dir.listFiles(new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return file.isDirectory() || file.getName().endsWith(".class");
-            }
-        });
-
+        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(".class"));
         if (files == null) {
             return;
         }
