@@ -64,8 +64,14 @@ public class BeanDefinitionRegistry implements Registry {
                 container.put(entry.getKey(), entry.getValue());
                 continue;
             }
-            V value = BeanReflect.newInstance(entry.getValue().getName());
-            container.put(entry.getKey(), value);
+
+            try {
+                V value = BeanReflect.newInstance(entry.getValue().getName());
+                container.put(entry.getKey(), value);
+            }
+            catch (BeanCreateFailureException e) {
+                //
+            }
         }
     }
 

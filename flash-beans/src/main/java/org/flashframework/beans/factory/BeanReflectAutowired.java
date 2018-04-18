@@ -106,6 +106,6 @@ public class BeanReflectAutowired {
     public BeanDefinitionWrap loadAutowired(String key) {
         Assert.isNotEmpty(key);
         Object value = container.get(key);
-        return loadAutowired(value);
+        return value != null ? loadAutowired(value) : new BeanDefinitionWrap();
     }
 }

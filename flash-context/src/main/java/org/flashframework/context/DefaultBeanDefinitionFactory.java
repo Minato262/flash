@@ -35,7 +35,7 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
      *
      * @param clazz 注册对象内容
      */
-    private void put(Class clazz) {
+    protected void put(Class clazz) {
         super.put(null, clazz);
     }
 

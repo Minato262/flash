@@ -28,6 +28,14 @@ final class BeanDefinitionWrap<T> {
     private T data;
 
     /**
+     * 默认构造器
+     */
+    BeanDefinitionWrap() {
+        hasAutowired = false;
+        data = null;
+    }
+
+    /**
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
      * @param hasAutowired 是否有方法注解
