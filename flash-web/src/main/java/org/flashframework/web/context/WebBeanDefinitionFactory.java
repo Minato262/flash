@@ -20,7 +20,7 @@ import org.flashframework.web.mvc.annotation.RestController;
 
 /**
  * BeanDefinition web 模块的工厂
- * <p>用来额外载入web模块类的注解信息，主要包括RestController</p>
+ * <p>用来额外载入web模块类的注解信息，主要包括 RestController.</p>
  *
  * @author kay
  * @version v2.0

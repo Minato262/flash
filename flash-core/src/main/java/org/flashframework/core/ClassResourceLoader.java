@@ -18,7 +18,6 @@ package org.flashframework.core;
 import org.flashframework.util.Decoder;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.lang.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -62,7 +61,8 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             return;
         }
 
-        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(".class"));
+        final String FILE_CLAZZ = ".class";
+        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLAZZ));
         if (files == null) {
             return;
         }
@@ -72,7 +72,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
                 continue;
             }
-            String className = file.getName().substring(0, file.getName().length() - 6);
+            String className = file.getName().substring(0, (file.getName().length() - FILE_CLAZZ.length()));
             classes.add(loadClass(packageName + "." + className));
         }
     }
