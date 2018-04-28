@@ -29,7 +29,7 @@ import org.junit.Test;
  */
 public class WebApplicationContextFactoryTest {
 
-    protected BeanFactory factory;
+    private BeanFactory factory;
 
     @Before
     public void init() {
@@ -40,6 +40,7 @@ public class WebApplicationContextFactoryTest {
     @Test
     public void test() {
         Bean bean = (Bean) factory.getBean("bean");
+        System.out.println(bean);
         Assert.assertNotNull(bean);
     }
 }
