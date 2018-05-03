@@ -26,7 +26,7 @@ import org.flashframework.NestedRuntimeException;
  */
 abstract class ResourceException extends NestedRuntimeException {
 
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = -203034699454123415L;
 
     /**
      * 默认构造器，异常信息没有进行初始化
