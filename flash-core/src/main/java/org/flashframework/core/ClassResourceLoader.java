@@ -61,8 +61,8 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             return;
         }
 
-        final String FILE_CLAZZ = ".class";
-        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLAZZ));
+        final String fileClass = ".class";
+        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(fileClass));
         if (files == null) {
             return;
         }
@@ -72,7 +72,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
                 continue;
             }
-            String className = file.getName().substring(0, (file.getName().length() - FILE_CLAZZ.length()));
+            String className = file.getName().substring(0, (file.getName().length() - fileClass.length()));
             classes.add(loadClass(packageName + "." + className));
         }
     }
