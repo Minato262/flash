@@ -79,7 +79,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
         }
         catch (BeanRuntimeException e) {
             resolution.clear();  // 清空 Bean Definition 注册表
-            container.clear();  // 清空 Bean 容器
+            container.clear();   // 清空 Bean 容器
             throw new BeanContainerInitFailureException(e);
         }
     }

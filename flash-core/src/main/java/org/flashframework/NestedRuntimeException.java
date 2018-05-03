@@ -30,7 +30,7 @@ package org.flashframework;
  */
 public abstract class NestedRuntimeException extends RuntimeException {
 
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = -6425650688761297668L;
 
     /*
      * 概述：

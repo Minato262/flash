@@ -23,7 +23,7 @@ package org.flashframework.core;
  */
 class ClassResourceLoaderFailureException extends ResourceException {
 
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = -5806689345532523493L;
 
     /**
      * 默认构造器
