@@ -32,6 +32,10 @@ import java.util.List;
  */
 public class ClassResourceLoader extends AbstractClassResource implements Resource {
 
+    private static final String FILE = "file";
+
+    private static final String FILE_CLASS = ".class";
+
     /**
      * 根据类的名称，载入类的资源
      *
@@ -61,8 +65,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             return;
         }
 
-        final String fileClass = ".class";
-        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(fileClass));
+        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLASS));
         if (files == null) {
             return;
         }
@@ -70,10 +73,11 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
         for (File file : files) {
             if (file.isDirectory()) {
                 checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
-                continue;
             }
-            String className = file.getName().substring(0, (file.getName().length() - fileClass.length()));
-            classes.add(loadClass(packageName + "." + className));
+            else {
+                String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
+                classes.add(loadClass(packageName + "." + className));
+            }
         }
     }
 
@@ -92,7 +96,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             String protocol = url.getProtocol();
 
             // 暂时不支持扫描 jar 包
-            if ("file".equals(protocol)) {
+            if (FILE.equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
             }

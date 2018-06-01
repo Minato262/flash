@@ -15,7 +15,8 @@
  */
 
 /**
- * 注解相关模块
+ * Beans 相关注解模块，主要包括 Autowired, Resource, Repository,
+ * Service, Controller 等常用注解
  *
  * @author kay
  * @version v1.0

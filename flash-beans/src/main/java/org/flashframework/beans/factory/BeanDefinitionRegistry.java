@@ -46,7 +46,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 带有 Bean Definition 解析接口的构造器
      *
      * @param resolution Bean Definition 解析
-     * @throws IllegalArgumentException 如果字符串为null
+     * @throws IllegalArgumentException 如果 resolution 为null
      */
     public BeanDefinitionRegistry(Resolution resolution) {
         Assert.isNotNull(resolution);

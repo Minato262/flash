@@ -22,6 +22,7 @@ import org.flashframework.util.Assert;
  *
  * @author kay
  * @version v1.0
+ * <T> data
  */
 final class BeanDefinitionWrap<T> {
     private boolean hasAutowired;

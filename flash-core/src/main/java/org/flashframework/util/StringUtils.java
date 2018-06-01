@@ -61,6 +61,8 @@ public class StringUtils {
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
         }
-        return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
+        else {
+            return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
+        }
     }
 }

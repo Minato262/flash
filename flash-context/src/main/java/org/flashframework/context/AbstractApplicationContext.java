@@ -105,8 +105,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return 获取 bean 对象
-     * @throws IllegalArgumentException   如果字符串为空
-     * @throws BeanCreateFailureException 如果对象新建失败
+     * @throws BeanContainerInitFailureException 如果 Bean容器初始化失败
      */
     @Override
     public Object getBean(String name) {
