@@ -18,15 +18,27 @@ package org.flashframework.web.filter;
 import org.flashframework.web.WebRuntimeException;
 
 /**
+ * 过滤器相关的异常
+ *
  * @author kay
  * @version v2.0
  */
 public class FilterRuntimeException extends WebRuntimeException {
 
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
     public FilterRuntimeException(String message) {
         super(message);
     }
 
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
     public FilterRuntimeException(Throwable cause) {
         super(cause);
     }

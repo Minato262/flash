@@ -60,7 +60,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private void init() {
         if (container.isEmpty()) {
-            // 初始化容器
             Resource resource = new ClassResourceLoader();
             BeanDefinitionFactory factory = loadBeanDefinition();
             Resolution resolution = new BeanDefinitionResolution(resource, factory);
