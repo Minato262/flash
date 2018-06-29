@@ -39,7 +39,7 @@ public class WebBeanDefinitionFactory extends DefaultBeanDefinitionFactory {
         super.load(clazz);
         RestController annotation = (RestController) clazz.getAnnotation(RestController.class);
         if (annotation != null) {
-            put(clazz);
+            super.put(clazz);
         }
     }
 }

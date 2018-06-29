@@ -31,15 +31,6 @@ import org.flashframework.util.Assert;
 public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
 
     /**
-     * 放入 Bean Definition 清单中
-     *
-     * @param clazz 注册对象内容
-     */
-    protected void put(Class clazz) {
-        super.put(null, clazz);
-    }
-
-    /**
      * 根据 Class，载入类注解信息
      * <p>默认载入 Repository，Service，Controller，Resource 注解</p>
      *
@@ -61,7 +52,7 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         }
         Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
         if (annotation2 != null) {
-            put(clazz);
+            super.put(clazz);
             return;
         }
 
