@@ -69,8 +69,10 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      */
     @Override
     public void load() {
-        clear();   // 清理和初始化注册表
-        loadRepository();   // 载入类注释
+        // 清理和初始化注册表
+        clear();
+        // 载入类注释
+        loadRepository();
     }
 
     /**

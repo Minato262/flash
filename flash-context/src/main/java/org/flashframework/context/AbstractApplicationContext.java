@@ -65,11 +65,14 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             Resolution resolution = new BeanDefinitionResolution(resource, factory);
             try {
                 Registry beanDefinition = new BeanDefinitionRegistry(resolution);
-                beanDefinition.refresh();  // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
+                // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
+                beanDefinition.refresh();
             }
             catch (BeanRuntimeException e) {
-                resolution.clear();  // 清空 Bean Definition 注册表
-                container.clear();   // 清空 Bean 容器
+                // 清空 Bean Definition 注册表
+                resolution.clear();
+                // 清空 Bean 容器
+                container.clear();
                 throw new BeanContainerInitFailureException(e);
             }
         }
