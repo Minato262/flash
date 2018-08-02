@@ -22,7 +22,6 @@ package org.flashframework.beans;
  * @version v1.0
  */
 public class BeanCreateFailureException extends BeanRuntimeException {
-
     private static final long serialVersionUID = -1978739301158111034L;
 
     /**

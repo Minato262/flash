@@ -24,7 +24,6 @@ import org.flashframework.beans.BeanRuntimeException;
  * @version v1.0
  */
 public class BeanContainerInitFailureException extends BeanRuntimeException {
-
     private static final long serialVersionUID = -112308162137005952L;
 
     /**

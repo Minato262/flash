@@ -31,7 +31,6 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
 
     /*
      * 概况
-     *
      * 容器是用于管理对象的生命周期的。在框架中，定义了对象的名称，如何产生对象（单例模式或者
      * 原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容器启动
      * 后，所有的对象都可以直接取用，不需要进行硬编码，也不需要重新确立对象与对象之间的关系。
