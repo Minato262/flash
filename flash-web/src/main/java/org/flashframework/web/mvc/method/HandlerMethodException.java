@@ -24,7 +24,6 @@ import org.flashframework.web.mvc.MvcRuntimeException;
  * @version v2.0
  */
 public class HandlerMethodException extends MvcRuntimeException {
-
     private static final long serialVersionUID = 1;
 
     /**

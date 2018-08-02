@@ -25,7 +25,6 @@ import org.flashframework.NestedRuntimeException;
  * @version v1.0
  */
 abstract class ResourceException extends NestedRuntimeException {
-
     private static final long serialVersionUID = -203034699454123415L;
 
     /**

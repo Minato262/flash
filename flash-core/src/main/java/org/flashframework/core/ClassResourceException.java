@@ -22,7 +22,6 @@ package org.flashframework.core;
  * @version v1.0
  */
 class ClassResourceException extends ResourceException {
-
     private static final long serialVersionUID = -5511004726724230904L;
 
     /**

@@ -26,7 +26,6 @@ import org.flashframework.web.WebRuntimeException;
  * @version v2.0
  */
 public class ServletRuntimeException extends WebRuntimeException {
-
     private static final long serialVersionUID = 1;
 
     /**
