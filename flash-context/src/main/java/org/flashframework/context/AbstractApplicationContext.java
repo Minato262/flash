@@ -52,11 +52,12 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     /**
-     * 初始化上下文环境以及初始化容器
+     * 初始化上下文环境及初始化容器
      *
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
+        // 初始化上下文环境及初始化容器
         if (container.isEmpty()) {
             Resource resource = new ClassResourceLoader();
             BeanDefinitionFactory factory = loadBeanDefinition();

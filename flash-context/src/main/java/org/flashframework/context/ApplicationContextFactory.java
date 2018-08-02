@@ -86,6 +86,8 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
         if (container.get(name) instanceof Class) {
             return loadAutowired(name);
         }
-        return getInstance(name);
+        else {
+            return getInstance(name);
+        }
     }
 }
