@@ -16,7 +16,8 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.util.Assert;
-import org.flashframework.util.StringUtils;
+
+import static org.flashframework.util.StringUtils.toLowerCaseFirstOne;
 
 /**
  * 这是一个抽象环境类，主要用于存放 Bean Definition 注册表相关的操作
@@ -46,17 +47,19 @@ public abstract class BeanDefinitionTableContext implements BeanDefinitionAware 
     private String getLowerCase(String name) {
         Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
-        return name.substring(i + 1, name.length());
+        String lowerCase = name.substring(i + 1, name.length());
+        return toLowerCaseFirstOne(lowerCase);
     }
 
     /**
      * 放入 Bean Definition 注册表中
      *
      * @param clazz 注册对象内容
+     * @throws IllegalArgumentException 如果对象为null
      */
     protected void put(Class clazz) {
-        String lowerCase = getLowerCase(clazz.getName());
-        String key = StringUtils.toLowerCaseFirstOne(lowerCase);
+        Assert.isNotNull(clazz);
+        String key = getLowerCase(clazz.getName());
         table.put(key, clazz);
     }
 

@@ -62,15 +62,15 @@ public class BeanDefinitionRegistry implements Registry {
             if (scope != null && BeanContainerMode.PROTOTYPE.equals(scope.value())) {
                 // scope 注解标记的多例，在初始化时，引入对象的 class 信息作为标记
                 container.put(entry.getKey(), entry.getValue());
+                continue;
             }
-            else {
-                try {
-                    V value = BeanReflect.newInstance(entry.getValue().getName());
-                    container.put(entry.getKey(), value);
-                }
-                catch (BeanCreateFailureException e) {
-                    //
-                }
+
+            try {
+                V value = BeanReflect.newInstance(entry.getValue().getName());
+                container.put(entry.getKey(), value);
+            }
+            catch (BeanCreateFailureException e) {
+                //
             }
         }
     }
