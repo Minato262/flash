@@ -108,6 +108,7 @@ class Annotation {
 
     @RequestMapping(value = "post", method = {RequestMethod.POST})
     @ResponseBody
+    @RequestBody
     public void setPostId(@RequestParam("postId") Long postId) {
         this.postId = postId;
     }
