@@ -37,6 +37,19 @@ public class AnnotationTest {
         Assert.assertNotEquals(annotation3.value(), null);
         Assert.assertEquals(annotation3.value(), "");
     }
+
+    @Test
+    public void test1() {
+        Annotation annotationTest = new Annotation();
+        Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
+        for (java.lang.annotation.Annotation annotation : clazz.getAnnotations()) {
+            System.out.println(annotation);
+
+            if (annotation instanceof Controller) {
+                System.out.println("1");
+            }
+        }
+    }
 }
 
 @Controller

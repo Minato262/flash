@@ -32,7 +32,7 @@ public class WebBeanDefinitionFactory extends DefaultBeanDefinitionFactory {
      * <p>默认载入 Repository，Service，Controller，Resource，RestController 注解</p>
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果Class为null
+     * @throws IllegalArgumentException 如果Class为null，则抛出异常
      */
     @Override
     public void load(Class clazz) {

@@ -61,7 +61,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param packagePath 相对包路径
      * @param classes     Class 资源清单
      */
-    private void checkClasses(String packageName, String packagePath, List<Class<?>> classes) {
+    private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
         File dir = new File(packagePath);
         if (!dir.exists() || !dir.isDirectory()) {
             return;
@@ -74,7 +74,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
         for (File file : files) {
             if (file.isDirectory()) {
-                checkClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
+                loadClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
             }
             else {
                 String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
@@ -100,7 +100,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             // 暂时不支持扫描 jar 包
             if (FILE_NAME.equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
-                checkClasses(packageName, filePath, classes);
+                loadClasses(packageName, filePath, classes);
             }
         }
         return classes;

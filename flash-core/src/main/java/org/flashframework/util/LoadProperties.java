@@ -85,7 +85,7 @@ public enum LoadProperties {
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
         try {
-            return load(LoadProperties.INSTANCE.getPath(), propertyName);
+            return load(path, propertyName);
         }
         catch (IOException e) {
             return "";
