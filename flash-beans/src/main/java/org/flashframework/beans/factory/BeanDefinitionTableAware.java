@@ -67,7 +67,7 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
     @Override
     public Class put(String key, Class value) {
         if (super.containsKey(key)) {
-            throw new BeanDefinitionConflictException(key + ", Bean Definition 已经存在");
+            throw new BeanDefinitionConflictException(key + ", Bean Definition already exists");
         }
         return super.put(key, value);
     }

@@ -69,7 +69,7 @@ public abstract class AbstractClassResource implements Resource {
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
         if (StringUtils.isEmpty(packageDirName)) {
-            throw new ClassResourceException("没有在配置项中配置包路径");
+            throw new ClassResourceException("No package path is configured in the configuration item!");
         }
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);
