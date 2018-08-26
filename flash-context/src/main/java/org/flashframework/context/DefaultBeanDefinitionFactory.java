@@ -22,8 +22,6 @@ import org.flashframework.beans.annotation.Service;
 import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.util.Assert;
 
-import java.lang.annotation.Annotation;
-
 /**
  * BeanDefinition 默认工厂
  *
@@ -37,7 +35,7 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
      * <p>默认载入 Repository，Service，Controller，Resource 注解</p>
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果Class为null，则抛出异常
+     * @throws IllegalArgumentException 如果Class为null
      */
     @Override
     public void load(Class clazz) {
