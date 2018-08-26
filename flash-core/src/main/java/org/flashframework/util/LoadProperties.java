@@ -39,15 +39,6 @@ public enum LoadProperties {
     }
 
     /**
-     * 获取配置文件路径
-     *
-     * @return 文件路径
-     */
-    public String getPath() {
-        return path;
-    }
-
-    /**
      * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
      *
      * @param propertyPath 配置路径
