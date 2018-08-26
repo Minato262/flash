@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
  * @author kay
  * @version v1.0
  */
-public class BeanReflectAutowired {
+public final class BeanReflectAutowired {
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();

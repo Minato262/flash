@@ -32,8 +32,10 @@ import java.util.List;
  */
 public class ClassResourceLoader extends AbstractClassResource implements Resource {
 
-    private static final String FILE = "file";
+    /** 文件名称 */
+    private static final String FILE_NAME = "file";
 
+    /** 文件后缀 */
     private static final String FILE_CLASS = ".class";
 
     /**
@@ -96,7 +98,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             String protocol = url.getProtocol();
 
             // 暂时不支持扫描 jar 包
-            if (FILE.equals(protocol)) {
+            if (FILE_NAME.equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 checkClasses(packageName, filePath, classes);
             }
