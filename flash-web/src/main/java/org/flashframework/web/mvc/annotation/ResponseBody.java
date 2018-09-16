@@ -15,8 +15,6 @@
  */
 package org.flashframework.web.mvc.annotation;
 
-import org.flashframework.beans.annotation.Controller;
-
 import java.lang.annotation.*;
 
 /**

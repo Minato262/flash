@@ -31,8 +31,6 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
      * 概况
      */
 
-    /* ------------------------------  静态区  ------------------------------- */
-
     /** Bean Definition 注册表 */
     private static BeanDefinitionTable table = new BeanDefinitionTableAware();
 
@@ -45,16 +43,12 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
         return table;
     }
 
-    /* ------------------------------  构造区  ------------------------------- */
-
     /**
      * 默认构造器
      */
     private BeanDefinitionTableAware() {
         //
     }
-
-    /* ------------------------------  方法区  ------------------------------- */
 
     /**
      * 将扫描出的对象信息，放入注册表

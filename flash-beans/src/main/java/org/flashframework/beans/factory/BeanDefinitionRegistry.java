@@ -100,8 +100,10 @@ public class BeanDefinitionRegistry implements Registry {
     public void refresh() {
         // 注册表载入
         resolution.load();
+
         // 载入注解
         loadScope();
+
         // 载入类和方法
         loadAutowired();
     }

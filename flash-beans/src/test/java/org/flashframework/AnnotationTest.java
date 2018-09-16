@@ -1,7 +1,5 @@
 package org.flashframework;
 
-import org.flashframework.beans.annotation.Autowired;
-import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
 import org.flashframework.beans.container.BeanContainerMode;
@@ -22,9 +20,6 @@ public class AnnotationTest {
         Annotation annotationTest = new Annotation();
         Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
 
-        Controller annotation = clazz.getAnnotation(Controller.class);
-        Assert.assertNotEquals(annotation, null);
-
         Service annotation1 = clazz.getAnnotation(Service.class);
         Assert.assertNotEquals(annotation1.value(), null);
         Assert.assertEquals(annotation1.value(), "");
@@ -44,15 +39,10 @@ public class AnnotationTest {
         Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
         for (java.lang.annotation.Annotation annotation : clazz.getAnnotations()) {
             System.out.println(annotation);
-
-            if (annotation instanceof Controller) {
-                System.out.println("1");
-            }
         }
     }
 }
 
-@Controller
 @Service
 @Scope
 @Resource

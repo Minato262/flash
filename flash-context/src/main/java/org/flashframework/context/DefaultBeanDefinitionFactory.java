@@ -15,7 +15,6 @@
  */
 package org.flashframework.context;
 
-import org.flashframework.beans.annotation.Controller;
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.annotation.Resource;
 import org.flashframework.beans.annotation.Service;
@@ -43,17 +42,10 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
             super.put(annotation.value(), clazz);
-            return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
             super.put(annotation1.value(), clazz);
-            return;
-        }
-        Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
-        if (annotation2 != null) {
-            super.put(clazz);
-            return;
         }
 
         Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);

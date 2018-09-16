@@ -15,7 +15,7 @@
  */
 package org.flashframework.web.mvc;
 
-import org.flashframework.beans.annotation.Controller;
+import org.flashframework.web.mvc.annotation.Controller;
 
 /**
  * 映射处理器，根据http请求选择合适的 controller

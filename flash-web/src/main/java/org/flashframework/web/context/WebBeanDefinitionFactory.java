@@ -16,6 +16,7 @@
 package org.flashframework.web.context;
 
 import org.flashframework.context.DefaultBeanDefinitionFactory;
+import org.flashframework.web.mvc.annotation.Controller;
 import org.flashframework.web.mvc.annotation.RestController;
 
 /**
@@ -37,6 +38,11 @@ public class WebBeanDefinitionFactory extends DefaultBeanDefinitionFactory {
     @Override
     public void load(Class clazz) {
         super.load(clazz);
+        Controller annotation2 = (Controller) clazz.getAnnotation(Controller.class);
+        if (annotation2 != null) {
+            super.put(clazz);
+        }
+
         RestController annotation = (RestController) clazz.getAnnotation(RestController.class);
         if (annotation != null) {
             super.put(clazz);
