@@ -15,8 +15,6 @@
  */
 package org.flashframework.web;
 
-import org.flashframework.NestedRuntimeException;
-
 /**
  * Web 相关基础异常
  * <p>这是一个抽象异常类，它定义了任何与 Web 相关的异常的基础方法</p>
@@ -24,7 +22,7 @@ import org.flashframework.NestedRuntimeException;
  * @author kay
  * @version v2.0
  */
-public abstract class WebRuntimeException extends NestedRuntimeException {
+public abstract class WebRuntimeException extends RuntimeException {
     private static final long serialVersionUID = 1;
 
     /**

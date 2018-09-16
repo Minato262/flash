@@ -17,7 +17,7 @@ package org.flashframework.beans.factory;
 
 import org.flashframework.beans.Resolution;
 import org.flashframework.core.Resource;
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      *
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */
-    private void loadRepository() {
+    private void loadClasses() {
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
             factory.load(clazz);
@@ -71,8 +71,9 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     public void load() {
         // 清理和初始化注册表
         clear();
+
         // 载入类注释
-        loadRepository();
+        loadClasses();
     }
 
     /**

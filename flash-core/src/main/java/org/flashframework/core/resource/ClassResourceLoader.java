@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.core.resource;
 
-import org.flashframework.util.Decoder;
+import org.flashframework.core.Resource;
+import org.flashframework.core.util.Decoder;
 
 import java.io.File;
-import java.lang.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;

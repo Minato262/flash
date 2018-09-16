@@ -15,8 +15,8 @@
  */
 package org.flashframework;
 
-import org.flashframework.util.Assert;
-import org.flashframework.util.StringUtils;
+import org.flashframework.core.util.Assert;
+import org.flashframework.core.util.StringUtils;
 import org.junit.Test;
 
 /**

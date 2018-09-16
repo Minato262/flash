@@ -15,9 +15,7 @@
  */
 
 /**
- * 工具模块
- *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-package org.flashframework.util;
+package org.flashframework.context.annotation;

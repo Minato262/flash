@@ -15,7 +15,9 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
+
+import java.io.Serializable;
 
 /**
  * 带有是否有方法注解和私有类载入的对象的 Bean Definition 包装类
@@ -24,28 +26,30 @@ import org.flashframework.util.Assert;
  * @version v1.0
  * <T> data
  */
-final class BeanDefinitionWrap<T> {
-    private boolean hasAutowired;
+final class BeanDefinitionWrap<T> implements Serializable {
+    private static final long serialVersionUID = -2145083312359080837L;
+
+    private boolean isAutowired;
     private T data;
 
     /**
      * 默认构造器
      */
     BeanDefinitionWrap() {
-        hasAutowired = false;
+        isAutowired = false;
         data = null;
     }
 
     /**
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
-     * @param hasAutowired 是否有方法注解
+     * @param isAutowired 是否有方法注解
      * @param data         私有类载入的对象（一定不能为null）
      * @throws IllegalArgumentException 如果载入对象为null
      */
-    BeanDefinitionWrap(boolean hasAutowired, T data) {
+    BeanDefinitionWrap(boolean isAutowired, T data) {
         Assert.isNotNull(data);
-        this.hasAutowired = hasAutowired;
+        this.isAutowired = isAutowired;
         this.data = data;
     }
 
@@ -55,7 +59,7 @@ final class BeanDefinitionWrap<T> {
      * @return 是否有方法注解
      */
     public boolean isHasAutowired() {
-        return hasAutowired;
+        return isAutowired;
     }
 
     /**
@@ -65,5 +69,10 @@ final class BeanDefinitionWrap<T> {
      */
     public T getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        return "BeanDefinitionWrap[isAutowired=" + isAutowired + ",data=" + data + "]";
     }
 }

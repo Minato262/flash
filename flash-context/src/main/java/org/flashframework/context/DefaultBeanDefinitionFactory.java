@@ -16,10 +16,9 @@
 package org.flashframework.context;
 
 import org.flashframework.beans.annotation.Repository;
-import org.flashframework.beans.annotation.Resource;
-import org.flashframework.beans.annotation.Service;
 import org.flashframework.beans.factory.BeanDefinitionTableFactory;
-import org.flashframework.util.Assert;
+import org.flashframework.context.annotation.Service;
+import org.flashframework.core.util.Assert;
 
 /**
  * BeanDefinition 默认工厂
@@ -42,15 +41,11 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
             super.put(annotation.value(), clazz);
+            return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
             super.put(annotation1.value(), clazz);
-        }
-
-        Resource annotation3 = (Resource) clazz.getAnnotation(Resource.class);
-        if (annotation3 != null) {
-            super.put(annotation3.value(), clazz);
         }
     }
 }

@@ -13,25 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
+package org.flashframework.core.util;
 
-import org.flashframework.context.ApplicationContextFactory;
-import org.flashframework.beans.factory.BeanFactory;
-import org.junit.Before;
+import org.junit.Test;
 
 /**
- * 容器启动
+ * {@link LoadProperties} Test.
  *
  * @author kay
  * @version v1.0
  */
-public class BeforeTest {
+public class PropertiesUtilsTest {
 
-    protected BeanFactory factory;
+    @Test
+    public void test() {
+        String packageName = LoadProperties.INSTANCE.load("packageName");
+        Assert.isNotEmpty(packageName);
+        System.out.println(packageName);
+    }
 
-    @Before
-    public void init() {
-        factory = new ApplicationContextFactory();
-        System.out.println("容器启动!");
+    @Test
+    public void test1() {
+        String containerModes = LoadProperties.INSTANCE.load("containerModes");
+        Assert.isNotEmpty(containerModes);
     }
 }

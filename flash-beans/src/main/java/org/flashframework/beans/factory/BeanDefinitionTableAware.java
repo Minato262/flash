@@ -15,8 +15,6 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.Aware;
-
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -25,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable, Aware {
+public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable {
 
     /*
      * 概况

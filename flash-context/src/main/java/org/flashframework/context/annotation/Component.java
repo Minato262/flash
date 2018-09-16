@@ -13,28 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.util;
+package org.flashframework.context.annotation;
 
-import org.junit.Test;
+import java.lang.annotation.*;
 
 /**
- * {@link LoadProperties} Test.
+ * 注册各种 Bean
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public class PropertiesUtilsTest {
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Component {
 
-    @Test
-    public void test() {
-        String packageName = LoadProperties.INSTANCE.load("packageName");
-        Assert.isNotEmpty(packageName);
-        System.out.println(packageName);
-    }
-
-    @Test
-    public void test1() {
-        String containerModes = LoadProperties.INSTANCE.load("containerModes");
-        Assert.isNotEmpty(containerModes);
-    }
+    /**
+     * 标记对象名称
+     *
+     * @return 被标记的 Bean 名称
+     */
+    String value() default "";
 }

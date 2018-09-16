@@ -13,32 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
+package org.flashframework.core;
 
-import org.flashframework.core.util.Assert;
-import org.junit.Test;
+import org.flashframework.beans.factory.BeanFactory;
+import org.flashframework.context.ApplicationContextFactory;
+import org.junit.Before;
 
 /**
- * {@link Assert} Test
+ * 容器启动
  *
  * @author kay
  * @version v1.0
  */
-public class AssertTest {
+public class BeforeTest {
 
-    @Test
-    public void isNotNull() {
-        Assert.isNotNull(null);
-        Assert.isNotNull("");
-        Assert.isNotNull("null");
-        Assert.isNotNull("ABCS");
-    }
+    protected BeanFactory factory;
 
-    @Test
-    public void isNotEmpty() {
-        Assert.isNotEmpty(null);
-        Assert.isNotEmpty("");
-        Assert.isNotEmpty("null");
-        Assert.isNotEmpty("ABCS");
+    @Before
+    public void init() {
+        factory = new ApplicationContextFactory();
+        System.out.println("容器启动!");
     }
 }

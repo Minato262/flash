@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
 
 /**
- * 辅助标记接口
+ * 工具模块
  *
  * @author kay
  * @version v1.0
  */
-public interface Aware {
-}
+package org.flashframework.core.util;

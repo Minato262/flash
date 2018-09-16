@@ -21,9 +21,9 @@ import org.flashframework.beans.container.BeanContainerInitFailureException;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
-import org.flashframework.core.ClassResourceLoader;
 import org.flashframework.core.Resource;
 import org.flashframework.beans.*;
+import org.flashframework.core.resource.ClassResourceLoader;
 
 /**
  * 应用上下环境抽象类

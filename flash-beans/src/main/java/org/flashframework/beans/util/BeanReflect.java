@@ -16,7 +16,7 @@
 package org.flashframework.beans.util;
 
 import org.flashframework.beans.BeanCreateFailureException;
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
 
 /**
  * 反射相关工具类

@@ -13,29 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
+package org.flashframework.core.resource;
 
 /**
- * Unicode 编码 常量枚举
+ * Class 资源载入失败异常
  *
  * @author kay
  * @version v1.0
  */
-public enum Unicode {
+class ClassResourceLoaderFailureException extends ResourceException {
+    private static final long serialVersionUID = -5806689345532523493L;
 
     /**
-     * UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，
-     * 又称万国码。标准化为RFC 3629
+     * 默认构造器
      */
-    UTF_8("UTF-8");
-
-    private String code;
-
-    Unicode(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return this.code;
+    ClassResourceLoaderFailureException() {
+        super();
     }
 }

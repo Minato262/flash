@@ -13,21 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.core.resource;
 
 /**
- * Class 资源载入失败异常
+ * 辅助标记接口
  *
  * @author kay
  * @version v1.0
  */
-class ClassResourceLoaderFailureException extends ResourceException {
-    private static final long serialVersionUID = -5806689345532523493L;
-
-    /**
-     * 默认构造器
-     */
-    ClassResourceLoaderFailureException() {
-        super();
-    }
+public interface Aware {
 }

@@ -20,8 +20,9 @@ import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.util.BeanReflect;
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
 
+import javax.annotation.Resource;
 import java.lang.reflect.Field;
 
 /**
@@ -30,7 +31,7 @@ import java.lang.reflect.Field;
  * @author kay
  * @version v1.0
  */
-public final class BeanReflectAutowired {
+public final class BeanAnnotationLoad {
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
@@ -51,7 +52,19 @@ public final class BeanReflectAutowired {
             BeanDefinitionWrap beanDefinitionWrap = loadAutowired(newValue);
             return beanDefinitionWrap.getData();
         }
-        return value;
+        else {
+            return value;
+        }
+    }
+
+    private <V> boolean set(Field field, V value) {
+        try {
+            field.set(value, getValue(field.getName()));
+        }
+        catch (IllegalAccessException e) {
+            throw new BeanCreateFailureException(e);
+        }
+        return true;
     }
 
     /**
@@ -62,22 +75,21 @@ public final class BeanReflectAutowired {
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> loadAutowired(V value) {
-        boolean hasAutowired = false;
+        boolean isAutowired = false;
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             Autowired annotation = field.getAnnotation(Autowired.class);
             if (annotation != null) {
-                try {
-                    field.set(value, getValue(field.getName()));
-                }
-                catch (IllegalAccessException e) {
-                    throw new BeanCreateFailureException(e);
-                }
-                hasAutowired = true;
+                isAutowired = set(field, value);
+                continue;
+            }
+            Resource annotation1 = field.getAnnotation(Resource.class);
+            if (annotation1 != null) {
+                isAutowired = set(field, value);
             }
         }
-        return new BeanDefinitionWrap<>(hasAutowired, value);
+        return new BeanDefinitionWrap<>(isAutowired, value);
     }
 
     /**

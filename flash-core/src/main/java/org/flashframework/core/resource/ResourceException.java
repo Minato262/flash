@@ -13,23 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.core.resource;
 
 /**
- * Class 路径资源异常
+ * 资源相关基础异常
+ * <p>这是一个抽象异常类，它定义了任何与底层资源载入相关的异常的基础方法</p>
  *
  * @author kay
  * @version v1.0
  */
-class ClassResourceException extends ResourceException {
-    private static final long serialVersionUID = -5511004726724230904L;
+abstract class ResourceException extends RuntimeException {
+    private static final long serialVersionUID = -203034699454123415L;
+
+    /**
+     * 默认构造器，异常信息没有进行初始化
+     */
+    ResourceException() {
+        super();
+    }
 
     /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息
      */
-    ClassResourceException(String message) {
+    ResourceException(String message) {
         super(message);
     }
 
@@ -38,7 +46,7 @@ class ClassResourceException extends ResourceException {
      *
      * @param cause 堆栈信息
      */
-    ClassResourceException(Throwable cause) {
+    ResourceException(Throwable cause) {
         super(cause);
     }
 }

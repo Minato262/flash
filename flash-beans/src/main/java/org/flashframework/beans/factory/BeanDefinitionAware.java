@@ -15,15 +15,13 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.Aware;
-
 /**
  * Bean Definition 辅助接口
  *
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionAware extends Aware {
+public interface BeanDefinitionAware {
 
     /**
      * 清理 Bean Definition 注册表

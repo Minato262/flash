@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.core.resource;
 
-import org.flashframework.util.LoadProperties;
-import org.flashframework.util.StringUtils;
+import org.flashframework.core.Resource;
+import org.flashframework.core.util.LoadProperties;
+import org.flashframework.core.util.StringUtils;
 
 import java.io.IOException;
 import java.net.URL;

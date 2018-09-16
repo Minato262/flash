@@ -15,11 +15,11 @@
  */
 package org.flashframework.core;
 
-import org.flashframework.BeforeTest;
 import org.flashframework.context.ApplicationContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.core.factory.Bean;
-import org.flashframework.util.Assert;
+import org.flashframework.core.resource.ClassResourceLoader;
+import org.flashframework.core.util.Assert;
 import org.junit.Test;
 
 import java.util.List;

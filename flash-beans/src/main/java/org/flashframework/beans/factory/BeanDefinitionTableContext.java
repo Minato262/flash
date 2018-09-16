@@ -15,9 +15,9 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
 
-import static org.flashframework.util.StringUtils.toLowerCaseFirstOne;
+import static org.flashframework.core.util.StringUtils.toLowerCaseFirstOne;
 
 /**
  * 这是一个抽象环境类，主要用于存放 Bean Definition 注册表相关的操作

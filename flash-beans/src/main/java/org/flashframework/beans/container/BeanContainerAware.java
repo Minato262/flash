@@ -15,9 +15,8 @@
  */
 package org.flashframework.beans.container;
 
-import org.flashframework.Aware;
-import org.flashframework.util.Assert;
-import org.flashframework.util.StringUtils;
+import org.flashframework.core.util.Assert;
+import org.flashframework.core.util.StringUtils;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,13 +26,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer, Aware {
+public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
 
     /*
      * 概况
-     * 容器是用于管理对象的生命周期的。在框架中，定义了对象的名称，如何产生对象（单例模式或者
-     * 原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容器启动
-     * 后，所有的对象都可以直接取用，不需要进行硬编码，也不需要重新确立对象与对象之间的关系。
+     *
+     *      容器是用于管理对象的生命周期的。在框架中，定义了对象的名称，如何产生对象（单例模
+     * 式或者原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容
+     * 器启动后，所有的对象都可以直接取用，不需要进行硬编码，也不需要重新确立对象与对象之间的
+     * 关系。
      */
 
     /* ------------------------------  静态区  ------------------------------- */
@@ -52,16 +53,12 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
         return container;
     }
 
-    /* ------------------------------  构造区  ------------------------------- */
-
     /**
      * 默认构造器
      */
     private BeanContainerAware() {
         //
     }
-
-    /* ------------------------------  方法区  ------------------------------- */
 
     /**
      * 根据 key 获取容器中的对象

@@ -13,26 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.annotation;
-
-import java.lang.annotation.*;
 
 /**
- * {@code Resource} 注解，标记对象为 Bean 对象
- *
  * @author kay
  * @version v2.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-public @interface Resource {
-
-    /**
-     * 标记对象名称
-     *
-     * @return 被标记的 Bean 名称
-     */
-    String value() default "";
-}
+package org.flashframework.core.resource;

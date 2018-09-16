@@ -13,38 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.factory;
-
-import org.flashframework.beans.annotation.Autowired;
-import org.flashframework.beans.annotation.Resource;
-import org.flashframework.beans.container.Scope;
+package org.flashframework.core;
 
 /**
+ * Unicode 编码 常量枚举
+ *
  * @author kay
  * @version v1.0
  */
-@Resource("ioc")
-@Scope
-public class Ioc {
+public enum Unicode {
 
-    @Autowired
-    private Father father;
+    /**
+     * UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，
+     * 又称万国码。标准化为RFC 3629
+     */
+    UTF_8("UTF-8");
 
-    @Autowired
-    private People people;
+    private String code;
 
-    @Autowired
-    private User user;
-
-    public Father getFather() {
-        return father;
+    Unicode(String code) {
+        this.code = code;
     }
 
-    public People getPeople() {
-        return people;
-    }
-
-    public User getUser() {
-        return user;
+    public String getCode() {
+        return this.code;
     }
 }

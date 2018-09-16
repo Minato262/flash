@@ -13,26 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.annotation;
-
-import java.lang.annotation.*;
+package org.flashframework.core.resource;
 
 /**
- * {@code Service} 注解，标记对象为 Bean 对象为 Service 层对象
+ * Class 路径资源异常
  *
  * @author kay
  * @version v1.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-public @interface Service {
+class ClassResourceException extends ResourceException {
+    private static final long serialVersionUID = -5511004726724230904L;
 
     /**
-     * 标记对象名称
+     * 带有错误信息的构造器
      *
-     * @return 被标记的 Bean 名称
+     * @param message 错误信息
      */
-    String value() default "";
+    ClassResourceException(String message) {
+        super(message);
+    }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    ClassResourceException(Throwable cause) {
+        super(cause);
+    }
 }

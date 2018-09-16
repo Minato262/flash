@@ -21,7 +21,7 @@ import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;
 import org.flashframework.beans.util.BeanReflect;
-import org.flashframework.util.Assert;
+import org.flashframework.core.util.Assert;
 
 import java.util.Map;
 
@@ -81,7 +81,7 @@ public class BeanDefinitionRegistry implements Registry {
      * @throws BeanCreateFailureException Bean 创建失败
      */
     private void loadAutowired() {
-        BeanReflectAutowired autowired = new BeanReflectAutowired();
+        BeanAnnotationLoad autowired = new BeanAnnotationLoad();
         for (Map.Entry<String, Class> entry : table.entrySet()) {
             BeanDefinitionWrap wrap = autowired.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {
@@ -101,10 +101,10 @@ public class BeanDefinitionRegistry implements Registry {
         // 注册表载入
         resolution.load();
 
-        // 载入注解
+        // 载入是否单利
         loadScope();
 
-        // 载入类和方法
+        // 载入被标记的类和方法
         loadAutowired();
     }
 }

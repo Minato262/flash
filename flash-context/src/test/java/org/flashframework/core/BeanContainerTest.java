@@ -15,12 +15,11 @@
  */
 package org.flashframework.core;
 
-import org.flashframework.BeforeTest;
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainer;
-import org.flashframework.core.factory.Ioc;
-import org.flashframework.util.Assert;
+import org.flashframework.core.resource.ClassResourceLoader;
+import org.flashframework.core.util.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -50,17 +49,6 @@ public class BeanContainerTest extends BeforeTest {
             BeanContainer container = BeanContainerAware.getInstance();
             Assert.isNotNull(container.get("ioc"));
         }
-    }
-
-    @Test
-    public void test1() {
-        BeanContainer container = BeanContainerAware.getInstance();
-        Ioc ioc = (Ioc) container.get("ioc");
-        Assert.isNotNull(ioc);
-        Assert.isNotNull(ioc);
-        Assert.isNotNull(ioc.getFather());
-        Assert.isNotNull(ioc.getPeople());
-        Assert.isNotNull(ioc.getUser());
     }
 
     @Test

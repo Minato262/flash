@@ -18,8 +18,8 @@ package org.flashframework.context;
 import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
-import org.flashframework.beans.factory.BeanReflectAutowired;
-import org.flashframework.util.Assert;
+import org.flashframework.beans.factory.BeanAnnotationLoad;
+import org.flashframework.core.util.Assert;
 
 /**
  * 应用关系环境工厂，包装容器，为容器提供使用环境
@@ -48,7 +48,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      */
     private <T> T loadAutowired(String name) {
         Class clazz = (Class) container.get(name);
-        BeanReflectAutowired autowired = new BeanReflectAutowired();
+        BeanAnnotationLoad autowired = new BeanAnnotationLoad();
         return autowired.loadAutowired(clazz);
     }
 

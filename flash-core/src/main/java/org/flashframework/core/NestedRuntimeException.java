@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
+package org.flashframework.core;
 
 /**
  * {@code NestedRuntimeException} 是整个框架的抽象非受检性异常
