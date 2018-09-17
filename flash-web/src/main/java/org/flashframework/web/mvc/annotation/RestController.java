@@ -15,6 +15,8 @@
  */
 package org.flashframework.web.mvc.annotation;
 
+import org.flashframework.http.annotation.ResponseBody;
+
 import java.lang.annotation.*;
 
 /**

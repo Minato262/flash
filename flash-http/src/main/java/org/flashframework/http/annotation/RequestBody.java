@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.annotation;
+package org.flashframework.http.annotation;
 
 import java.lang.annotation.*;
 
@@ -24,7 +24,6 @@ import java.lang.annotation.*;
  *
  * @author kay
  * @version v2.0
- * @see Controller
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

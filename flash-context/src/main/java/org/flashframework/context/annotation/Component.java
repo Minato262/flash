@@ -18,7 +18,7 @@ package org.flashframework.context.annotation;
 import java.lang.annotation.*;
 
 /**
- * 注册各种 Bean
+ * {@code Component} 注解，注册各种 Bean
  *
  * @author kay
  * @version v2.0

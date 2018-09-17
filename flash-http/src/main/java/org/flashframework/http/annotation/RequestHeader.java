@@ -13,22 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.mvc.annotation;
+package org.flashframework.http.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * {@code ResponseBody} 注解的作用是将 {@code Controller} 的方法返回的对象通过适
- * 当的转换器转换为指定的格式之后，写入到 response 对象的 body 区，通常用来返回 JSON
- * 数据或者是 XML.
+ * {@code RequestHeader} 注释，用于映射控制器参数以请求头值
  *
  * @author kay
  * @version v2.0
- * @see Controller
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface ResponseBody {
+public @interface RequestHeader {
 }
