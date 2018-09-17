@@ -81,7 +81,7 @@ public class BeanDefinitionRegistry implements Registry {
      * @throws BeanCreateFailureException Bean 创建失败
      */
     private void loadAutowired() {
-        BeanAnnotationLoad autowired = new BeanAnnotationLoad();
+        BeanDefinitionLoad autowired = new BeanDefinitionLoad();
         for (Map.Entry<String, Class> entry : table.entrySet()) {
             BeanDefinitionWrap wrap = autowired.loadAutowired(entry.getKey());
             if (wrap.isHasAutowired()) {

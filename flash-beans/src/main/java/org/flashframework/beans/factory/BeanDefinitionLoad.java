@@ -31,7 +31,7 @@ import java.lang.reflect.Field;
  * @author kay
  * @version v1.0
  */
-public final class BeanAnnotationLoad {
+public final class BeanDefinitionLoad {
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
