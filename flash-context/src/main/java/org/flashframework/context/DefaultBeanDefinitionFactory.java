@@ -41,7 +41,6 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
             super.put(annotation.value(), clazz);
-            return;
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {

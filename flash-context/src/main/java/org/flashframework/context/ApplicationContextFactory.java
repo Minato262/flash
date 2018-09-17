@@ -48,18 +48,8 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      */
     private <T> T loadAutowired(String name) {
         Class clazz = (Class) container.get(name);
-        BeanDefinitionLoad autowired = new BeanDefinitionLoad();
-        return autowired.loadAutowired(clazz);
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例
-     *
-     * @param name 想获取 Bean 的名称
-     * @return bean 对象
-     */
-    private Object getInstance(String name) {
-        return container.get(name);
+        BeanDefinitionLoad beanDefinition = new BeanDefinitionLoad();
+        return beanDefinition.load(clazz);
     }
 
     /**
@@ -87,7 +77,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
             return loadAutowired(name);
         }
         else {
-            return getInstance(name);
+            return container.get(name);
         }
     }
 }

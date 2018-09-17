@@ -42,7 +42,6 @@ public class WebBeanDefinitionFactory extends DefaultBeanDefinitionFactory {
         if (annotation2 != null) {
             super.put(clazz);
         }
-
         RestController annotation = (RestController) clazz.getAnnotation(RestController.class);
         if (annotation != null) {
             super.put(clazz);

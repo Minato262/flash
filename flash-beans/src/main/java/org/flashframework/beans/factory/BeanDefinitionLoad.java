@@ -49,7 +49,7 @@ public final class BeanDefinitionLoad {
             Object newValue = BeanReflect.newInstance(clazz.getName());
 
             // 重新载入方法注解
-            BeanDefinitionWrap beanDefinitionWrap = loadAutowired(newValue);
+            BeanDefinitionWrap beanDefinitionWrap = load(newValue);
             return beanDefinitionWrap.getData();
         }
         else {
@@ -74,7 +74,7 @@ public final class BeanDefinitionLoad {
      * @return Bean Definition 的封装类
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    private <V> BeanDefinitionWrap<V> loadAutowired(V value) {
+    private <V> BeanDefinitionWrap<V> load(V value) {
         boolean isAutowired = false;
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -82,7 +82,6 @@ public final class BeanDefinitionLoad {
             Autowired annotation = field.getAnnotation(Autowired.class);
             if (annotation != null) {
                 isAutowired = set(field, value);
-                continue;
             }
             Resource annotation1 = field.getAnnotation(Resource.class);
             if (annotation1 != null) {
@@ -100,10 +99,10 @@ public final class BeanDefinitionLoad {
      * @throws IllegalArgumentException   如果对象为null
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    public <V> V loadAutowired(Class clazz) {
+    public <V> V load(Class clazz) {
         Assert.isNotNull(clazz);
         V value = BeanReflect.newInstance(clazz.getName());
-        BeanDefinitionWrap<V> beanDefinitionWrap = loadAutowired(value);
+        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
         return beanDefinitionWrap.getData();
     }
 
@@ -115,9 +114,9 @@ public final class BeanDefinitionLoad {
      * @throws IllegalArgumentException   如果字符串为空
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    public BeanDefinitionWrap loadAutowired(String key) {
+    public BeanDefinitionWrap load(String key) {
         Assert.isNotEmpty(key);
         Object value = container.get(key);
-        return value != null ? loadAutowired(value) : new BeanDefinitionWrap();
+        return value != null ? load(value) : new BeanDefinitionWrap();
     }
 }
