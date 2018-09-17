@@ -15,7 +15,7 @@
  */
 package org.flashframework.core;
 
-import org.flashframework.context.ApplicationContextFactory;
+import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.core.factory.Bean;
 import org.flashframework.core.resource.ClassResourceLoader;

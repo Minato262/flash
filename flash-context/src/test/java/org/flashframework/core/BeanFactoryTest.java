@@ -16,7 +16,7 @@
 package org.flashframework.core;
 
 import org.flashframework.beans.factory.BeanFactory;
-import org.flashframework.context.ApplicationContextFactory;
+import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.core.factory.People;
 import org.junit.Assert;
 import org.junit.Test;

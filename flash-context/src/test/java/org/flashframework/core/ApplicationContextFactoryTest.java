@@ -15,13 +15,7 @@
  */
 package org.flashframework.core;
 
-import org.flashframework.beans.annotation.Autowired;
-import org.flashframework.beans.annotation.Repository;
-import org.flashframework.context.ApplicationContextFactory;
-import org.flashframework.core.factory.Father;
-import org.flashframework.core.factory.People;
-import org.flashframework.core.factory.User;
-import org.junit.Assert;
+import org.flashframework.context.factory.ApplicationContextFactory;
 import org.junit.Test;
 
 /**

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.context;
+package org.flashframework.context.factory;
 
 import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.factory.BeanDefinitionTableFactory;

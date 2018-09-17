@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.context;
+package org.flashframework.context.factory;
 
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
@@ -21,6 +21,7 @@ import org.flashframework.beans.container.BeanContainerInitFailureException;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
+import org.flashframework.context.ApplicationContext;
 import org.flashframework.core.Resource;
 import org.flashframework.beans.*;
 import org.flashframework.core.resource.ClassResourceLoader;

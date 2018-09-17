@@ -16,7 +16,7 @@
 package org.flashframework.web.context;
 
 import org.flashframework.beans.factory.BeanDefinitionFactory;
-import org.flashframework.context.ApplicationContextFactory;
+import org.flashframework.context.factory.ApplicationContextFactory;
 
 /**
  * web 应用关系环境工厂，包装容器，为Web提供使用环境

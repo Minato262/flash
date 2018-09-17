@@ -15,7 +15,7 @@
  */
 package org.flashframework.web.context;
 
-import org.flashframework.context.DefaultBeanDefinitionFactory;
+import org.flashframework.context.factory.DefaultBeanDefinitionFactory;
 import org.flashframework.web.mvc.annotation.Controller;
 import org.flashframework.web.mvc.annotation.RestController;
 
