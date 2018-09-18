@@ -19,7 +19,6 @@ import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionLoad;
-import org.flashframework.context.AbstractApplicationContext;
 import org.flashframework.core.util.Assert;
 
 /**
