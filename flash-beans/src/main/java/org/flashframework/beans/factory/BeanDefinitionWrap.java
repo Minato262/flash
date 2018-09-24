@@ -36,8 +36,7 @@ final class BeanDefinitionWrap<T> implements Serializable {
      * 默认构造器
      */
     BeanDefinitionWrap() {
-        isAutowired = false;
-        data = null;
+        //
     }
 
     /**

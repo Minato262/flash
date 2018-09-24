@@ -57,6 +57,13 @@ public final class BeanDefinitionLoad {
         }
     }
 
+    /**
+     * 反射 设置作用域
+     *
+     * @param field 作用域
+     * @param value 需要检测的对象值
+     * @return 是否设置成功
+     */
     private <V> boolean set(Field field, V value) {
         try {
             field.set(value, getValue(field.getName()));
@@ -68,7 +75,7 @@ public final class BeanDefinitionLoad {
     }
 
     /**
-     * 根据检测的对象，载入{@code Autowired}方法注解
+     * 根据检测的对象，载入{@code Autowired}和{@code Resource}方法注解
      *
      * @param value 需要检测的对象
      * @return Bean Definition 的封装类
@@ -83,6 +90,7 @@ public final class BeanDefinitionLoad {
             if (annotation != null) {
                 isAutowired = set(field, value);
             }
+            // @Resource   JSR-250提供的
             Resource annotation1 = field.getAnnotation(Resource.class);
             if (annotation1 != null) {
                 isAutowired = set(field, value);

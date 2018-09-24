@@ -20,6 +20,8 @@ import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
 
+import javax.annotation.Resource;
+
 /**
  * BeanDefinition 默认工厂
  *
@@ -30,7 +32,7 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
 
     /**
      * 根据 Class，载入类注解信息
-     * <p>默认载入 Repository，Service，Controller，Resource 注解</p>
+     * <p>默认载入 Repository，Service 注解</p>
      *
      * @param clazz class 信息
      * @throws IllegalArgumentException 如果Class为null
@@ -42,9 +44,9 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         if (annotation != null) {
             super.put(annotation.value(), clazz);
         }
-        Service annotation1 = (Service) clazz.getAnnotation(Service.class);
-        if (annotation1 != null) {
-            super.put(annotation1.value(), clazz);
+        Service annotation2 = (Service) clazz.getAnnotation(Service.class);
+        if (annotation2 != null) {
+            super.put(annotation2.value(), clazz);
         }
     }
 }
