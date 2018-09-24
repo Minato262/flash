@@ -59,22 +59,24 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
-        if (container.isEmpty()) {
-            Resource resource = new ClassResourceLoader();
-            BeanDefinitionFactory factory = loadBeanDefinition();
-            Resolution resolution = new BeanDefinitionResolution(resource, factory);
-            try {
-                Registry beanDefinition = new BeanDefinitionRegistry(resolution);
-                // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
-                beanDefinition.refresh();
-            }
-            catch (BeanRuntimeException e) {
-                // 清空 Bean Definition 注册表
-                resolution.clear();
-                // 清空 Bean 容器
-                container.clear();
-                throw new BeanContainerInitFailureException(e);
-            }
+        if (!container.isEmpty()) {
+            return;
+        }
+
+        Resource resource = new ClassResourceLoader();
+        BeanDefinitionFactory factory = loadBeanDefinition();
+        Resolution resolution = new BeanDefinitionResolution(resource, factory);
+        try {
+            Registry beanDefinition = new BeanDefinitionRegistry(resolution);
+            // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
+            beanDefinition.refresh();
+        }
+        catch (BeanRuntimeException e) {
+            // 清空 Bean Definition 注册表
+            resolution.clear();
+            // 清空 Bean 容器
+            container.clear();
+            throw new BeanContainerInitFailureException(e);
         }
     }
 
