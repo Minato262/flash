@@ -29,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
 
     /*
-     * 概况
+     * 概述：
      *
      *      容器是用于管理对象的生命周期的。在框架中，定义了对象的名称，如何产生对象（单例模
      * 式或者原型模式），对象与对象之间的关系，使用容器来存储她们，是一种直接有效的方式。当容

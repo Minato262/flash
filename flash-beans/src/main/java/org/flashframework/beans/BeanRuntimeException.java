@@ -15,6 +15,8 @@
  */
 package org.flashframework.beans;
 
+import org.flashframework.core.NestedRuntimeException;
+
 /**
  * Bean 基础相关异常
  * <p>这是一个抽象异常类，它定义了任何与 Bean 相关的异常的基础方法</p>
@@ -22,7 +24,7 @@ package org.flashframework.beans;
  * @author kay
  * @version v1.0
  */
-public abstract class BeanRuntimeException extends RuntimeException {
+public abstract class BeanRuntimeException extends NestedRuntimeException {
     private static final long serialVersionUID = -2145083318059080837L;
 
     /**

@@ -15,6 +15,8 @@
  */
 package org.flashframework.core.resource;
 
+import org.flashframework.core.NestedRuntimeException;
+
 /**
  * 资源相关基础异常
  * <p>这是一个抽象异常类，它定义了任何与底层资源载入相关的异常的基础方法</p>
@@ -22,7 +24,7 @@ package org.flashframework.core.resource;
  * @author kay
  * @version v1.0
  */
-abstract class ResourceException extends RuntimeException {
+abstract class ResourceException extends NestedRuntimeException {
     private static final long serialVersionUID = -203034699454123415L;
 
     /**
