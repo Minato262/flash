@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable, Aware {
 
     /*
-     * 概况
+     * 概述：
      */
 
     /** Bean Definition 注册表 */
