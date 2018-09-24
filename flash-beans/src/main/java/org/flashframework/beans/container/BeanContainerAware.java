@@ -37,8 +37,6 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      * 关系。
      */
 
-    /* ------------------------------  静态区  ------------------------------- */
-
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */

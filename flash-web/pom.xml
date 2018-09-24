@@ -28,10 +28,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-
     <name>flash-web</name>
     <artifactId>flash-web</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- flash framework -->

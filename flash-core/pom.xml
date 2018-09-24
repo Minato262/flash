@@ -28,11 +28,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
+    <name>flash-core</name>
     <artifactId>flash-core</artifactId>
     <packaging>jar</packaging>
-
-    <name>flash-core</name>
 
     <dependencies>
         <!-- testing -->

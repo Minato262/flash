@@ -28,11 +28,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
+    <name>flash-context</name>
     <artifactId>flash-context</artifactId>
     <packaging>jar</packaging>
-
-    <name>flash-context</name>
 
     <dependencies>
         <!-- flash framework -->

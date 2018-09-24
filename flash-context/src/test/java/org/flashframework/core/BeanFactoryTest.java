@@ -55,9 +55,4 @@ public class BeanFactoryTest extends BeforeTest {
         People people1 = (People) factory1.getBean("people");
         Assert.assertNotNull(people1);
     }
-
-    @Test
-    public void test2() throws ClassNotFoundException {
-        Assert.assertNotNull(Arrays.toString(Class.forName("org.flashframework.core.factory.Ioc").getDeclaredFields()));
-    }
 }

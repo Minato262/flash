@@ -31,10 +31,4 @@ public class PropertiesUtilsTest {
         Assert.isNotEmpty(packageName);
         System.out.println(packageName);
     }
-
-    @Test
-    public void test1() {
-        String containerModes = LoadProperties.INSTANCE.load("containerModes");
-        Assert.isNotEmpty(containerModes);
-    }
 }
