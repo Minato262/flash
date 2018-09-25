@@ -28,6 +28,7 @@
         <module>flash-web</module>
         <module>flash-beans</module>
         <module>flash-http</module>
+        <module>flash-aop</module>
     </modules>
 
     <groupId>org.flashframework</groupId>
