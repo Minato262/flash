@@ -13,32 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.context;
 
 import org.flashframework.context.factory.ApplicationContextFactory;
-import org.flashframework.beans.factory.BeanFactory;
-import org.flashframework.core.factory.Bean;
-import org.flashframework.core.resource.ClassResourceLoader;
-import org.flashframework.core.util.Assert;
 import org.junit.Test;
 
-import java.util.List;
-
 /**
- * {@link ClassResourceLoader} Test.
+ * {@link ApplicationContextFactory} Test
  *
  * @author kay
  * @version v1.0
  */
-public class ClassResourceLoaderTest extends BeforeTest {
+public class ApplicationContextFactoryTest extends BeforeTest {
+
+//    @Autowired
+//    private Father father;
+//
+//    @Autowired
+//    private People people;
+//
+//    @Autowired
+//    private User user;
 
     @Test
     public void test() {
-        ClassResourceLoader classPathResource = new ClassResourceLoader();
-        List<Class<?>> classes = classPathResource.getClasses();
-        BeanFactory factory = new ApplicationContextFactory();
-        for (Class<?> clazz : classes) {
-            Bean people = (Bean) factory.getBean(clazz.getName());
-        }
+        //ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory.getBean("applicationContextFactoryTest");
+        //Assert.assertNotNull(test.father);
+        //Assert.assertNotNull(test.people);
+        //Assert.assertNotNull(test.user);
     }
 }

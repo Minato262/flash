@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.context.factory;
 
-import org.flashframework.beans.factory.BeanFactory;
-import org.flashframework.context.factory.ApplicationContextFactory;
-import org.junit.Before;
+import org.flashframework.beans.annotation.Repository;
+import org.flashframework.beans.container.Scope;
+import org.flashframework.beans.container.BeanContainerMode;
 
 /**
- * 容器启动
+ * {@link User} Test.
  *
  * @author kay
  * @version v1.0
  */
-public class BeforeTest {
-
-    protected BeanFactory factory;
-
-    @Before
-    public void init() {
-        factory = new ApplicationContextFactory();
-        System.out.println("容器启动!");
-    }
+@Repository("user")
+@Scope(BeanContainerMode.PROTOTYPE)
+public class User extends Bean {
 }

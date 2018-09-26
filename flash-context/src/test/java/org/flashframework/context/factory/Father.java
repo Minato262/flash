@@ -13,22 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.util;
+package org.flashframework.context.factory;
 
-import org.junit.Test;
+import org.flashframework.beans.annotation.Repository;
 
 /**
- * {@link LoadProperties} Test.
+ * {@link Father} Test.
  *
  * @author kay
  * @version v1.0
  */
-public class PropertiesUtilsTest {
-
-    @Test
-    public void test() {
-        String packageName = LoadProperties.INSTANCE.load("packageName");
-        Assert.isNotEmpty(packageName);
-        System.out.println(packageName);
-    }
+@Repository("father")
+public class Father extends Bean {
 }

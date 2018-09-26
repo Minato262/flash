@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.context;
 
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
-import org.flashframework.core.factory.People;
+import org.flashframework.context.factory.People;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * {@link ApplicationContextFactory} test.

@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.factory;
+package org.flashframework.context.util;
 
-import org.flashframework.beans.annotation.Repository;
-import org.flashframework.beans.container.Scope;
-import org.flashframework.beans.container.BeanContainerMode;
+import org.flashframework.core.util.Assert;
+import org.flashframework.core.util.LoadProperties;
+import org.junit.Test;
 
 /**
- * {@link User} Test.
+ * {@link LoadProperties} Test.
  *
  * @author kay
  * @version v1.0
  */
-@Repository("user")
-@Scope(BeanContainerMode.PROTOTYPE)
-public class User extends Bean {
+public class PropertiesUtilsTest {
+
+    @Test
+    public void test() {
+        String packageName = LoadProperties.INSTANCE.load("packageName");
+        Assert.isNotEmpty(packageName);
+        System.out.println(packageName);
+    }
 }

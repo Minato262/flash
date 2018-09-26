@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.context;
 
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainerAware;

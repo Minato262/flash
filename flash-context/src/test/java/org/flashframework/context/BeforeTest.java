@@ -13,33 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
+package org.flashframework.context;
 
+import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
-import org.junit.Test;
+import org.junit.Before;
 
 /**
- * {@link ApplicationContextFactory} Test
+ * 容器启动
  *
  * @author kay
  * @version v1.0
  */
-public class ApplicationContextFactoryTest extends BeforeTest {
+public class BeforeTest {
 
-//    @Autowired
-//    private Father father;
-//
-//    @Autowired
-//    private People people;
-//
-//    @Autowired
-//    private User user;
+    protected BeanFactory factory;
 
-    @Test
-    public void test() {
-        //ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory.getBean("applicationContextFactoryTest");
-        //Assert.assertNotNull(test.father);
-        //Assert.assertNotNull(test.people);
-        //Assert.assertNotNull(test.user);
+    @Before
+    public void init() {
+        factory = new ApplicationContextFactory();
+        System.out.println("容器启动!");
     }
 }

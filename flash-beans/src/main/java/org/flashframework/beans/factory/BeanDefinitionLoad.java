@@ -90,7 +90,7 @@ public final class BeanDefinitionLoad {
             if (annotation != null) {
                 isAutowired = set(field, value);
             }
-            // @Resource   JSR-250提供的
+            // @Resource JSR-250 提供
             Resource annotation1 = field.getAnnotation(Resource.class);
             if (annotation1 != null) {
                 isAutowired = set(field, value);
