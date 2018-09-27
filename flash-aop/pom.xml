@@ -32,6 +32,22 @@
     <artifactId>flash-aop</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <!-- flash framework -->
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-context</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>flash-aop</finalName>
     </build>
