@@ -17,6 +17,10 @@ package org.flashframework.aop;
 
 import org.junit.Test;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 /**
  * @author kay
  * @version v1.0
@@ -25,6 +29,27 @@ public class AnnotationTest {
 
     @Test
     public void test() {
+        Annotation[] annotations = TestBean.class.getAnnotations();
+        for (Annotation annotation : annotations) {
+            System.out.println(annotation);
+        }
+        System.out.println();
 
+        Field[] fields = TestBean.class.getDeclaredFields();
+        for (Field field : fields) {
+            Annotation[] annotations1 = field.getAnnotations();
+            for (Annotation annotation : annotations1) {
+                System.out.println(annotation);
+            }
+        }
+
+        Method[] methods = TestBean.class.getDeclaredMethods();
+        for (Method method : methods) {
+            Annotation[] annotations1 = method.getAnnotations();
+            for (Annotation annotation : annotations1) {
+                System.out.println(annotation);
+            }
+        }
+        System.out.println();
     }
 }
