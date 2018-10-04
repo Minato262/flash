@@ -41,7 +41,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static BeanContainer container = new BeanContainerAware();
+    private static final BeanContainer container = new BeanContainerAware();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
