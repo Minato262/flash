@@ -13,24 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.context.util;
-
-import org.flashframework.core.util.Assert;
-import org.flashframework.core.config.LoadProperties;
-import org.junit.Test;
 
 /**
- * {@link LoadProperties} Test.
- *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public class PropertiesUtilsTest {
-
-    @Test
-    public void test() {
-        String packageName = LoadProperties.INSTANCE_FLASH.load("packageName");
-        Assert.isNotEmpty(packageName);
-        System.out.println(packageName);
-    }
-}
+package org.flashframework.core.log;

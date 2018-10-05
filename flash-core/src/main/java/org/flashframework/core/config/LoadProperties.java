@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.util;
+package org.flashframework.core.config;
 
-import java.io.*;
-import java.util.Properties;
+import org.flashframework.core.util.Assert;
 
 /**
  * 配置工具类，单例模式，用于载入默认配置
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
 public enum LoadProperties {
-    INSTANCE("/config/flash.properties");
+    INSTANCE_FLASH("/config/flash.properties"),
+    INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
     private String path;
 
@@ -48,34 +48,6 @@ public enum LoadProperties {
     }
 
     /**
-     * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
-     *
-     * @param propertyPath 配置路径
-     * @param propertyName 配置名称
-     * @return 获取 Properties 配置值
-     * @throws IOException I/O 异常
-     */
-    private String load(String propertyPath, String propertyName) throws IOException {
-        Properties prop = new Properties();
-        InputStream in = null;
-        try {
-            in = Object.class.getResourceAsStream(propertyPath);
-            prop.load(in);
-            for (String key : prop.stringPropertyNames()) {
-                if (propertyName.equals(key)) {
-                    return prop.getProperty(key);
-                }
-            }
-            return "";
-        }
-        finally {
-            if (in != null) {
-                in.close();
-            }
-        }
-    }
-
-    /**
      * 载入配置，获取 Properties 配置值
      *
      * @param propertyName 配置名称（一定不能为空）
@@ -85,9 +57,9 @@ public enum LoadProperties {
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
         try {
-            return load(LoadProperties.INSTANCE.getPath(), propertyName);
+            return PropertiesUtils.load(this.getPath(), propertyName);
         }
-        catch (IOException e) {
+        catch (Exception e) {
             return "";
         }
     }
