@@ -16,7 +16,7 @@
 package org.flashframework;
 
 import org.flashframework.core.logger.LogConfig;
-import org.flashframework.core.logger.LogLevel;
+import org.flashframework.core.logger.Level;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +64,7 @@ public class LogTest {
 
     @Test
     public void test2() {
-        LogConfig.setLevel(LogLevel.ERROR);
+        LogConfig.setLevel(Level.ERROR);
         LogConfig.setFileUrl("");
         LogConfig.init();
         log.debug("log debug");
@@ -73,21 +73,21 @@ public class LogTest {
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(LogLevel.WARN);
+        LogConfig.setLevel(Level.WARN);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(LogLevel.INFO);
+        LogConfig.setLevel(Level.INFO);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(LogLevel.ERROR);
+        LogConfig.setLevel(Level.ERROR);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");

@@ -13,32 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.resource;
+package org.flashframework.core.logger;
 
 /**
- * Class 路径资源异常
+ * 日志常用级别枚举
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-class ClassResourceException extends ResourceException {
-    private static final long serialVersionUID = -5511004726724230904L;
+public enum Level {
+    DEBUG("debug"),
+    WARN("warn"),
+    INFO("info"),
+    ERROR("error");
 
-    /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
-     */
-    ClassResourceException(String message) {
-        super(message);
+    private String level;
+
+    Level(String level) {
+        this.level = level;
     }
 
-    /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈信息
-     */
-    ClassResourceException(Throwable cause) {
-        super(cause);
+    public String getLevel() {
+        return level;
+    }
+
+    public static Level getLogLevel(String strLevel) {
+        for (Level level : Level.values()) {
+            if (level.getLevel().equals(strLevel)) {
+                return level;
+            }
+        }
+        return Level.DEBUG;
     }
 }

@@ -15,7 +15,7 @@
  */
 package org.flashframework.core.resource;
 
-import org.flashframework.core.NestedRuntimeException;
+import org.flashframework.core.CoreRuntimeException;
 
 /**
  * 资源相关基础异常
@@ -24,13 +24,13 @@ import org.flashframework.core.NestedRuntimeException;
  * @author kay
  * @version v1.0
  */
-abstract class ResourceException extends NestedRuntimeException {
+abstract class ResourceRuntimeException extends CoreRuntimeException {
     private static final long serialVersionUID = -203034699454123415L;
 
     /**
      * 默认构造器，异常信息没有进行初始化
      */
-    ResourceException() {
+    ResourceRuntimeException() {
         super();
     }
 
@@ -39,7 +39,7 @@ abstract class ResourceException extends NestedRuntimeException {
      *
      * @param message 错误信息
      */
-    ResourceException(String message) {
+    ResourceRuntimeException(String message) {
         super(message);
     }
 
@@ -48,7 +48,7 @@ abstract class ResourceException extends NestedRuntimeException {
      *
      * @param cause 堆栈信息
      */
-    ResourceException(Throwable cause) {
+    ResourceRuntimeException(Throwable cause) {
         super(cause);
     }
 }

@@ -16,33 +16,37 @@
 package org.flashframework.core.logger;
 
 /**
- * 日志常用级别枚举
+ * 日志配置是否启动
  *
  * @author kay
  * @version v2.0
  */
-public enum LogLevel {
-    DEBUG("debug"),
-    WARN("warn"),
-    INFO("info"),
-    ERROR("error");
+public enum Root {
+    TRUE("true", true),
+    FALSE("false", false);
 
-    private String level;
+    private String root;
+    private boolean isRoot;
 
-    LogLevel(String level) {
-        this.level = level;
+    Root(String root, boolean isRoot) {
+        this.root = root;
+        this.isRoot = isRoot;
     }
 
-    public String getLevel() {
-        return level;
+    public String getRoot() {
+        return root;
     }
 
-    public static String getLogLevel(String root) {
-        for (LogLevel logLevel : LogLevel.values()) {
-            if (logLevel.getLevel().equals(root)) {
-                return logLevel.level;
+    public boolean getIsRoot() {
+        return isRoot;
+    }
+
+    public static boolean getIsRoot(String strRoot) {
+        for (Root root : Root.values()) {
+            if (root.getRoot().equals(strRoot)) {
+                return root.getIsRoot();
             }
         }
-        return "";
+        return true;
     }
 }

@@ -40,14 +40,14 @@ public abstract class AbstractClassResource implements Resource {
      *
      * @param name 资源名称
      * @return URL 元素资源
-     * @throws ClassResourceException 如果 I/O 出现异常
+     * @throws ClassResourceRuntimeException 如果 I/O 出现异常
      */
     private Enumeration<URL> getEnumeration(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().getResources(name);
         }
         catch (IOException e) {
-            throw new ClassResourceException(e);
+            throw new ClassResourceRuntimeException(e);
         }
     }
 
@@ -64,13 +64,13 @@ public abstract class AbstractClassResource implements Resource {
      * 获取所有当前包内 Class 类的列表
      *
      * @return Class 类清单
-     * @throws ClassResourceException 如果没有在配置项中配置包路径
+     * @throws ClassResourceRuntimeException 如果没有在配置项中配置包路径
      */
     @Override
     public List<Class<?>> getClasses() {
         String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
         if (StringUtils.isEmpty(packageDirName)) {
-            throw new ClassResourceException("No package path is configured in the configuration item!");
+            throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);

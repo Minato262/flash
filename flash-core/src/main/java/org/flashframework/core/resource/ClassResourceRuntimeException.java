@@ -16,18 +16,29 @@
 package org.flashframework.core.resource;
 
 /**
- * Class 资源载入失败异常
+ * Class 路径资源异常
  *
  * @author kay
  * @version v1.0
  */
-class ClassResourceLoaderFailureException extends ResourceRuntimeException {
-    private static final long serialVersionUID = -5806689345532523493L;
+class ClassResourceRuntimeException extends ResourceRuntimeException {
+    private static final long serialVersionUID = -5511004726724230904L;
 
     /**
-     * 默认构造器
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
      */
-    ClassResourceLoaderFailureException() {
-        super();
+    ClassResourceRuntimeException(String message) {
+        super(message);
+    }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    ClassResourceRuntimeException(Throwable cause) {
+        super(cause);
     }
 }

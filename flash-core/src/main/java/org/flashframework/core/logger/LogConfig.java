@@ -30,23 +30,25 @@ import java.util.Properties;
  */
 public class LogConfig {
 
-    private static String root;
+    private static boolean root;
+
+    private static Level level;
 
     private static String file;
 
     static {
-        String logRoot = LoadProperties.INSTANCE_FLASH_LOG.load("root");
-        String logFile = LoadProperties.INSTANCE_FLASH_LOG.load("file");
+        String strRoot = LoadProperties.INSTANCE_FLASH_LOG.load("root");
+        String strLevel = LoadProperties.INSTANCE_FLASH_LOG.load("level");
+        String strFile = LoadProperties.INSTANCE_FLASH_LOG.load("file");
 
-        logRoot = LogLevel.getLogLevel(logRoot);
-
-        root = logRoot.equals("") ? LogLevel.DEBUG.getLevel() : logRoot;
-        file = logFile.equals("") ? "logs/out.log" : logFile;
+        root = Root.getIsRoot(strRoot);
+        level = Level.getLogLevel(strLevel);
+        file = strFile.equals("") ? "logs/out.log" : strFile;
     }
 
-    public static void setLevel(LogLevel level) {
-        Assert.isNotNull(level);
-        root = level.getLevel();
+    public static void setLevel(Level logLevel) {
+        Assert.isNotNull(logLevel);
+        level = logLevel;
     }
 
     public static void setFileUrl(String fileUrl) {
@@ -55,8 +57,12 @@ public class LogConfig {
     }
 
     public static void init() {
+        if (!root) {
+            return;
+        }
+
         Properties prop = new Properties();
-        prop.setProperty("log4j.rootLogger", root + ", toConsole, toFile");
+        prop.setProperty("log4j.rootLogger", level.getLevel() + ", toConsole, toFile");
         prop.setProperty("log4j.appender.file.encoding", Unicode.UTF_8.getCode());
 
         prop.setProperty("log4j.appender.toConsole", "org.apache.log4j.ConsoleAppender");
@@ -67,7 +73,7 @@ public class LogConfig {
         prop.setProperty("log4j.appender.toFile.file", file);
         prop.setProperty("log4j.appender.toFile", "org.apache.log4j.DailyRollingFileAppender");
         prop.setProperty("log4j.appender.toFile.Append", "true");
-        prop.setProperty("log4j.appender.toFile.Threshold", root);
+        prop.setProperty("log4j.appender.toFile.Threshold", level.getLevel());
         prop.setProperty("log4j.appender.toFile.layout", "org.apache.log4j.PatternLayout");
         prop.setProperty("log4j.appender.toFile.layout.ConversionPattern", "[%d{yyyy-MM-dd HH:mm:ss}][flashframework %p] %m%n");
         prop.setProperty("log4j.appender.toFile.DatePattern", "'.'yyyy-MM-dd'.log'");

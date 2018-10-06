@@ -13,21 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.resource;
+package org.flashframework.core;
 
 /**
- * Class 资源载入失败异常
+ * {@link CoreRuntimeException} core 模块核心异常
  *
  * @author kay
  * @version v1.0
  */
-class ClassResourceLoaderFailureException extends ResourceRuntimeException {
-    private static final long serialVersionUID = -5806689345532523493L;
+public abstract class CoreRuntimeException extends NestedRuntimeException {
+    private static final long serialVersionUID = 1544855094886215251L;
 
     /**
-     * 默认构造器
+     * 默认构造器，异常信息没有进行初始化
      */
-    ClassResourceLoaderFailureException() {
+    public CoreRuntimeException() {
         super();
+    }
+
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public CoreRuntimeException(String message) {
+        super(message);
+    }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    public CoreRuntimeException(Throwable cause) {
+        super(cause);
     }
 }
