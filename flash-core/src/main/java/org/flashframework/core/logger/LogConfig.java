@@ -23,7 +23,7 @@ import org.flashframework.core.util.Assert;
 import java.util.Properties;
 
 /**
- * Log 设置
+ * Log 常用设置
  *
  * @author kay
  * @version v2.0

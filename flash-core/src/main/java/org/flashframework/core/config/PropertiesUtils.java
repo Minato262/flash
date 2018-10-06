@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * 配置工具
+ * 配置载入工具
  *
  * @author kay
  * @version v2.0
