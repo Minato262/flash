@@ -17,6 +17,8 @@ package org.flashframework.core.resource;
 
 import org.flashframework.core.Resource;
 import org.flashframework.core.util.Decoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URL;
@@ -31,6 +33,8 @@ import java.util.List;
  * @version v1.0
  */
 public class ClassResourceLoader extends AbstractClassResource implements Resource {
+
+    private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
 
     /** 文件名称 */
     private static final String FILE_NAME = "file";
@@ -75,11 +79,16 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
         for (File file : files) {
             if (file.isDirectory()) {
                 loadClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
+                continue;
             }
-            else {
-                String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
-                classes.add(loadClass(packageName + "." + className));
+
+            String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
+            Class<?> clazz = loadClass(packageName + "." + className);
+
+            if(log.isDebugEnabled()) {
+                log.debug("load Class，name=" + packageName + "." + className);
             }
+            classes.add(clazz);
         }
     }
 

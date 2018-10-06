@@ -64,7 +64,7 @@ public class LogTest {
 
     @Test
     public void test2() {
-        LogConfig.setLevel(Level.ERROR);
+        LogConfig.setLevel(Level.DEBUG);
         LogConfig.setFileUrl("");
         LogConfig.init();
         log.debug("log debug");

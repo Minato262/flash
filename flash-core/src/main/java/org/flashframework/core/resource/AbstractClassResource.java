@@ -16,7 +16,8 @@
 package org.flashframework.core.resource;
 
 import org.flashframework.core.Resource;
-import org.flashframework.core.config.LoadProperties;
+import org.flashframework.core.properties.FlashProperties;
+import org.flashframework.core.logger.LogConfig;
 import org.flashframework.core.util.StringUtils;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ import java.util.List;
 public abstract class AbstractClassResource implements Resource {
 
     /** 根据配置获取配置的包名 */
-    private static final String FLASH_PACKAGE_NAME = LoadProperties.INSTANCE_FLASH.load("packageName");
+    private static final String FLASH_PACKAGE_NAME = FlashProperties.INSTANCE_FLASH.load("packageName");
 
     /**
      * 根据来源获取，目标 URL 资源
@@ -72,6 +73,8 @@ public abstract class AbstractClassResource implements Resource {
         if (StringUtils.isEmpty(packageDirName)) {
             throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }
+
+        LogConfig.init();
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);

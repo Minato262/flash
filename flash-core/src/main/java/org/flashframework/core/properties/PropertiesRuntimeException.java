@@ -13,9 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.flashframework.core.properties;
+
+import org.flashframework.core.CoreRuntimeException;
 
 /**
+ * 配置常用异常
+ *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-package org.flashframework.core.config;
+class PropertiesRuntimeException extends CoreRuntimeException {
+    private static final long serialVersionUID = -5679745332252139166L;
+
+    /**
+     * 默认构造器，异常信息没有进行初始化
+     */
+    PropertiesRuntimeException() {
+        super();
+    }
+}

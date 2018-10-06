@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.config;
+package org.flashframework.core.properties;
 
 import org.flashframework.core.util.Assert;
+
+import java.util.Properties;
 
 /**
  * 配置工具类，单例模式，用于载入默认配置
@@ -23,7 +25,7 @@ import org.flashframework.core.util.Assert;
  * @author kay
  * @version v2.0
  */
-public enum LoadProperties {
+public enum FlashProperties {
     INSTANCE_FLASH("/config/flash.properties"),
     INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
@@ -34,7 +36,7 @@ public enum LoadProperties {
      *
      * @param path 配置文件路径
      */
-    LoadProperties(String path){
+    FlashProperties(String path){
         this.path = path;
     }
 
@@ -50,6 +52,21 @@ public enum LoadProperties {
     /**
      * 载入配置，获取 Properties 配置值
      *
+     * @return 获取 Properties 配置值
+     * @throws IllegalArgumentException 如果字符串为空
+     */
+    public Properties load() {
+        try {
+            return PropertiesLoad.load(this.getPath());
+        }
+        catch (Exception e) {
+            return new Properties();
+        }
+    }
+
+    /**
+     * 载入配置，获取 Properties 配置值
+     *
      * @param propertyName 配置名称（一定不能为空）
      * @return 获取 Properties 配置值
      * @throws IllegalArgumentException 如果字符串为空
@@ -57,7 +74,7 @@ public enum LoadProperties {
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
         try {
-            return PropertiesUtils.load(this.getPath(), propertyName);
+            return PropertiesLoad.load(this.getPath(), propertyName);
         }
         catch (Exception e) {
             return "";

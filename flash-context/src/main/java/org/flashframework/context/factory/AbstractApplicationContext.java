@@ -94,7 +94,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @return Bean 容器
      */
-    protected BeanContainer getBeanContainer() {
+    BeanContainer getBeanContainer() {
         return container;
     }
 

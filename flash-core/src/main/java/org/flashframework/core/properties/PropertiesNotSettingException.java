@@ -13,40 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.logger;
+package org.flashframework.core.properties;
 
 /**
- * 日志配置是否启动
+ * 配置未设置异常
  *
  * @author kay
  * @version v2.0
  */
-public enum Root {
-    TRUE("true", true),
-    FALSE("false", false);
+class PropertiesNotSettingException extends PropertiesRuntimeException {
+    private static final long serialVersionUID = 8170648362873374448L;
 
-    private String root;
-    private boolean isRoot;
-
-    Root(String root, boolean isRoot) {
-        this.root = root;
-        this.isRoot = isRoot;
-    }
-
-    public String getRoot() {
-        return root;
-    }
-
-    public boolean getIsRoot() {
-        return isRoot;
-    }
-
-    public static boolean getIsRoot(String strRoot) {
-        for (Root root : Root.values()) {
-            if (root.getRoot().equals(strRoot)) {
-                return root.getIsRoot();
-            }
-        }
-        return Root.TRUE.getIsRoot();
+    /**
+     * 默认构造器，异常信息没有进行初始化
+     */
+    PropertiesNotSettingException() {
+        super();
     }
 }
