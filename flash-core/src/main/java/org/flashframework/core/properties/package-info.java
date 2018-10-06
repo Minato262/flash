@@ -16,6 +16,6 @@
 
 /**
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
 package org.flashframework.core.properties;

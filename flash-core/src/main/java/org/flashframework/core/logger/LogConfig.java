@@ -18,7 +18,7 @@ package org.flashframework.core.logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.flashframework.core.Unicode;
 import org.flashframework.core.properties.FlashProperties;
-import org.flashframework.core.properties.PropertiesFactory;
+import org.flashframework.core.properties.PropertiesAware;
 import org.flashframework.core.util.Assert;
 
 import java.util.Properties;
@@ -40,11 +40,11 @@ public class LogConfig {
     static {
         Properties properties = FlashProperties.INSTANCE_FLASH_LOG.load();
 
-        PropertiesFactory utils = new PropertiesFactory();
-        utils.setProperties(properties);
-        String strRoot = utils.getProperties("root");
-        String strLevel = utils.getProperties("level");
-        String strFile = utils.getProperties("file");
+        PropertiesAware aware = new PropertiesAware();
+        aware.setProperties(properties);
+        String strRoot = aware.getProperties("root");
+        String strLevel = aware.getProperties("level");
+        String strFile = aware.getProperties("file");
 
         root = Root.getIsRoot(strRoot);
         level = Level.getLogLevel(strLevel);

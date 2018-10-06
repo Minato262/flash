@@ -15,6 +15,7 @@
  */
 package org.flashframework.core.properties;
 
+import org.flashframework.core.resource.Aware;
 import org.flashframework.core.util.Assert;
 
 import java.util.Properties;
@@ -25,7 +26,7 @@ import java.util.Properties;
  * @author kay
  * @version v2.0
  */
-public class PropertiesFactory {
+public class PropertiesAware implements Aware {
 
     private Properties prop;
 

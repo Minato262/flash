@@ -35,10 +35,9 @@ public class PropertiesLoad {
      * @throws IOException I/O 异常
      */
     public static Properties load(String propertyPath) throws IOException {
-        Properties prop = new Properties();
-        InputStream in = null;
+        InputStream in = Object.class.getResourceAsStream(propertyPath);
         try {
-            in = Object.class.getResourceAsStream(propertyPath);
+            Properties prop = new Properties();
             prop.load(in);
             return prop;
         }
@@ -58,10 +57,9 @@ public class PropertiesLoad {
      * @throws IOException I/O 异常
      */
     public static String load(String propertyPath, String propertyName) throws IOException {
-        Properties prop = new Properties();
-        InputStream in = null;
+        InputStream in = Object.class.getResourceAsStream(propertyPath);
         try {
-            in = Object.class.getResourceAsStream(propertyPath);
+            Properties prop = new Properties();
             prop.load(in);
             for (String key : prop.stringPropertyNames()) {
                 if (propertyName.equals(key)) {

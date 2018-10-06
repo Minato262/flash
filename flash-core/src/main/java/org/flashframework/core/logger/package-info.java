@@ -15,7 +15,7 @@
  */
 
 /**
- *
+ * core 相关日志模块
  *
  * @author kay
  * @version v2.0

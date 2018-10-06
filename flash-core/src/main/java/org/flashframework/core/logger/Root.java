@@ -16,7 +16,7 @@
 package org.flashframework.core.logger;
 
 /**
- * 日志配置是否启动
+ * 日志配置是否启动配置常量
  *
  * @author kay
  * @version v2.0

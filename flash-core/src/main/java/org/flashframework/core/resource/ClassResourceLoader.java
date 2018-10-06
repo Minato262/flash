@@ -47,14 +47,14 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      *
      * @param name 类的名称
      * @return 载入的 Class
-     * @throws ClassResourceLoaderFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
+     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     private Class<?> loadClass(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
         }
         catch (ClassNotFoundException e) {
-            throw new ClassResourceLoaderFailureException();
+            throw new ClassResourceLoadFailureException();
         }
     }
 
