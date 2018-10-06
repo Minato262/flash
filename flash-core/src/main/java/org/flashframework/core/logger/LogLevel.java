@@ -13,9 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.flashframework.core.logger;
 
 /**
+ * 日志常用级别
+ *
  * @author kay
  * @version v2.0
  */
-package org.flashframework.core.log;
+public enum LogLevel {
+    DEBUG("debug"),
+    WARN("warn"),
+    INFO("info"),
+    ERROR("error");
+
+    private String level;
+
+    LogLevel(String level) {
+        this.level = level;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public static String getLogLevel(String root) {
+        for (LogLevel logLevel : LogLevel.values()) {
+            if (logLevel.getLevel().equals(root)) {
+                return logLevel.level;
+            }
+        }
+        return "";
+    }
+}

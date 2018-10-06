@@ -31,28 +31,6 @@ public class PropertiesUtils {
      * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
      *
      * @param propertyPath 配置路径
-     * @return 获取 Properties 配置
-     * @throws IOException I/O 异常
-     */
-    public static Properties load(String propertyPath) throws IOException {
-        Properties prop = new Properties();
-        InputStream in = null;
-        try {
-            in = Object.class.getResourceAsStream(propertyPath);
-            prop.load(in);
-            return prop;
-        }
-        finally {
-            if (in != null) {
-                in.close();
-            }
-        }
-    }
-
-    /**
-     * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
-     *
-     * @param propertyPath 配置路径
      * @param propertyName 配置名称
      * @return 获取 Properties 配置值
      * @throws IOException I/O 异常
