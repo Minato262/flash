@@ -24,6 +24,7 @@ import org.flashframework.web.WebRuntimeException;
  * @version v2.0
  */
 public class FilterRuntimeException extends WebRuntimeException {
+    private static final long serialVersionUID = -1394584956620085094L;
 
     /**
      * 带有错误信息的构造器

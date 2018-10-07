@@ -37,7 +37,7 @@ public enum Level {
         return level;
     }
 
-    public static Level getLogLevel(String strLevel) {
+    public static Level getLevel(String strLevel) {
         for (Level level : Level.values()) {
             if (level.getLevel().equals(strLevel)) {
                 return level;

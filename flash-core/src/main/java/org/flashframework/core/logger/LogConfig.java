@@ -47,7 +47,7 @@ public class LogConfig {
         String strFile = aware.getProperties("file");
 
         root = Root.getIsRoot(strRoot);
-        level = Level.getLogLevel(strLevel);
+        level = Level.getLevel(strLevel);
         file = strFile.equals("") ? "logs/out.log" : strFile;
     }
 

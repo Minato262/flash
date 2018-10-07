@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version v1.0
  */
 public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable, Aware {
+    private static final long serialVersionUID = 4882416802842440014L;
 
     /*
      * 概述：

@@ -27,6 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version v1.0
  */
 public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
+    private static final long serialVersionUID = -8079938385475595348L;
 
     /*
      * 概述:

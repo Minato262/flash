@@ -26,7 +26,7 @@ import org.flashframework.web.WebRuntimeException;
  * @version v2.0
  */
 public class MvcRuntimeException extends WebRuntimeException {
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 6391816081063069916L;
 
     /**
      * 带有错误信息的构造器
