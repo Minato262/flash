@@ -38,8 +38,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /*
      * 概述：
      *
-     *      这个抽象类的设计目的主要是：初始化 Bean 容器，设置上下文环境，为整个应用提供
-     * IOC支持。
+     *      这个抽象类的设计目的主要是：初始化 Bean 容器，设置上下文环境，为整个应用提供 IOC 支持。
      *
      *      其中，初始化容器的过程最为重要。它包括 刷新容器，然后扫描，解析，注册 Bean Definition
      * 最后 载入类与方法注解。整个过程就初试化完成。
@@ -52,7 +51,9 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * 默认构造器
      */
     AbstractApplicationContext() {
-        init();
+        if (container.isEmpty()) {
+            init();
+        }
     }
 
     /**
@@ -61,10 +62,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
-        if (!container.isEmpty()) {
-            return;
-        }
-
         Resource resource = new ClassResourceLoader();
         BeanDefinitionFactory factory = loadBeanDefinition();
         Resolution resolution = new BeanDefinitionResolution(resource, factory);
