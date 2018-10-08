@@ -45,6 +45,7 @@ public class PropertiesAware implements Aware {
      *
      * @param propertyName 配置关键字
      * @return Properties 配置值
+     * @throws PropertiesNotSettingException 如果配置项没有设置
      */
     public String getProperties(String propertyName) {
         if (prop == null) {
