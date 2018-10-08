@@ -19,22 +19,24 @@ import org.apache.log4j.PropertyConfigurator;
 import org.flashframework.core.Unicode;
 import org.flashframework.core.properties.FlashProperties;
 import org.flashframework.core.properties.PropertiesAware;
-import org.flashframework.core.util.Assert;
 
 import java.util.Properties;
 
 /**
- * Log 常用设置
+ * flashframework 框架自带的 Log，主要打印框架启动时的 Log 日志。
  *
  * @author kay
  * @version v2.0
  */
 public class LogConfig {
 
-    private static boolean root;
+    /** 是否启动 flashframework 框架自带的 Log */
+    private static boolean enabled;
 
+    /** Log 日志打印等级 */
     private static Level level;
 
+    /** Log 日志打印的文件路径 */
     private static String file;
 
     static {
@@ -42,30 +44,56 @@ public class LogConfig {
 
         PropertiesAware aware = new PropertiesAware();
         aware.setProperties(properties);
-        String strRoot = aware.getProperties("root");
+        String strEnabled = aware.getProperties("enabled");
         String strLevel = aware.getProperties("level");
         String strFile = aware.getProperties("file");
 
-        root = Root.getIsRoot(strRoot);
+        enabled = Enabled.getEnabled(strEnabled);
         level = Level.getLevel(strLevel);
         file = strFile.equals("") ? "logs/out.log" : strFile;
     }
 
-    public static void setLevel(Level logLevel) {
-        Assert.isNotNull(logLevel);
-        level = logLevel;
-    }
-
-    public static void setFileUrl(String fileUrl) {
-        Assert.isNotEmpty(fileUrl);
-        file = fileUrl;
-    }
-
+    /**
+     * 初始化 Log 配置
+     */
     public static void init() {
-        if (!root) {
-            return;
+        if (enabled) {
+            setConfigurator();
         }
+    }
 
+    /*
+     * 自定义输出格式说明
+     *
+     * %p 输出优先级，即DEBUG，INFO，WARN，ERROR
+     * %r 输出自应用启动到输出该 log 信息耗费的毫秒数
+     * %c 输出所属的类目，通常就是所在类的全名
+     * %t 输出产生该日志事件的线程名
+     * %n 输出一个回车换行符，Windows平台为"/r/n"，Unix平台为"/n"
+     * %d 输出日志时间点的日期或时间，默认输出格式为 ISO8601，也可以在其后指定格式，比如：%d{yyyy-MM-dd HH:mm:ss}
+     * %l 输出日志时间的发生位置，包括类目名、发生的线程，以及在代码中的行数
+     *
+     *
+     * 输出格式说明
+     *
+     * Appender 为日志输出目的，appender 有以下几种：
+     * org.apache.log4j.ConsoleAppender(控制台)
+     * org.apache.log4j.FileAppender(文件)
+     * org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件)
+     * org.apache.log4j.RollingFileAppender(文件大小达到指定尺寸的时候产生一个新的文件)
+     * org.apache.log4j.WriterAppender(将日志信息以流格式发生到任意指定的地方)
+     *
+     * Layout 为日志输出目的，layout 有以下几种：
+     * org.apache.log4j.HTMLLayout(以HTML表格形式布局)
+     * org.apache.log4j.PatternLayout(可以灵活地指定布局模式)
+     * org.apache.log4j.SimpleLayout(包含日志信息的级别和信息字符串)
+     * org.apache.log4j.TTCCLayout(包含日志产生的时间、线程、类别等等信息)
+     */
+
+    /**
+     * 设置 Log 配置
+     */
+    private static void setConfigurator() {
         Properties prop = new Properties();
         prop.setProperty("log4j.rootLogger", level.getLevel() + ", toConsole, toFile");
         prop.setProperty("log4j.appender.file.encoding", Unicode.UTF_8.getCode());

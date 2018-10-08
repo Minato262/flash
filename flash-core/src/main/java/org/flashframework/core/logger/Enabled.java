@@ -21,32 +21,33 @@ package org.flashframework.core.logger;
  * @author kay
  * @version v2.0
  */
-public enum Root {
+public enum Enabled {
     TRUE("true", true),
     FALSE("false", false);
 
     private String root;
-    private boolean isRoot;
+    private boolean enabled;
 
-    Root(String root, boolean isRoot) {
+    Enabled(String root, boolean enabled) {
         this.root = root;
-        this.isRoot = isRoot;
+        this.enabled = enabled;
     }
 
-    public String getRoot() {
-        return root;
+    public boolean getEnabled() {
+        return enabled;
     }
 
-    public boolean getIsRoot() {
-        return isRoot;
-    }
-
-    public static boolean getIsRoot(String strRoot) {
+    public static boolean getEnabled(String strRoot) {
         for (Root root : Root.values()) {
             if (root.getRoot().equalsIgnoreCase(strRoot)) {
                 return root.getIsRoot();
             }
         }
         return Root.TRUE.getIsRoot();
+    }
+
+    @Override
+    public String toString() {
+        return root;
     }
 }

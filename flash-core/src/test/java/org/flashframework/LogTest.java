@@ -64,8 +64,6 @@ public class LogTest {
 
     @Test
     public void test2() {
-        LogConfig.setLevel(Level.DEBUG);
-        LogConfig.setFileUrl("");
         LogConfig.init();
         log.debug("log debug");
         log.info("log info");
@@ -73,21 +71,18 @@ public class LogTest {
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(Level.WARN);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(Level.INFO);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
         log.error("log error");
         System.out.println();
 
-        LogConfig.setLevel(Level.ERROR);
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
