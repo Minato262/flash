@@ -39,7 +39,7 @@ public enum Level {
 
     public static Level getLevel(String strLevel) {
         for (Level level : Level.values()) {
-            if (level.getLevel().equals(strLevel)) {
+            if (level.getLevel().equalsIgnoreCase(strLevel)) {
                 return level;
             }
         }

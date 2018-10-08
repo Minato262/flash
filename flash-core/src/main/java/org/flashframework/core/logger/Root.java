@@ -43,7 +43,7 @@ public enum Root {
 
     public static boolean getIsRoot(String strRoot) {
         for (Root root : Root.values()) {
-            if (root.getRoot().equals(strRoot)) {
+            if (root.getRoot().equalsIgnoreCase(strRoot)) {
                 return root.getIsRoot();
             }
         }
