@@ -32,7 +32,7 @@ public class PropertiesLoad {
      *
      * @param propertyPath 配置路径
      * @return 获取 Properties 配置值
-     * @throws IOException I/O 异常
+     * @throws IOException 如果 I/O 异常
      */
     public static Properties load(String propertyPath) throws IOException {
         InputStream in = Object.class.getResourceAsStream(propertyPath);
@@ -54,24 +54,15 @@ public class PropertiesLoad {
      * @param propertyPath 配置路径
      * @param propertyName 配置名称
      * @return 获取 Properties 配置值
-     * @throws IOException I/O 异常
+     * @throws IOException 如果 I/O 异常
      */
     public static String load(String propertyPath, String propertyName) throws IOException {
-        InputStream in = Object.class.getResourceAsStream(propertyPath);
-        try {
-            Properties prop = new Properties();
-            prop.load(in);
-            for (String key : prop.stringPropertyNames()) {
-                if (propertyName.equals(key)) {
-                    return prop.getProperty(key);
-                }
-            }
-            return "";
-        }
-        finally {
-            if (in != null) {
-                in.close();
+        Properties prop = load(propertyPath);
+        for (String key : prop.stringPropertyNames()) {
+            if (propertyName.equals(key)) {
+                return prop.getProperty(key);
             }
         }
+        return "";
     }
 }
