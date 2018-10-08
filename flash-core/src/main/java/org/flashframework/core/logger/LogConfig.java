@@ -83,7 +83,7 @@ public class LogConfig {
      * org.apache.log4j.RollingFileAppender(文件大小达到指定尺寸的时候产生一个新的文件)
      * org.apache.log4j.WriterAppender(将日志信息以流格式发生到任意指定的地方)
      *
-     * Layout 为日志输出目的，layout 有以下几种：
+     * Layout 为日志输出布局，layout 有以下几种：
      * org.apache.log4j.HTMLLayout(以HTML表格形式布局)
      * org.apache.log4j.PatternLayout(可以灵活地指定布局模式)
      * org.apache.log4j.SimpleLayout(包含日志信息的级别和信息字符串)
@@ -91,7 +91,7 @@ public class LogConfig {
      */
 
     /**
-     * 设置 Log 配置
+     * 设置 Log 配置主要包括：日志输出类型、输出目的、输出布局。
      */
     private static void setConfigurator() {
         Properties prop = new Properties();

@@ -38,12 +38,12 @@ public enum Enabled {
     }
 
     public static boolean getEnabled(String strRoot) {
-        for (Root root : Root.values()) {
-            if (root.getRoot().equalsIgnoreCase(strRoot)) {
-                return root.getIsRoot();
+        for (Enabled enabled : Enabled.values()) {
+            if (enabled.toString().equalsIgnoreCase(strRoot)) {
+                return enabled.getEnabled();
             }
         }
-        return Root.TRUE.getIsRoot();
+        return Enabled.TRUE.getEnabled();
     }
 
     @Override
