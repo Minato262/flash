@@ -42,7 +42,7 @@ public abstract class NestedRuntimeException extends RuntimeException {
      * 去捕获这类异常其实是毫无益处的。所以，从编程的代码结构以及可读性的角度来讲，都
      * 是推荐使用非受检性异常的。
      *
-     *    而这里的设计目的，就是将整个框架内的异常，全部转化为非受检性异常。
+     *    这里的设计目的，就是将整个框架内的异常，全部转化为非受检性异常。
      */
 
     /**

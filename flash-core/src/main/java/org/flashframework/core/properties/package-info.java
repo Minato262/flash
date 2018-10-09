@@ -15,6 +15,8 @@
  */
 
 /**
+ * 配置模块
+ *
  * @author kay
  * @version v2.0
  */

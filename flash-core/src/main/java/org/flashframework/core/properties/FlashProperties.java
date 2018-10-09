@@ -53,7 +53,6 @@ public enum FlashProperties {
      * 载入配置，获取 Properties 配置值
      *
      * @return 获取 Properties 配置值
-     * @throws IllegalArgumentException 如果字符串为空
      */
     public Properties load() {
         try {
