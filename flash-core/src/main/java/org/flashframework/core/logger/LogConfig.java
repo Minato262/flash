@@ -43,9 +43,11 @@ public class LogConfig {
         final String strLevel = FlashProperties.INSTANCE_FLASH_LOG.load("level");
         final String strFile = FlashProperties.INSTANCE_FLASH_LOG.load("file");
 
+        final String fileDefault = "logs/out.log";
+
         enabled = Enabled.getEnabled(strEnabled);
         level = Level.getLevel(strLevel);
-        file = strFile.equals("") ? "logs/out.log" : strFile;
+        file = strFile.equals("") ? fileDefault : strFile;
     }
 
     /**
