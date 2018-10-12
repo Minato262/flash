@@ -54,7 +54,7 @@ public enum FlashProperties {
      */
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
-        for (String key : prop.stringPropertyNames()) {
+        for (final String key : prop.stringPropertyNames()) {
             if (propertyName.equals(key)) {
                 return prop.getProperty(key);
             }

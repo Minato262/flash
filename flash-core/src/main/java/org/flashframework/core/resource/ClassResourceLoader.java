@@ -36,10 +36,10 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
     private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
 
-    /** 文件名称 */
+    /** 文件常量——名称 */
     private static final String FILE_NAME = "file";
 
-    /** 文件后缀 */
+    /** 文件常量——后缀 */
     private static final String FILE_CLASS = FILE_DOT + "class";
 
     /**
@@ -51,6 +51,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      */
     @Override
     protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
+        log.info("{}, load class start", packageName);
         List<Class<?>> classes = new ArrayList<>();
         while (urlElements.hasMoreElements()) {
             URL url = urlElements.nextElement();
@@ -62,6 +63,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 loadClasses(packageName, filePath, classes);
             }
         }
+        log.info("{}, load class end", packageName);
         return classes;
     }
 
@@ -89,13 +91,14 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 continue;
             }
 
-            String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
-            Class<?> clazz = loadClass(packageName + FILE_DOT + className);
+            final String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
+            final String name = packageName + FILE_DOT + className;
+            Class<?> clazz = loadClass(name);
+            classes.add(clazz);
 
             if(log.isDebugEnabled()) {
-                log.debug("load Class，name=" + packageName + FILE_DOT + className);
+                log.debug("load Class，name={}", name);
             }
-            classes.add(clazz);
         }
     }
 
