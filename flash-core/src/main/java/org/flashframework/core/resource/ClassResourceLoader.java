@@ -40,57 +40,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
     private static final String FILE_NAME = "file";
 
     /** 文件后缀 */
-    private static final String FILE_CLASS = ".class";
-
-    /**
-     * 根据类的名称，载入类的资源
-     *
-     * @param name 类的名称
-     * @return 载入的 Class
-     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
-     */
-    private Class<?> loadClass(String name) {
-        try {
-            return Thread.currentThread().getContextClassLoader().loadClass(name);
-        }
-        catch (ClassNotFoundException e) {
-            throw new ClassResourceLoadFailureException();
-        }
-    }
-
-    /**
-     * 递归扫描，全部 Class 的资源列表
-     *
-     * @param packageName 相对路径包名称
-     * @param packagePath 相对包路径
-     * @param classes     Class 资源清单
-     */
-    private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
-        File dir = new File(packagePath);
-        if (!dir.exists() || !dir.isDirectory()) {
-            return;
-        }
-
-        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLASS));
-        if (files == null) {
-            return;
-        }
-
-        for (File file : files) {
-            if (file.isDirectory()) {
-                loadClasses(packageName + "." + file.getName(), file.getAbsolutePath(), classes);
-                continue;
-            }
-
-            String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
-            Class<?> clazz = loadClass(packageName + "." + className);
-
-            if(log.isDebugEnabled()) {
-                log.debug("load Class，name=" + packageName + "." + className);
-            }
-            classes.add(clazz);
-        }
-    }
+    private static final String FILE_CLASS = FILE_DOT + "class";
 
     /**
      * 扫描并获取到 Class 资源列表，暂不支持扫描 jar 包
@@ -113,5 +63,55 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             }
         }
         return classes;
+    }
+
+    /**
+     * 递归扫描，全部 Class 的资源列表
+     *
+     * @param packageName 相对路径包名称
+     * @param packagePath 相对包路径
+     * @param classes     Class 资源清单
+     */
+    private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
+        File dir = new File(packagePath);
+        if (!dir.exists() || !dir.isDirectory()) {
+            return;
+        }
+
+        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLASS));
+        if (files == null) {
+            return;
+        }
+
+        for (File file : files) {
+            if (file.isDirectory()) {
+                loadClasses(packageName + FILE_DOT + file.getName(), file.getAbsolutePath(), classes);
+                continue;
+            }
+
+            String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
+            Class<?> clazz = loadClass(packageName + FILE_DOT + className);
+
+            if(log.isDebugEnabled()) {
+                log.debug("load Class，name=" + packageName + FILE_DOT + className);
+            }
+            classes.add(clazz);
+        }
+    }
+
+    /**
+     * 根据类的名称，载入类的资源
+     *
+     * @param name 类的名称
+     * @return 载入的 Class
+     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
+     */
+    private Class<?> loadClass(String name) {
+        try {
+            return Thread.currentThread().getContextClassLoader().loadClass(name);
+        }
+        catch (ClassNotFoundException e) {
+            throw new ClassResourceLoadFailureException();
+        }
     }
 }

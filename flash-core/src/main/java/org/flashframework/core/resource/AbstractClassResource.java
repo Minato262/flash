@@ -36,6 +36,31 @@ public abstract class AbstractClassResource implements Resource {
     /** 根据配置获取配置的包名 */
     private static final String FLASH_PACKAGE_NAME = FlashProperties.INSTANCE_FLASH.load("packageName");
 
+    /** 文件常用字节——斜杠 */
+    private static final char FILE_SLASH = '/';
+
+    /** 文件常用字节——点 */
+    static final char FILE_DOT = '.';
+
+    /**
+     * 获取所有当前包内 Class 类的列表
+     *
+     * @return Class 类清单
+     * @throws ClassResourceRuntimeException 如果没有在配置项中配置包路径
+     */
+    @Override
+    public List<Class<?>> getClasses() {
+        String packageDirName = FLASH_PACKAGE_NAME.replace(FILE_DOT, FILE_SLASH);
+        if (StringUtils.isEmpty(packageDirName)) {
+            throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
+        }
+
+        LogConfig.init();
+
+        Enumeration<URL> dirs = getEnumeration(packageDirName);
+        return getClasses(dirs, FLASH_PACKAGE_NAME);
+    }
+
     /**
      * 根据来源获取，目标 URL 资源
      *
@@ -61,22 +86,4 @@ public abstract class AbstractClassResource implements Resource {
      */
     protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
 
-    /**
-     * 获取所有当前包内 Class 类的列表
-     *
-     * @return Class 类清单
-     * @throws ClassResourceRuntimeException 如果没有在配置项中配置包路径
-     */
-    @Override
-    public List<Class<?>> getClasses() {
-        String packageDirName = FLASH_PACKAGE_NAME.replace('.', '/');
-        if (StringUtils.isEmpty(packageDirName)) {
-            throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
-        }
-
-        LogConfig.init();
-
-        Enumeration<URL> dirs = getEnumeration(packageDirName);
-        return getClasses(dirs, FLASH_PACKAGE_NAME);
-    }
 }

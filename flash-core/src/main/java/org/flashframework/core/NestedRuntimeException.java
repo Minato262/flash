@@ -27,6 +27,7 @@ package org.flashframework.core;
  *
  * @author kay
  * @version v1.0
+ * @see java.lang.RuntimeException
  */
 public abstract class NestedRuntimeException extends RuntimeException {
     private static final long serialVersionUID = -6425650688761297668L;

@@ -18,7 +18,6 @@ package org.flashframework.core.logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.flashframework.core.Unicode;
 import org.flashframework.core.properties.FlashProperties;
-import org.flashframework.core.properties.PropertiesAware;
 
 import java.util.Properties;
 
@@ -40,13 +39,9 @@ public class LogConfig {
     private static String file;
 
     static {
-        Properties properties = FlashProperties.INSTANCE_FLASH_LOG.load();
-
-        PropertiesAware aware = new PropertiesAware();
-        aware.setProperties(properties);
-        String strEnabled = aware.getProperties("enabled");
-        String strLevel = aware.getProperties("level");
-        String strFile = aware.getProperties("file");
+        final String strEnabled = FlashProperties.INSTANCE_FLASH_LOG.load("enabled");
+        final String strLevel = FlashProperties.INSTANCE_FLASH_LOG.load("level");
+        final String strFile = FlashProperties.INSTANCE_FLASH_LOG.load("file");
 
         enabled = Enabled.getEnabled(strEnabled);
         level = Level.getLevel(strLevel);

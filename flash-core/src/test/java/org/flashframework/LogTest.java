@@ -16,7 +16,6 @@
 package org.flashframework;
 
 import org.flashframework.core.logger.LogConfig;
-import org.flashframework.core.logger.Level;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

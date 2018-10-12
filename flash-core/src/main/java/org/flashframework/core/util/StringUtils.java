@@ -56,7 +56,7 @@ public class StringUtils {
      * @return 处理后的字符串（首字母为小写）
      * @throws IllegalArgumentException 如果字符串为空，则抛出异常
      */
-    public static String toLowerCaseFirstOne(String str) {
+    public static String toLowerCaseFirst(String str) {
         Assert.isNotEmpty(str);
         if (Character.isLowerCase(str.charAt(0))) {
             return str;

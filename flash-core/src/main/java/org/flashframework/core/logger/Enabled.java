@@ -25,11 +25,11 @@ public enum Enabled {
     TRUE("true", true),
     FALSE("false", false);
 
-    private String root;
+    private String str;
     private boolean enabled;
 
-    Enabled(String root, boolean enabled) {
-        this.root = root;
+    Enabled(String str, boolean enabled) {
+        this.str = str;
         this.enabled = enabled;
     }
 
@@ -37,9 +37,9 @@ public enum Enabled {
         return enabled;
     }
 
-    public static boolean getEnabled(String strRoot) {
+    public static boolean getEnabled(String str) {
         for (Enabled enabled : Enabled.values()) {
-            if (enabled.toString().equalsIgnoreCase(strRoot)) {
+            if (enabled.toString().equalsIgnoreCase(str)) {
                 return enabled.getEnabled();
             }
         }
@@ -48,6 +48,6 @@ public enum Enabled {
 
     @Override
     public String toString() {
-        return root;
+        return str;
     }
 }

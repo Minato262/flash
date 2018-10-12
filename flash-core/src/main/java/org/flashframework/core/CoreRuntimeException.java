@@ -20,6 +20,7 @@ package org.flashframework.core;
  *
  * @author kay
  * @version v1.0
+ * @see org.flashframework.core.NestedRuntimeException
  */
 public abstract class CoreRuntimeException extends NestedRuntimeException {
     private static final long serialVersionUID = 1544855094886215251L;

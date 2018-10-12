@@ -29,37 +29,19 @@ public enum FlashProperties {
     INSTANCE_FLASH("/config/flash.properties"),
     INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
-    private String path;
+    private Properties prop;
 
     /**
      * 带有配置文件路径的构造器
      *
      * @param path 配置文件路径
      */
-    FlashProperties(String path){
-        this.path = path;
-    }
-
-    /**
-     * 获取配置文件路径
-     *
-     * @return 文件路径
-     */
-    public String getPath() {
-        return path;
-    }
-
-    /**
-     * 载入配置，获取 Properties 配置值
-     *
-     * @return 获取 Properties 配置值
-     */
-    public Properties load() {
+    FlashProperties(String path) {
         try {
-            return PropertiesLoad.load(this.getPath());
+            prop = PropertiesLoad.load(path);
         }
         catch (Exception e) {
-            return new Properties();
+            prop = new Properties();
         }
     }
 
@@ -72,11 +54,11 @@ public enum FlashProperties {
      */
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
-        try {
-            return PropertiesLoad.load(this.getPath(), propertyName);
+        for (String key : prop.stringPropertyNames()) {
+            if (propertyName.equals(key)) {
+                return prop.getProperty(key);
+            }
         }
-        catch (Exception e) {
-            return "";
-        }
+        return "";
     }
 }

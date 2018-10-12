@@ -58,7 +58,7 @@ public class PropertiesLoad {
      */
     public static String load(String propertyPath, String propertyName) throws IOException {
         Properties prop = load(propertyPath);
-        for (String key : prop.stringPropertyNames()) {
+        for (final String key : prop.stringPropertyNames()) {
             if (propertyName.equals(key)) {
                 return prop.getProperty(key);
             }

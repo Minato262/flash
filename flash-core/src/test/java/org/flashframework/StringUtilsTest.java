@@ -44,15 +44,15 @@ public class StringUtilsTest {
 
     @Test
     public void toLowerCaseFirstOne() {
-        String str = StringUtils.toLowerCaseFirstOne("10");
+        String str = StringUtils.toLowerCaseFirst("10");
         Assert.isNotNull(str);
         System.out.println(str);
 
-        str = StringUtils.toLowerCaseFirstOne("ABCS");
+        str = StringUtils.toLowerCaseFirst("ABCS");
         Assert.isNotNull(str);
         System.out.println(str);
 
-        str = StringUtils.toLowerCaseFirstOne("aBCS");
+        str = StringUtils.toLowerCaseFirst("aBCS");
         Assert.isNotNull(str);
         System.out.println(str);
     }
