@@ -93,12 +93,12 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
             final String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
             final String name = packageName + FILE_DOT + className;
-            Class<?> clazz = loadClass(name);
-            classes.add(clazz);
 
             if(log.isDebugEnabled()) {
                 log.debug("load Class，name={}", name);
             }
+            Class<?> clazz = loadClass(name);
+            classes.add(clazz);
         }
     }
 

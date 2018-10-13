@@ -45,7 +45,7 @@ public abstract class AbstractClassResource implements Resource {
     /**
      * 获取所有当前包内 Class 类的列表
      *
-     * @return Class 类清单
+     * @return 扫描的 Class 类列表
      * @throws ClassResourceRuntimeException 如果没有在配置项中配置包路径
      */
     @Override

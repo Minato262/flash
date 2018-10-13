@@ -75,7 +75,7 @@ public final class BeanDefinitionLoad {
     }
 
     /**
-     * 根据检测的对象，载入{@code Autowired}和{@code Resource}方法注解
+     * 根据检测的对象，载入 {@code Autowired} 和 {@code Resource} 方法注解
      *
      * @param value 需要检测的对象
      * @return Bean Definition 的封装类
