@@ -33,7 +33,7 @@ public class PropertiesFactory {
      * @param propertyPath 配置路径
      * @return 获取 Properties 配置值
      */
-    public Properties load(String propertyPath) {
+    public static Properties load(String propertyPath) {
         try {
             return loadProperties(propertyPath);
         }
@@ -49,7 +49,7 @@ public class PropertiesFactory {
      * @return 获取 Properties 配置值
      * @throws IOException 如果 I/O 异常
      */
-    private Properties loadProperties(String propertyPath) throws IOException {
+    private static Properties loadProperties(String propertyPath) throws IOException {
         InputStream in = Object.class.getResourceAsStream(propertyPath);
         try {
             Properties prop = new Properties();
