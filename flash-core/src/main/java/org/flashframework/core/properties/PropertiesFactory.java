@@ -25,7 +25,22 @@ import java.util.Properties;
  * @author kay
  * @version v2.0
  */
-public class PropertiesLoad {
+public class PropertiesFactory {
+
+    /**
+     * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
+     *
+     * @param propertyPath 配置路径
+     * @return 获取 Properties 配置值
+     */
+    public Properties load(String propertyPath) {
+        try {
+            return loadProperties(propertyPath);
+        }
+        catch (IOException e) {
+            return new Properties();
+        }
+    }
 
     /**
      * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
@@ -34,7 +49,7 @@ public class PropertiesLoad {
      * @return 获取 Properties 配置值
      * @throws IOException 如果 I/O 异常
      */
-    public static Properties load(String propertyPath) throws IOException {
+    private Properties loadProperties(String propertyPath) throws IOException {
         InputStream in = Object.class.getResourceAsStream(propertyPath);
         try {
             Properties prop = new Properties();
@@ -46,23 +61,5 @@ public class PropertiesLoad {
                 in.close();
             }
         }
-    }
-
-    /**
-     * 载入配置，获取 Properties 配置值，如果配置项不存在，则返回为空
-     *
-     * @param propertyPath 配置路径
-     * @param propertyName 配置名称
-     * @return 获取 Properties 配置值
-     * @throws IOException 如果 I/O 异常
-     */
-    public static String load(String propertyPath, String propertyName) throws IOException {
-        Properties prop = load(propertyPath);
-        for (final String key : prop.stringPropertyNames()) {
-            if (propertyName.equals(key)) {
-                return prop.getProperty(key);
-            }
-        }
-        return "";
     }
 }

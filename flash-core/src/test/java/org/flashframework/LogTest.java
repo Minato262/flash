@@ -15,13 +15,13 @@
  */
 package org.flashframework;
 
-import org.flashframework.core.logger.LogConfig;
+import org.flashframework.core.logger.Configurator;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link LogConfig} Test
+ * {@link Configurator} Test
  *
  * @author kay
  * @version v2.0
@@ -32,7 +32,7 @@ public class LogTest {
 
     @Test
     public void test() {
-        LogConfig.init();
+        Configurator.init();
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");
@@ -46,7 +46,7 @@ public class LogTest {
 
     @Test
     public void test1() {
-        LogConfig.init();
+        Configurator.init();
         if (log.isDebugEnabled()) {
             log.debug("log debug");
             log.info("log info");
@@ -63,7 +63,7 @@ public class LogTest {
 
     @Test
     public void test2() {
-        LogConfig.init();
+        Configurator.init();
         log.debug("log debug");
         log.info("log info");
         log.warn("log warn");

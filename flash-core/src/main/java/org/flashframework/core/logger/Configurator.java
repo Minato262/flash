@@ -27,7 +27,7 @@ import java.util.Properties;
  * @author kay
  * @version v2.0
  */
-public class LogConfig {
+public class Configurator {
 
     /** 是否启动 flashframework 框架自带的 Log */
     private static boolean enabled;

@@ -37,12 +37,8 @@ public enum FlashProperties {
      * @param path 配置文件路径
      */
     FlashProperties(String path) {
-        try {
-            prop = PropertiesLoad.load(path);
-        }
-        catch (Exception e) {
-            prop = new Properties();
-        }
+        PropertiesFactory factory = new PropertiesFactory();
+        this.prop = factory.load(path);
     }
 
     /**

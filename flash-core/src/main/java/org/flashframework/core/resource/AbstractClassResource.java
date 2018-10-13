@@ -17,7 +17,7 @@ package org.flashframework.core.resource;
 
 import org.flashframework.core.Resource;
 import org.flashframework.core.properties.FlashProperties;
-import org.flashframework.core.logger.LogConfig;
+import org.flashframework.core.logger.Configurator;
 import org.flashframework.core.util.StringUtils;
 
 import java.io.IOException;
@@ -55,7 +55,7 @@ public abstract class AbstractClassResource implements Resource {
             throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }
 
-        LogConfig.init();
+        Configurator.init();
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);

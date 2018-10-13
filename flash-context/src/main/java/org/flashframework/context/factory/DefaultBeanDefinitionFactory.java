@@ -20,8 +20,6 @@ import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
 
-import javax.annotation.Resource;
-
 /**
  * BeanDefinition 默认工厂
  *
