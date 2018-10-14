@@ -35,12 +35,6 @@ public abstract class AbstractClassResource implements Resource {
     /** 根据配置获取配置的包名 */
     private static final String FLASH_PACKAGE_NAME = FlashProperties.INSTANCE_FLASH.load("packageName");
 
-    /** 文件常用字节——斜杠 */
-    private static final char FILE_SLASH = '/';
-
-    /** 文件常用字节——点 */
-    static final char FILE_DOT = '.';
-
     /**
      * 获取所有当前包内 Class 类的列表
      *
@@ -49,7 +43,7 @@ public abstract class AbstractClassResource implements Resource {
      */
     @Override
     public List<Class<?>> getClasses() {
-        String packageDirName = FLASH_PACKAGE_NAME.replace(FILE_DOT, FILE_SLASH);
+        String packageDirName = FLASH_PACKAGE_NAME.replace(FileSystemResource.FILE_DOT, FileSystemResource.FILE_SLASH);
         if (StringUtils.isEmpty(packageDirName)) {
             throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }

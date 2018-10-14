@@ -35,12 +35,6 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
     private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
 
-    /** 文件常量——名称 */
-    private static final String FILE_NAME = "file";
-
-    /** 文件常量——后缀 */
-    private static final String FILE_CLASS = FILE_DOT + "class";
-
     /**
      * 扫描并获取到 Class 资源列表，暂不支持扫描 jar 包
      *
@@ -57,7 +51,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             String protocol = url.getProtocol();
 
             // 暂时不支持扫描 jar 包
-            if (FILE_NAME.equals(protocol)) {
+            if (FileSystemResource.FILE_NAME.equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 loadClasses(packageName, filePath, classes);
             }
@@ -74,29 +68,22 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param classes     Class 资源清单
      */
     private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
-        File dir = new File(packagePath);
-        if (!dir.exists() || !dir.isDirectory()) {
-            return;
-        }
-
-        File[] files = dir.listFiles(file -> file.isDirectory() || file.getName().endsWith(FILE_CLASS));
+        FileSystemResource fileResource = new FileSystemResource(packagePath, packageName);
+        List<FileSystemResource> files = fileResource.getFileList();
         if (files == null) {
             return;
         }
 
-        for (File file : files) {
+        for (FileSystemResource file : files) {
             if (file.isDirectory()) {
-                loadClasses(packageName + FILE_DOT + file.getName(), file.getAbsolutePath(), classes);
+                loadClasses(file.getFileName(), file.getAbsolutePath(), classes);
                 continue;
             }
 
-            final String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
-            final String name = packageName + FILE_DOT + className;
-
             if(log.isDebugEnabled()) {
-                log.debug("load Class，name={}", name);
+                log.debug("load Class，name={}", file.getFileClassName());
             }
-            Class<?> clazz = loadClass(name);
+            Class<?> clazz = loadClass(file.getFileClassName());
             classes.add(clazz);
         }
     }
