@@ -24,6 +24,8 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.List;
 
+import static org.flashframework.core.io.FileSystemResource.*;
+
 /**
  * Class 资源载入类
  *
@@ -43,7 +45,7 @@ public abstract class AbstractClassResource implements Resource {
      */
     @Override
     public List<Class<?>> getClasses() {
-        String packageDirName = FLASH_PACKAGE_NAME.replace(FileSystemResource.FILE_DOT, FileSystemResource.FILE_SLASH);
+        String packageDirName = FLASH_PACKAGE_NAME.replace(FILE_DOT, FILE_SLASH);
         if (StringUtils.isEmpty(packageDirName)) {
             throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }

@@ -39,7 +39,7 @@ public class FileSystemResource {
     public static final String FILE_NAME = "file";
 
     /** 文件常量——后缀 "class" */
-    public static final String FILE_CLASS = FILE_DOT + "class";
+    private static final String FILE_CLASS = FILE_DOT + "class";
 
     private FileSystemResource(File file, String packageName) {
         this.file = file;
