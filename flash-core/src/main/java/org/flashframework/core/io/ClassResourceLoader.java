@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.resource;
+package org.flashframework.core.io;
 
-import org.flashframework.core.Resource;
 import org.flashframework.core.util.Decoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -13,32 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.resource;
+package org.flashframework.core.io;
 
 /**
- * Class 路径资源异常
+ * 资源载入失败异常
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-class ClassResourceRuntimeException extends ResourceRuntimeException {
-    private static final long serialVersionUID = -5511004726724230904L;
+class ClassResourceLoadFailureException extends ResourceRuntimeException {
+    private static final long serialVersionUID = -6814085112361052234L;
 
     /**
-     * 带有错误信息的构造器
-     *
-     * @param message 错误信息
+     * 默认构造器
      */
-    ClassResourceRuntimeException(String message) {
-        super(message);
-    }
-
-    /**
-     * 带有堆栈异常信息的构造器
-     *
-     * @param cause 堆栈信息
-     */
-    ClassResourceRuntimeException(Throwable cause) {
-        super(cause);
+    ClassResourceLoadFailureException() {
+        super();
     }
 }

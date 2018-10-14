@@ -13,21 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.resource;
+package org.flashframework.core.io;
+
+import java.util.List;
 
 /**
- * 资源载入失败异常
+ * 获取资源相关接口
  *
  * @author kay
- * @version v2.0
+ * @version v1.0
  */
-class ClassResourceLoadFailureException extends ResourceRuntimeException {
-    private static final long serialVersionUID = -6814085112361052234L;
+public interface Resource {
 
     /**
-     * 默认构造器
+     * 获取所有当前包内 Class 资源清单
+     *
+     * @return Class 资源清单
      */
-    ClassResourceLoadFailureException() {
-        super();
-    }
+    List<Class<?>> getClasses();
 }

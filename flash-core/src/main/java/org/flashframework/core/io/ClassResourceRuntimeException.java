@@ -13,22 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core;
-
-import java.util.List;
+package org.flashframework.core.io;
 
 /**
- * 获取资源相关接口
+ * Class 路径资源异常
  *
  * @author kay
  * @version v1.0
  */
-public interface Resource {
+class ClassResourceRuntimeException extends ResourceRuntimeException {
+    private static final long serialVersionUID = -5511004726724230904L;
 
     /**
-     * 获取所有当前包内 Class 资源清单
+     * 带有错误信息的构造器
      *
-     * @return Class 资源清单
+     * @param message 错误信息
      */
-    List<Class<?>> getClasses();
+    ClassResourceRuntimeException(String message) {
+        super(message);
+    }
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈信息
+     */
+    ClassResourceRuntimeException(Throwable cause) {
+        super(cause);
+    }
 }

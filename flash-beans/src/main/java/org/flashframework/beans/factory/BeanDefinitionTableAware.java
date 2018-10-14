@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.core.resource.Aware;
+import org.flashframework.core.io.Aware;
 
 import java.util.concurrent.ConcurrentHashMap;
 

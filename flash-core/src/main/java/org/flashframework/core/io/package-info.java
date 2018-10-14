@@ -15,7 +15,9 @@
  */
 
 /**
+ * 资源相关模块
+ *
  * @author kay
  * @version v2.0
  */
-package org.flashframework.core.resource;
+package org.flashframework.core.io;

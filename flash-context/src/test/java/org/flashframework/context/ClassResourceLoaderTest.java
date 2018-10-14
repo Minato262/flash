@@ -18,7 +18,7 @@ package org.flashframework.context;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.Bean;
-import org.flashframework.core.resource.ClassResourceLoader;
+import org.flashframework.core.io.ClassResourceLoader;
 import org.junit.Test;
 
 import java.util.List;

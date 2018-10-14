@@ -43,7 +43,7 @@ final class BeanDefinitionWrap<T> implements Serializable {
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
      * @param isAutowired 是否有方法注解
-     * @param data         私有类载入的对象（一定不能为null）
+     * @param data        私有类载入的对象（一定不能为null）
      * @throws IllegalArgumentException 如果载入对象为null
      */
     BeanDefinitionWrap(boolean isAutowired, T data) {

@@ -16,7 +16,7 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.beans.Resolution;
-import org.flashframework.core.Resource;
+import org.flashframework.core.io.Resource;
 import org.flashframework.core.util.Assert;
 
 import java.util.List;

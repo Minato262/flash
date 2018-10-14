@@ -22,9 +22,9 @@ import org.flashframework.beans.factory.BeanDefinitionFactory;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
 import org.flashframework.context.ApplicationContext;
-import org.flashframework.core.Resource;
+import org.flashframework.core.io.Resource;
 import org.flashframework.beans.*;
-import org.flashframework.core.resource.ClassResourceLoader;
+import org.flashframework.core.io.ClassResourceLoader;
 
 /**
  * 应用上下环境抽象类
@@ -38,11 +38,9 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /*
      * 概述：
      *
-     *      这个抽象类的设计目的主要是：初始化 Bean 容器，设置上下文环境，为整个应
-     * 用提供 IOC 支持。
+     *      这个抽象类的设计目的主要是：初始化 Bean 容器，设置上下文环境，为整个应用提供 IOC 支持。
      *
-     *      其中，初始化容器的过程最为重要。它包括 刷新容器，然后扫描，解析，注册
-     * Bean Definition。
+     *      其中，初始化容器的过程最为重要。它包括 刷新容器，然后扫描，解析，注册 Bean Definition。
      *
      *      最后 ，载入类与方法注解。整个过程就初试化完成。
      */

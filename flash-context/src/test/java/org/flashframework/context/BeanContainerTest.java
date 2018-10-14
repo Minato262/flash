@@ -18,7 +18,7 @@ package org.flashframework.context;
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainer;
-import org.flashframework.core.resource.ClassResourceLoader;
+import org.flashframework.core.io.ClassResourceLoader;
 import org.flashframework.core.util.Assert;
 import org.junit.Test;
 
