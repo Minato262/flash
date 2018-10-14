@@ -32,6 +32,5 @@ public class BeforeTest {
     @Before
     public void init() {
         factory = new ApplicationContextFactory();
-        System.out.println("容器启动!");
     }
 }

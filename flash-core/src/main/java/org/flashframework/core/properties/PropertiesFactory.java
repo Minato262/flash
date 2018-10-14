@@ -37,7 +37,7 @@ public class PropertiesFactory {
         try {
             return loadProperties(propertyPath);
         }
-        catch (IOException e) {
+        catch (Exception e) {
             return new Properties();
         }
     }

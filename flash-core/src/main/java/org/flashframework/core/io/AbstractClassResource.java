@@ -16,7 +16,6 @@
 package org.flashframework.core.io;
 
 import org.flashframework.core.properties.FlashProperties;
-import org.flashframework.core.logger.Configurator;
 import org.flashframework.core.util.StringUtils;
 
 import java.io.IOException;
@@ -24,7 +23,8 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.List;
 
-import static org.flashframework.core.io.FileSystemResource.*;
+import static org.flashframework.core.io.FileSystemResource.FILE_DOT;
+import static org.flashframework.core.io.FileSystemResource.FILE_SLASH;
 
 /**
  * Class 资源载入类
@@ -49,8 +49,6 @@ public abstract class AbstractClassResource implements Resource {
         if (StringUtils.isEmpty(packageDirName)) {
             throw new ClassResourceRuntimeException("No package path is configured in the configuration item!");
         }
-
-        Configurator.init();
 
         Enumeration<URL> dirs = getEnumeration(packageDirName);
         return getClasses(dirs, FLASH_PACKAGE_NAME);

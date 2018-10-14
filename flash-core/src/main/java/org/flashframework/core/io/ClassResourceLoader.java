@@ -80,7 +80,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             }
 
             if(log.isDebugEnabled()) {
-                log.debug("load Class，name={}", file.getFileClassName());
+                log.debug("load Class，class path: {}", file.getFileClassName());
             }
             Class<?> clazz = loadClass(file.getFileClassName());
             classes.add(clazz);

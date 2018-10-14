@@ -98,14 +98,14 @@ public class Configurator {
         prop.setProperty("log4j.appender.toConsole", "org.apache.log4j.ConsoleAppender");
         prop.setProperty("log4j.appender.toConsole.Target", "System.out");
         prop.setProperty("log4j.appender.toConsole.layout", "org.apache.log4j.PatternLayout");
-        prop.setProperty("log4j.appender.toConsole.layout.ConversionPattern", "[%d{yyyy-MM-dd HH:mm:ss}][flashframework %p] %m%n");
+        prop.setProperty("log4j.appender.toConsole.layout.ConversionPattern", "[%d{yyyy-MM-dd HH:mm:ss SSS}][flashframework][%p] %m%n");
 
         prop.setProperty("log4j.appender.toFile.file", file);
         prop.setProperty("log4j.appender.toFile", "org.apache.log4j.DailyRollingFileAppender");
         prop.setProperty("log4j.appender.toFile.Append", "true");
         prop.setProperty("log4j.appender.toFile.Threshold", level.getLevel());
         prop.setProperty("log4j.appender.toFile.layout", "org.apache.log4j.PatternLayout");
-        prop.setProperty("log4j.appender.toFile.layout.ConversionPattern", "[%d{yyyy-MM-dd HH:mm:ss}][flashframework %p] %m%n");
+        prop.setProperty("log4j.appender.toFile.layout.ConversionPattern", "[%d{yyyy-MM-dd HH:mm:ss SSS}][flashframework][%p] %m%n");
         prop.setProperty("log4j.appender.toFile.DatePattern", "'.'yyyy-MM-dd'.log'");
         PropertyConfigurator.configure(prop);
     }

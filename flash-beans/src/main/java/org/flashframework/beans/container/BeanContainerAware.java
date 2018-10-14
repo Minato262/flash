@@ -17,6 +17,8 @@ package org.flashframework.beans.container;
 
 import org.flashframework.core.util.Assert;
 import org.flashframework.core.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,6 +30,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
     private static final long serialVersionUID = -8079938385475595348L;
+
+    private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
+
 
     /*
      * 概述:
@@ -85,6 +90,10 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     public <V> void put(String key, V value) {
         if (StringUtils.isEmpty(key)) {
             throw new BeanContainerInitFailureException("The key of bean must be not empty!");
+        }
+
+        if (log.isDebugEnabled()) {
+            log.debug("Bean Container put, key:{}, value:{}", key, value);
         }
         super.put(key, value);
     }

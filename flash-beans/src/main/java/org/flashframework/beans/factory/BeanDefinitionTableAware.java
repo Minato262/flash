@@ -16,6 +16,8 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.core.Aware;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,6 +29,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Class> implements BeanDefinitionTable, Aware {
     private static final long serialVersionUID = 4882416802842440014L;
+
+    private static final Logger log = LoggerFactory.getLogger(BeanDefinitionTableAware.class);
 
     /*
      * 概述：
@@ -63,6 +67,10 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
     public Class put(String key, Class value) {
         if (super.containsKey(key)) {
             throw new BeanDefinitionConflictException(key + ", Bean Definition already exists");
+        }
+
+        if (log.isDebugEnabled()) {
+            log.debug("Bean Definition table put, key:{}, value:{}", key, value);
         }
         return super.put(key, value);
     }

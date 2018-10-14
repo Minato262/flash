@@ -25,21 +25,21 @@ import java.util.List;
  */
 public class FileSystemResource {
 
+    /** 文件常用字节 ——— 斜杠 '/' */
+    public static final char FILE_SLASH = '/';
+
+    /** 文件常用字节 ——— 点 '.' */
+    public static final char FILE_DOT = '.';
+
+    /** 文件常量 ——— 后缀 "class" */
+    public static final String FILE_CLASS = FILE_DOT + "class";
+
+    /** 文件常量 ——— 名称 "file" */
+    public static final String FILE_NAME = "file";
+
     private File file;
 
     private String packageName;
-
-    /** 文件常用字节——斜杠 '/' */
-    public static final char FILE_SLASH = '/';
-
-    /** 文件常用字节——点 '.' */
-    public static final char FILE_DOT = '.';
-
-    /** 文件常量——名称 "file" */
-    public static final String FILE_NAME = "file";
-
-    /** 文件常量——后缀 "class" */
-    private static final String FILE_CLASS = FILE_DOT + "class";
 
     private FileSystemResource(File file, String packageName) {
         this.file = file;

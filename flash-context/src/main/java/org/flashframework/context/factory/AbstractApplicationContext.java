@@ -25,6 +25,9 @@ import org.flashframework.context.ApplicationContext;
 import org.flashframework.core.io.Resource;
 import org.flashframework.beans.*;
 import org.flashframework.core.io.ClassResourceLoader;
+import org.flashframework.core.logger.Configurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 应用上下环境抽象类
@@ -34,6 +37,8 @@ import org.flashframework.core.io.ClassResourceLoader;
  * @version v1.0
  */
 abstract class AbstractApplicationContext implements ApplicationContext {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractApplicationContext.class);
 
     /*
      * 概述：
@@ -63,13 +68,17 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
+        Configurator.init();
+
         Resource resource = new ClassResourceLoader();
         BeanDefinitionFactory factory = loadBeanDefinition();
         Resolution resolution = new BeanDefinitionResolution(resource, factory);
         try {
+            log.info("container initiate start");
             Registry beanDefinition = new BeanDefinitionRegistry(resolution);
             // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
             beanDefinition.refresh();
+            log.info("container initiate end");
         }
         catch (BeanRuntimeException e) {
             // 清空 Bean Definition 注册表
