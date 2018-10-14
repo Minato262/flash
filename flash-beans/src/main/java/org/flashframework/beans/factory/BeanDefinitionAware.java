@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.core.io.Aware;
+import org.flashframework.core.Aware;
 
 /**
  * Bean Definition 辅助接口
