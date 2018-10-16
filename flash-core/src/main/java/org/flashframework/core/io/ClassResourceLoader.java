@@ -44,7 +44,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @return Class 资源列表
      */
     @Override
-    protected List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName) {
+    protected List<Class<?>> loadClasses(Enumeration<URL> urlElements, String packageName) {
         log.info("{}, load class start", packageName);
         List<Class<?>> classes = new ArrayList<>();
         while (urlElements.hasMoreElements()) {
@@ -53,8 +53,8 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
             // 暂时不支持扫描 jar 包
             if (FILE_NAME.equals(protocol)) {
-                String filePath = Decoder.decode(url.getFile());
-                loadClasses(packageName, filePath, classes);
+                String packagePath = Decoder.decode(url.getFile());
+                findClassLocal(packageName, packagePath, classes);
             }
         }
         log.info("{}, load class end", packageName);
@@ -62,13 +62,13 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
     }
 
     /**
-     * 递归扫描，全部 Class 的资源列表
+     * 递归，扫描全部 Class 的本地资源，并且加入资源列表
      *
      * @param packageName 相对路径包名称
      * @param packagePath 相对包路径
      * @param classes     Class 资源清单
      */
-    private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
+    private void findClassLocal(String packageName, String packagePath, List<Class<?>> classes) {
         FileResource fileResource = new FileResource(packagePath, packageName);
         List<FileResource> files = fileResource.getFileList();
         if (files == null) {
@@ -77,7 +77,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
         for (FileResource file : files) {
             if (file.isDirectory()) {
-                loadClasses(file.getFileName(), file.getAbsolutePath(), classes);
+                findClassLocal(file.getFileName(), file.getAbsolutePath(), classes);
                 continue;
             }
 

@@ -33,7 +33,6 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
 
     private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
 
-
     /*
      * 概述:
      *
