@@ -15,7 +15,7 @@
  */
 package org.flashframework.core.io;
 
-import org.flashframework.core.properties.FlashProperties;
+import org.flashframework.core.properties.FlashConfig;
 import org.flashframework.core.util.StringUtils;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ import static org.flashframework.core.io.FileResource.FILE_SLASH;
 public abstract class AbstractClassResource implements Resource {
 
     /** 根据配置获取配置的包名 */
-    private static final String FLASH_PACKAGE_NAME = FlashProperties.INSTANCE_FLASH.load("packageName");
+    private static final String FLASH_PACKAGE_NAME = FlashConfig.INSTANCE_FLASH.load("packageName");
 
     /**
      * 获取所有当前包内 Class 类的列表

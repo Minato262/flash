@@ -25,7 +25,7 @@ import java.util.Properties;
  * @author kay
  * @version v2.0
  */
-public enum FlashProperties {
+public enum FlashConfig {
     INSTANCE_FLASH("/config/flash.properties"),
     INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
@@ -36,7 +36,7 @@ public enum FlashProperties {
      *
      * @param path 配置文件路径
      */
-    FlashProperties(String path) {
+    FlashConfig(String path) {
         this.prop = PropertiesFactory.load(path);
     }
 

@@ -17,7 +17,7 @@ package org.flashframework.core.logger;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.flashframework.core.Unicode;
-import org.flashframework.core.properties.FlashProperties;
+import org.flashframework.core.properties.FlashConfig;
 
 import java.util.Properties;
 
@@ -39,11 +39,11 @@ public class Configurator {
     private static String file;
 
     static {
-        FlashProperties flashProperties = FlashProperties.INSTANCE_FLASH_LOG;
+        FlashConfig flashConfig = FlashConfig.INSTANCE_FLASH_LOG;
 
-        final String strEnabled = flashProperties.load("enabled");
-        final String strLevel = flashProperties.load("level");
-        final String strFile = flashProperties.load("file");
+        final String strEnabled = flashConfig.load("enabled");
+        final String strLevel = flashConfig.load("level");
+        final String strFile = flashConfig.load("file");
 
         final String fileDefault = "logs/out.log";
 

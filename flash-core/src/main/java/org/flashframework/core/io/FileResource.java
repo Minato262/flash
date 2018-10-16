@@ -56,7 +56,12 @@ public class FileResource {
     }
 
     public final String getFileClassName() {
-        final String className = file.getName().substring(0, (file.getName().length() - FILE_CLASS.length()));
+        if (FILE_CLASS.length() > file.getName().length()) {
+            return "";
+        }
+
+        final int classNameLength = file.getName().length() - FILE_CLASS.length();
+        final String className = file.getName().substring(0, classNameLength);
         return packageName + FILE_DOT + className;
     }
 

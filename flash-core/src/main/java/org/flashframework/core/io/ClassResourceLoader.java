@@ -27,7 +27,7 @@ import java.util.List;
 import static org.flashframework.core.io.FileResource.*;
 
 /**
- * 根据路径，获取 Class 资源
+ * 根据包路径，获取 Class 资源列表
  *
  * @author kay
  * @version v1.0
