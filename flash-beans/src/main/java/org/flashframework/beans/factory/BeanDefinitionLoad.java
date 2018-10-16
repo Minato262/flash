@@ -100,11 +100,11 @@ public final class BeanDefinitionLoad {
     private <V> boolean set(Field field, V value) {
         try {
             field.set(value, getValue(field.getName()));
+            return true;
         }
         catch (IllegalAccessException e) {
             throw new BeanCreateFailureException(e);
         }
-        return true;
     }
 
     /**

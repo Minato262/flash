@@ -55,6 +55,15 @@ public abstract class AbstractClassResource implements Resource {
     }
 
     /**
+     * 根据 URL元素和包名，获取所有当前包内 Class 类的列表
+     *
+     * @param urlElements url 元素
+     * @param packageName 包名
+     * @return Class 类清单
+     */
+    protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
+
+    /**
      * 根据来源获取，目标 URL 资源
      *
      * @param name 资源名称
@@ -69,14 +78,4 @@ public abstract class AbstractClassResource implements Resource {
             throw new ClassResourceRuntimeException(e);
         }
     }
-
-    /**
-     * 根据 URL元素和包名，获取所有当前包内 Class 类的列表
-     *
-     * @param urlElements url 元素
-     * @param packageName 包名
-     * @return Class 类清单
-     */
-    protected abstract List<Class<?>> getClasses(Enumeration<URL> urlElements, String packageName);
-
 }
