@@ -50,18 +50,6 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     }
 
     /**
-     * 遍历 Class，载入类注释并将对象放入容器的 value 中
-     *
-     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
-     */
-    private void loadClasses() {
-        List<Class<?>> list = resource.getClasses();
-        for (Class clazz : list) {
-            factory.load(clazz);
-        }
-    }
-
-    /**
      * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
      * 有 Bean
      *
@@ -82,5 +70,17 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     @Override
     public void clear() {
         super.clear();
+    }
+
+    /**
+     * 遍历 Class，载入类注释并将对象放入容器的 value 中
+     *
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     */
+    private void loadClasses() {
+        List<Class<?>> list = resource.getClasses();
+        for (Class clazz : list) {
+            factory.load(clazz);
+        }
     }
 }

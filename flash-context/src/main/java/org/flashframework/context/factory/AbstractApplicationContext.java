@@ -85,6 +85,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             resolution.clear();
             // 清空 Bean 容器
             container.clear();
+            log.error("container initiate error, e=", e);
             throw new BeanContainerInitFailureException(e);
         }
     }

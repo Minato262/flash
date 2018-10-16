@@ -54,6 +54,24 @@ public class BeanDefinitionRegistry implements Registry {
     }
 
     /**
+     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
+     * 有 Bean
+     *
+     * @throws BeanDefinitionConflictException 如果 Bean 对象已经存在
+     */
+    @Override
+    public void refresh() {
+        // 注册表载入
+        resolution.load();
+
+        // 载入是否单利
+        loadScope();
+
+        // 载入被标记的类和方法
+        loadAutowired();
+    }
+
+    /**
      * 单例或者原型模式，载入{@code Scope}类注解
      */
     private <V> void loadScope() {
@@ -88,23 +106,5 @@ public class BeanDefinitionRegistry implements Registry {
                 container.put(entry.getKey(), wrap.getData());
             }
         }
-    }
-
-    /**
-     * 默认注册 Bean，注解标记的 bean 默认为单例模式，容器初始化时会一次性载入所
-     * 有 Bean
-     *
-     * @throws BeanDefinitionConflictException 如果 Bean 对象已经存在
-     */
-    @Override
-    public void refresh() {
-        // 注册表载入
-        resolution.load();
-
-        // 载入是否单利
-        loadScope();
-
-        // 载入被标记的类和方法
-        loadAutowired();
     }
 }

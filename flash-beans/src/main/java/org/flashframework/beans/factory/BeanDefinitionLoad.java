@@ -37,41 +37,32 @@ public final class BeanDefinitionLoad {
     private BeanContainer container = BeanContainerAware.getInstance();
 
     /**
-     * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象
+     * 根据实例信息，载入方法注解
      *
-     * @param key 容器的关键字
-     * @return Bean 对应的对象
+     * @param clazz 实例信息（一定不能为null）
+     * @return Bean 对应并载入方法注解的对象
+     * @throws IllegalArgumentException   如果对象为null
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    private Object getValue(String key) {
-        Object value = container.get(key);
-        if (value instanceof Class) {
-            Class clazz = (Class) value;
-            Object newValue = BeanReflect.newInstance(clazz.getName());
-
-            // 重新载入方法注解
-            BeanDefinitionWrap beanDefinitionWrap = load(newValue);
-            return beanDefinitionWrap.getData();
-        }
-        else {
-            return value;
-        }
+    public <V> V load(Class clazz) {
+        Assert.isNotNull(clazz);
+        V value = BeanReflect.newInstance(clazz.getName());
+        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
+        return beanDefinitionWrap.getData();
     }
 
     /**
-     * 反射 设置作用域
+     * 根据容器 key，载入方法注解
      *
-     * @param field 作用域
-     * @param value 需要检测的对象值
-     * @return 是否设置成功
+     * @param key 容器 key（一定不能为空）
+     * @return Bean 对应并载入方法注解的对象
+     * @throws IllegalArgumentException   如果字符串为空
+     * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    private <V> boolean set(Field field, V value) {
-        try {
-            field.set(value, getValue(field.getName()));
-        }
-        catch (IllegalAccessException e) {
-            throw new BeanCreateFailureException(e);
-        }
-        return true;
+    public BeanDefinitionWrap load(String key) {
+        Assert.isNotEmpty(key);
+        Object value = container.get(key);
+        return value != null ? load(value) : new BeanDefinitionWrap();
     }
 
     /**
@@ -100,31 +91,40 @@ public final class BeanDefinitionLoad {
     }
 
     /**
-     * 根据实例信息，载入方法注解
+     * 反射 设置作用域
      *
-     * @param clazz 实例信息（一定不能为null）
-     * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果对象为null
-     * @throws BeanCreateFailureException 如果 Bean 创建失败
+     * @param field 作用域
+     * @param value 需要检测的对象值
+     * @return 是否设置成功
      */
-    public <V> V load(Class clazz) {
-        Assert.isNotNull(clazz);
-        V value = BeanReflect.newInstance(clazz.getName());
-        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
-        return beanDefinitionWrap.getData();
+    private <V> boolean set(Field field, V value) {
+        try {
+            field.set(value, getValue(field.getName()));
+        }
+        catch (IllegalAccessException e) {
+            throw new BeanCreateFailureException(e);
+        }
+        return true;
     }
 
     /**
-     * 根据容器 key，载入方法注解
+     * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象
      *
-     * @param key 容器 key（一定不能为空）
-     * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果字符串为空
-     * @throws BeanCreateFailureException 如果 Bean 创建失败
+     * @param key 容器的关键字
+     * @return Bean 对应的对象
      */
-    public BeanDefinitionWrap load(String key) {
-        Assert.isNotEmpty(key);
+    private Object getValue(String key) {
         Object value = container.get(key);
-        return value != null ? load(value) : new BeanDefinitionWrap();
+        if (value instanceof Class) {
+            Class clazz = (Class) value;
+            Object newValue = BeanReflect.newInstance(clazz.getName());
+
+            // 重新载入方法注解
+            BeanDefinitionWrap beanDefinitionWrap = load(newValue);
+            return beanDefinitionWrap.getData();
+        }
+        else {
+            return value;
+        }
     }
 }
