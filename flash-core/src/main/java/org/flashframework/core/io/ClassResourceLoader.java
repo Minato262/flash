@@ -66,7 +66,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      *
      * @param packageName 相对路径包名称
      * @param packagePath 相对包路径
-     * @param classes     Class 资源清单
+     * @param classes     Class 资源列表
      */
     private void findClassLocal(String packageName, String packagePath, List<Class<?>> classes) {
         FileResource fileResource = new FileResource(packagePath, packageName);
