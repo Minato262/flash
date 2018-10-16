@@ -15,6 +15,8 @@
  */
 package org.flashframework.core.properties;
 
+import static org.flashframework.core.properties.FlashFile.*;
+
 /**
  * 配置项枚举，用于载入默认框架文件配置中的配置项
  *
@@ -22,11 +24,11 @@ package org.flashframework.core.properties;
  * @version v2.0
  */
 public enum FlashConfig {
-    FLASH_PACKAGE_NAME(FlashFile.INSTANCE_FLASH, "packageName"),
+    FLASH_PACKAGE_NAME(INSTANCE_FLASH, "packageName"),
 
-    FLASH_LOG_ENABLED(FlashFile.INSTANCE_FLASH_LOG, "enabled"),
-    FLASH_LOG_LEVEL(FlashFile.INSTANCE_FLASH_LOG, "level"),
-    FLASH_LOG_FILE(FlashFile.INSTANCE_FLASH_LOG, "file");
+    FLASH_LOG_ENABLED(INSTANCE_FLASH_LOG, "enabled"),
+    FLASH_LOG_LEVEL(INSTANCE_FLASH_LOG, "level"),
+    FLASH_LOG_FILE(INSTANCE_FLASH_LOG, "file");
 
     private FlashFile file;
 

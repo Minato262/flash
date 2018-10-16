@@ -34,6 +34,9 @@ public class FileResource {
     /** 文件常量 ——— 后缀 "class" */
     public static final String FILE_CLASS = FILE_DOT + "class";
 
+    /** 文件常量 FILE_CLASS 的长度 */
+    private static final int FILE_CLASS_LENGTH = FILE_CLASS.length();
+
     /** 文件常量 ——— 名称 "file" */
     public static final String FILE_NAME = "file";
 
@@ -60,7 +63,7 @@ public class FileResource {
             return "";
         }
 
-        final int classNameLength = file.getName().length() - FILE_CLASS.length();
+        final int classNameLength = file.getName().length() - FILE_CLASS_LENGTH;
         final String className = file.getName().substring(0, classNameLength);
         return packageName + FILE_DOT + className;
     }
