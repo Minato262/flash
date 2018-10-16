@@ -29,6 +29,9 @@ import java.util.Properties;
  */
 public class Configurator {
 
+    /** Log 日志打印默认路径 */
+    private static final String FILE_DEFAULT = "logs/out.log";
+
     /** 是否启动 flashframework 框架自带的 Log */
     private static boolean enabled;
 
@@ -39,17 +42,13 @@ public class Configurator {
     private static String file;
 
     static {
-        FlashConfig flashConfig = FlashConfig.INSTANCE_FLASH_LOG;
-
-        final String strEnabled = flashConfig.load("enabled");
-        final String strLevel = flashConfig.load("level");
-        final String strFile = flashConfig.load("file");
-
-        final String fileDefault = "logs/out.log";
+        final String strEnabled = FlashConfig.FLASH_LOG_ENABLED.load();
+        final String strLevel = FlashConfig.FLASH_LOG_LEVEL.load();
+        final String strFile = FlashConfig.FLASH_LOG_FILE.load();
 
         enabled = Enabled.getEnabled(strEnabled);
         level = Level.getLevel(strLevel);
-        file = strFile.equals("") ? fileDefault : strFile;
+        file = strFile.equals("") ? FILE_DEFAULT : strFile;
     }
 
     /**

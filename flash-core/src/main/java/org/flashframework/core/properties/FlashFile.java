@@ -15,39 +15,45 @@
  */
 package org.flashframework.core.properties;
 
+import org.flashframework.core.util.Assert;
+
+import java.util.Properties;
+
 /**
- * 配置项枚举，用于载入默认框架文件配置中的配置项
+ * 配置文件枚举，用于载入默认框架文件配置
  *
  * @author kay
  * @version v2.0
  */
-public enum FlashConfig {
-    FLASH_PACKAGE_NAME(FlashFile.INSTANCE_FLASH, "packageName"),
+public enum FlashFile {
+    INSTANCE_FLASH("/config/flash.properties"),
+    INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
-    FLASH_LOG_ENABLED(FlashFile.INSTANCE_FLASH_LOG, "enabled"),
-    FLASH_LOG_LEVEL(FlashFile.INSTANCE_FLASH_LOG, "level"),
-    FLASH_LOG_FILE(FlashFile.INSTANCE_FLASH_LOG, "file");
-
-    private FlashFile file;
-
-    private String path;
+    private Properties prop;
 
     /**
      * 带有配置文件路径的构造器
      *
      * @param path 配置文件路径
      */
-    FlashConfig(FlashFile file, String path) {
-        this.file = file;
-        this.path = path;
+    FlashFile(String path) {
+        this.prop = PropertiesFactory.load(path);
     }
 
     /**
      * 载入配置，获取 Properties 配置值
      *
+     * @param propertyName 配置名称（一定不能为空）
      * @return 获取 Properties 配置值
+     * @throws IllegalArgumentException 如果字符串为空
      */
-    public String load() {
-        return file.load(path);
+    public String load(String propertyName) {
+        Assert.isNotEmpty(propertyName);
+        for (final String key : prop.stringPropertyNames()) {
+            if (propertyName.equals(key)) {
+                return prop.getProperty(key);
+            }
+        }
+        return "";
     }
 }

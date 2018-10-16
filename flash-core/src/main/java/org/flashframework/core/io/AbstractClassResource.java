@@ -27,7 +27,7 @@ import static org.flashframework.core.io.FileResource.FILE_DOT;
 import static org.flashframework.core.io.FileResource.FILE_SLASH;
 
 /**
- * Class 资源载入类
+ * Class 资源载入抽象类
  *
  * @author kay
  * @version v1.0
@@ -35,7 +35,7 @@ import static org.flashframework.core.io.FileResource.FILE_SLASH;
 public abstract class AbstractClassResource implements Resource {
 
     /** 根据配置获取配置的包名 */
-    private static final String FLASH_PACKAGE_NAME = FlashConfig.INSTANCE_FLASH.load("packageName");
+    private static final String FLASH_PACKAGE_NAME = FlashConfig.FLASH_PACKAGE_NAME.load();
 
     /**
      * 获取所有当前包内 Class 类的列表
