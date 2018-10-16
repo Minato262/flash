@@ -23,7 +23,7 @@ import java.util.List;
  * @author kay
  * @version v2.0
  */
-public class FileSystemResource {
+public class FileResource {
 
     /** 文件常用字节 ——— 斜杠 '/' */
     public static final char FILE_SLASH = '/';
@@ -41,12 +41,12 @@ public class FileSystemResource {
 
     private String packageName;
 
-    private FileSystemResource(File file, String packageName) {
+    private FileResource(File file, String packageName) {
         this.file = file;
         this.packageName = packageName;
     }
 
-    public FileSystemResource(String pathName, String packageName){
+    public FileResource(String pathName, String packageName){
         this.file = new File(pathName);
         this.packageName = packageName;
     }
@@ -68,7 +68,7 @@ public class FileSystemResource {
         return file.getAbsolutePath();
     }
 
-    public List<FileSystemResource> getFileList() {
+    public List<FileResource> getFileList() {
         if (!file.exists() || !file.isDirectory()) {
             return null;
         }
@@ -78,9 +78,9 @@ public class FileSystemResource {
             return null;
         }
 
-        List<FileSystemResource> resources = new ArrayList<>();
+        List<FileResource> resources = new ArrayList<>();
         for (File file : files) {
-            FileSystemResource resource = new FileSystemResource(file, packageName);
+            FileResource resource = new FileResource(file, packageName);
             resources.add(resource);
         }
         return resources;

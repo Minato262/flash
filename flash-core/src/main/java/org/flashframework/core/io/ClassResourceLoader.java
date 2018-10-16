@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import static org.flashframework.core.io.FileResource.*;
+
 /**
  * 根据路径，获取 Class 资源
  *
@@ -50,7 +52,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
             String protocol = url.getProtocol();
 
             // 暂时不支持扫描 jar 包
-            if (FileSystemResource.FILE_NAME.equals(protocol)) {
+            if (FILE_NAME.equals(protocol)) {
                 String filePath = Decoder.decode(url.getFile());
                 loadClasses(packageName, filePath, classes);
             }
@@ -67,13 +69,13 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param classes     Class 资源清单
      */
     private void loadClasses(String packageName, String packagePath, List<Class<?>> classes) {
-        FileSystemResource fileResource = new FileSystemResource(packagePath, packageName);
-        List<FileSystemResource> files = fileResource.getFileList();
+        FileResource fileResource = new FileResource(packagePath, packageName);
+        List<FileResource> files = fileResource.getFileList();
         if (files == null) {
             return;
         }
 
-        for (FileSystemResource file : files) {
+        for (FileResource file : files) {
             if (file.isDirectory()) {
                 loadClasses(file.getFileName(), file.getAbsolutePath(), classes);
                 continue;

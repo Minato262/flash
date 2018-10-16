@@ -23,8 +23,8 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.List;
 
-import static org.flashframework.core.io.FileSystemResource.FILE_DOT;
-import static org.flashframework.core.io.FileSystemResource.FILE_SLASH;
+import static org.flashframework.core.io.FileResource.FILE_DOT;
+import static org.flashframework.core.io.FileResource.FILE_SLASH;
 
 /**
  * Class 资源载入类
