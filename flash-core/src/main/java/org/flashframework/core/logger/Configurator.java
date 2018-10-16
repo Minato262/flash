@@ -39,9 +39,11 @@ public class Configurator {
     private static String file;
 
     static {
-        final String strEnabled = FlashProperties.INSTANCE_FLASH_LOG.load("enabled");
-        final String strLevel = FlashProperties.INSTANCE_FLASH_LOG.load("level");
-        final String strFile = FlashProperties.INSTANCE_FLASH_LOG.load("file");
+        FlashProperties flashProperties = FlashProperties.INSTANCE_FLASH_LOG;
+
+        final String strEnabled = flashProperties.load("enabled");
+        final String strLevel = flashProperties.load("level");
+        final String strFile = flashProperties.load("file");
 
         final String fileDefault = "logs/out.log";
 
