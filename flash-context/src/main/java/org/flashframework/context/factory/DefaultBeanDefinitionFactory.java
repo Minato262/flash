@@ -19,7 +19,6 @@ import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
-import org.flashframework.core.util.StringUtils;
 
 /**
  * BeanDefinition 默认工厂
