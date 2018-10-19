@@ -15,6 +15,8 @@
  */
 package org.flashframework.beans.factory;
 
+import org.flashframework.core.util.StringUtils;
+
 /**
  * Bean Definition 的工厂类，主要作用是用于载入类中的注解
  *
@@ -28,6 +30,15 @@ public abstract class BeanDefinitionTableFactory extends BeanDefinitionTableCont
      */
     public BeanDefinitionTableFactory() {
         //
+    }
+
+    protected String getSimpleName(String value, Class clazz) {
+        if (StringUtils.isEmpty(value)) {
+            return clazz.getSimpleName();
+        }
+        else {
+            return value;
+        }
     }
 
     /**

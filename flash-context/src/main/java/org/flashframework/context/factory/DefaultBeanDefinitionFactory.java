@@ -45,12 +45,8 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         }
         Service annotation1 = (Service) clazz.getAnnotation(Service.class);
         if (annotation1 != null) {
-            if (StringUtils.isEmpty(annotation1.value())) {
-                super.put(clazz.getSimpleName(), clazz);
-            }
-            else {
-                super.put(annotation1.value(), clazz);
-            }
+            String name = super.getSimpleName(annotation1.value(), clazz);
+            super.put(name, clazz);
         }
     }
 }
