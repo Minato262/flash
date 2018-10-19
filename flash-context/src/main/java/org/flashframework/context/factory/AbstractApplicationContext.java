@@ -69,15 +69,16 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private void init() {
         Configurator.init();
-        log.info("container initiate start");
 
         Resource resource = new ClassResourceLoader();
         BeanDefinitionFactory factory = loadBeanDefinition();
         Resolution resolution = new BeanDefinitionResolution(resource, factory);
         try {
+            log.info("container initiate start");
             Registry beanDefinition = new BeanDefinitionRegistry(resolution);
             // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
             beanDefinition.refresh();
+            log.info("container initiate end");
         }
         catch (BeanRuntimeException e) {
             // 清空 Bean Definition 注册表
@@ -87,7 +88,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             log.error("container initiate error");
             throw new BeanContainerInitFailureException(e);
         }
-        log.info("container initiate end");
     }
 
     /**

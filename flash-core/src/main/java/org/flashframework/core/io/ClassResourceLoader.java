@@ -50,11 +50,9 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
         while (urlElements.hasMoreElements()) {
             URL url = urlElements.nextElement();
             String protocol = url.getProtocol();
-
-            // 暂时不支持扫描 jar 包
             if (FILE_NAME.equals(protocol)) {
                 String packagePath = Decoder.decode(url.getFile());
-                findLocalClass(packageName, packagePath, classes);
+                scanLocalClass(packageName, packagePath, classes);
             }
         }
         log.info("{}, load class end", packageName);
@@ -68,7 +66,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param packagePath 相对包路径
      * @param classes     Class 资源列表
      */
-    private void findLocalClass(String packageName, String packagePath, List<Class<?>> classes) {
+    private void scanLocalClass(String packageName, String packagePath, List<Class<?>> classes) {
         FileResource fileResource = new FileResource(packagePath, packageName);
         List<FileResource> files = fileResource.getFileList();
         if (files == null) {
@@ -77,7 +75,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
         for (FileResource file : files) {
             if (file.isDirectory()) {
-                findLocalClass(file.getFileName(), file.getAbsolutePath(), classes);
+                scanLocalClass(file.getFileName(), file.getAbsolutePath(), classes);
                 continue;
             }
 
