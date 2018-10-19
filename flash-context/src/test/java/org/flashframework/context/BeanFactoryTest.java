@@ -18,6 +18,7 @@ package org.flashframework.context;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.context.factory.People;
+import org.flashframework.context.factory.ServiceBean;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,6 +40,9 @@ public class BeanFactoryTest extends BeforeTest {
 
         People people1 = (People) factory.getBean("people");
         Assert.assertNotNull(people1);
+
+//        ServiceBean test =  (ServiceBean) factory.getBean("service");
+//        Assert.assertNotNull(test);
     }
 
     @Test

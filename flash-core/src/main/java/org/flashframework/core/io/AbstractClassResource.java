@@ -76,6 +76,7 @@ public abstract class AbstractClassResource implements Resource {
      * @param urlElements url 元素
      * @param packageName 包名
      * @return Class 类清单
+     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     protected abstract List<Class<?>> loadClasses(Enumeration<URL> urlElements, String packageName);
 }

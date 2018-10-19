@@ -23,6 +23,7 @@ import org.flashframework.beans.util.BeanReflect;
 import org.flashframework.core.util.Assert;
 
 import javax.annotation.Resource;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
@@ -76,15 +77,12 @@ public final class BeanDefinitionLoad {
         boolean isAutowired = false;
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
-            field.setAccessible(true);
-            Autowired annotation = field.getAnnotation(Autowired.class);
-            if (annotation != null) {
-                isAutowired = set(field, value);
-            }
-            // @Resource JSR-250 提供
-            Resource annotation1 = field.getAnnotation(Resource.class);
-            if (annotation1 != null) {
-                isAutowired = set(field, value);
+            Annotation[] annotations = field.getAnnotations();
+            for (Annotation annotation : annotations) {
+                if (annotation instanceof Autowired || annotation instanceof Resource) {
+                    isAutowired = set(field, value);
+                    break;
+                }
             }
         }
         return new BeanDefinitionWrap<>(isAutowired, value);
@@ -99,6 +97,7 @@ public final class BeanDefinitionLoad {
      */
     private <V> boolean set(Field field, V value) {
         try {
+            field.setAccessible(true);
             field.set(value, getValue(field.getName()));
             return true;
         }

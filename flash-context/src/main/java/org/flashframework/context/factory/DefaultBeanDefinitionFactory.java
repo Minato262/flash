@@ -19,6 +19,7 @@ import org.flashframework.beans.annotation.Repository;
 import org.flashframework.beans.factory.BeanDefinitionTableFactory;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
+import org.flashframework.core.util.StringUtils;
 
 /**
  * BeanDefinition 默认工厂
@@ -42,9 +43,14 @@ public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
         if (annotation != null) {
             super.put(annotation.value(), clazz);
         }
-        Service annotation2 = (Service) clazz.getAnnotation(Service.class);
-        if (annotation2 != null) {
-            super.put(annotation2.value(), clazz);
+        Service annotation1 = (Service) clazz.getAnnotation(Service.class);
+        if (annotation1 != null) {
+            if (StringUtils.isEmpty(annotation1.value())) {
+                super.put(clazz.getSimpleName(), clazz);
+            }
+            else {
+                super.put(annotation1.value(), clazz);
+            }
         }
     }
 }

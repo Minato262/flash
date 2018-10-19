@@ -25,4 +25,9 @@ import org.flashframework.beans.annotation.Repository;
  */
 @Repository("father")
 public class Father extends Bean {
+
+    public Father() {
+        this.setName("123");
+        this.setAge(12);
+    }
 }

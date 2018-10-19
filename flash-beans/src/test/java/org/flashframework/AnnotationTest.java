@@ -1,9 +1,14 @@
 package org.flashframework;
 
+import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainerMode;
 import org.flashframework.beans.container.Scope;
 import org.junit.Assert;
 import org.junit.Test;
+
+import javax.annotation.Resource;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 
 /**
  * 注解测试类
@@ -15,8 +20,8 @@ public class AnnotationTest {
 
     @Test
     public void test() {
-        Annotation annotationTest = new Annotation();
-        Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
+        AnnotationBean annotationTest = new AnnotationBean();
+        Class<AnnotationBean> clazz = (Class<AnnotationBean>) annotationTest.getClass();
 
         Scope annotation2 = clazz.getAnnotation(Scope.class);
         Assert.assertNotEquals(annotation2.value(), null);
@@ -25,17 +30,25 @@ public class AnnotationTest {
 
     @Test
     public void test1() {
-        Annotation annotationTest = new Annotation();
-        Class<Annotation> clazz = (Class<Annotation>) annotationTest.getClass();
-        for (java.lang.annotation.Annotation annotation : clazz.getAnnotations()) {
+        AnnotationBean annotationTest = new AnnotationBean();
+        Class<AnnotationBean> clazz = (Class<AnnotationBean>) annotationTest.getClass();
+        for (Annotation annotation : clazz.getAnnotations()) {
             System.out.println(annotation);
         }
     }
-}
 
-@Scope
-class Annotation {
-
-    Annotation() {
+    @Test
+    public void test2() {
+        AnnotationBean annotationTest = new AnnotationBean();
+        Field[] fields = annotationTest.getClass().getDeclaredFields();
+        for (Field f : fields) {
+            Annotation[] annotations = f.getAnnotations();
+            for (Annotation annotation : annotations) {
+                System.out.println(annotation);
+                if (annotation instanceof Autowired) {
+                    System.out.println(annotation);
+                }
+            }
+        }
     }
 }

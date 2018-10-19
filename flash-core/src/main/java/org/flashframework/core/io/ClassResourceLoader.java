@@ -42,6 +42,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param urlElements url 元素
      * @param packageName 相对路径包名（不能为空）
      * @return Class 资源列表
+     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     @Override
     protected List<Class<?>> loadClasses(Enumeration<URL> urlElements, String packageName) {
@@ -65,6 +66,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * @param packageName 相对路径包名称
      * @param packagePath 相对包路径
      * @param classes     Class 资源列表
+     * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     private void scanLocalClass(String packageName, String packagePath, List<Class<?>> classes) {
         FileResource fileResource = new FileResource(packagePath, packageName);
@@ -79,7 +81,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 continue;
             }
 
-            if(log.isDebugEnabled()) {
+            if (log.isDebugEnabled()) {
                 log.debug("load Class，class path: {}", file.getFileClassName());
             }
             Class<?> clazz = loadClass(file.getFileClassName());
