@@ -13,34 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.core.logger;
+package org.flashframework;
+
+import org.flashframework.core.logger.Enabled;
+import org.junit.Test;
 
 /**
- * 日志配置是否启动配置常量
- *
  * @author kay
- * @version v2.0
+ * @version v1.0
  */
-public enum Enabled {
-    TRUE(true),
-    FALSE(false);
+public class EnabledTest {
 
-    private boolean enabled;
+    @Test
+    public void test() {
+        Enabled enabled = Enabled.TRUE;
+        System.out.println(enabled.toString());
 
-    Enabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public boolean getEnabled() {
-        return enabled;
-    }
-
-    public static boolean getEnabled(String str) {
-        for (Enabled enabled : Enabled.values()) {
-            if (enabled.toString().equalsIgnoreCase(str)) {
-                return enabled.getEnabled();
-            }
-        }
-        return Enabled.TRUE.getEnabled();
+        enabled = Enabled.FALSE;
+        System.out.println(enabled.toString());
     }
 }
