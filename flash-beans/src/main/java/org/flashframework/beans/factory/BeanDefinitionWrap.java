@@ -29,7 +29,7 @@ import java.io.Serializable;
 final class BeanDefinitionWrap<T> implements Serializable {
     private static final long serialVersionUID = -2145083312359080837L;
 
-    private boolean isAutowired;
+    private boolean isInject;
     private T data;
 
     /**
@@ -48,7 +48,7 @@ final class BeanDefinitionWrap<T> implements Serializable {
      */
     BeanDefinitionWrap(boolean isAutowired, T data) {
         Assert.isNotNull(data);
-        this.isAutowired = isAutowired;
+        this.isInject = isAutowired;
         this.data = data;
     }
 
@@ -57,8 +57,8 @@ final class BeanDefinitionWrap<T> implements Serializable {
      *
      * @return 是否有方法注解
      */
-    public boolean isHasAutowired() {
-        return isAutowired;
+    public boolean isInject() {
+        return isInject;
     }
 
     /**
@@ -72,6 +72,6 @@ final class BeanDefinitionWrap<T> implements Serializable {
 
     @Override
     public String toString() {
-        return "BeanDefinitionWrap[isAutowired=" + isAutowired + ",data=" + data + "]";
+        return "BeanDefinitionWrap[isAutowired=" + isInject + ",data=" + data + "]";
     }
 }

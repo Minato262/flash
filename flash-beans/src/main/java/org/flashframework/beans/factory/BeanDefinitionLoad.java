@@ -74,24 +74,24 @@ public final class BeanDefinitionLoad {
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> load(V value) {
-        boolean isAutowired = false;
+        boolean isInject = false;
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
             Annotation[] annotations = field.getAnnotations();
             for (Annotation annotation : annotations) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
-                    isAutowired = set(field, value);
+                    isInject = set(field, value);
                     break;
                 }
             }
         }
-        return new BeanDefinitionWrap<>(isAutowired, value);
+        return new BeanDefinitionWrap<>(isInject, value);
     }
 
     /**
-     * 通过反射，设置对象的作用域
+     * 通过反射，设置对象的变量信息
      *
-     * @param field 作用域
+     * @param field 对象的作用域，并且载有对象变量信息
      * @param value 需要检测的对象值
      * @return 是否设置成功
      */
