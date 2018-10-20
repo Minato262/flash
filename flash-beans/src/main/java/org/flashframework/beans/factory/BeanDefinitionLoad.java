@@ -89,7 +89,7 @@ public final class BeanDefinitionLoad {
     }
 
     /**
-     * 反射 设置作用域
+     * 通过反射，设置对象的作用域
      *
      * @param field 作用域
      * @param value 需要检测的对象值
