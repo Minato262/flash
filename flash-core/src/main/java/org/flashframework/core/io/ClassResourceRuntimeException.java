@@ -16,7 +16,7 @@
 package org.flashframework.core.io;
 
 /**
- * Class 路径资源异常
+ * 类资源异常
  *
  * @author kay
  * @version v1.0

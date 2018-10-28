@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.factory;
+package org.flashframework.beans.handle;
 
+import org.flashframework.beans.factory.BeanDefinitionTableContext;
 import org.flashframework.core.util.StringUtils;
 
 /**
@@ -23,12 +24,12 @@ import org.flashframework.core.util.StringUtils;
  * @author kay
  * @version v2.0
  */
-public abstract class BeanDefinitionTableFactory extends BeanDefinitionTableContext implements BeanDefinitionFactory {
+public abstract class AbstractHandle extends BeanDefinitionTableContext implements Handle {
 
     /**
      * 默认构造器
      */
-    public BeanDefinitionTableFactory() {
+    public AbstractHandle() {
         //
     }
 
@@ -45,10 +46,10 @@ public abstract class BeanDefinitionTableFactory extends BeanDefinitionTableCont
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
-     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws HandleRuntimeException 如果 Bean Definition 已经存在
      */
     @Override
     public void load(Class clazz) {
-        throw new BeanDefinitionConflictException();
+        throw new HandleRuntimeException();
     }
 }

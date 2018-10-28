@@ -15,7 +15,7 @@
  */
 package org.flashframework.web.context;
 
-import org.flashframework.context.factory.DefaultBeanDefinitionFactory;
+import org.flashframework.context.factory.ContextHandle;
 import org.flashframework.web.mvc.annotation.Controller;
 import org.flashframework.web.mvc.annotation.RestController;
 
@@ -26,7 +26,7 @@ import org.flashframework.web.mvc.annotation.RestController;
  * @author kay
  * @version v2.0
  */
-public class WebBeanDefinitionFactory extends DefaultBeanDefinitionFactory {
+public class WebBeanDefinitionHandle extends ContextHandle {
 
     /**
      * 根据 Class，载入类注解信息

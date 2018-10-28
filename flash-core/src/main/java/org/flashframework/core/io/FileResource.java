@@ -63,8 +63,8 @@ public class FileResource {
             return "";
         }
 
-        final int classNameLength = file.getName().length() - FILE_CLASS_LENGTH;
-        final String className = file.getName().substring(0, classNameLength);
+        int classNameLength = file.getName().length() - FILE_CLASS_LENGTH;
+        String className = file.getName().substring(0, classNameLength);
         return packageName + FILE_DOT + className;
     }
 

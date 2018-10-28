@@ -16,7 +16,7 @@
 package org.flashframework.context.factory;
 
 import org.flashframework.beans.annotation.Repository;
-import org.flashframework.beans.factory.BeanDefinitionTableFactory;
+import org.flashframework.beans.handle.AbstractHandle;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
 
@@ -26,7 +26,7 @@ import org.flashframework.core.util.Assert;
  * @author kay
  * @version v2.0
  */
-public class DefaultBeanDefinitionFactory extends BeanDefinitionTableFactory {
+public class ContextHandle extends AbstractHandle {
 
     /**
      * 根据 Class，载入类注解信息

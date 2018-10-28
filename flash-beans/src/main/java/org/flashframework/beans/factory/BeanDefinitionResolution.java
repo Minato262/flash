@@ -16,6 +16,8 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.beans.Resolution;
+import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.handle.HandleChain;
 import org.flashframework.core.io.Resource;
 import org.flashframework.core.util.Assert;
 
@@ -33,19 +35,16 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     private Resource resource;
 
     /** BeanDefinition 载入工厂接口 */
-    private BeanDefinitionFactory factory;
+    private HandleChain factory = HandleChain.getInstance();
 
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
      *
      * @param resource 资源解析接口（不能为null）
-     * @param factory  BeanDefinition 工厂接口（不能为null）
      * @throws IllegalArgumentException 如果资源解析接口或工厂接口为null
      */
-    public BeanDefinitionResolution(Resource resource, BeanDefinitionFactory factory) {
-        Assert.isNotNull(factory);
+    public BeanDefinitionResolution(Resource resource) {
         Assert.isNotNull(resource);
-        this.factory = factory;
         this.resource = resource;
     }
 
@@ -60,7 +59,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
         // 清理和初始化注册表
         clear();
 
-        // 载入类注释
+        // 载入类信息
         loadClasses();
     }
 
@@ -73,7 +72,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     }
 
     /**
-     * 遍历 Class，载入类注释并将对象放入容器的 value 中
+     * 遍历 Class，载入类并将对象信息放入容器中
      *
      * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
      */

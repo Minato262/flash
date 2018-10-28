@@ -18,9 +18,10 @@ package org.flashframework.context.factory;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
-import org.flashframework.beans.factory.BeanDefinitionFactory;
+import org.flashframework.beans.handle.Handle;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
+import org.flashframework.beans.handle.HandleChain;
 import org.flashframework.context.ApplicationContext;
 import org.flashframework.core.io.Resource;
 import org.flashframework.beans.*;
@@ -53,14 +54,37 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
 
+    private HandleChain chain = HandleChain.getInstance();
+
     /**
      * 默认构造器
      */
     AbstractApplicationContext() {
         if (container.isEmpty()) {
+            log.info("container initiate start");
+            // 初始化 配置
+            Configurator.init();
+
+            // 载入拦截器设置
+            loadHandle();
+
+            // 初始化
             init();
+            log.info("container initiate end");
         }
     }
+
+    private void loadHandle() {
+        Handle handle = setHandle();
+        chain.setHandle(handle);
+    }
+
+    /**
+     * BeanDefinition 工厂，用于载入 BeanDefinition 到 BeanDefinition 注册表中
+     *
+     * @return BeanDefinition 工厂
+     */
+    protected abstract Handle setHandle();
 
     /**
      * 初始化上下文环境及容器
@@ -68,17 +92,12 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanContainerInitFailureException 如果 Bean 容器初始化失败
      */
     private void init() {
-        Configurator.init();
-
         Resource resource = new ClassResourceLoader();
-        BeanDefinitionFactory factory = loadBeanDefinition();
-        Resolution resolution = new BeanDefinitionResolution(resource, factory);
+        Resolution resolution = new BeanDefinitionResolution(resource);
         try {
-            log.info("container initiate start");
             Registry beanDefinition = new BeanDefinitionRegistry(resolution);
             // 刷新，扫描 解析 注册 Bean Definition，初始化 Bean 容器
             beanDefinition.refresh();
-            log.info("container initiate end");
         }
         catch (BeanRuntimeException e) {
             // 清空 Bean Definition 注册表
@@ -89,13 +108,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
             throw new BeanContainerInitFailureException(e);
         }
     }
-
-    /**
-     * BeanDefinition 工厂，用于载入 BeanDefinition 到 BeanDefinition 注册表中
-     *
-     * @return BeanDefinition 工厂
-     */
-    protected abstract BeanDefinitionFactory loadBeanDefinition();
 
     /**
      * 获取 Bean 容器

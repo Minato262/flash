@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.factory;
+package org.flashframework.beans.handle;
 
 /**
  * Bean Definition 的基础工厂接口
@@ -21,14 +21,13 @@ package org.flashframework.beans.factory;
  * @author kay
  * @version v1.0
  */
-public interface BeanDefinitionFactory {
+public interface Handle {
 
     /**
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException        如果字符串为null
-     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
+     * @throws IllegalArgumentException 如果class 信息为null
      */
     void load(Class clazz);
 }

@@ -27,7 +27,7 @@ import java.util.List;
 import static org.flashframework.core.io.FileResource.*;
 
 /**
- * 根据包路径，获取 Class 资源列表
+ * 类加载器，根据包路径，获取 Class 资源列表
  *
  * @author kay
  * @version v1.0
@@ -61,7 +61,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
     }
 
     /**
-     * 递归，扫描全部 Class 的本地资源，并且加入资源列表
+     * 递归，扫描本地的 Class 资源，并且加入资源列表
      *
      * @param packageName 相对路径包名称
      * @param packagePath 相对包路径
@@ -93,7 +93,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      * 根据类的名称，载入类的资源
      *
      * @param name 类的名称
-     * @return 载入的 Class
+     * @return 载入的 Class 信息
      * @throws ClassResourceLoadFailureException 如果根据资源名称载入没有找到对应的类，则抛出异常
      */
     private Class<?> loadClass(String name) {

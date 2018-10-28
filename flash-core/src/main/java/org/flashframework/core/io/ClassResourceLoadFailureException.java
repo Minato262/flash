@@ -16,7 +16,7 @@
 package org.flashframework.core.io;
 
 /**
- * 资源载入失败异常
+ * 类资源载入失败异常
  *
  * @author kay
  * @version v2.0
