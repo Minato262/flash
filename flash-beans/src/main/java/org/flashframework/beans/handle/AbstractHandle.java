@@ -19,7 +19,7 @@ import org.flashframework.beans.factory.BeanDefinitionTableContext;
 import org.flashframework.core.util.StringUtils;
 
 /**
- * Bean Definition 的工厂类，主要作用是用于载入类中的注解
+ * 抽象拦截器，主要作用是用于拦截类中的注解
  *
  * @author kay
  * @version v2.0
@@ -33,6 +33,13 @@ public abstract class AbstractHandle extends BeanDefinitionTableContext implemen
         //
     }
 
+    /**
+     * 如果 没有设置名称，则自动获取类信息的名称
+     *
+     * @param value 设置的简称
+     * @param clazz class 类信息
+     * @return 简称
+     */
     protected String getSimpleName(String value, Class clazz) {
         if (StringUtils.isEmpty(value)) {
             return clazz.getSimpleName();

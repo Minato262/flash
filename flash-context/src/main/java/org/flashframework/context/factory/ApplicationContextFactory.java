@@ -22,7 +22,7 @@ import org.flashframework.beans.factory.BeanDefinitionLoad;
 import org.flashframework.core.util.Assert;
 
 /**
- * 应用关系环境工厂，包装容器，为容器提供使用环境
+ * 应用环境工厂，包装容器，为容器提供使用上下文环境
  *
  * @author kay
  * @version v1.0
@@ -60,11 +60,12 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
     @Override
     public Object getBean(String name) {
         Assert.isNotEmpty(name);
-        if (container.get(name) instanceof Class) {
+        Object obj = container.get(name);
+        if (obj instanceof Class) {
             return loadAutowired(name);
         }
         else {
-            return container.get(name);
+            return obj;
         }
     }
 

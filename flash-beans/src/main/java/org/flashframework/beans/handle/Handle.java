@@ -19,7 +19,7 @@ package org.flashframework.beans.handle;
  * Bean Definition 的基础工厂接口
  *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
 public interface Handle {
 

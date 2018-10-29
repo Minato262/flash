@@ -27,7 +27,7 @@ import static org.flashframework.core.io.FileResource.FILE_DOT;
 import static org.flashframework.core.io.FileResource.FILE_SLASH;
 
 /**
- * Class 资源载入抽象类
+ * Class 资源抽象类
  *
  * @author kay
  * @version v1.0
@@ -55,7 +55,7 @@ public abstract class AbstractClassResource implements Resource {
     }
 
     /**
-     * 根据来源获取，目标 URL 资源
+     * 根据资源名称，获取目标 URL 资源
      *
      * @param name 资源名称
      * @return URL 元素资源

@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import static org.flashframework.core.io.FileResource.*;
-
 /**
  * 类加载器，根据包路径，获取 Class 资源列表
  *
@@ -35,6 +33,9 @@ import static org.flashframework.core.io.FileResource.*;
 public class ClassResourceLoader extends AbstractClassResource implements Resource {
 
     private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
+
+    /** 文件常量 ——— 名称 "file" */
+    private static final String FILE_NAME = "file";
 
     /**
      * 扫描并获取到 Class 资源列表，暂不支持扫描 jar 包

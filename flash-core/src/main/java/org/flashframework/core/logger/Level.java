@@ -16,7 +16,7 @@
 package org.flashframework.core.logger;
 
 /**
- * 日志常用级别常量
+ * 框架日志常用级别常量
  *
  * @author kay
  * @version v2.0

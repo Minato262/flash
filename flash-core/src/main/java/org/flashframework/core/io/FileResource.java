@@ -37,9 +37,6 @@ public class FileResource {
     /** 文件常量 FILE_CLASS 的长度 */
     private static final int FILE_CLASS_LENGTH = FILE_CLASS.length();
 
-    /** 文件常量 ——— 名称 "file" */
-    public static final String FILE_NAME = "file";
-
     private File file;
 
     private String packageName;

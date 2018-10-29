@@ -64,7 +64,7 @@ public class BeanDefinitionRegistry implements Registry {
         // 注册表载入
         resolution.load();
 
-        // 载入是否单利
+        // 载入单例模式
         loadScope();
 
         // 载入被标记的类和方法

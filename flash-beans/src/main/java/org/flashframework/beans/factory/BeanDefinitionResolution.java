@@ -16,7 +16,6 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.beans.Resolution;
-import org.flashframework.beans.handle.Handle;
 import org.flashframework.beans.handle.HandleChain;
 import org.flashframework.core.io.Resource;
 import org.flashframework.core.util.Assert;
@@ -34,8 +33,8 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     /** 资源解析接口 */
     private Resource resource;
 
-    /** BeanDefinition 载入工厂接口 */
-    private HandleChain factory = HandleChain.getInstance();
+    /** BeanDefinition 载入拦截链 */
+    private HandleChain chain = HandleChain.getInstance();
 
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
@@ -56,8 +55,6 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      */
     @Override
     public void load() {
-        // 清理和初始化注册表
-        clear();
 
         // 载入类信息
         loadClasses();
@@ -79,7 +76,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     private void loadClasses() {
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
-            factory.load(clazz);
+            chain.load(clazz);
         }
     }
 }

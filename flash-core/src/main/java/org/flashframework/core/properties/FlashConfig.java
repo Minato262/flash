@@ -30,18 +30,21 @@ public enum FlashConfig {
     FLASH_LOG_LEVEL(INSTANCE_FLASH_LOG, "level"),
     FLASH_LOG_FILE(INSTANCE_FLASH_LOG, "file");
 
+    /** 配置文件枚举 */
     private FlashFile file;
 
-    private String path;
+    /** 文件配置项 */
+    private String item;
 
     /**
      * 带有配置文件路径的构造器
      *
-     * @param path 配置文件路径
+     * @param file 文件配置项
+     * @param item 文件配置项
      */
-    FlashConfig(FlashFile file, String path) {
+    FlashConfig(FlashFile file, String item) {
         this.file = file;
-        this.path = path;
+        this.item = item;
     }
 
     /**
@@ -50,6 +53,6 @@ public enum FlashConfig {
      * @return 获取 Properties 配置值
      */
     public String load() {
-        return file.load(path);
+        return file.load(item);
     }
 }

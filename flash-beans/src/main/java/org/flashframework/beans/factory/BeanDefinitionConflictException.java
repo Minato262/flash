@@ -28,13 +28,6 @@ class BeanDefinitionConflictException extends BeanRuntimeException {
     private static final long serialVersionUID = 1393376035071235585L;
 
     /**
-     * 默认的构造器
-     */
-    BeanDefinitionConflictException() {
-        super();
-    }
-
-    /**
      * 带有错误信息的构造器
      *
      * @param message 错误信息
