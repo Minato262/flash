@@ -78,6 +78,6 @@ public abstract class BeanDefinitionTableContext implements BeanDefinitionAware 
         Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
         String lowerCase = name.substring(i + 1, name.length());
-        return StringUtils.toLowerCaseFirst(lowerCase);
+        return StringUtils.toLowercaseFirst(lowerCase);
     }
 }

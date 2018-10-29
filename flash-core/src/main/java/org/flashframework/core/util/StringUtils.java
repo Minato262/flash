@@ -46,17 +46,17 @@ public class StringUtils {
      * 将字符串的首字母变为小写
      * <p>
      *    eg:
-     *    <br>StringUtils.toLowerCaseFirstOne("0")    = "0"   </br>
-     *    <br>StringUtils.toLowerCaseFirstOne("10")   = "10"  </br>
-     *    <br>StringUtils.toLowerCaseFirstOne("ABCS") = "aBCS"</br>
-     *    <br>StringUtils.toLowerCaseFirstOne("aBCS") = "aBCS"</br>
+     *    <br>StringUtils.toLowercaseFirst("0")    = "0"   </br>
+     *    <br>StringUtils.toLowercaseFirst("10")   = "10"  </br>
+     *    <br>StringUtils.toLowercaseFirst("ABCS") = "aBCS"</br>
+     *    <br>StringUtils.toLowercaseFirst("aBCS") = "aBCS"</br>
      * </p>
      *
      * @param str 需要首字母小写的字符串（一定不能为空）
      * @return 处理后的字符串（首字母为小写）
      * @throws IllegalArgumentException 如果字符串为空，则抛出异常
      */
-    public static String toLowerCaseFirst(String str) {
+    public static String toLowercaseFirst(String str) {
         Assert.isNotEmpty(str);
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
