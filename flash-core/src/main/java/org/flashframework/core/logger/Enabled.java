@@ -22,7 +22,14 @@ package org.flashframework.core.logger;
  * @version v2.0
  */
 public enum Enabled {
+    /**
+     * 启动日志打印：是的
+     */
     TRUE(true),
+
+    /**
+     * 启动日志打印：否
+     */
     FALSE(false);
 
     private boolean enabled;
