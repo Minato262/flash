@@ -46,7 +46,7 @@ public class FileResource {
         this.packageName = packageName;
     }
 
-    public FileResource(String pathName, String packageName){
+    public FileResource(String pathName, String packageName) {
         this.file = new File(pathName);
         this.packageName = packageName;
     }

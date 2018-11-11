@@ -22,7 +22,7 @@ import org.flashframework.aop.annotation.*;
  * @version v2.0
  */
 @Aspect
-public class TestBean {
+public class BeanTest {
 
     @After("")
     public void afterTest() {
