@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 文件资源
+ *
  * @author kay
  * @version v2.0
  */
@@ -41,11 +43,23 @@ public class FileResource {
 
     private String packageName;
 
+    /**
+     * 带有文件属性和包名的文件资源构造器
+     *
+     * @param file 文件属性
+     * @param packageName 包名
+     */
     private FileResource(File file, String packageName) {
         this.file = file;
         this.packageName = packageName;
     }
 
+    /**
+     * 带有文件包名和文件路径名称的构造器
+     *
+     * @param pathName 文件路径
+     * @param packageName 文件包名
+     */
     public FileResource(String pathName, String packageName) {
         this.file = new File(pathName);
         this.packageName = packageName;

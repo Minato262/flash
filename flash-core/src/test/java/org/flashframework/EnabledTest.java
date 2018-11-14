@@ -19,6 +19,8 @@ import org.flashframework.core.logger.Enabled;
 import org.junit.Test;
 
 /**
+ * {@link Enabled} Test
+ *
  * @author kay
  * @version v1.0
  */

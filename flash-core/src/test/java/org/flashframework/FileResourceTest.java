@@ -19,6 +19,8 @@ import org.flashframework.core.io.FileResource;
 import org.junit.Test;
 
 /**
+ * {@link FileResource} Test
+ *
  * @author kay
  * @version v1.0
  */
