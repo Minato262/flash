@@ -22,7 +22,7 @@ import org.flashframework.core.properties.FlashConfig;
 import java.util.Properties;
 
 /**
- * flashframework 框架自带的 Log，主要打印框架启动时的 Log 日志。
+ * flashframework 框架自带的 Log，主要打印框架启动时的 Log 日志
  *
  * @author kay
  * @version v2.0
