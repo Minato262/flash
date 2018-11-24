@@ -18,7 +18,6 @@ package org.flashframework.context;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.context.factory.People;
-import org.flashframework.context.factory.ServiceBean;
 import org.junit.Assert;
 import org.junit.Test;
 
