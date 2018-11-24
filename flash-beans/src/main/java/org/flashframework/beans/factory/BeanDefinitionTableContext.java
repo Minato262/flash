@@ -26,7 +26,9 @@ import org.flashframework.core.util.StringUtils;
  */
 public abstract class BeanDefinitionTableContext implements BeanDefinitionAware {
 
-    /** Bean Definition 注册表 */
+    /**
+     * Bean Definition 注册表
+     */
     private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
     /**

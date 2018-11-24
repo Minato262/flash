@@ -29,7 +29,9 @@ import org.flashframework.core.util.Assert;
  */
 public class ApplicationContextFactory extends AbstractApplicationContext {
 
-    /** Bean 容器 */
+    /**
+     * Bean 容器
+     */
     private BeanContainer container = getBeanContainer();
 
     /**

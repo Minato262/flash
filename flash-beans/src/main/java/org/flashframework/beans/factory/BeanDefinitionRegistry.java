@@ -37,13 +37,19 @@ public class BeanDefinitionRegistry implements Registry {
 
     private static final Logger log = LoggerFactory.getLogger(BeanDefinitionRegistry.class);
 
-    /** Bean 容器 */
+    /**
+     * Bean 容器
+     */
     private BeanContainer container = BeanContainerAware.getInstance();
 
-    /** Bean 注册表 */
+    /**
+     * Bean 注册表
+     */
     private BeanDefinitionTable table = BeanDefinitionTableAware.getInstance();
 
-    /** Bean Definition 解析接口 */
+    /**
+     * Bean Definition 解析接口
+     */
     private Resolution resolution;
 
     /**

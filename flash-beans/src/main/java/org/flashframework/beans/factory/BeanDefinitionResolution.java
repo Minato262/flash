@@ -30,7 +30,9 @@ import java.util.List;
  */
 public class BeanDefinitionResolution extends BeanDefinitionTableContext implements Resolution {
 
-    /** 资源解析接口 */
+    /**
+     * 资源解析接口
+     */
     private Resource resource;
 
     /**

@@ -29,16 +29,24 @@ import java.util.Properties;
  */
 public class Configurator {
 
-    /** Log 日志打印默认路径 */
+    /**
+     * Log 日志打印默认路径
+     */
     private static final String FILE_DEFAULT = "logs/out.log";
 
-    /** 是否启动 flashframework 框架自带的 Log */
+    /**
+     * 是否启动 flashframework 框架自带的 Log
+     */
     private static boolean enabled;
 
-    /** Log 日志打印等级 */
+    /**
+     * Log 日志打印等级
+     */
     private static Level level;
 
-    /** Log 日志打印的文件路径 */
+    /**
+     * Log 日志打印的文件路径
+     */
     private static String file;
 
     static {

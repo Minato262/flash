@@ -34,7 +34,9 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
 
     private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
 
-    /** 文件常量 ——— 名称 "file" */
+    /**
+     * 文件常量 ——— 名称 "file"
+     */
     private static final String FILE_NAME = "file";
 
     /**

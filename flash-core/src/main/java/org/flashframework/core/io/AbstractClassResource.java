@@ -34,7 +34,9 @@ import static org.flashframework.core.io.FileResource.FILE_SLASH;
  */
 public abstract class AbstractClassResource implements Resource {
 
-    /** 根据配置获取配置的包名 */
+    /**
+     * 根据配置获取配置的包名
+     */
     private static final String FLASH_PACKAGE_NAME = FlashConfig.FLASH_PACKAGE_NAME.load();
 
     /**

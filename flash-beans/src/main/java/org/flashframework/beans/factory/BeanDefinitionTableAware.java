@@ -36,7 +36,9 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
      * 概述：
      */
 
-    /** Bean Definition 注册表 */
+    /**
+     * Bean Definition 注册表
+     */
     private static final BeanDefinitionTable table = new BeanDefinitionTableAware();
 
     /**

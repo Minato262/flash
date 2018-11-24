@@ -50,7 +50,9 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *      最后 ，载入类与方法注解。整个过程就初试化完成。
      */
 
-    /** Bean 容器 */
+    /**
+     * Bean 容器
+     */
     private BeanContainer container = BeanContainerAware.getInstance();
 
     private HandleChain chain = HandleChain.getInstance();

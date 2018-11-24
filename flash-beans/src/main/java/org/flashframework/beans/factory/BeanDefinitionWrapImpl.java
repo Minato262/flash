@@ -34,7 +34,9 @@ import java.lang.reflect.Field;
  */
 public final class BeanDefinitionWrapImpl {
 
-    /** Bean 容器 */
+    /**
+     * Bean 容器
+     */
     private BeanContainer container = BeanContainerAware.getInstance();
 
     /**
