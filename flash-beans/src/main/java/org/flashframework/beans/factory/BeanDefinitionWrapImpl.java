@@ -32,7 +32,7 @@ import java.lang.reflect.Field;
  * @author kay
  * @version v1.0
  */
-public final class BeanDefinitionLoad {
+public final class BeanDefinitionWrapImpl {
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
@@ -45,11 +45,10 @@ public final class BeanDefinitionLoad {
      * @throws IllegalArgumentException   如果对象为null
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    public <V> V load(Class clazz) {
+    public <V> V loadBeanDefinition(Class clazz) {
         Assert.isNotNull(clazz);
-        V value = BeanUtils.newInstance(clazz.getName());
-        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
-        return beanDefinitionWrap.getData();
+        V newValue = BeanUtils.newInstance(clazz);
+        return loadBeanDefinition(newValue);
     }
 
     /**
@@ -63,7 +62,12 @@ public final class BeanDefinitionLoad {
     public BeanDefinitionWrap load(String key) {
         Assert.isNotEmpty(key);
         Object value = container.get(key);
-        return value != null ? load(value) : new BeanDefinitionWrap();
+        if (value != null) {
+            return load(value);
+        }
+        else {
+            return new BeanDefinitionWrap();
+        }
     }
 
     /**
@@ -74,13 +78,21 @@ public final class BeanDefinitionLoad {
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> load(V value) {
+        // 判断 BeanDefinition 是否需要载入
         boolean isInject = false;
         for (Field field : value.getClass().getDeclaredFields()) {
             for (Annotation annotation : field.getAnnotations()) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
                     try {
                         field.setAccessible(true);
-                        field.set(value, getValue(field.getName()));
+
+                        // 根据 key 获取容器对应信息，如果为Class，则返回对象
+                        Object object = container.get(field.getName());
+                        if (object instanceof Class) {
+                            object = loadBeanDefinition(object.getClass());
+                        }
+
+                        field.set(value, object);
                         isInject = true;
                         break;
                     }
@@ -94,22 +106,14 @@ public final class BeanDefinitionLoad {
     }
 
     /**
-     * 根据 key 获取容器对应信息，如果为对象，则返回对象，如果不是会重新新建对象
+     * 将空对象载入 Bean Definition
      *
-     * @param key 容器的关键字
-     * @return Bean 对应的对象
+     * @param value 需要载入注解的对象
+     * @param <V> value
+     * @return 载入的对象
      */
-    private Object getValue(String key) {
-        Object value = container.get(key);
-        if (value instanceof Class) {
-            Object newValue = BeanUtils.newInstance(value.getClass());
-
-            // 重新载入方法注解
-            BeanDefinitionWrap beanDefinitionWrap = load(newValue);
-            return beanDefinitionWrap.getData();
-        }
-        else {
-            return value;
-        }
+    private <V> V loadBeanDefinition(V value) {
+        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
+        return beanDefinitionWrap.getData();
     }
 }

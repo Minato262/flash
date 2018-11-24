@@ -22,6 +22,8 @@ import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;
 import org.flashframework.beans.util.BeanUtils;
 import org.flashframework.core.util.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -32,6 +34,8 @@ import java.util.Map;
  * @version v1.0
  */
 public class BeanDefinitionRegistry implements Registry {
+
+    private static final Logger log = LoggerFactory.getLogger(BeanDefinitionRegistry.class);
 
     /** Bean 容器 */
     private BeanContainer container = BeanContainerAware.getInstance();
@@ -88,7 +92,7 @@ public class BeanDefinitionRegistry implements Registry {
                 container.put(entry.getKey(), value);
             }
             catch (BeanCreateFailureException e) {
-                //
+                log.warn("container registry failure.", e);
             }
         }
     }
@@ -99,7 +103,7 @@ public class BeanDefinitionRegistry implements Registry {
      * @throws BeanCreateFailureException Bean 创建失败
      */
     private void loadAutowired() {
-        BeanDefinitionLoad beanDefinition = new BeanDefinitionLoad();
+        BeanDefinitionWrapImpl beanDefinition = new BeanDefinitionWrapImpl();
         for (Map.Entry<String, Class> entry : table.entrySet()) {
             BeanDefinitionWrap wrap = beanDefinition.load(entry.getKey());
             if (wrap.isInject()) {

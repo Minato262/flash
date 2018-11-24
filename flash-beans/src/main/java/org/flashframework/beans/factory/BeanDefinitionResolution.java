@@ -33,9 +33,6 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     /** 资源解析接口 */
     private Resource resource;
 
-    /** BeanDefinition 载入拦截链 */
-    private HandleChain chain = HandleChain.getInstance();
-
     /**
      * 带有资源解析的 Bean Definition 解析的构造器
      *
@@ -55,9 +52,11 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      */
     @Override
     public void load() {
-
-        // 载入类信息
-        loadClasses();
+        HandleChain chain = HandleChain.getInstance();
+        List<Class<?>> list = resource.getClasses();
+        for (Class clazz : list) {
+            chain.load(clazz);
+        }
     }
 
     /**
@@ -66,17 +65,5 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
     @Override
     public void clear() {
         super.clear();
-    }
-
-    /**
-     * 遍历 Class，载入类并将对象信息放入容器中
-     *
-     * @throws BeanDefinitionConflictException 如果 Bean Definition 已经存在
-     */
-    private void loadClasses() {
-        List<Class<?>> list = resource.getClasses();
-        for (Class clazz : list) {
-            chain.load(clazz);
-        }
     }
 }

@@ -61,10 +61,11 @@ public class BeanUtils {
      * @throws IllegalArgumentException   如果对象为null
      * @throws BeanCreateFailureException 如果对象新建失败
      */
-    public static Object newInstance(Class clazz) throws BeanCreateFailureException {
+    @SuppressWarnings("unchecked")
+    public static <T> T newInstance(Class clazz) throws BeanCreateFailureException {
         Assert.isNotNull(clazz);
         try {
-            return clazz.newInstance();
+            return (T) clazz.newInstance();
         }
         catch (IllegalAccessException e) {
             throw new BeanCreateFailureException("Cannot create " + clazz + "; is it an interface or an abstract class?");

@@ -18,7 +18,7 @@ package org.flashframework.context.factory;
 import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.handle.Handle;
-import org.flashframework.beans.factory.BeanDefinitionLoad;
+import org.flashframework.beans.factory.BeanDefinitionWrapImpl;
 import org.flashframework.core.util.Assert;
 
 /**
@@ -60,25 +60,16 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
     @Override
     public Object getBean(String name) {
         Assert.isNotEmpty(name);
+
         Object obj = container.get(name);
         if (obj instanceof Class) {
-            return loadAutowired(name);
+            // 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
+            Class clazz = (Class) container.get(name);
+            BeanDefinitionWrapImpl beanDefinition = new BeanDefinitionWrapImpl();
+            return beanDefinition.loadBeanDefinition(clazz);
         }
         else {
             return obj;
         }
-    }
-
-    /**
-     * 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
-     *
-     * @param name 想获取 Bean 的名称
-     * @param <T>  获取容器中的 Bean 对象
-     * @return bean 对象
-     */
-    private <T> T loadAutowired(String name) {
-        Class clazz = (Class) container.get(name);
-        BeanDefinitionLoad beanDefinition = new BeanDefinitionLoad();
-        return beanDefinition.load(clazz);
     }
 }
