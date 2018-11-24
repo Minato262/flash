@@ -20,7 +20,7 @@ import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;
-import org.flashframework.beans.util.BeanReflect;
+import org.flashframework.beans.util.BeanUtils;
 import org.flashframework.core.util.Assert;
 
 import java.util.Map;
@@ -84,7 +84,7 @@ public class BeanDefinitionRegistry implements Registry {
             }
 
             try {
-                V value = BeanReflect.newInstance(entry.getValue().getName());
+                V value = BeanUtils.newInstance(entry.getValue().getName());
                 container.put(entry.getKey(), value);
             }
             catch (BeanCreateFailureException e) {

@@ -19,12 +19,12 @@ import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.core.util.Assert;
 
 /**
- * 反射相关工具类
+ * Bean 相关工具类
  *
  * @author kay
  * @version v1.0
  */
-public class BeanReflect {
+public class BeanUtils {
 
     /**
      * 根据对象的路径，反射生成新的对象
@@ -36,14 +36,41 @@ public class BeanReflect {
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @SuppressWarnings("unchecked")
-    public static <T> T newInstance(String name) {
+    public static <T> T newInstance(String name) throws BeanCreateFailureException {
         Assert.isNotEmpty(name);
         try {
             Class<T> clazz = (Class<T>) Class.forName(name);
             return clazz.newInstance();
         }
-        catch (Exception e) {
+        catch (IllegalAccessException e) {
+            throw new BeanCreateFailureException("Cannot create " + name + "; is it an interface or an abstract class?");
+        }
+        catch (InstantiationException e) {
+            throw new BeanCreateFailureException("Cannot create " + name + "; has class definition changed? Is there a public constructor?");
+        }
+        catch (ClassNotFoundException e) {
             throw new BeanCreateFailureException(e);
+        }
+    }
+
+    /**
+     * 根据反射对象，生成新的对象
+     *
+     * @param clazz 反射对象（一定不能为null）
+     * @return 生成的新的对象
+     * @throws IllegalArgumentException   如果对象为null
+     * @throws BeanCreateFailureException 如果对象新建失败
+     */
+    public static Object newInstance(Class clazz) throws BeanCreateFailureException {
+        Assert.isNotNull(clazz);
+        try {
+            return clazz.newInstance();
+        }
+        catch (IllegalAccessException e) {
+            throw new BeanCreateFailureException("Cannot create " + clazz + "; is it an interface or an abstract class?");
+        }
+        catch (InstantiationException e) {
+            throw new BeanCreateFailureException("Cannot create " + clazz + "; has class definition changed? Is there a public constructor?");
         }
     }
 }

@@ -19,7 +19,7 @@ import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
-import org.flashframework.beans.util.BeanReflect;
+import org.flashframework.beans.util.BeanUtils;
 import org.flashframework.core.util.Assert;
 
 import javax.annotation.Resource;
@@ -47,7 +47,7 @@ public final class BeanDefinitionLoad {
      */
     public <V> V load(Class clazz) {
         Assert.isNotNull(clazz);
-        V value = BeanReflect.newInstance(clazz.getName());
+        V value = BeanUtils.newInstance(clazz.getName());
         BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
         return beanDefinitionWrap.getData();
     }
@@ -115,8 +115,7 @@ public final class BeanDefinitionLoad {
     private Object getValue(String key) {
         Object value = container.get(key);
         if (value instanceof Class) {
-            Class clazz = (Class) value;
-            Object newValue = BeanReflect.newInstance(clazz.getName());
+            Object newValue = BeanUtils.newInstance(value.getClass());
 
             // 重新载入方法注解
             BeanDefinitionWrap beanDefinitionWrap = load(newValue);

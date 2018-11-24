@@ -29,13 +29,13 @@ public class AnnotationTest {
 
     @Test
     public void test() {
-        Annotation[] annotations = BeanTest.class.getAnnotations();
+        Annotation[] annotations = AspectTest.class.getAnnotations();
         for (Annotation annotation : annotations) {
             System.out.println(annotation);
         }
         System.out.println();
 
-        Field[] fields = BeanTest.class.getDeclaredFields();
+        Field[] fields = AspectTest.class.getDeclaredFields();
         for (Field field : fields) {
             Annotation[] annotations1 = field.getAnnotations();
             for (Annotation annotation : annotations1) {
@@ -43,7 +43,7 @@ public class AnnotationTest {
             }
         }
 
-        Method[] methods = BeanTest.class.getDeclaredMethods();
+        Method[] methods = AspectTest.class.getDeclaredMethods();
         for (Method method : methods) {
             Annotation[] annotations1 = method.getAnnotations();
             for (Annotation annotation : annotations1) {
