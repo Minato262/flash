@@ -48,7 +48,8 @@ public final class BeanDefinitionWrapImpl {
     public <V> V loadBeanDefinition(Class clazz) {
         Assert.isNotNull(clazz);
         V newValue = BeanUtils.newInstance(clazz);
-        return loadBeanDefinition(newValue);
+        BeanDefinitionWrap<V> beanDefinitionWrap = load(newValue);
+        return beanDefinitionWrap.getData();
     }
 
     /**
@@ -103,17 +104,5 @@ public final class BeanDefinitionWrapImpl {
             }
         }
         return new BeanDefinitionWrap<>(isInject, value);
-    }
-
-    /**
-     * 将空对象载入 Bean Definition
-     *
-     * @param value 需要载入注解的对象
-     * @param <V> value
-     * @return 载入的对象
-     */
-    private <V> V loadBeanDefinition(V value) {
-        BeanDefinitionWrap<V> beanDefinitionWrap = load(value);
-        return beanDefinitionWrap.getData();
     }
 }
