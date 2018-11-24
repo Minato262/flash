@@ -71,7 +71,7 @@ public class BeanDefinitionRegistry implements Registry {
      */
     @Override
     public void refresh() {
-        // 注册表载入
+        // 资源载入
         resolution.load();
 
         // 载入单例模式

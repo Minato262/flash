@@ -42,7 +42,7 @@ public abstract class AbstractHandle extends BeanDefinitionTableContext implemen
      */
     protected String getSimpleName(String value, Class clazz) {
         if (StringUtils.isEmpty(value)) {
-            return clazz.getSimpleName();
+            return StringUtils.toLowercaseFirst(clazz.getSimpleName());
         }
         else {
             return value;
