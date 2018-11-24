@@ -42,13 +42,13 @@ final class BeanDefinitionWrap<T> implements Serializable {
     /**
      * 带有是否有方法注解和私有类载入的对象的构造器
      *
-     * @param isAutowired 是否有方法注解
-     * @param data        私有类载入的对象（一定不能为null）
+     * @param isInject 是否有方法注解
+     * @param data     私有类载入的对象（一定不能为null）
      * @throws IllegalArgumentException 如果载入对象为null
      */
-    BeanDefinitionWrap(boolean isAutowired, T data) {
+    BeanDefinitionWrap(boolean isInject, T data) {
         Assert.isNotNull(data);
-        this.isInject = isAutowired;
+        this.isInject = isInject;
         this.data = data;
     }
 
@@ -72,6 +72,6 @@ final class BeanDefinitionWrap<T> implements Serializable {
 
     @Override
     public String toString() {
-        return "BeanDefinitionWrap[isAutowired=" + isInject + ",data=" + data + "]";
+        return "BeanDefinitionWrap[isInject=" + isInject + ",data=" + data + "]";
     }
 }

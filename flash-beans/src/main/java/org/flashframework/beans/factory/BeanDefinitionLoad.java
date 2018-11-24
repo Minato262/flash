@@ -75,35 +75,22 @@ public final class BeanDefinitionLoad {
      */
     private <V> BeanDefinitionWrap<V> load(V value) {
         boolean isInject = false;
-        Field[] fields = value.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            Annotation[] annotations = field.getAnnotations();
-            for (Annotation annotation : annotations) {
+        for (Field field : value.getClass().getDeclaredFields()) {
+            for (Annotation annotation : field.getAnnotations()) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
-                    isInject = set(field, value);
-                    break;
+                    try {
+                        field.setAccessible(true);
+                        field.set(value, getValue(field.getName()));
+                        isInject = true;
+                        break;
+                    }
+                    catch (IllegalAccessException e) {
+                        throw new BeanLoadFailureException(e);
+                    }
                 }
             }
         }
         return new BeanDefinitionWrap<>(isInject, value);
-    }
-
-    /**
-     * 通过反射，设置对象的变量信息
-     *
-     * @param field 对象的作用域，并且载有对象变量信息
-     * @param value 需要检测的对象值
-     * @return 是否设置成功
-     */
-    private <V> boolean set(Field field, V value) {
-        try {
-            field.setAccessible(true);
-            field.set(value, getValue(field.getName()));
-            return true;
-        }
-        catch (IllegalAccessException e) {
-            throw new BeanCreateFailureException(e);
-        }
     }
 
     /**
