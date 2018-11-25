@@ -33,7 +33,7 @@ public class ContextHandle extends AbstractHandle {
      * <p>默认载入 Repository，Service 注解</p>
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果Class为null
+     * @throws IllegalArgumentException 如果 Class 为null
      */
     @Override
     public void load(Class clazz) {
