@@ -81,7 +81,7 @@ public final class BeanDefinitionWrapImpl {
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> load(V value) {
-        // 判断 BeanDefinition 是否需要载入
+        // 标记 BeanDefinition 的对象是否需要载入
         boolean isInject = false;
         for (Field field : value.getClass().getDeclaredFields()) {
             for (Annotation annotation : field.getAnnotations()) {
@@ -98,6 +98,7 @@ public final class BeanDefinitionWrapImpl {
                         field.set(value, object);
                     }
                     catch (IllegalAccessException e) {
+                        // 如果 容器内 对象信息为 接口 或 抽象类，则反射时，可能会抛出错误
                         throw new BeanLoadFailureException(e);
                     }
 
