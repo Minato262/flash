@@ -15,6 +15,7 @@
  */
 package org.flashframework.beans.container;
 
+import org.flashframework.beans.BeanNotFindException;
 import org.flashframework.core.util.Assert;
 import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
@@ -73,7 +74,9 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      */
     @Override
     public Object get(String key) {
-        Assert.isNotEmpty(key);
+        if (StringUtils.isEmpty(key)) {
+            throw new BeanNotFindException("The key of bean must be not empty!");
+        }
         return super.get(key);
     }
 
@@ -82,13 +85,13 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      *
      * @param key   容器的关键字
      * @param value 放入容器的关键字
-     * @throws BeanContainerInitFailureException 如果 Bean 的名称为空
+     * @throws BeanNotFindException 如果 Bean 的名称为空
      */
     @SuppressWarnings("unchecked")
     @Override
     public <V> void put(String key, V value) {
         if (StringUtils.isEmpty(key)) {
-            throw new BeanContainerInitFailureException("The key of bean must be not empty!");
+            throw new BeanNotFindException("The key of bean must be not empty!");
         }
 
         if (log.isDebugEnabled()) {

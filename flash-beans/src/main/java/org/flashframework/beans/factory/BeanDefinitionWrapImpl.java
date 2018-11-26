@@ -86,8 +86,6 @@ public final class BeanDefinitionWrapImpl {
         for (Field field : value.getClass().getDeclaredFields()) {
             for (Annotation annotation : field.getAnnotations()) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
-                    field.setAccessible(true);
-
                     // 根据 key 获取容器对应信息，如果为 Class 对象，则重新载入对象
                     Object object = container.get(field.getName());
                     if (object instanceof Class) {
@@ -95,6 +93,7 @@ public final class BeanDefinitionWrapImpl {
                     }
 
                     try {
+                        field.setAccessible(true);
                         field.set(value, object);
                     }
                     catch (IllegalAccessException e) {
