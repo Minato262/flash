@@ -33,6 +33,6 @@ public class WebApplicationContextFactory extends ApplicationContextFactory {
      */
     @Override
     protected Handle setHandle() {
-        return new WebBeanDefinitionHandle();
+        return new WebBeanDefinitionHandleApplication();
     }
 }

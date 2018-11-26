@@ -48,7 +48,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      */
     @Override
     protected Handle setHandle() {
-        return new ContextHandle();
+        return new ApplicationContextHandle();
     }
 
     /**
