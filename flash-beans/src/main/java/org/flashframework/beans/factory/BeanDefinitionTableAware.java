@@ -17,6 +17,7 @@ package org.flashframework.beans.factory;
 
 import org.flashframework.beans.BeanNotFindException;
 import org.flashframework.core.Aware;
+import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,12 +65,16 @@ public final class BeanDefinitionTableAware extends ConcurrentHashMap<String, Cl
      * @param key   关键字
      * @param value 包含 Class 信息的对象值
      * @return 成功放入容器的 Class 信息
-     * @throws BeanNotFindException 如果 Bean Definition 相冲突
+     * @throws BeanNotFindException            如果 Bean 没有发现
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 相冲突
      */
     @Override
     public Class put(String key, Class value) {
+        if (StringUtils.isEmpty(key)) {
+            throw new BeanNotFindException("The key of bean must be not empty!");
+        }
         if (super.containsKey(key)) {
-            throw new BeanNotFindException(key + ", Bean Definition already exists");
+            throw new BeanDefinitionConflictException(key + ", Bean Definition already exists");
         }
 
         if (log.isDebugEnabled()) {
