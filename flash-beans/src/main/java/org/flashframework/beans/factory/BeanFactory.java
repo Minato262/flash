@@ -17,6 +17,8 @@ package org.flashframework.beans.factory;
 
 import org.flashframework.beans.util.BeanCreateFailureException;
 
+import java.security.InvalidParameterException;
+
 /**
  * Bean 工厂接口，IOC 中最核心的接口
  *
@@ -38,7 +40,7 @@ public interface BeanFactory {
      *
      * @param clazz 想获取 Bean 的信息（一定不能为null）
      * @return 获取 bean 实例对象
-     * @throws IllegalArgumentException   如果对象信息为null
+     * @throws InvalidParameterException  如果对象信息为null
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     <T> T getBean(Class<T> clazz);

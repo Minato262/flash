@@ -112,7 +112,7 @@ public class BeanDefinitionRegistry implements Registry {
     private void loadAutowired() {
         BeanDefinitionWrapImpl beanDefinition = new BeanDefinitionWrapImpl();
         for (Map.Entry<String, Class> entry : table.entrySet()) {
-            BeanDefinitionWrap wrap = beanDefinition.load(entry.getKey());
+            BeanDefinitionWrap wrap = beanDefinition.loadBeanDefinition(entry.getKey());
             if (wrap.isInject()) {
                 container.put(entry.getKey(), wrap.getData());
             }

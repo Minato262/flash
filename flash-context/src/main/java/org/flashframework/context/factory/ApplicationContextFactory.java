@@ -64,7 +64,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return 获取 bean 对象
      * @throws InvalidParameterException  如果字符串为空
-     * @throws BeanCreateFailureException 如果对象新建失败
+     * @throws BeanCreateFailureException 如果对象创建失败
      */
     @Override
     public Object getBean(String name) {
@@ -87,7 +87,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      * @param clazz 想获取 Bean 的信息（一定不能为null）
      * @return 获取 bean 实例对象
      * @throws InvalidParameterException  如果对象信息为 null
-     * @throws BeanCreateFailureException 如果对象新建失败
+     * @throws BeanCreateFailureException 如果对象创建失败
      */
     @Override
     public <T> T getBean(Class<T> clazz) {

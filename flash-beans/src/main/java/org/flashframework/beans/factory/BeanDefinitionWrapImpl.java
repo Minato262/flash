@@ -63,7 +63,7 @@ public final class BeanDefinitionWrapImpl {
      * @throws InvalidParameterException   如果字符串为空
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
-    public BeanDefinitionWrap load(String key) {
+    public BeanDefinitionWrap loadBeanDefinition(String key) {
         Assert.isNotEmpty(key);
         Object value = container.get(key);
         if (value != null) {

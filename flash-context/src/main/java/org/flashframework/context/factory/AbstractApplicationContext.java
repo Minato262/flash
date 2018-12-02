@@ -31,6 +31,8 @@ import org.flashframework.core.logger.Configurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.security.InvalidParameterException;
+
 /**
  * 应用上下环境抽象类
  * <p>用于初始化上下文，开启容器</p>
@@ -137,7 +139,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @param clazz 想获取 Bean 的信息（一定不能为null）
      * @return 获取 bean 实例对象
-     * @throws IllegalArgumentException   如果对象信息为 null
+     * @throws InvalidParameterException  如果对象信息为 null
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override
