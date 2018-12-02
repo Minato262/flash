@@ -37,6 +37,11 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
     private BeanContainer container = getBeanContainer();
 
     /**
+     * Bean Definition 工具类
+     */
+    private BeanDefinitionWrapImpl beanDefinition = new BeanDefinitionWrapImpl();
+
+    /**
      * 默认构造器
      */
     public ApplicationContextFactory() {
@@ -69,7 +74,6 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
         if (obj instanceof Class) {
             // 根据 Bean 名称，获取 Bean 实例信息，然后根据 Bean 实例信息载入方法注解
             Class clazz = (Class) container.get(name);
-            BeanDefinitionWrapImpl beanDefinition = new BeanDefinitionWrapImpl();
             return beanDefinition.loadBeanDefinition(clazz);
         }
         else {
@@ -88,6 +92,6 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
     @Override
     public <T> T getBean(Class<T> clazz) {
         Assert.isNotNull(clazz);
-        return (T) getBean(clazz.getName());
+        return beanDefinition.loadBeanDefinition(clazz);
     }
 }
