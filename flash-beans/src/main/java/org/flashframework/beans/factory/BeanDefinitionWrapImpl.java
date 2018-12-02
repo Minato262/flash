@@ -78,7 +78,7 @@ public final class BeanDefinitionWrapImpl {
      *
      * @param value 需要检测的对象
      * @return Bean Definition 的封装类
-     * @throws BeanCreateFailureException 如果 Bean 创建失败
+     * @throws BeanLoadFailureException 如果 Bean 创建失败
      */
     private <V> BeanDefinitionWrap<V> load(V value) {
         // 标记 BeanDefinition 的对象是否需要载入

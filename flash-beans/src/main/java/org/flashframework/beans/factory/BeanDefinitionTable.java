@@ -15,6 +15,8 @@
  */
 package org.flashframework.beans.factory;
 
+import org.flashframework.beans.BeanNotFindException;
+
 import java.util.Map;
 
 /**
@@ -30,7 +32,9 @@ public interface BeanDefinitionTable extends Map<String, Class> {
      *
      * @param key   关键字
      * @param value 包含 Class 信息的对象值
-     * @return Put 成功的 value 值
+     * @return 成功放入容器的 Class 信息
+     * @throws BeanNotFindException            如果 Bean 没有发现
+     * @throws BeanDefinitionConflictException 如果 Bean Definition 相冲突
      */
     Class put(String key, Class value);
 }
