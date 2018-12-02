@@ -19,6 +19,7 @@ import org.flashframework.core.Unicode;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.security.InvalidParameterException;
 
 /**
  * 解码常用工具类
@@ -33,7 +34,7 @@ public class Decoder {
      *
      * @param source 来源（一定不能为空）
      * @return 转译后的字符串
-     * @throws IllegalArgumentException 如果字符串为空
+     * @throws InvalidParameterException 如果字符串为空
      */
     public static String decode(String source) {
         Assert.isNotEmpty(source);

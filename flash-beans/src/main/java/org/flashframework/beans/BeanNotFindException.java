@@ -15,6 +15,8 @@
  */
 package org.flashframework.beans;
 
+import org.flashframework.beans.util.BeanCreateFailureException;
+
 /**
  * Bean 对象没有发现异常
  *

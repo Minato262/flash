@@ -18,6 +18,7 @@ package org.flashframework.beans.factory;
 import org.flashframework.core.util.Assert;
 
 import java.io.Serializable;
+import java.security.InvalidParameterException;
 
 /**
  * 带有是否有方法注解和私有类载入的对象的 Bean Definition 包装类
@@ -44,7 +45,7 @@ final class BeanDefinitionWrap<T> implements Serializable {
      *
      * @param isInject 是否有方法注解
      * @param data     私有类载入的对象（一定不能为null）
-     * @throws IllegalArgumentException 如果载入对象为null
+     * @throws InvalidParameterException 如果载入对象为null
      */
     BeanDefinitionWrap(boolean isInject, T data) {
         Assert.isNotNull(data);

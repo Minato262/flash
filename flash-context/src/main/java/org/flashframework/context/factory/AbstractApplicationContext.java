@@ -22,6 +22,7 @@ import org.flashframework.beans.handle.Handle;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
 import org.flashframework.beans.handle.HandleChain;
+import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.context.ApplicationContext;
 import org.flashframework.core.io.Resource;
 import org.flashframework.beans.*;

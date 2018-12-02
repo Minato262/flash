@@ -20,6 +20,7 @@ import org.flashframework.beans.handle.HandleChain;
 import org.flashframework.core.io.Resource;
 import org.flashframework.core.util.Assert;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 
 /**
@@ -39,7 +40,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      * 带有资源解析的 Bean Definition 解析的构造器
      *
      * @param resource 资源解析接口（不能为null）
-     * @throws IllegalArgumentException 如果资源解析接口或工厂接口为null
+     * @throws InvalidParameterException 如果资源解析接口或工厂接口为null
      */
     public BeanDefinitionResolution(Resource resource) {
         Assert.isNotNull(resource);

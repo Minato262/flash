@@ -15,11 +15,13 @@
  */
 package org.flashframework.context.factory;
 
-import org.flashframework.beans.BeanCreateFailureException;
+import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.handle.Handle;
 import org.flashframework.beans.factory.BeanDefinitionWrapImpl;
 import org.flashframework.core.util.Assert;
+
+import java.security.InvalidParameterException;
 
 /**
  * 应用环境工厂，包装容器，为容器提供使用上下文环境
@@ -56,7 +58,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      *
      * @param name 想获取 Bean 的名称（一定不能为空）
      * @return 获取 bean 对象
-     * @throws IllegalArgumentException   如果字符串为空
+     * @throws InvalidParameterException  如果字符串为空
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override
@@ -80,7 +82,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      *
      * @param clazz 想获取 Bean 的信息（一定不能为null）
      * @return 获取 bean 实例对象
-     * @throws IllegalArgumentException   如果对象信息为 null
+     * @throws InvalidParameterException  如果对象信息为 null
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override

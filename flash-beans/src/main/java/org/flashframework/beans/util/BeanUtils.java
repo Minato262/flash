@@ -15,7 +15,6 @@
  */
 package org.flashframework.beans.util;
 
-import org.flashframework.beans.BeanCreateFailureException;
 import org.flashframework.core.util.Assert;
 
 /**

@@ -15,6 +15,8 @@
  */
 package org.flashframework.beans.handle;
 
+import java.security.InvalidParameterException;
+
 /**
  * Bean Definition 的基础工厂接口
  *
@@ -27,7 +29,7 @@ public interface Handle {
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果class 信息为null
+     * @throws InvalidParameterException 如果class 信息为null
      */
     void load(Class clazz);
 }

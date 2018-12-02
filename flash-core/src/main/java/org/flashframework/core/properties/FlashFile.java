@@ -17,6 +17,7 @@ package org.flashframework.core.properties;
 
 import org.flashframework.core.util.Assert;
 
+import java.security.InvalidParameterException;
 import java.util.Properties;
 
 /**
@@ -52,7 +53,7 @@ public enum FlashFile {
      *
      * @param propertyName 配置名称（一定不能为空）
      * @return 获取 Properties 配置值
-     * @throws IllegalArgumentException 如果字符串为空
+     * @throws InvalidParameterException 如果字符串为空
      */
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);

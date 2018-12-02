@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanCreateFailureException;
+import org.flashframework.beans.util.BeanCreateFailureException;
 
 /**
  * Bean 载入失败异常
@@ -23,7 +23,7 @@ import org.flashframework.beans.BeanCreateFailureException;
  * @author kay
  * @version v1.0
  */
-public class BeanLoadFailureException extends BeanCreateFailureException {
+public class  BeanLoadFailureException extends BeanCreateFailureException {
     private static final long serialVersionUID = 2572692246784877942L;
 
     /**

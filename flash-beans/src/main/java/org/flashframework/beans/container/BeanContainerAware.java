@@ -16,7 +16,6 @@
 package org.flashframework.beans.container;
 
 import org.flashframework.beans.BeanNotFindException;
-import org.flashframework.core.util.Assert;
 import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +69,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
      *
      * @param key 容器关键字(一定不能为空)
      * @return 返回容器中的对象
-     * @throws IllegalArgumentException 如果字符串为空
+     * @throws BeanNotFindException 如果字符串为空
      */
     @Override
     public Object get(String key) {

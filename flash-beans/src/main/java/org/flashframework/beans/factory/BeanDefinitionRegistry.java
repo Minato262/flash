@@ -20,6 +20,7 @@ import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;
+import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.beans.util.BeanUtils;
 import org.flashframework.core.util.Assert;
 import org.slf4j.Logger;

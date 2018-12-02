@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanCreateFailureException;
+import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
@@ -25,6 +25,7 @@ import org.flashframework.core.util.Assert;
 import javax.annotation.Resource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.security.InvalidParameterException;
 
 /**
  * 自动反射扫描工具类
@@ -44,7 +45,7 @@ public final class BeanDefinitionWrapImpl {
      *
      * @param clazz 实例信息（一定不能为null）
      * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果对象为null
+     * @throws InvalidParameterException   如果对象为null
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     public <V> V loadBeanDefinition(Class clazz) {
@@ -59,7 +60,7 @@ public final class BeanDefinitionWrapImpl {
      *
      * @param key 容器 key（一定不能为空）
      * @return Bean 对应并载入方法注解的对象
-     * @throws IllegalArgumentException   如果字符串为空
+     * @throws InvalidParameterException   如果字符串为空
      * @throws BeanCreateFailureException 如果 Bean 创建失败
      */
     public BeanDefinitionWrap load(String key) {

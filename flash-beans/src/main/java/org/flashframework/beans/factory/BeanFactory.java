@@ -15,7 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
-import org.flashframework.beans.BeanCreateFailureException;
+import org.flashframework.beans.util.BeanCreateFailureException;
 
 /**
  * Bean 工厂接口，IOC 中最核心的接口

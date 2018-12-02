@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans;
+package org.flashframework.beans.util;
+
+import org.flashframework.beans.BeanRuntimeException;
 
 /**
  * Bean 新建对象失败异常

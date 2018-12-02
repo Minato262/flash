@@ -24,13 +24,14 @@ import static org.flashframework.core.properties.FlashFile.*;
  * @version v2.0
  */
 public enum FlashConfig {
+
     /**
      * Flash 扫描默认包配置
      */
     FLASH_PACKAGE_NAME(INSTANCE_FLASH, "packageName"),
 
     /**
-     * Flash 日志打印是否启动配置
+     * Flash 日志打印是否启动配置（默认是开启的）
      */
     FLASH_LOG_ENABLED(INSTANCE_FLASH_LOG, "enabled"),
 
@@ -44,10 +45,14 @@ public enum FlashConfig {
      */
     FLASH_LOG_FILE(INSTANCE_FLASH_LOG, "file");
 
-    /** 配置文件枚举 */
+    /**
+     * 配置文件枚举
+     */
     private FlashFile file;
 
-    /** 文件配置项 */
+    /**
+     * 文件配置项
+     */
     private String item;
 
     /**

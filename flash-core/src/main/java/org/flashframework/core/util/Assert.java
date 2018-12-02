@@ -15,6 +15,8 @@
  */
 package org.flashframework.core.util;
 
+import java.security.InvalidParameterException;
+
 /**
  * 断言常用工具类
  *
@@ -36,11 +38,11 @@ public class Assert {
      * </p>
      *
      * @param object 需要判断的对象
-     * @throws IllegalArgumentException 如果对象为null，则抛出异常
+     * @throws InvalidParameterException 如果对象为null，则抛出异常
      */
     public static void isNotNull(Object object) {
         if (object == null) {
-            throw new IllegalArgumentException("the object must be not null!");
+            throw new InvalidParameterException("the object must be not null!");
         }
     }
 
@@ -55,11 +57,11 @@ public class Assert {
      * </p>
      *
      * @param str 需要判断的字符串
-     * @throws IllegalArgumentException 如果字符串为空，则抛出异常
+     * @throws InvalidParameterException 如果字符串为空，则抛出异常
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {
-            throw new IllegalArgumentException("the string must be not empty!");
+            throw new InvalidParameterException("the string must be not empty!");
         }
     }
 }

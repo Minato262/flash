@@ -21,6 +21,8 @@ import org.flashframework.context.annotation.Component;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
 
+import java.security.InvalidParameterException;
+
 /**
  * 应用环境默认拦截器
  *
@@ -34,7 +36,7 @@ public class ApplicationContextHandle extends AbstractHandle {
      * <p>默认载入 Repository，Component, Service 注解</p>
      *
      * @param clazz class 信息
-     * @throws IllegalArgumentException 如果 Class 为null
+     * @throws InvalidParameterException 如果 Class 为null
      */
     @Override
     public void load(Class clazz) {
