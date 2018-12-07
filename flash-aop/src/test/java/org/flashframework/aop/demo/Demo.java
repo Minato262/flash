@@ -13,26 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.context;
+package org.flashframework.aop.demo;
 
-import org.flashframework.beans.handle.Handle;
-import org.flashframework.context.factory.ApplicationContextFactory;
+import org.junit.Test;
 
 /**
- * web 应用关系环境工厂，包装容器，为Web提供使用环境
- *
  * @author kay
  * @version v2.0
  */
-public class WebApplicationContextFactory extends ApplicationContextFactory {
+public class Demo {
 
-    /**
-     * 载入 BeanDefinition
-     *
-     * @return BeanDefinition 工厂
-     */
-    @Override
-    protected Handle getHandle() {
-        return new WebBeanDefinitionHandle();
+    @Test
+    public void test() {
+        DynamicProxyHandler handler = new DynamicProxyHandler();
+        Facade facade = new FacadeImpl();
+        Facade businessProxy = (Facade) handler.bind(facade);
+        businessProxy.doSomething();
+        businessProxy.doSomething1();
     }
 }

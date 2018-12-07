@@ -58,6 +58,8 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private BeanContainer container = BeanContainerAware.getInstance();
 
+    private Handle handle = getHandle();
+
     private HandleChain chain = HandleChain.getInstance();
 
     /**
@@ -77,7 +79,6 @@ abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     private void loadHandle() {
-        Handle handle = setHandle();
         chain.setHandle(handle);
     }
 
@@ -86,7 +87,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @return BeanDefinition 工厂
      */
-    protected abstract Handle setHandle();
+    protected abstract Handle getHandle();
 
     /**
      * 初始化上下文环境及容器

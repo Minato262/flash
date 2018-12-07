@@ -13,26 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.web.context;
-
-import org.flashframework.beans.handle.Handle;
-import org.flashframework.context.factory.ApplicationContextFactory;
+package org.flashframework.aop.demo;
 
 /**
- * web 应用关系环境工厂，包装容器，为Web提供使用环境
- *
  * @author kay
  * @version v2.0
  */
-public class WebApplicationContextFactory extends ApplicationContextFactory {
+public interface Facade {
 
-    /**
-     * 载入 BeanDefinition
-     *
-     * @return BeanDefinition 工厂
-     */
-    @Override
-    protected Handle getHandle() {
-        return new WebBeanDefinitionHandle();
-    }
+    void doSomething();
+
+    void doSomething1();
 }
