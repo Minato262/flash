@@ -20,6 +20,7 @@ public class PeopleImpl implements People {
         this.name = name;
     }
 
+    @Override
     public int getAge() {
         System.out.println(age);
         return age;

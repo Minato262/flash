@@ -18,7 +18,6 @@ package org.flashframework.aop;
 import org.flashframework.aop.context.AspectContextFactory;
 import org.flashframework.aop.ioc.People;
 import org.flashframework.aop.ioc.PeopleImpl;
-import org.flashframework.aop.proxy.DynamicProxy;
 import org.flashframework.beans.factory.BeanFactory;
 import org.junit.Test;
 
@@ -60,11 +59,8 @@ public class AnnotationTest {
 
     @Test
     public void test1() {
-        DynamicProxy handler = new DynamicProxy();
         BeanFactory factory = new AspectContextFactory();
         People people = factory.getBean(PeopleImpl.class);
-
-        People people1 = (People) handler.bind(people);
-        people1.getAge();
+        people.getAge();
     }
 }

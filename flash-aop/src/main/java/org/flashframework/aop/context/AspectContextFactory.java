@@ -15,6 +15,7 @@
  */
 package org.flashframework.aop.context;
 
+import org.flashframework.aop.proxy.InvocationProxy;
 import org.flashframework.beans.handle.Handle;
 import org.flashframework.context.factory.ApplicationContextFactory;
 
@@ -24,6 +25,8 @@ import org.flashframework.context.factory.ApplicationContextFactory;
  */
 public class AspectContextFactory extends ApplicationContextFactory {
 
+    private InvocationProxy proxy = new InvocationProxy();
+
     /**
      * 载入 BeanDefinition
      *
@@ -32,5 +35,16 @@ public class AspectContextFactory extends ApplicationContextFactory {
     @Override
     protected Handle getHandle() {
         return new AspectHandler();
+    }
+
+    @Override
+    public Object getBean(String name) {
+        return proxy.bind(super.getBean(name));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T getBean(Class<T> clazz) {
+        return (T) proxy.bind(super.getBean(clazz));
     }
 }

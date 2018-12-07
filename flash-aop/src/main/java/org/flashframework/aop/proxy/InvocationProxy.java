@@ -26,7 +26,7 @@ import java.lang.reflect.Proxy;
  * @author kay
  * @version v2.0
  */
-public class DynamicProxy implements InvocationHandler {
+public class InvocationProxy implements InvocationHandler {
 
     private Object obj;
 
