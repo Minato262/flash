@@ -26,6 +26,7 @@ import org.flashframework.core.util.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.security.InvalidParameterException;
 import java.util.Map;
 
 /**
@@ -57,7 +58,7 @@ public class BeanDefinitionRegistry implements Registry {
      * 带有 Bean Definition 解析接口的构造器
      *
      * @param resolution Bean Definition 解析
-     * @throws IllegalArgumentException 如果 resolution 为null
+     * @throws InvalidParameterException 如果 resolution 为null
      */
     public BeanDefinitionRegistry(Resolution resolution) {
         Assert.isNotNull(resolution);
