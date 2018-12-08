@@ -38,7 +38,7 @@ public class AspectContextHandler extends ApplicationContextHandle {
         super.load(clazz);
         Aspect annotation = (Aspect) clazz.getAnnotation(Aspect.class);
         if (annotation != null) {
-            String name = getSimpleName(clazz);
+            String name = super.getSimpleName(clazz);
             container.put(name, clazz);
         }
     }
