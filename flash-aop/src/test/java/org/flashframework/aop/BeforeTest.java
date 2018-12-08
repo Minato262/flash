@@ -15,40 +15,22 @@
  */
 package org.flashframework.aop;
 
-import org.flashframework.aop.proxy.DynamicProxy;
-import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
+import org.junit.Before;
 
 /**
+ * 容器启动
+ *
  * @author kay
- * @version v2.0
+ * @version v1.0
  */
-public class AspectContextFactory extends ApplicationContextFactory {
+public class BeforeTest {
 
-    private DynamicProxy proxy = new DynamicProxy();
+    protected BeanFactory factory;
 
-    public AspectContextFactory() {
-        super();
-    }
-
-    /**
-     * 载入 BeanDefinition
-     *
-     * @return BeanDefinition 工厂
-     */
-    @Override
-    protected Handle getHandle() {
-        return new AspectContextHandler();
-    }
-
-    @Override
-    public Object getBean(String name) {
-        return proxy.bind(super.getBean(name));
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getBean(Class<T> clazz) {
-        return (T) proxy.bind(super.getBean(clazz));
+    @Before
+    public void init() {
+        factory = new AspectContextFactory();
     }
 }

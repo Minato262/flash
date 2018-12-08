@@ -17,7 +17,6 @@ package org.flashframework.aop;
 
 import org.flashframework.aop.ioc.People;
 import org.flashframework.aop.ioc.PeopleImpl;
-import org.flashframework.beans.factory.BeanFactory;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
@@ -28,7 +27,7 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v1.0
  */
-public class AnnotationTest {
+public class AnnotationTest extends BeforeTest {
 
     @Test
     public void test() {
@@ -58,7 +57,6 @@ public class AnnotationTest {
 
     @Test
     public void test1() {
-        BeanFactory factory = new AspectContextFactory();
         People people = factory.getBean(PeopleImpl.class);
         people.getAge();
     }

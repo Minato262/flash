@@ -15,6 +15,7 @@
  */
 package org.flashframework.context;
 
+import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.beans.factory.BeanFactory;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.context.factory.People;
@@ -28,6 +29,9 @@ import org.junit.Test;
  * @version v1.0
  */
 public class BeanFactoryTest extends BeforeTest {
+
+    @Autowired
+    private People people;
 
     @Test
     public void test() {
@@ -59,5 +63,10 @@ public class BeanFactoryTest extends BeforeTest {
         BeanFactory factory2 = new ApplicationContextFactory();
         People people2 = factory2.getBean(People.class);
         Assert.assertNotNull(people2);
+    }
+
+    @Test
+    public void test2() {
+        people.getAge();
     }
 }

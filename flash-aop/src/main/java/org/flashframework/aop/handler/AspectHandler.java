@@ -17,6 +17,9 @@ package org.flashframework.aop.handler;
 
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
+import org.flashframework.beans.container.BeanContainerAware;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

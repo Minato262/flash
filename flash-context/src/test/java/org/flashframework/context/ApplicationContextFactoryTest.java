@@ -15,7 +15,13 @@
  */
 package org.flashframework.context;
 
+import org.flashframework.beans.annotation.Autowired;
+import org.flashframework.context.annotation.Service;
 import org.flashframework.context.factory.ApplicationContextFactory;
+import org.flashframework.context.factory.Father;
+import org.flashframework.context.factory.People;
+import org.flashframework.context.factory.User;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -24,22 +30,23 @@ import org.junit.Test;
  * @author kay
  * @version v1.0
  */
+@Service("test")
 public class ApplicationContextFactoryTest extends BeforeTest {
 
-//    @Autowired
-//    private Father father;
-//
-//    @Autowired
-//    private People people;
-//
-//    @Autowired
-//    private User user;
+    @Autowired
+    private Father father;
+
+    @Autowired
+    private People people;
+
+    //@Autowired
+    private User user;
 
     @Test
     public void test() {
-        //ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory.getBean("applicationContextFactoryTest");
-        //Assert.assertNotNull(test.father);
-        //Assert.assertNotNull(test.people);
+        ApplicationContextFactoryTest test = (ApplicationContextFactoryTest) factory.getBean("test");
+        Assert.assertNotNull(test.father);
+        Assert.assertNotNull(test.people);
         //Assert.assertNotNull(test.user);
     }
 }

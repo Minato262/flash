@@ -1,13 +1,19 @@
 package org.flashframework.aop.ioc;
 
+import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.context.annotation.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author kay
  * @version v1.0
  */
-@Service
+@Service("people1")
 public class PeopleImpl implements People {
+
+    @Resource
+    private Factory factory;
 
     private String name;
     private int age;
@@ -23,6 +29,7 @@ public class PeopleImpl implements People {
     @Override
     public int getAge() {
         System.out.println(age);
+        factory.test();
         return age;
     }
 
