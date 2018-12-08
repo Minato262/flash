@@ -29,6 +29,8 @@ public interface Interceptor {
 
     void before(Method methodTarget, Object[] args);
 
+    Object around(Object proxy, Object target, Method method, Object[] args);
+
     void after(Method methodTarget, Object[] args);
 
     void error(Method methodTarget, Object[] args, Throwable e);

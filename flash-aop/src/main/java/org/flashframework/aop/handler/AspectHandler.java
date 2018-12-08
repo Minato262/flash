@@ -31,22 +31,23 @@ public class AspectHandler implements InvocationHandler {
 
     private Interceptor interceptor = new InterceptorImpl();
 
-    public void setObject(Object obj) {
+    public AspectHandler(Object obj) {
         this.obj = obj;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         interceptor.begin(method, args);
-        Object result;
         try {
             if (interceptor.filter(method, args)) {
+                Object result;
                 interceptor.before(method, args);
                 result = method.invoke(obj, args);
                 interceptor.after(method, args);
+                return result;
             }
             else {
-                result = method.invoke(obj, args);
+                return interceptor.around(proxy, obj, method, args);
             }
         }
         catch (Exception e) {
@@ -56,6 +57,5 @@ public class AspectHandler implements InvocationHandler {
         finally {
             interceptor.end(method, args);
         }
-        return result;
     }
 }

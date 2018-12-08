@@ -26,8 +26,6 @@ import java.lang.reflect.Proxy;
 public class DynamicProxy {
 
     public Object bind(Object obj) {
-        AspectHandler handler = new AspectHandler();
-        handler.setObject(obj);
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), handler);
+        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), new AspectHandler(obj));
     }
 }

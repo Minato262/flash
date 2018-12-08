@@ -39,6 +39,12 @@ public class InterceptorImpl implements Interceptor {
     }
 
     @Override
+    public Object around(Object proxy, Object target, Method method, Object[] args) {
+        System.out.println("around");
+        return null;
+    }
+
+    @Override
     public void after(Method methodTarget, Object[] args) {
         System.out.println("after");
     }
