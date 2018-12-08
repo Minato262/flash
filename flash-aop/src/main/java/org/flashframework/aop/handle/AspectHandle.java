@@ -17,7 +17,6 @@ package org.flashframework.aop.handle;
 
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
-import org.flashframework.core.util.Assert;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
