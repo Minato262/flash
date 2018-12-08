@@ -40,9 +40,8 @@ public class AspectHandler implements InvocationHandler {
         interceptor.begin(method, args);
         try {
             if (interceptor.filter(method, args)) {
-                Object result;
                 interceptor.before(method, args);
-                result = method.invoke(obj, args);
+                Object result = method.invoke(obj, args);
                 interceptor.after(method, args);
                 return result;
             }

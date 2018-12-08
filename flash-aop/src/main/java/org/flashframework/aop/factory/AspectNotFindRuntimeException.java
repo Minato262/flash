@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.interceptor;
+package org.flashframework.aop.factory;
 
-import java.lang.reflect.Method;
+import org.flashframework.aop.AspectRuntimeException;
 
 /**
  * @author kay
  * @version v2.0
  */
-public interface Interceptor {
+public class AspectNotFindRuntimeException extends AspectRuntimeException {
+    private static final long serialVersionUID = 1963297972764525083L;
 
-    void begin(Method methodTarget, Object[] args);
-
-    boolean filter(Method methodTarget, Object[] args);
-
-    void before(Method methodTarget, Object[] args);
-
-    Object around(Object proxy, Object target, Method method, Object[] args);
-
-    void after(Method methodTarget, Object[] args);
-
-    void error(Method methodTarget, Object[] args, Throwable e) throws Throwable;
-
-    void end(Method methodTarget, Object[] args);
+    /**
+     * 带有错误信息的构造器
+     *
+     * @param message 错误信息
+     */
+    public AspectNotFindRuntimeException(String message) {
+        super(message);
+    }
 }

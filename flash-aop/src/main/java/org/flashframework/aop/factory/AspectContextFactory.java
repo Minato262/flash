@@ -27,6 +27,9 @@ public class AspectContextFactory extends ApplicationContextFactory {
 
     private DynamicProxy proxy = new DynamicProxy();
 
+    /**
+     * 默认构造器
+     */
     public AspectContextFactory() {
         super();
     }

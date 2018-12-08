@@ -15,7 +15,6 @@
  */
 package org.flashframework.aop.factory;
 
-import org.flashframework.beans.BeanNotFindException;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
@@ -32,16 +31,6 @@ public final class AspectContainerAware extends ConcurrentHashMap implements Asp
 
     private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
 
-    /*
-     * 概述:
-     *
-     *      容器是用于管理对象的生命周期的。
-     *
-     *      在框架中，定义了对象的名称，如何产生对象（单例模式或者原型模式），对象与对象之间
-     * 的关系，使用容器来存储她们，是一种直接有效的方式。当容器启动后，所有的对象都可以直接取
-     * 用，不需要进行硬编码，也不需要重新确立对象与对象之间的关系。
-     */
-
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
@@ -56,13 +45,26 @@ public final class AspectContainerAware extends ConcurrentHashMap implements Asp
         return container;
     }
 
+    /**
+     * 默认构造器
+     */
     private AspectContainerAware() {
         //
     }
 
+    /**
+     * 根据关键字获取对象
+     *
+     * @param key 容器的关键字
+     * @return 根据关键字获取对象
+     * @throws AspectNotFindRuntimeException 如果 Bean 的名称为空
+     */
     @Override
     public Object get(String key) {
-        return null;
+        if (StringUtils.isEmpty(key)) {
+            throw new AspectNotFindRuntimeException("The key of bean must be not empty!");
+        }
+        return super.get(key);
     }
 
     /**
@@ -70,13 +72,13 @@ public final class AspectContainerAware extends ConcurrentHashMap implements Asp
      *
      * @param key   容器的关键字
      * @param value 放入容器的关键字
-     * @throws BeanNotFindException 如果 Bean 的名称为空
+     * @throws AspectNotFindRuntimeException 如果 Bean 的名称为空
      */
     @SuppressWarnings("unchecked")
     @Override
     public <V> void put(String key, V value) {
         if (StringUtils.isEmpty(key)) {
-            throw new BeanNotFindException("The key of bean must be not empty!");
+            throw new AspectNotFindRuntimeException("The key of bean must be not empty!");
         }
 
         if (log.isDebugEnabled()) {

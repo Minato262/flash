@@ -23,7 +23,7 @@ import org.flashframework.context.annotation.Component;
  * @version v2.0
  */
 @Aspect
-@Component("aspecttest")
+@Component
 public class AspectTest {
 
     @After("")
