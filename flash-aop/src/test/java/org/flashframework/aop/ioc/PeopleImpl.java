@@ -1,6 +1,5 @@
 package org.flashframework.aop.ioc;
 
-import org.flashframework.beans.annotation.Autowired;
 import org.flashframework.context.annotation.Service;
 
 import javax.annotation.Resource;
