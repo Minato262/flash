@@ -41,7 +41,7 @@ public class AspectContextFactory extends ApplicationContextFactory {
      */
     @Override
     protected Handle getHandle() {
-        return new AspectContextHandler();
+        return new AspectContextHandle();
     }
 
     @Override

@@ -22,7 +22,7 @@ import org.flashframework.context.factory.ApplicationContextHandle;
  * @author kay
  * @version v2.0
  */
-public class AspectContextHandler extends ApplicationContextHandle {
+public class AspectContextHandle extends ApplicationContextHandle {
 
     private AspectContainer container = AspectContainerAware.getInstance();
 
