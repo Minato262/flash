@@ -47,8 +47,6 @@ public final class AspectContainerAware extends ConcurrentHashMap implements Asp
      */
     private static final AspectContainer container = new AspectContainerAware();
 
-    public static final String ASPECT = "aspect";
-
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
      *

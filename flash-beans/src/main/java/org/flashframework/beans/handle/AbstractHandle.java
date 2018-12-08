@@ -36,27 +36,38 @@ public abstract class AbstractHandle extends BeanDefinitionTableContext implemen
     /**
      * 如果 没有设置名称，则自动获取类信息的名称
      *
-     * @param clazz class 类信息
-     * @return 简称
-     */
-    protected String getSimpleName(Class clazz) {
-        return getSimpleName(null, clazz);
-    }
-
-    /**
-     * 如果 没有设置名称，则自动获取类信息的名称
-     *
      * @param value 设置的简称
      * @param clazz class 类信息
      * @return 简称
      */
     protected String getSimpleName(String value, Class clazz) {
         if (StringUtils.isEmpty(value)) {
-            return StringUtils.toLowercaseFirst(clazz.getSimpleName());
+            String name = regex(clazz.getSimpleName());
+            return StringUtils.toLowercaseFirst(name);
         }
         else {
             return value;
         }
+    }
+
+    private String regex(String str) {
+        final String strImpl = "Impl";
+        if (str.contains(strImpl)) {
+            return str.substring(0, str.length() - strImpl.length());
+        }
+        else {
+            return str;
+        }
+    }
+
+    /**
+     * 如果 没有设置名称，则自动获取类信息的名称
+     *
+     * @param clazz class 类信息
+     * @return 简称
+     */
+    protected String getSimpleName(Class clazz) {
+        return getSimpleName(null, clazz);
     }
 
     /**

@@ -6,7 +6,7 @@ import org.flashframework.beans.annotation.Repository;
  * @author kay
  * @version v1.0
  */
-@Repository("factory")
+@Repository
 public class FactoryImpl implements Factory {
 
     public void test() {

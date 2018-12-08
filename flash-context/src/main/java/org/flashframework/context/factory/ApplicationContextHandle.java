@@ -44,11 +44,13 @@ public class ApplicationContextHandle extends AbstractHandle {
 
         Repository annotation = (Repository) clazz.getAnnotation(Repository.class);
         if (annotation != null) {
-            super.put(annotation.value(), clazz);
+            String name = super.getSimpleName(annotation.value(), clazz);
+            super.put(name, clazz);
         }
         Component annotation1 = (Component) clazz.getAnnotation(Component.class);
         if (annotation1 != null) {
-            super.put(annotation1.value(), clazz);
+            String name = super.getSimpleName(annotation1.value(), clazz);
+            super.put(name, clazz);
         }
         Service annotation2 = (Service) clazz.getAnnotation(Service.class);
         if (annotation2 != null) {

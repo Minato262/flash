@@ -16,9 +16,6 @@
 package org.flashframework.aop.factory;
 
 import org.flashframework.aop.annotation.Aspect;
-import org.flashframework.aop.proxy.DynamicProxy;
-import org.flashframework.beans.container.BeanContainer;
-import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.context.factory.ApplicationContextHandle;
 
 /**
