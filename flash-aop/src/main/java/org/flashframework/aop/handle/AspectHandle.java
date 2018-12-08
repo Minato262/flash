@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.handler;
+package org.flashframework.aop.handle;
 
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
+import org.flashframework.core.util.Assert;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -25,13 +26,13 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v2.0
  */
-public class AspectHandler implements InvocationHandler {
+public class AspectHandle implements InvocationHandler {
 
     private Object obj;
 
     private Interceptor interceptor = new InterceptorImpl();
 
-    public AspectHandler(Object obj) {
+    public AspectHandle(Object obj) {
         this.obj = obj;
     }
 
@@ -51,7 +52,7 @@ public class AspectHandler implements InvocationHandler {
         }
         catch (Exception e) {
             interceptor.error(method, args, e);
-            throw e;
+            throw new AspectHandleRuntimeException(e);
         }
         finally {
             interceptor.end(method, args);

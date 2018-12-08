@@ -13,21 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.proxy;
-
-import org.flashframework.aop.handle.AspectHandle;
-import org.flashframework.core.util.Assert;
-
-import java.lang.reflect.Proxy;
 
 /**
  * @author kay
  * @version v2.0
  */
-public class DynamicProxy {
-
-    public Object bind(Object obj) {
-        Assert.isNotNull(obj);
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), new AspectHandle(obj));
-    }
-}
+package org.flashframework.aop.handle;

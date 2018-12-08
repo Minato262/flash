@@ -13,9 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.flashframework.aop.handle;
+
+import org.flashframework.aop.AspectRuntimeException;
 
 /**
  * @author kay
  * @version v2.0
  */
-package org.flashframework.aop.handler;
+public class AspectHandleRuntimeException extends AspectRuntimeException {
+    private static final long serialVersionUID = 6072726423404799710L;
+
+    /**
+     * 带有堆栈异常信息的构造器
+     *
+     * @param cause 堆栈异常信息
+     */
+    public AspectHandleRuntimeException(Throwable cause) {
+        super(cause);
+    }
+}
