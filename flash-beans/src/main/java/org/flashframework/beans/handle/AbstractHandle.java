@@ -36,6 +36,16 @@ public abstract class AbstractHandle extends BeanDefinitionTableContext implemen
     /**
      * 如果 没有设置名称，则自动获取类信息的名称
      *
+     * @param clazz class 类信息
+     * @return 简称
+     */
+    protected String getSimpleName(Class clazz) {
+        return getSimpleName(null, clazz);
+    }
+
+    /**
+     * 如果 没有设置名称，则自动获取类信息的名称
+     *
      * @param value 设置的简称
      * @param clazz class 类信息
      * @return 简称

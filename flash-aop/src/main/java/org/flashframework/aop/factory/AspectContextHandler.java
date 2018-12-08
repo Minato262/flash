@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop;
+package org.flashframework.aop.factory;
 
 import org.flashframework.aop.annotation.Aspect;
 import org.flashframework.aop.proxy.DynamicProxy;
@@ -27,6 +27,8 @@ import org.flashframework.context.factory.ApplicationContextHandle;
  */
 public class AspectContextHandler extends ApplicationContextHandle {
 
+    private AspectContainer container = AspectContainerAware.getInstance();
+
     /**
      * 根据 Class，载入类注解信息
      * <p>默认载入 Aspect 注解</p>
@@ -39,7 +41,8 @@ public class AspectContextHandler extends ApplicationContextHandle {
         super.load(clazz);
         Aspect annotation = (Aspect) clazz.getAnnotation(Aspect.class);
         if (annotation != null) {
-            super.put("aspect", clazz);
+            String name = getSimpleName(clazz);
+            container.put(name, clazz);
         }
     }
 }

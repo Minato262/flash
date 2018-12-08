@@ -16,12 +16,14 @@
 package org.flashframework.aop;
 
 import org.flashframework.aop.annotation.*;
+import org.flashframework.context.annotation.Component;
 
 /**
  * @author kay
  * @version v2.0
  */
 @Aspect
+@Component("aspecttest")
 public class AspectTest {
 
     @After("")

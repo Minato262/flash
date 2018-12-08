@@ -13,24 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop;
-
-import org.flashframework.aop.factory.AspectContextFactory;
-import org.flashframework.beans.factory.BeanFactory;
-import org.junit.Before;
 
 /**
- * 容器启动
- *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public class BeforeTest {
-
-    protected BeanFactory factory;
-
-    @Before
-    public void init() {
-        factory = new AspectContextFactory();
-    }
-}
+package org.flashframework.aop.factory;

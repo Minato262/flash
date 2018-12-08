@@ -13,24 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop;
+package org.flashframework.aop.factory;
 
-import org.flashframework.aop.factory.AspectContextFactory;
-import org.flashframework.beans.factory.BeanFactory;
-import org.junit.Before;
+import java.util.Map;
 
 /**
- * 容器启动
- *
  * @author kay
- * @version v1.0
+ * @version v2.0
  */
-public class BeforeTest {
+public interface AspectContainer extends Map {
 
-    protected BeanFactory factory;
+    /**
+     * 根据关键字获取对象
+     *
+     * @param key 容器的关键字
+     * @return 根据关键字获取对象
+     */
+    Object get(String key);
 
-    @Before
-    public void init() {
-        factory = new AspectContextFactory();
-    }
+    /**
+     * 根据容器的关键字放入对象
+     *
+     * @param key   容器的关键字
+     * @param value 容器存入的对象
+     */
+    <V> void put(String key, V value);
 }
