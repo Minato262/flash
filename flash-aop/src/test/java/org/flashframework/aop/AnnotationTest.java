@@ -15,7 +15,6 @@
  */
 package org.flashframework.aop;
 
-import org.flashframework.aop.context.AspectContextFactory;
 import org.flashframework.aop.ioc.People;
 import org.flashframework.aop.ioc.PeopleImpl;
 import org.flashframework.beans.factory.BeanFactory;

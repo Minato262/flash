@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.context;
+package org.flashframework.aop;
 
-import org.flashframework.aop.proxy.InvocationProxy;
+import org.flashframework.aop.proxy.DynamicProxy;
 import org.flashframework.beans.handle.Handle;
 import org.flashframework.context.factory.ApplicationContextFactory;
 
@@ -25,7 +25,7 @@ import org.flashframework.context.factory.ApplicationContextFactory;
  */
 public class AspectContextFactory extends ApplicationContextFactory {
 
-    private InvocationProxy proxy = new InvocationProxy();
+    private DynamicProxy proxy = new DynamicProxy();
 
     /**
      * 载入 BeanDefinition
@@ -34,7 +34,7 @@ public class AspectContextFactory extends ApplicationContextFactory {
      */
     @Override
     protected Handle getHandle() {
-        return new AspectHandler();
+        return new AspectContextHandler();
     }
 
     @Override

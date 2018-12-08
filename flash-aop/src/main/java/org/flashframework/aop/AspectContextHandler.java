@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.context;
+package org.flashframework.aop;
 
 import org.flashframework.aop.annotation.Aspect;
 import org.flashframework.context.factory.ApplicationContextHandle;
@@ -22,7 +22,7 @@ import org.flashframework.context.factory.ApplicationContextHandle;
  * @author kay
  * @version v2.0
  */
-public class AspectHandler extends ApplicationContextHandle {
+public class AspectContextHandler extends ApplicationContextHandle {
 
     /**
      * 根据 Class，载入类注解信息

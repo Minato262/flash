@@ -13,9 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.flashframework.aop.proxy;
+
+import org.flashframework.aop.handler.AspectHandler;
+
+import java.lang.reflect.Proxy;
 
 /**
  * @author kay
  * @version v2.0
  */
-package org.flashframework.aop.context;
+public class DynamicProxy {
+
+    public Object bind(Object obj) {
+        AspectHandler handler = new AspectHandler();
+        handler.setObject(obj);
+        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), handler);
+    }
+}

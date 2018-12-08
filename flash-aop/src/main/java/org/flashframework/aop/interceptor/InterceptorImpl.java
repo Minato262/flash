@@ -15,6 +15,8 @@
  */
 package org.flashframework.aop.interceptor;
 
+import java.lang.reflect.Method;
+
 /**
  * @author kay
  * @version v2.0
@@ -22,27 +24,32 @@ package org.flashframework.aop.interceptor;
 public class InterceptorImpl implements Interceptor {
 
     @Override
-    public void after() {
+    public void begin(Method methodTarget, Object[] args) {
+
+    }
+
+    @Override
+    public boolean filter(Method methodTarget, Object[] args) {
+        return true;
+    }
+
+    @Override
+    public void before(Method methodTarget, Object[] args) {
+        System.out.println("before");
+    }
+
+    @Override
+    public void after(Method methodTarget, Object[] args) {
         System.out.println("after");
     }
 
     @Override
-    public void afterReturning() {
+    public void error(Method methodTarget, Object[] args, Throwable e) {
 
     }
 
     @Override
-    public void afterThrowing() {
+    public void end(Method methodTarget, Object[] args) {
 
-    }
-
-    @Override
-    public void around() {
-
-    }
-
-    @Override
-    public void before() {
-        System.out.println("before");
     }
 }

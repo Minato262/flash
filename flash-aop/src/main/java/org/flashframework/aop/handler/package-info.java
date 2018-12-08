@@ -13,25 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.interceptor;
-
-import java.lang.reflect.Method;
 
 /**
  * @author kay
  * @version v2.0
  */
-public interface Interceptor {
-
-    void begin(Method methodTarget, Object[] args);
-
-    boolean filter(Method methodTarget, Object[] args);
-
-    void before(Method methodTarget, Object[] args);
-
-    void after(Method methodTarget, Object[] args);
-
-    void error(Method methodTarget, Object[] args, Throwable e);
-
-    void end(Method methodTarget, Object[] args);
-}
+package org.flashframework.aop.handler;

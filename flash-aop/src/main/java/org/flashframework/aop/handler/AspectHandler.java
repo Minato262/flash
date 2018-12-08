@@ -13,35 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.proxy;
+package org.flashframework.aop.handler;
 
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
  * @author kay
  * @version v2.0
  */
-public class InvocationProxy implements InvocationHandler {
+public class AspectHandler implements InvocationHandler {
 
     private Object obj;
 
     private Interceptor interceptor = new InterceptorImpl();
 
-    public Object bind(Object obj) {
+    public void setObject(Object obj) {
         this.obj = obj;
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), this);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        interceptor.after();
-        Object result = method.invoke(obj, args);
-        interceptor.before();
+        interceptor.begin(method, args);
+        Object result;
+        try {
+            if (interceptor.filter(method, args)) {
+                interceptor.before(method, args);
+                result = method.invoke(obj, args);
+                interceptor.after(method, args);
+            }
+            else {
+                result = method.invoke(obj, args);
+            }
+        }
+        catch (Exception e) {
+            interceptor.error(method, args, e);
+            throw e;
+        }
+        finally {
+            interceptor.end(method, args);
+        }
         return result;
     }
 }
