@@ -15,12 +15,34 @@
  */
 package org.flashframework.beans.handle;
 
-import org.flashframework.beans.BeanRuntimeException;
+import org.flashframework.core.util.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author kay
  * @version v2.0
  */
-public class HandleRuntimeException extends BeanRuntimeException {
-    private static final long serialVersionUID = -3889693983682755246L;
+public class HandlerChain {
+
+    private List<Handler> list = new ArrayList<>();
+
+    private static final HandlerChain chain = new HandlerChain();
+
+    public static HandlerChain getInstance() {
+        return chain;
+    }
+
+    public void setHandle(Handler handle) {
+        Assert.isNotNull(handle);
+        list.add(handle);
+    }
+
+    public void load(Class clazz) {
+        Assert.isNotNull(clazz);
+        for (Handler handle : list) {
+            handle.load(clazz);
+        }
+    }
 }

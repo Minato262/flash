@@ -16,7 +16,7 @@
 package org.flashframework.context.factory;
 
 import org.flashframework.beans.annotation.Repository;
-import org.flashframework.beans.handle.AbstractHandle;
+import org.flashframework.beans.handle.AbstractHandler;
 import org.flashframework.context.annotation.Component;
 import org.flashframework.context.annotation.Service;
 import org.flashframework.core.util.Assert;
@@ -29,7 +29,7 @@ import java.security.InvalidParameterException;
  * @author kay
  * @version v2.0
  */
-public class ApplicationContextHandle extends AbstractHandle {
+public class ApplicationContextHandler extends AbstractHandler {
 
     /**
      * 根据 Class，载入类注解信息

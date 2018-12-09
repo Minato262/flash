@@ -17,7 +17,7 @@ package org.flashframework.context.factory;
 
 import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.beans.container.BeanContainer;
-import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.handle.Handler;
 import org.flashframework.beans.factory.BeanDefinitionWrapImpl;
 import org.flashframework.core.util.Assert;
 
@@ -54,8 +54,8 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      * @return BeanDefinition 工厂
      */
     @Override
-    protected Handle getHandle() {
-        return new ApplicationContextHandle();
+    protected Handler getHandle() {
+        return new ApplicationContextHandler();
     }
 
     /**

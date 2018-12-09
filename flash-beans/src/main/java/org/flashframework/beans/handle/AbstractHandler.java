@@ -24,12 +24,12 @@ import org.flashframework.core.util.StringUtils;
  * @author kay
  * @version v2.0
  */
-public abstract class AbstractHandle extends BeanDefinitionTableContext implements Handle {
+public abstract class AbstractHandler extends BeanDefinitionTableContext implements Handler {
 
     /**
      * 默认构造器
      */
-    public AbstractHandle() {
+    public AbstractHandler() {
         //
     }
 
@@ -74,10 +74,10 @@ public abstract class AbstractHandle extends BeanDefinitionTableContext implemen
      * 根据 Class，载入类注解信息
      *
      * @param clazz class 信息
-     * @throws HandleRuntimeException 如果 Bean Definition 已经存在
+     * @throws HandlerRuntimeException 如果 Bean Definition 已经存在
      */
     @Override
     public void load(Class clazz) {
-        throw new HandleRuntimeException();
+        throw new HandlerRuntimeException();
     }
 }

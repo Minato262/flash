@@ -16,7 +16,7 @@
 package org.flashframework.aop.factory;
 
 import org.flashframework.aop.annotation.Aspect;
-import org.flashframework.context.factory.ApplicationContextHandle;
+import org.flashframework.context.factory.ApplicationContextHandler;
 
 /**
  * Aop 注解处理器
@@ -24,7 +24,7 @@ import org.flashframework.context.factory.ApplicationContextHandle;
  * @author kay
  * @version v2.0
  */
-public class AspectContextHandle extends ApplicationContextHandle {
+public class AspectContextHandler extends ApplicationContextHandler {
 
     /**
      * Aop 切点注册表

@@ -18,10 +18,10 @@ package org.flashframework.context.factory;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
-import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.handle.Handler;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
-import org.flashframework.beans.handle.HandleChain;
+import org.flashframework.beans.handle.HandlerChain;
 import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.context.ApplicationContext;
 import org.flashframework.core.io.Resource;
@@ -58,9 +58,9 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      */
     private BeanContainer container = BeanContainerAware.getInstance();
 
-    private Handle handle = getHandle();
+    private Handler handle = getHandle();
 
-    private HandleChain chain = HandleChain.getInstance();
+    private HandlerChain chain = HandlerChain.getInstance();
 
     /**
      * 默认构造器
@@ -87,7 +87,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      *
      * @return BeanDefinition 工厂
      */
-    protected abstract Handle getHandle();
+    protected abstract Handler getHandle();
 
     /**
      * 初始化上下文环境及容器

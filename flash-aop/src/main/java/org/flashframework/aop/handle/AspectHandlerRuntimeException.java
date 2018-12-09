@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.beans.handle;
+package org.flashframework.aop.handle;
 
-import java.security.InvalidParameterException;
+import org.flashframework.aop.AspectRuntimeException;
 
 /**
- * Bean Definition 的基础工厂接口
- *
  * @author kay
  * @version v2.0
  */
-public interface Handle {
+public class AspectHandlerRuntimeException extends AspectRuntimeException {
+    private static final long serialVersionUID = 6072726423404799710L;
 
     /**
-     * 根据 Class，载入类注解信息
+     * 带有堆栈异常信息的构造器
      *
-     * @param clazz class 信息
-     * @throws InvalidParameterException 如果class 信息为null
+     * @param cause 堆栈异常信息
      */
-    void load(Class clazz);
+    public AspectHandlerRuntimeException(Throwable cause) {
+        super(cause);
+    }
 }

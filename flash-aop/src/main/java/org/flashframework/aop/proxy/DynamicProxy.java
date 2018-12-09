@@ -15,8 +15,9 @@
  */
 package org.flashframework.aop.proxy;
 
-import org.flashframework.aop.handle.AspectHandle;
+import org.flashframework.aop.handle.AspectHandler;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 /**
@@ -28,6 +29,9 @@ import java.lang.reflect.Proxy;
 public class DynamicProxy {
 
     public Object bind(Object obj) {
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), new AspectHandle(obj));
+        ClassLoader loader = obj.getClass().getClassLoader();
+        Class<?>[] interfaces = obj.getClass().getInterfaces();
+        InvocationHandler handler = new AspectHandler(obj);
+        return Proxy.newProxyInstance(loader, interfaces, handler);
     }
 }

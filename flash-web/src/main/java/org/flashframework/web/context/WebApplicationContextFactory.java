@@ -15,7 +15,7 @@
  */
 package org.flashframework.web.context;
 
-import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.handle.Handler;
 import org.flashframework.context.factory.ApplicationContextFactory;
 
 /**
@@ -32,7 +32,7 @@ public class WebApplicationContextFactory extends ApplicationContextFactory {
      * @return BeanDefinition 工厂
      */
     @Override
-    protected Handle getHandle() {
-        return new WebBeanDefinitionHandle();
+    protected Handler getHandle() {
+        return new WebBeanDefinitionHandler();
     }
 }

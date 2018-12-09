@@ -16,7 +16,7 @@
 package org.flashframework.beans.factory;
 
 import org.flashframework.beans.Resolution;
-import org.flashframework.beans.handle.HandleChain;
+import org.flashframework.beans.handle.HandlerChain;
 import org.flashframework.core.io.Resource;
 import org.flashframework.core.util.Assert;
 
@@ -55,7 +55,7 @@ public class BeanDefinitionResolution extends BeanDefinitionTableContext impleme
      */
     @Override
     public void load() {
-        HandleChain chain = HandleChain.getInstance();
+        HandlerChain chain = HandlerChain.getInstance();
         List<Class<?>> list = resource.getClasses();
         for (Class clazz : list) {
             chain.load(clazz);

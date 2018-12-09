@@ -25,13 +25,13 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v2.0
  */
-public class AspectHandle implements InvocationHandler {
+public class AspectHandler implements InvocationHandler {
 
     private Object obj;
 
     private Interceptor interceptor = new InterceptorImpl();
 
-    public AspectHandle(Object obj) {
+    public AspectHandler(Object obj) {
         this.obj = obj;
     }
 
@@ -51,7 +51,7 @@ public class AspectHandle implements InvocationHandler {
         }
         catch (Exception e) {
             interceptor.error(method, args, e);
-            throw new AspectHandleRuntimeException(e);
+            throw new AspectHandlerRuntimeException(e);
         }
         finally {
             interceptor.end(method, args);

@@ -16,7 +16,7 @@
 package org.flashframework.aop.factory;
 
 import org.flashframework.aop.proxy.DynamicProxy;
-import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.handle.Handler;
 import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.core.logger.Enabled;
@@ -55,13 +55,13 @@ public class AspectContextFactory extends ApplicationContextFactory {
     }
 
     /**
-     * 载入 BeanDefinition
+     * 获取 Aop 切面处理器
      *
-     * @return BeanDefinition 工厂
+     * @return Aop 切面处理器
      */
     @Override
-    protected Handle getHandle() {
-        return new AspectContextHandle();
+    protected Handler getHandle() {
+        return new AspectContextHandler();
     }
 
     /**
