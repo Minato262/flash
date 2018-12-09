@@ -26,29 +26,29 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v2.0
  */
-public final class AspectContainerAware extends ConcurrentHashMap implements AspectContainer, Aware {
+public final class AspectPointcutTableAware extends ConcurrentHashMap implements AspectPointcutTable, Aware {
     private static final long serialVersionUID = -5199907673664115807L;
 
-    private static final Logger log = LoggerFactory.getLogger(AspectContainerAware.class);
+    private static final Logger log = LoggerFactory.getLogger(AspectPointcutTableAware.class);
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static AspectContainer container = new AspectContainerAware();
+    private static AspectPointcutTable table = new AspectPointcutTableAware();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
      *
      * @return Bean 容器接口
      */
-    public static AspectContainer getInstance() {
-        return container;
+    public static AspectPointcutTable getInstance() {
+        return table;
     }
 
     /**
      * 默认构造器
      */
-    private AspectContainerAware() {
+    private AspectPointcutTableAware() {
         //
     }
 
@@ -82,7 +82,7 @@ public final class AspectContainerAware extends ConcurrentHashMap implements Asp
         }
 
         if (log.isDebugEnabled()) {
-            log.debug("Aspect Container put, key:{}, value:{}", key, value);
+            log.debug("Aspect Pointcut table put, key:{}, value:{}", key, value);
         }
         super.put(key, value);
     }

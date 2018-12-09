@@ -23,7 +23,7 @@ import java.util.Map;
  * @author kay
  * @version v2.0
  */
-public interface AspectContainer extends Map {
+public interface AspectPointcutTable extends Map {
 
     /**
      * 根据关键字获取对象

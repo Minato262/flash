@@ -24,7 +24,7 @@ import org.flashframework.context.factory.ApplicationContextHandle;
  */
 public class AspectContextHandle extends ApplicationContextHandle {
 
-    private AspectContainer container = AspectContainerAware.getInstance();
+    private AspectPointcutTable table = AspectPointcutTableAware.getInstance();
 
     /**
      * 根据 Class，载入类注解信息
@@ -39,7 +39,7 @@ public class AspectContextHandle extends ApplicationContextHandle {
         Aspect annotation = (Aspect) clazz.getAnnotation(Aspect.class);
         if (annotation != null) {
             String name = super.getSimpleName(clazz);
-            container.put(name, clazz);
+            table.put(name, clazz);
         }
     }
 }
