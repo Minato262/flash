@@ -15,7 +15,7 @@
  */
 package org.flashframework.aop.factory;
 
-import org.flashframework.beans.container.BeanContainerAware;
+import org.flashframework.core.Aware;
 import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +26,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v2.0
  */
-public final class AspectContainerAware extends ConcurrentHashMap implements AspectContainer {
+public final class AspectContainerAware extends ConcurrentHashMap implements AspectContainer, Aware {
     private static final long serialVersionUID = -5199907673664115807L;
 
-    private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
+    private static final Logger log = LoggerFactory.getLogger(AspectContainerAware.class);
 
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static final AspectContainer container = new AspectContainerAware();
+    private static AspectContainer container = new AspectContainerAware();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象

@@ -16,6 +16,7 @@
 package org.flashframework.beans.container;
 
 import org.flashframework.beans.BeanNotFindException;
+import org.flashframework.core.Aware;
 import org.flashframework.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
-public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer {
+public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer, Aware {
     private static final long serialVersionUID = -8079938385475595348L;
 
     private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
@@ -46,7 +47,7 @@ public final class BeanContainerAware extends ConcurrentHashMap implements BeanC
     /**
      * Bean 容器的静态对象，用于存储有注解的类的相关信息
      */
-    private static final BeanContainer container = new BeanContainerAware();
+    private static BeanContainer container = new BeanContainerAware();
 
     /**
      * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象

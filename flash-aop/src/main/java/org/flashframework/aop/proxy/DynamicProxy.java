@@ -16,18 +16,18 @@
 package org.flashframework.aop.proxy;
 
 import org.flashframework.aop.handle.AspectHandle;
-import org.flashframework.core.util.Assert;
 
 import java.lang.reflect.Proxy;
 
 /**
+ * JDK 动态代理（只支持 声明接口的类）
+ *
  * @author kay
  * @version v2.0
  */
 public class DynamicProxy {
 
     public Object bind(Object obj) {
-        Assert.isNotNull(obj);
         return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), new AspectHandle(obj));
     }
 }
