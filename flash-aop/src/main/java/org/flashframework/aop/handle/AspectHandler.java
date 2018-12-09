@@ -17,15 +17,21 @@ package org.flashframework.aop.handle;
 
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
+ * Aop 切面处理器
+ *
  * @author kay
  * @version v2.0
  */
 public class AspectHandler implements InvocationHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(AspectHandler.class);
 
     private Object obj;
 
@@ -51,6 +57,7 @@ public class AspectHandler implements InvocationHandler {
         }
         catch (Exception e) {
             interceptor.error(method, args, e);
+            log.error("Aspect Handler Exception, e={}", e);
             throw new AspectHandlerRuntimeException(e);
         }
         finally {
