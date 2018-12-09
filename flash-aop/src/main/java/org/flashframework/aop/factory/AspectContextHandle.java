@@ -19,11 +19,16 @@ import org.flashframework.aop.annotation.Aspect;
 import org.flashframework.context.factory.ApplicationContextHandle;
 
 /**
+ * Aop 注解处理器
+ *
  * @author kay
  * @version v2.0
  */
 public class AspectContextHandle extends ApplicationContextHandle {
 
+    /**
+     * Aop 切点注册表
+     */
     private AspectPointcutTable table = AspectPointcutTableAware.getInstance();
 
     /**

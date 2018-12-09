@@ -18,6 +18,8 @@ package org.flashframework.aop.factory;
 import org.flashframework.aop.AspectRuntimeException;
 
 /**
+ * Aop 切面未发现注册信息异常
+ *
  * @author kay
  * @version v2.0
  */

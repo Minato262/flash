@@ -18,7 +18,7 @@ package org.flashframework.aop.factory;
 import java.util.Map;
 
 /**
- * Aspect 容器
+ * Aspect 切面注册表
  *
  * @author kay
  * @version v2.0

@@ -23,6 +23,8 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * Aspect 切面注册表实现
+ *
  * @author kay
  * @version v2.0
  */

@@ -17,11 +17,16 @@ package org.flashframework.aop.factory;
 
 import org.flashframework.aop.proxy.DynamicProxy;
 import org.flashframework.beans.handle.Handle;
+import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.context.factory.ApplicationContextFactory;
 import org.flashframework.core.logger.Enabled;
 import org.flashframework.core.properties.FlashConfig;
 
+import java.security.InvalidParameterException;
+
 /**
+ * Aop 切面 工厂
+ *
  * @author kay
  * @version v2.0
  */
@@ -32,6 +37,9 @@ public class AspectContextFactory extends ApplicationContextFactory {
      */
     private static boolean enabled;
 
+    /**
+     * 动态代理
+     */
     private DynamicProxy proxy = new DynamicProxy();
 
     static {
@@ -56,6 +64,14 @@ public class AspectContextFactory extends ApplicationContextFactory {
         return new AspectContextHandle();
     }
 
+    /**
+     * 根据 Bean 名称，获取 Bean 实例
+     *
+     * @param name 想获取 Bean 的名称（一定不能为空）
+     * @return 获取 bean 对象
+     * @throws InvalidParameterException  如果字符串为空
+     * @throws BeanCreateFailureException 如果对象创建失败
+     */
     @Override
     public Object getBean(String name) {
         if (enabled) {
@@ -66,6 +82,14 @@ public class AspectContextFactory extends ApplicationContextFactory {
         }
     }
 
+    /**
+     * 根据 Bean 的信息获取 Bean 实例对象
+     *
+     * @param clazz 想获取 Bean 的信息（一定不能为null）
+     * @return 获取 bean 实例对象
+     * @throws InvalidParameterException  如果对象信息为 null
+     * @throws BeanCreateFailureException 如果对象创建失败
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(Class<T> clazz) {
