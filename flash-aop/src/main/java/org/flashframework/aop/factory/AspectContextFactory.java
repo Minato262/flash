@@ -18,6 +18,8 @@ package org.flashframework.aop.factory;
 import org.flashframework.aop.proxy.DynamicProxy;
 import org.flashframework.beans.handle.Handle;
 import org.flashframework.context.factory.ApplicationContextFactory;
+import org.flashframework.core.logger.Enabled;
+import org.flashframework.core.properties.FlashConfig;
 
 /**
  * @author kay
@@ -25,7 +27,17 @@ import org.flashframework.context.factory.ApplicationContextFactory;
  */
 public class AspectContextFactory extends ApplicationContextFactory {
 
+    /**
+     * 是否启动 flashframework 框架自带的 Aop 设置
+     */
+    private static boolean enabled;
+
     private DynamicProxy proxy = new DynamicProxy();
+
+    static {
+        final String strEnabled = FlashConfig.FLASH_AOP_ENABLED.load();
+        enabled = Enabled.getEnabled(strEnabled);
+    }
 
     /**
      * 默认构造器
@@ -46,12 +58,22 @@ public class AspectContextFactory extends ApplicationContextFactory {
 
     @Override
     public Object getBean(String name) {
-        return proxy.bind(super.getBean(name));
+        if (enabled) {
+            return proxy.bind(super.getBean(name));
+        }
+        else {
+            return super.getBean(name);
+        }
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getBean(Class<T> clazz) {
-        return (T) proxy.bind(super.getBean(clazz));
+        if (enabled) {
+            return (T) proxy.bind(super.getBean(clazz));
+        }
+        else {
+            return super.getBean(clazz);
+        }
     }
 }

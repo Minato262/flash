@@ -33,6 +33,11 @@ public enum FlashFile {
     INSTANCE_FLASH("/config/flash.properties"),
 
     /**
+     * Flash Aop配置
+     */
+    INSTANCE_FLASH_AOP("/config/flash_aop.properties"),
+
+    /**
      * Flash 日志配置
      */
     INSTANCE_FLASH_LOG("/config/flash_log.properties");

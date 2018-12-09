@@ -33,6 +33,11 @@ public enum FlashConfig {
     /**
      * Flash 日志打印是否启动配置（默认是开启的）
      */
+    FLASH_AOP_ENABLED(INSTANCE_FLASH_AOP, "enabled"),
+
+    /**
+     * Flash 日志打印是否启动配置（默认是开启的）
+     */
     FLASH_LOG_ENABLED(INSTANCE_FLASH_LOG, "enabled"),
 
     /**
