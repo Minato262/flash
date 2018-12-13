@@ -34,14 +34,14 @@ public final class AspectPointcutTableAware extends ConcurrentHashMap implements
     private static final Logger log = LoggerFactory.getLogger(AspectPointcutTableAware.class);
 
     /**
-     * Bean 容器的静态对象，用于存储有注解的类的相关信息
+     * Aspect 切面注册表的静态对象，用于存储有注解的类的相关信息
      */
     private static AspectPointcutTable table = new AspectPointcutTableAware();
 
     /**
-     * 获取 Bean 核心容器对象，单例模式下获取的是静态对象，原型模式下新建对象
+     * 获取 Aspect 切面注册表，单例模式下获取的是静态对象，原型模式下新建对象
      *
-     * @return Bean 容器接口
+     * @return Aspect 切面注册表
      */
     public static AspectPointcutTable getInstance() {
         return table;
