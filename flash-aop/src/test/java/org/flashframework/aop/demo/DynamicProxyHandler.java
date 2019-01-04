@@ -30,10 +30,10 @@ public class DynamicProxyHandler implements InvocationHandler {
     private InterceptorImpl interceptor = new InterceptorImpl();
 
     /**
-     * 　　 动态生成一个代理类对象，并绑定被代理类和代理处理器。
+     * 动态生成一个代理类对象，并绑定被代理类和代理处理器。
      *
-     * 　　 @param business
-     * 　　 @return 代理类对象
+     * @param business
+     * @return 代理类对象
      */
     public Object bind(Object business) {
         this.business = business;
@@ -41,13 +41,13 @@ public class DynamicProxyHandler implements InvocationHandler {
     }
 
     /**
-     * 　　 代理需要调用的方法，并在该方法调用前后，先调用连接器的方法。
+     * 代理需要调用的方法，并在该方法调用前后，先调用连接器的方法。
      *
-     * 　　 @param proxy 代理类对象
-     * 　　 @param method 被代理的接口方法
-     * 　　 @param args 被代理接口方法的参数
-     * 　　 @return 方法调用返回的结果
-     * 　　 @throws Throwable
+     * @param proxy 代理类对象
+     * @param method 被代理的接口方法
+     * @param args 被代理接口方法的参数
+     * @return 方法调用返回的结果
+     * @throws Throwable
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
