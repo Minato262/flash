@@ -15,9 +15,8 @@
  */
 package org.flashframework.core.io;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.core.util.Decoder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,9 +29,8 @@ import java.util.List;
  * @author kay
  * @version v1.0
  */
+@Slf4j
 public class ClassResourceLoader extends AbstractClassResource implements Resource {
-
-    private static final Logger log = LoggerFactory.getLogger(ClassResourceLoader.class);
 
     /**
      * 文件常量 ——— 名称 "file"

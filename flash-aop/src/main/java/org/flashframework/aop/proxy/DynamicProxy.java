@@ -15,6 +15,7 @@
  */
 package org.flashframework.aop.proxy;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.aop.handle.AspectHandler;
 
 import java.lang.reflect.InvocationHandler;
@@ -26,6 +27,7 @@ import java.lang.reflect.Proxy;
  * @author kay
  * @version v2.0
  */
+@Slf4j
 public class DynamicProxy {
 
     public Object bind(Object obj) {

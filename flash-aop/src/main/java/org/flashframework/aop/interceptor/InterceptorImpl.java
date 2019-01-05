@@ -15,12 +15,15 @@
  */
 package org.flashframework.aop.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.Method;
 
 /**
  * @author kay
  * @version v2.0
  */
+@Slf4j
 public class InterceptorImpl implements Interceptor {
 
     @Override

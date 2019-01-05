@@ -15,11 +15,10 @@
  */
 package org.flashframework.beans.container;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.beans.BeanNotFindException;
 import org.flashframework.core.Aware;
 import org.flashframework.core.util.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -29,10 +28,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v1.0
  */
+@Slf4j
 public final class BeanContainerAware extends ConcurrentHashMap implements BeanContainer, Aware {
     private static final long serialVersionUID = -8079938385475595348L;
-
-    private static final Logger log = LoggerFactory.getLogger(BeanContainerAware.class);
 
     /*
      * 概述:

@@ -15,10 +15,9 @@
  */
 package org.flashframework.aop.handle;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -29,9 +28,8 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v2.0
  */
+@Slf4j
 public class AspectHandler implements InvocationHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(AspectHandler.class);
 
     private Object obj;
 

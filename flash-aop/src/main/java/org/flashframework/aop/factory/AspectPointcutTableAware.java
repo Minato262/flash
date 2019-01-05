@@ -15,10 +15,9 @@
  */
 package org.flashframework.aop.factory;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.core.Aware;
 import org.flashframework.core.util.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,10 +27,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author kay
  * @version v2.0
  */
+@Slf4j
 public final class AspectPointcutTableAware extends ConcurrentHashMap implements AspectPointcutTable, Aware {
     private static final long serialVersionUID = -5199907673664115807L;
-
-    private static final Logger log = LoggerFactory.getLogger(AspectPointcutTableAware.class);
 
     /**
      * Aspect 切面注册表的静态对象，用于存储有注解的类的相关信息

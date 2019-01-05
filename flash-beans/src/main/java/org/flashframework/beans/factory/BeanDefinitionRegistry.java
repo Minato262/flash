@@ -15,6 +15,7 @@
  */
 package org.flashframework.beans.factory;
 
+import lombok.extern.slf4j.Slf4j;
 import org.flashframework.beans.*;
 import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.container.BeanContainer;
@@ -35,9 +36,8 @@ import java.util.Map;
  * @author kay
  * @version v1.0
  */
+@Slf4j
 public class BeanDefinitionRegistry implements Registry {
-
-    private static final Logger log = LoggerFactory.getLogger(BeanDefinitionRegistry.class);
 
     /**
      * Bean 容器

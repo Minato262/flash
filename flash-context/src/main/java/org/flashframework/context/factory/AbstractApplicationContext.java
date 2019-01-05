@@ -15,21 +15,22 @@
  */
 package org.flashframework.context.factory;
 
+import lombok.extern.slf4j.Slf4j;
+import org.flashframework.beans.BeanRuntimeException;
+import org.flashframework.beans.Registry;
+import org.flashframework.beans.Resolution;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerInitFailureException;
-import org.flashframework.beans.handle.Handler;
 import org.flashframework.beans.factory.BeanDefinitionRegistry;
 import org.flashframework.beans.factory.BeanDefinitionResolution;
+import org.flashframework.beans.handle.Handler;
 import org.flashframework.beans.handle.HandlerChain;
 import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.context.ApplicationContext;
-import org.flashframework.core.io.Resource;
-import org.flashframework.beans.*;
 import org.flashframework.core.io.ClassResourceLoader;
+import org.flashframework.core.io.Resource;
 import org.flashframework.core.logger.Configurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.security.InvalidParameterException;
 
@@ -40,9 +41,8 @@ import java.security.InvalidParameterException;
  * @author kay
  * @version v1.0
  */
+@Slf4j
 abstract class AbstractApplicationContext implements ApplicationContext {
-
-    private static final Logger log = LoggerFactory.getLogger(AbstractApplicationContext.class);
 
     /*
      * 概述：
