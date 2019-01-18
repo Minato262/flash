@@ -25,7 +25,7 @@ import org.flashframework.core.properties.FlashConfig;
 import java.security.InvalidParameterException;
 
 /**
- * Aop 切面 工厂
+ * Aop 切面工厂
  *
  * @author kay
  * @version v2.0
