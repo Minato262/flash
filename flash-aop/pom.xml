@@ -33,31 +33,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
         <!-- flash framework -->
-        <dependency>
-            <groupId>org.flashframework</groupId>
-            <artifactId>flash-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flashframework</groupId>
-            <artifactId>flash-beans</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.flashframework</groupId>
             <artifactId>flash-context</artifactId>

@@ -30,6 +30,12 @@ import java.lang.reflect.Proxy;
 @Slf4j
 public class DynamicProxy {
 
+    /**
+     *
+     *
+     * @param obj
+     * @return
+     */
     public Object bind(Object obj) {
         ClassLoader loader = obj.getClass().getClassLoader();
         Class<?>[] interfaces = obj.getClass().getInterfaces();

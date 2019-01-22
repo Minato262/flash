@@ -19,6 +19,8 @@ import org.flashframework.aop.annotation.*;
 import org.flashframework.context.annotation.Component;
 
 /**
+ * {@link Aspect} test.
+ *
  * @author kay
  * @version v2.0
  */
@@ -26,7 +28,7 @@ import org.flashframework.context.annotation.Component;
 @Component
 public class AspectTest {
 
-    @After("")
+    @After(value = "", argNames = "")
     public void afterTest() {
     }
 
@@ -38,15 +40,15 @@ public class AspectTest {
     public void afterThrowingTest() {
     }
 
-    @Around("")
+    @Around(value = "", argNames = "")
     public void aroundTest() {
     }
 
-    @Before("")
+    @Before(value = "", argNames = "")
     public void beforeTest() {
     }
 
-    @Pointcut("")
+    @Pointcut(value = "", argNames = "")
     public void pointcutTest() {
     }
 }

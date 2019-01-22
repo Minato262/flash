@@ -32,6 +32,14 @@
     <artifactId>flash-http</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <!-- flash framework -->
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-context</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>flash-http</finalName>
     </build>

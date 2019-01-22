@@ -44,7 +44,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- dependencies -->
         <flash.version>2.0-SNAPSHOT</flash.version>
-        <servlet.version>3.1.0</servlet.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <lombok.version>1.16.22</lombok.version>
         <junit.version>4.12</junit.version>
         <!-- jvm -->
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -61,53 +62,53 @@
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-core</artifactId>
-                <version>2.0-SNAPSHOT</version>
+                <version>${flash.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-beans</artifactId>
-                <version>2.0-SNAPSHOT</version>
+                <version>${flash.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-context</artifactId>
-                <version>2.0-SNAPSHOT</version>
+                <version>${flash.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-http</artifactId>
-                <version>2.0-SNAPSHOT</version>
+                <version>${flash.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flashframework</groupId>
                 <artifactId>flash-web</artifactId>
-                <version>2.0-SNAPSHOT</version>
+                <version>${flash.version}</version>
             </dependency>
 
             <!-- slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.5</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.5</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.22</version>
+                <version>${lombok.version}</version>
             </dependency>
 
-            <!-- testing -->
+            <!-- junit -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <version>${junit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -115,27 +116,32 @@
     <build>
         <finalName>flashframework</finalName>
         <plugins>
+            <!-- maven-compiler-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
-                <version>3.3</version>
+                <version>${compiler.version}</version>
             </plugin>
+
+            <!-- maven-install-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
+                <version>${install.version}</version>
             </plugin>
+
+            <!-- maven-surefire-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
-                <version>2.20.1</version>
+                <version>${surefire.version}</version>
             </plugin>
         </plugins>
     </build>
