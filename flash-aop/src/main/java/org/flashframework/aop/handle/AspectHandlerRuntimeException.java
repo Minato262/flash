@@ -18,6 +18,8 @@ package org.flashframework.aop.handle;
 import org.flashframework.aop.AspectRuntimeException;
 
 /**
+ * Aop 切面处理器异常
+ *
  * @author kay
  * @version v2.0
  */

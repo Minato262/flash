@@ -18,7 +18,7 @@ package org.flashframework.aop.interceptor;
 import org.flashframework.aop.AspectRuntimeException;
 
 /**
- *
+ * 拦截器运行异常
  *
  * @author kay
  * @version v2.0

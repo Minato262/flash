@@ -18,6 +18,8 @@ package org.flashframework.aop.interceptor;
 import java.lang.reflect.Method;
 
 /**
+ * Aop 拦截器
+ *
  * @author kay
  * @version v2.0
  */
