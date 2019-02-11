@@ -15,7 +15,7 @@
  */
 
 /**
- * Aop 相关工厂
+ * Aop 相关工厂包
  *
  * @author kay
  * @version v2.0

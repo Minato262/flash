@@ -15,7 +15,7 @@
  */
 
 /**
- * Aop 切面相关注解
+ * Aop 切面相关注解包
  *
  * @author kay
  * @version v2.0

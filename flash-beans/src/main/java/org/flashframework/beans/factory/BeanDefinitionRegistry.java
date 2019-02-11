@@ -16,16 +16,15 @@
 package org.flashframework.beans.factory;
 
 import lombok.extern.slf4j.Slf4j;
-import org.flashframework.beans.*;
-import org.flashframework.beans.container.Scope;
+import org.flashframework.beans.Registry;
+import org.flashframework.beans.Resolution;
 import org.flashframework.beans.container.BeanContainer;
 import org.flashframework.beans.container.BeanContainerAware;
 import org.flashframework.beans.container.BeanContainerMode;
+import org.flashframework.beans.container.Scope;
 import org.flashframework.beans.util.BeanCreateFailureException;
 import org.flashframework.beans.util.BeanUtils;
 import org.flashframework.core.util.Assert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.security.InvalidParameterException;
 import java.util.Map;

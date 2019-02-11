@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * {@code AfterThrowing}
+ * {@code AfterThrowing} 注解
  *
  * @author kay
  * @version v2.0

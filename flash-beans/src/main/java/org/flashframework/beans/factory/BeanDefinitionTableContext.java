@@ -81,7 +81,7 @@ public abstract class BeanDefinitionTableContext implements BeanDefinitionAware 
     private String getLowerCase(String name) {
         Assert.isNotEmpty(name);
         int i = name.lastIndexOf(".");
-        String lowerCase = name.substring(i + 1, name.length());
+        String lowerCase = name.substring(i + 1);
         return StringUtils.toLowercaseFirst(lowerCase);
     }
 }

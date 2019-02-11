@@ -18,7 +18,7 @@ package org.flashframework.core.util;
 /**
  * 字符串常用工具类
  *
- * <p>用于简化对字符串的常规处理
+ * <p>用于简化对字符串的常规处理</p>
  *
  * @author kay
  * @version v1.0
@@ -62,7 +62,7 @@ public class StringUtils {
             return str;
         }
         else {
-            return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
+            return Character.toLowerCase(str.charAt(0)) + str.substring(1);
         }
     }
 }
