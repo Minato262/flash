@@ -85,6 +85,7 @@ public final class BeanDefinitionWrapImpl {
         // 标记 BeanDefinition 的对象是否需要载入
         boolean isInject = false;
         for (Field field : value.getClass().getDeclaredFields()) {
+            // 注解扫描
             for (Annotation annotation : field.getAnnotations()) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
                     // 根据 key 获取容器对应信息，如果为 Class 对象，则重新载入对象
