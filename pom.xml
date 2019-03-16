@@ -29,6 +29,7 @@
         <module>flash-beans</module>
         <module>flash-http</module>
         <module>flash-aop</module>
+        <module>flash-test</module>
     </modules>
 
     <groupId>org.flashframework</groupId>

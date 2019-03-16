@@ -85,7 +85,6 @@ public final class BeanDefinitionWrapImpl {
         // 标记 BeanDefinition 的对象是否需要载入
         boolean isInject = false;
         for (Field field : value.getClass().getDeclaredFields()) {
-            // 注解扫描
             for (Annotation annotation : field.getAnnotations()) {
                 if (annotation instanceof Autowired || annotation instanceof Resource) {
                     // 根据 key 获取容器对应信息，如果为 Class 对象，则重新载入对象
@@ -99,7 +98,7 @@ public final class BeanDefinitionWrapImpl {
                         field.set(value, object);
                     }
                     catch (IllegalAccessException e) {
-                        // 如果 容器内 对象信息为 接口 或 抽象类，则反射时，可能会抛出错误
+                        // 如果容器内对象信息为接口或抽象类，则反射时，可能会抛出错误
                         throw new BeanLoadFailureException(e);
                     }
 
