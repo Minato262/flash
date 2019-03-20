@@ -27,6 +27,7 @@ import java.util.Properties;
  * @version v2.0
  */
 public enum FlashFile {
+
     /**
      * Flash 主要配置
      */
@@ -42,6 +43,9 @@ public enum FlashFile {
      */
     INSTANCE_FLASH_LOG("/config/flash_log.properties");
 
+    /**
+     * 配置
+     */
     private Properties prop;
 
     /**

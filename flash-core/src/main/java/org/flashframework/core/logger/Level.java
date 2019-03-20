@@ -22,6 +22,7 @@ package org.flashframework.core.logger;
  * @version v2.0
  */
 public enum Level {
+
     /**
      * 日志 打印等级 DEBUG
      */
