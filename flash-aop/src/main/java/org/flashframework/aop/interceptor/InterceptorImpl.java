@@ -26,37 +26,85 @@ import java.lang.reflect.Method;
 @Slf4j
 public class InterceptorImpl implements Interceptor {
 
+    /**
+     * 切面，在进入方法时执行
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标参数数组
+     */
     @Override
     public void begin(Method methodTarget, Object[] args) {
 
     }
 
+    /**
+     * 切面，用于设置拦截过滤条件
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标参数数组
+     * @return 是否拦截成功
+     */
     @Override
     public boolean filter(Method methodTarget, Object[] args) {
         return true;
     }
 
+    /**
+     * 切面，在目标方法调用前执行
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标参数数组
+     */
     @Override
     public void before(Method methodTarget, Object[] args) {
         System.out.println("before");
     }
 
+    /**
+     * 切面，用于设置拦截过滤条件
+     *
+     * @param proxy  对象代理
+     * @param target 对象
+     * @param method 目标方法
+     * @param args   目标参数数组
+     * @return 方法结果返回
+     */
     @Override
     public Object around(Object proxy, Object target, Method method, Object[] args) {
         System.out.println("around");
         return null;
     }
 
+    /**
+     * 切面，在目标方法调用后执行
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标参数数组
+     */
     @Override
     public void after(Method methodTarget, Object[] args) {
         System.out.println("after");
     }
 
+    /**
+     * 切面，用于设置拦截过滤条件
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标参数数组
+     * @param e            异常
+     * @throws Throwable 抛出异常
+     */
     @Override
-    public void error(Method methodTarget, Object[] args, Throwable e) {
-
+    public void error(Method methodTarget, Object[] args, Throwable e) throws Throwable {
+        throw new Throwable();
     }
 
+    /**
+     * 切面，用于设置拦截过滤条件
+     *
+     * @param methodTarget 目标方法
+     * @param args         目标方法
+     */
     @Override
     public void end(Method methodTarget, Object[] args) {
 
