@@ -15,8 +15,11 @@
  */
 package org.flashframework.aop.factory;
 
-import org.flashframework.aop.annotation.Aspect;
+import org.flashframework.aop.annotation.*;
+import org.flashframework.aop.handle.HandlerImpl;
 import org.flashframework.context.factory.ApplicationContextHandler;
+
+import java.lang.reflect.Method;
 
 /**
  * Aop 注解处理器
@@ -44,7 +47,42 @@ public class AspectContextHandler extends ApplicationContextHandler {
         Aspect annotation = (Aspect) clazz.getAnnotation(Aspect.class);
         if (annotation != null) {
             String name = super.getSimpleName(clazz);
-            table.put(name, clazz);
+
+            HandlerImpl handler = getHandler(clazz);
+            table.put(name, handler);
         }
+    }
+
+    private HandlerImpl getHandler(Class clazz) {
+        HandlerImpl handler = new HandlerImpl();
+
+        Method[] methods = clazz.getMethods();
+        for (Method method : methods) {
+            Before before = method.getAnnotation(Before.class);
+            if (before != null) {
+                handler.setBefore(before);
+            }
+            Around around = method.getAnnotation(Around.class);
+            if (around != null) {
+                handler.setAround(around);
+            }
+            After after = method.getAnnotation(After.class);
+            if (after != null) {
+                handler.setAfter(after);
+            }
+            Pointcut pointcut = method.getAnnotation(Pointcut.class);
+            if (pointcut != null) {
+                handler.setPointcut(pointcut);
+            }
+            AfterReturning afterReturning = method.getAnnotation(AfterReturning.class);
+            if (afterReturning != null) {
+                handler.setAfterReturning(afterReturning);
+            }
+            AfterThrowing afterThrowing = method.getAnnotation(AfterThrowing.class);
+            if (afterThrowing != null) {
+                handler.setAfterThrowing(afterThrowing);
+            }
+        }
+        return handler;
     }
 }

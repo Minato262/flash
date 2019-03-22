@@ -77,6 +77,11 @@
             </dependency>
             <dependency>
                 <groupId>org.flashframework</groupId>
+                <artifactId>flash-aop</artifactId>
+                <version>${flash.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flashframework</groupId>
                 <artifactId>flash-http</artifactId>
                 <version>${flash.version}</version>
             </dependency>

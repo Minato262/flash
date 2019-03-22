@@ -1,8 +1,8 @@
 package com.kay.cn;
 
 import com.kay.cn.factory.Father;
+import org.flashframework.aop.factory.AspectContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
-import org.flashframework.context.factory.ApplicationContextFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class AnnotationTest {
 
     @Before
     public void init() {
-        factory = new ApplicationContextFactory();
+        factory = new AspectContextFactory();
     }
 
     @Test

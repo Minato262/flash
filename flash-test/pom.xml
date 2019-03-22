@@ -17,5 +17,9 @@
             <groupId>org.flashframework</groupId>
             <artifactId>flash-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.flashframework</groupId>
+            <artifactId>flash-aop</artifactId>
+        </dependency>
     </dependencies>
 </project>
