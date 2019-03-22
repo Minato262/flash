@@ -57,7 +57,7 @@ public class AnnotationTest extends BeforeTest {
 
     @Test
     public void test1() {
-        People people = factory.getBean(PeopleImpl.class);
+        People people = (People) factory.getBean(PeopleImpl.class);
         people.getAge();
     }
 }

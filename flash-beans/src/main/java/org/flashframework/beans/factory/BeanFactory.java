@@ -43,5 +43,5 @@ public interface BeanFactory {
      * @throws InvalidParameterException  如果对象信息为null
      * @throws BeanCreateFailureException 如果对象新建失败
      */
-    <T> T getBean(Class<T> clazz);
+    <T> Object getBean(Class<T> clazz);
 }

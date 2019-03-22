@@ -90,11 +90,10 @@ public class AspectContextFactory extends ApplicationContextFactory {
      * @throws InvalidParameterException  如果对象信息为 null
      * @throws BeanCreateFailureException 如果对象创建失败
      */
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> T getBean(Class<T> clazz) {
+    public <T> Object getBean(Class<T> clazz) {
         if (enabled) {
-            return (T) proxy.bind(super.getBean(clazz));
+            return proxy.bind(super.getBean(clazz));
         }
         else {
             return super.getBean(clazz);

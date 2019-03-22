@@ -61,7 +61,7 @@ public class BeanFactoryTest extends BeforeTest {
         Assert.assertNotNull(people1);
 
         BeanFactory factory2 = new ApplicationContextFactory();
-        People people2 = factory2.getBean(People.class);
+        People people2 = (People) factory2.getBean(People.class);
         Assert.assertNotNull(people2);
     }
 

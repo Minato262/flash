@@ -144,7 +144,7 @@ abstract class AbstractApplicationContext implements ApplicationContext {
      * @throws BeanCreateFailureException 如果对象新建失败
      */
     @Override
-    public <T> T getBean(Class<T> clazz) {
+    public <T> Object getBean(Class<T> clazz) {
         throw new BeanContainerInitFailureException();
     }
 }

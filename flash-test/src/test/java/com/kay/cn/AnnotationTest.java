@@ -18,7 +18,7 @@ public class AnnotationTest {
 
     @Test
     public void test() {
-        Father father = (Father) factory.getBean("father");
+        Father father = (Father) factory.getBean(Father.class);
         Assert.assertNotNull(father);
     }
 }

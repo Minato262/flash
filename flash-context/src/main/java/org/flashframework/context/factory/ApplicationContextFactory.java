@@ -90,7 +90,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      * @throws BeanCreateFailureException 如果对象创建失败
      */
     @Override
-    public <T> T getBean(Class<T> clazz) {
+    public <T> Object getBean(Class<T> clazz) {
         Assert.isNotNull(clazz);
         return beanDefinition.loadBeanDefinition(clazz);
     }

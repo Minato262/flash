@@ -5,7 +5,7 @@ import org.flashframework.context.annotation.Component;
 
 @Aspect
 @Component
-public class AspectTest {
+public class ServiceAspect {
 
     @After(value = "t", argNames = "t")
     public void afterTest() {
