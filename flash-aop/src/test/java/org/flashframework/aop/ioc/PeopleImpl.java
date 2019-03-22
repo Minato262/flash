@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @Service("people1")
 public class PeopleImpl implements People {
 
-    @Resource
+    //@Resource
     private Factory factory;
 
     private String name;
@@ -28,7 +28,7 @@ public class PeopleImpl implements People {
     @Override
     public int getAge() {
         System.out.println(age);
-        factory.test();
+        //factory.test();
         return age;
     }
 
