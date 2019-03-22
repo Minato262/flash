@@ -16,7 +16,7 @@
 package org.flashframework.aop.factory;
 
 import org.flashframework.aop.annotation.*;
-import org.flashframework.aop.handle.HandlerImpl;
+import org.flashframework.aop.handle.HandlerBean;
 import org.flashframework.context.factory.ApplicationContextHandler;
 
 import java.lang.reflect.Method;
@@ -48,13 +48,13 @@ public class AspectContextHandler extends ApplicationContextHandler {
         if (annotation != null) {
             String name = super.getSimpleName(clazz);
 
-            HandlerImpl handler = getHandler(clazz);
+            HandlerBean handler = getHandler(clazz);
             table.put(name, handler);
         }
     }
 
-    private HandlerImpl getHandler(Class clazz) {
-        HandlerImpl handler = new HandlerImpl();
+    private HandlerBean getHandler(Class clazz) {
+        HandlerBean handler = new HandlerBean();
 
         Method[] methods = clazz.getMethods();
         for (Method method : methods) {

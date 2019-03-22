@@ -4,7 +4,7 @@ import lombok.Data;
 import org.flashframework.aop.annotation.*;
 
 @Data
-public class HandlerImpl {
+public class HandlerBean {
 
     private Aspect aspect;
 
