@@ -53,6 +53,12 @@ public class AspectContextHandler extends ApplicationContextHandler {
         }
     }
 
+    /**
+     * 获取 Handler bean.
+     *
+     * @param clazz 对象 Class
+     * @return Handler bean
+     */
     private HandlerBean getHandler(Class clazz) {
         HandlerBean handler = new HandlerBean();
 
