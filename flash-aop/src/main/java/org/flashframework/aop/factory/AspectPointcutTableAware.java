@@ -82,7 +82,7 @@ public final class AspectPointcutTableAware extends ConcurrentHashMap implements
         }
 
         if (log.isDebugEnabled()) {
-            log.debug("Aspect Pointcut table put, key:{}, value:{}", key, value);
+            log.debug("Aspect pointcut table put, key:{}, value:{}", key, value);
         }
         super.put(key, value);
     }
