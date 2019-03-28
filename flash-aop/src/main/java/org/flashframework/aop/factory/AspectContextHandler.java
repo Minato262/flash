@@ -48,8 +48,8 @@ public class AspectContextHandler extends ApplicationContextHandler {
         if (annotation != null) {
             String name = super.getSimpleName(clazz);
 
-            HandlerBean handler = getHandler(clazz);
-            table.put(name, handler);
+            HandlerBean bean = getHandler(clazz);
+            table.put(name, bean);
         }
     }
 
@@ -61,6 +61,7 @@ public class AspectContextHandler extends ApplicationContextHandler {
      */
     private HandlerBean getHandler(Class clazz) {
         HandlerBean handler = new HandlerBean();
+        handler.setClazz(clazz);
 
         Method[] methods = clazz.getMethods();
         for (Method method : methods) {

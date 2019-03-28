@@ -21,10 +21,12 @@ public class ServiceAspect {
 
     @Around(value = "t1", argNames = "t1")
     public void aroundTest() {
+        //
     }
 
     @Before(value = "t2", argNames = "t2")
     public void beforeTest() {
+        //
     }
 
     @Pointcut(value = "t3", argNames = "t3")

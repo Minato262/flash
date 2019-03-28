@@ -16,15 +16,48 @@
 package org.flashframework.aop.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
+import org.flashframework.aop.annotation.*;
+import org.flashframework.aop.factory.AspectPointcutTable;
+import org.flashframework.aop.factory.AspectPointcutTableAware;
+import org.flashframework.aop.handle.HandlerBean;
+import org.flashframework.aop.handle.method.MethodInterceptor;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
+ * Aop 拦截器，用于拦截 方法
+ *
  * @author kay
  * @version v2.0
  */
 @Slf4j
 public class InterceptorImpl implements Interceptor {
+
+    /**
+     * Aop 切点注册表
+     */
+    private AspectPointcutTable table = AspectPointcutTableAware.getInstance();
+
+    private MethodInterceptor interceptor = new InvokerInterceptor();
+
+    /**
+     *
+     */
+    private Set<String> set = new HashSet<>();
+
+    public InterceptorImpl() {
+        init();
+    }
+
+    private void init() {
+        for (Object key : table.keySet()) {
+            HandlerBean bean = (HandlerBean) table.get(key);
+            System.out.println(bean);
+        }
+    }
 
     /**
      * 切面，在进入方法时执行
@@ -34,7 +67,7 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void begin(Method methodTarget, Object[] args) {
-
+        interceptor.target(methodTarget, args);
     }
 
     /**
@@ -57,7 +90,7 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void before(Method methodTarget, Object[] args) {
-        System.out.println("before");
+        interceptor.target(methodTarget, args);
     }
 
     /**
@@ -71,7 +104,6 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public Object around(Object proxy, Object target, Method method, Object[] args) {
-        System.out.println("around");
         return null;
     }
 
@@ -83,7 +115,7 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void after(Method methodTarget, Object[] args) {
-        System.out.println("after");
+        interceptor.target(methodTarget, args);
     }
 
     /**
@@ -107,6 +139,6 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void end(Method methodTarget, Object[] args) {
-
+        interceptor.target(methodTarget, args);
     }
 }

@@ -19,4 +19,6 @@ public class HandlerBean {
     private AfterReturning afterReturning;
 
     private AfterThrowing afterThrowing;
+
+    private Class clazz;
 }
