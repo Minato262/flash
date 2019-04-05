@@ -1,7 +1,6 @@
 package com.kay.cn;
 
 import com.kay.cn.factory.Father;
-import com.kay.cn.factory.FatherImpl;
 import org.flashframework.aop.factory.AspectContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.junit.Assert;
@@ -19,9 +18,9 @@ public class AnnotationTest {
 
     @Test
     public void test() {
-        Father father = (Father) factory.getBean(FatherImpl.class);
+        Father father = (Father) factory.getBean("father");
         Assert.assertNotNull(father);
 
-        father.getMoblie();
+        father.getMobile();
     }
 }

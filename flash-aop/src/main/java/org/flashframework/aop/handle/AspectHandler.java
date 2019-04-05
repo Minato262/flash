@@ -33,10 +33,11 @@ public class AspectHandler implements InvocationHandler {
 
     private Object obj;
 
-    private Interceptor interceptor = new InterceptorImpl();
+    private Interceptor interceptor;
 
     public AspectHandler(Object obj) {
         this.obj = obj;
+        interceptor = new InterceptorImpl(obj);
     }
 
     @Override

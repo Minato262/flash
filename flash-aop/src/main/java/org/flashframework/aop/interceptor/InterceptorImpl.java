@@ -16,16 +16,12 @@
 package org.flashframework.aop.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.flashframework.aop.annotation.*;
 import org.flashframework.aop.factory.AspectPointcutTable;
 import org.flashframework.aop.factory.AspectPointcutTableAware;
 import org.flashframework.aop.handle.HandlerBean;
 import org.flashframework.aop.handle.method.MethodInterceptor;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Aop 拦截器，用于拦截 方法
@@ -43,12 +39,11 @@ public class InterceptorImpl implements Interceptor {
 
     private MethodInterceptor interceptor = new InvokerInterceptor();
 
-    /**
-     *
-     */
-    private Set<String> set = new HashSet<>();
+    private Object obj;
 
-    public InterceptorImpl() {
+    public InterceptorImpl(Object obj) {
+        System.out.println(obj.getClass());
+        this.obj = obj;
         init();
     }
 

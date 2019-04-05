@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kay.cn.factory;
+package com.kay.cn.factory.impl;
 
+import com.kay.cn.factory.Bean;
+import com.kay.cn.factory.Father;
 import org.flashframework.beans.annotation.Repository;
 
 /**
- * {@link FatherImpl} Test.
+ * {@link Father} Test.
  *
  * @author kay
  * @version v1.0
@@ -26,7 +28,7 @@ import org.flashframework.beans.annotation.Repository;
 @Repository("father")
 public class FatherImpl extends Bean implements Father {
 
-    private String moblie;
+    private String mobile;
 
     public FatherImpl() {
         this.setName("123");
@@ -34,11 +36,11 @@ public class FatherImpl extends Bean implements Father {
     }
 
     @Override
-    public String getMoblie() {
-        return moblie;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMoblie(String moblie) {
-        this.moblie = moblie;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

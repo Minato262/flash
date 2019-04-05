@@ -68,27 +68,22 @@ public class AspectContextHandler extends ApplicationContextHandler {
             Before before = method.getAnnotation(Before.class);
             if (before != null) {
                 handler.setBefore(before);
-                continue;
             }
             Around around = method.getAnnotation(Around.class);
             if (around != null) {
                 handler.setAround(around);
-                continue;
             }
             After after = method.getAnnotation(After.class);
             if (after != null) {
                 handler.setAfter(after);
-                continue;
             }
             Pointcut pointcut = method.getAnnotation(Pointcut.class);
             if (pointcut != null) {
                 handler.setPointcut(pointcut);
-                continue;
             }
             AfterReturning afterReturning = method.getAnnotation(AfterReturning.class);
             if (afterReturning != null) {
                 handler.setAfterReturning(afterReturning);
-                continue;
             }
             AfterThrowing afterThrowing = method.getAnnotation(AfterThrowing.class);
             if (afterThrowing != null) {

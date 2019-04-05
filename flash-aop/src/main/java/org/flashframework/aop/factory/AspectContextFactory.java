@@ -43,7 +43,7 @@ public class AspectContextFactory extends ApplicationContextFactory {
     private DynamicProxy proxy = new DynamicProxy();
 
     static {
-        final String strEnabled = FlashConfig.FLASH_AOP_ENABLED.load();
+        String strEnabled = FlashConfig.FLASH_AOP_ENABLED.load();
         enabled = Enabled.getEnabled(strEnabled);
     }
 
