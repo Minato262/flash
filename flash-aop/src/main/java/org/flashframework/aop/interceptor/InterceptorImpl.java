@@ -49,7 +49,7 @@ public class InterceptorImpl implements Interceptor {
     }
 
     private void init(Object obj) {
-        packageUrl = getPackage(obj.getClass());
+        packageUrl = getPackageUrl(obj.getClass());
         System.out.println(packageUrl);
 
         for (Object key : table.keySet()) {
@@ -58,7 +58,13 @@ public class InterceptorImpl implements Interceptor {
         }
     }
 
-    private String getPackage(Class clazz) {
+    /**
+     * 获取 对象 的类路径
+     *
+     * @param clazz 对象信息
+     * @return 类路径
+     */
+    private String getPackageUrl(Class clazz) {
         return clazz.getName().substring(0, clazz.getName().lastIndexOf("."));
     }
 
@@ -67,7 +73,31 @@ public class InterceptorImpl implements Interceptor {
     }
 
     private boolean isPointcut(AopAnno aopAnno) {
-        return true;
+        if (BEFORE == aopAnno) {
+            for (Object key : table.keySet()) {
+                HandlerBean bean = (HandlerBean) table.get(key);
+                if (bean.getBefore().value().contains(packageUrl)) {
+                    return true;
+                }
+            }
+        }
+        else if (AROUND == aopAnno) {
+            for (Object key : table.keySet()) {
+                HandlerBean bean = (HandlerBean) table.get(key);
+                if (bean.getAround().value().contains(packageUrl)) {
+                    return true;
+                }
+            }
+        }
+        else if (AFTER == aopAnno) {
+            for (Object key : table.keySet()) {
+                HandlerBean bean = (HandlerBean) table.get(key);
+                if (bean.getAfter().value().contains(packageUrl)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -119,9 +149,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public Object around(Object proxy, Object target, Method method, Object[] args) {
-        if (isPointcut(AROUND)) {
-
-        }
+//        if (isPointcut(AROUND)) {
+//
+//        }
         return null;
     }
 
