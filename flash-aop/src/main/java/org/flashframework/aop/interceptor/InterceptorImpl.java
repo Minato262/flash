@@ -148,7 +148,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void error(Method methodTarget, Object[] args, Throwable e) throws Throwable {
-        throw new Throwable();
+        if (isPointcut(AFTER_THROWING)) {
+            throw new Throwable();
+        }
     }
 
     /**
