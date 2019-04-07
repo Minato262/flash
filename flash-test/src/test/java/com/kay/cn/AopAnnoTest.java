@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AnnotationTest {
+public class AopAnnoTest {
 
     protected BeanFactory factory;
 

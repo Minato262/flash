@@ -16,12 +16,15 @@
 package org.flashframework.aop.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
+import org.flashframework.aop.annotation.AopAnno;
 import org.flashframework.aop.factory.AspectPointcutTable;
 import org.flashframework.aop.factory.AspectPointcutTableAware;
 import org.flashframework.aop.handle.HandlerBean;
 import org.flashframework.aop.handle.method.MethodInterceptor;
 
 import java.lang.reflect.Method;
+
+import static org.flashframework.aop.annotation.AopAnno.*;
 
 /**
  * Aop 拦截器，用于拦截 方法
@@ -63,6 +66,10 @@ public class InterceptorImpl implements Interceptor {
         return true;
     }
 
+    private boolean isPointcut(AopAnno aopAnno) {
+        return true;
+    }
+
     /**
      * 切面，在进入方法时执行
      *
@@ -96,7 +103,7 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void before(Method methodTarget, Object[] args) {
-        if (isPointcut()) {
+        if (isPointcut(BEFORE)) {
             interceptor.target(methodTarget, args);
         }
     }
@@ -112,6 +119,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public Object around(Object proxy, Object target, Method method, Object[] args) {
+        if (isPointcut(AROUND)) {
+
+        }
         return null;
     }
 
@@ -123,7 +133,7 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void after(Method methodTarget, Object[] args) {
-        if (isPointcut()) {
+        if (isPointcut(AFTER)) {
             interceptor.target(methodTarget, args);
         }
     }

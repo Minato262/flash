@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v1.0
  */
-public class AnnotationTest extends BeforeTest {
+public class AopAnnoTest extends BeforeTest {
 
     @Test
     public void test() {

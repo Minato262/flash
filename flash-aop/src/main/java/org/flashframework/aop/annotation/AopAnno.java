@@ -3,7 +3,7 @@ package org.flashframework.aop.annotation;
 import lombok.Getter;
 
 @Getter
-public enum Annotation {
+public enum AopAnno {
     AFTER(),
     AFTER_RETURNING(),
     AFTER_THROWING(),
@@ -12,7 +12,7 @@ public enum Annotation {
     BEFORE(),
     POINTCUT();
 
-    Annotation() {
+    AopAnno() {
         //
     }
 }
