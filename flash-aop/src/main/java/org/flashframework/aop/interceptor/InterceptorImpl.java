@@ -39,19 +39,28 @@ public class InterceptorImpl implements Interceptor {
 
     private MethodInterceptor interceptor = new InvokerInterceptor();
 
-    private Object obj;
+    private String packageUrl;
 
     public InterceptorImpl(Object obj) {
-        System.out.println(obj.getClass());
-        this.obj = obj;
-        init();
+        init(obj);
     }
 
-    private void init() {
+    private void init(Object obj) {
+        packageUrl = getPackage(obj.getClass());
+        System.out.println(packageUrl);
+
         for (Object key : table.keySet()) {
             HandlerBean bean = (HandlerBean) table.get(key);
             System.out.println(bean);
         }
+    }
+
+    private String getPackage(Class clazz) {
+        return clazz.getName().substring(0, clazz.getName().lastIndexOf("."));
+    }
+
+    private boolean isPointcut() {
+        return true;
     }
 
     /**
@@ -62,7 +71,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void begin(Method methodTarget, Object[] args) {
-        interceptor.target(methodTarget, args);
+        if (isPointcut()) {
+            interceptor.target(methodTarget, args);
+        }
     }
 
     /**
@@ -85,7 +96,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void before(Method methodTarget, Object[] args) {
-        interceptor.target(methodTarget, args);
+        if (isPointcut()) {
+            interceptor.target(methodTarget, args);
+        }
     }
 
     /**
@@ -110,7 +123,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void after(Method methodTarget, Object[] args) {
-        interceptor.target(methodTarget, args);
+        if (isPointcut()) {
+            interceptor.target(methodTarget, args);
+        }
     }
 
     /**
@@ -134,6 +149,8 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public void end(Method methodTarget, Object[] args) {
-        interceptor.target(methodTarget, args);
+        if (isPointcut()) {
+            interceptor.target(methodTarget, args);
+        }
     }
 }
