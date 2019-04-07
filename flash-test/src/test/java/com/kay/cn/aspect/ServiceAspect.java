@@ -26,7 +26,7 @@ public class ServiceAspect {
 
     @Before(value = "t2", argNames = "t2")
     public void beforeTest() {
-        //
+        System.out.println("beforeTest");
     }
 
     @Pointcut(value = "t3", argNames = "t3")

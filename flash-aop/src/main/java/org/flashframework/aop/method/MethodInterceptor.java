@@ -4,5 +4,5 @@ import java.lang.reflect.Method;
 
 public interface MethodInterceptor {
 
-    Object target(Method methodTarget, Object[] args);
+    Object target(Method method, Object[] args);
 }

@@ -50,7 +50,6 @@ public class InterceptorImpl implements Interceptor {
 
     private void init(Object obj) {
         packageUrl = getPackageUrl(obj.getClass());
-        System.out.println(packageUrl);
 
         for (Object key : table.keySet()) {
             HandlerBean bean = (HandlerBean) table.get(key);
@@ -68,10 +67,21 @@ public class InterceptorImpl implements Interceptor {
         return clazz.getName().substring(0, clazz.getName().lastIndexOf("."));
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     private boolean isPointcut() {
         return true;
     }
 
+    /**
+     *
+     *
+     * @param aopAnno
+     * @return
+     */
     private boolean isPointcut(AopAnno aopAnno) {
         if (BEFORE == aopAnno) {
             for (Object key : table.keySet()) {

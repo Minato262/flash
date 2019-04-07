@@ -11,7 +11,8 @@ public class InvokerInterceptor implements MethodInterceptor {
     }
 
     @Override
-    public Object target(Method methodTarget, Object[] args) {
+    public Object target(Method method, Object[] args) {
+        System.out.println(method);
         return null;
     }
 }
