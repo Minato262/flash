@@ -1,7 +1,7 @@
 package com.kay.cn;
 
 import com.kay.cn.factory.Father;
-import org.flashframework.aop.factory.AspectContextFactory;
+import org.flashframework.aop.AspectContextFactory;
 import org.flashframework.beans.factory.BeanFactory;
 import org.junit.Assert;
 import org.junit.Before;

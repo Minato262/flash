@@ -20,4 +20,4 @@
  * @author kay
  * @version v2.0
  */
-package org.flashframework.aop.handle;
+package org.flashframework.aop.proxy.handle;

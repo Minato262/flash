@@ -1,4 +1,4 @@
-package org.flashframework.aop.handle;
+package org.flashframework.aop.proxy.handle;
 
 import lombok.Data;
 import org.flashframework.aop.annotation.*;

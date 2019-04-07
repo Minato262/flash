@@ -17,10 +17,10 @@ package org.flashframework.aop.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.flashframework.aop.annotation.AopAnno;
-import org.flashframework.aop.factory.AspectPointcutTable;
-import org.flashframework.aop.factory.AspectPointcutTableAware;
-import org.flashframework.aop.handle.HandlerBean;
-import org.flashframework.aop.handle.method.MethodInterceptor;
+import org.flashframework.aop.AspectTable;
+import org.flashframework.aop.AspectTableAware;
+import org.flashframework.aop.proxy.handle.HandlerBean;
+import org.flashframework.aop.method.MethodInterceptor;
 
 import java.lang.reflect.Method;
 
@@ -38,7 +38,7 @@ public class InterceptorImpl implements Interceptor {
     /**
      * Aop 切点注册表
      */
-    private AspectPointcutTable table = AspectPointcutTableAware.getInstance();
+    private AspectTable table = AspectTableAware.getInstance();
 
     private MethodInterceptor interceptor = new InvokerInterceptor();
 

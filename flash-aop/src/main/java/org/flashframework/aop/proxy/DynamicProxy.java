@@ -16,7 +16,7 @@
 package org.flashframework.aop.proxy;
 
 import lombok.extern.slf4j.Slf4j;
-import org.flashframework.aop.handle.AspectHandler;
+import org.flashframework.aop.proxy.handle.AspectHandler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

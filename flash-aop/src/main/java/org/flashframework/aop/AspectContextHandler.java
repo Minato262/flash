@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.factory;
+package org.flashframework.aop;
 
 import org.flashframework.aop.annotation.*;
-import org.flashframework.aop.handle.HandlerBean;
+import org.flashframework.aop.proxy.handle.HandlerBean;
 import org.flashframework.context.factory.ApplicationContextHandler;
 
 import java.lang.reflect.Method;
@@ -32,7 +32,7 @@ public class AspectContextHandler extends ApplicationContextHandler {
     /**
      * Aop 切点注册表
      */
-    private AspectPointcutTable table = AspectPointcutTableAware.getInstance();
+    private AspectTable table = AspectTableAware.getInstance();
 
     /**
      * 根据 Class，载入类注解信息

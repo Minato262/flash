@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.handle;
+package org.flashframework.aop;
 
 import org.flashframework.aop.AspectRuntimeException;
 
 /**
- * Aop 切面处理器异常
+ * Aop 切面未发现注册信息异常
  *
  * @author kay
  * @version v2.0
  */
-public class AspectHandlerRuntimeException extends AspectRuntimeException {
-    private static final long serialVersionUID = 6072726423404799710L;
+public class AspectNotFindRuntimeException extends AspectRuntimeException {
+    private static final long serialVersionUID = 1963297972764525083L;
 
     /**
-     * 带有堆栈异常信息的构造器
+     * 带有错误信息的构造器
      *
-     * @param cause 堆栈异常信息
+     * @param message 错误信息
      */
-    public AspectHandlerRuntimeException(Throwable cause) {
-        super(cause);
+    public AspectNotFindRuntimeException(String message) {
+        super(message);
     }
 }

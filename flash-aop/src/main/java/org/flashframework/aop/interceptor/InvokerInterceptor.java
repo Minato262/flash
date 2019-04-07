@@ -1,6 +1,6 @@
 package org.flashframework.aop.interceptor;
 
-import org.flashframework.aop.handle.method.MethodInterceptor;
+import org.flashframework.aop.method.MethodInterceptor;
 
 import java.lang.reflect.Method;
 

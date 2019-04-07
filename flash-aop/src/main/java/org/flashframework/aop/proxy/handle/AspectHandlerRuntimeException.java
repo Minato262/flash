@@ -13,31 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.factory;
+package org.flashframework.aop.proxy.handle;
 
-import java.util.Map;
+import org.flashframework.aop.AspectRuntimeException;
 
 /**
- * Aspect 切面注册表
+ * Aop 切面处理器异常
  *
  * @author kay
  * @version v2.0
  */
-public interface AspectPointcutTable extends Map {
+public class AspectHandlerRuntimeException extends AspectRuntimeException {
+    private static final long serialVersionUID = 6072726423404799710L;
 
     /**
-     * 根据关键字获取对象
+     * 带有堆栈异常信息的构造器
      *
-     * @param key 容器的关键字
-     * @return 根据关键字获取对象
+     * @param cause 堆栈异常信息
      */
-    Object get(String key);
-
-    /**
-     * 根据容器的关键字放入对象
-     *
-     * @param key   容器的关键字
-     * @param value 容器存入的对象
-     */
-    <V> void put(String key, V value);
+    public AspectHandlerRuntimeException(Throwable cause) {
+        super(cause);
+    }
 }

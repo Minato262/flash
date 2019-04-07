@@ -13,25 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.factory;
+package org.flashframework.aop;
 
-import org.flashframework.aop.AspectRuntimeException;
+import java.util.Map;
 
 /**
- * Aop 切面未发现注册信息异常
+ * Aspect 切面注册表
  *
  * @author kay
  * @version v2.0
  */
-public class AspectNotFindRuntimeException extends AspectRuntimeException {
-    private static final long serialVersionUID = 1963297972764525083L;
+public interface AspectTable extends Map {
 
     /**
-     * 带有错误信息的构造器
+     * 根据关键字获取对象
      *
-     * @param message 错误信息
+     * @param key 容器的关键字
+     * @return 根据关键字获取对象
      */
-    public AspectNotFindRuntimeException(String message) {
-        super(message);
-    }
+    Object get(String key);
+
+    /**
+     * 根据容器的关键字放入对象
+     *
+     * @param key   容器的关键字
+     * @param value 容器存入的对象
+     */
+    <V> void put(String key, V value);
 }

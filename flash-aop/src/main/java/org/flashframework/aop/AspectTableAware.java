@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.factory;
+package org.flashframework.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.flashframework.core.Aware;
@@ -28,27 +28,27 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version v2.0
  */
 @Slf4j
-public final class AspectPointcutTableAware extends ConcurrentHashMap implements AspectPointcutTable, Aware {
+public final class AspectTableAware extends ConcurrentHashMap implements AspectTable, Aware {
     private static final long serialVersionUID = -5199907673664115807L;
 
     /**
      * Aspect 切面注册表的静态对象，用于存储有注解的类的相关信息
      */
-    private static AspectPointcutTable table = new AspectPointcutTableAware();
+    private static AspectTable table = new AspectTableAware();
 
     /**
      * 获取 Aspect 切面注册表，单例模式下获取的是静态对象，原型模式下新建对象
      *
      * @return Aspect 切面注册表
      */
-    public static AspectPointcutTable getInstance() {
+    public static AspectTable getInstance() {
         return table;
     }
 
     /**
      * 默认构造器
      */
-    private AspectPointcutTableAware() {
+    private AspectTableAware() {
         //
     }
 

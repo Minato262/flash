@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework.aop.factory;
+package org.flashframework.aop;
 
 import org.flashframework.aop.proxy.DynamicProxy;
 import org.flashframework.beans.handle.Handler;
