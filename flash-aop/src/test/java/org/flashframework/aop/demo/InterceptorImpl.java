@@ -21,12 +21,11 @@ package org.flashframework.aop.demo;
  */
 public class InterceptorImpl {
 
-    public void before(){
+    public void before() {
         System.out.println("在拦截器 InterceptorClass 中调用方法: before()");
     }
 
-    public void after(){
+    public void after() {
         System.out.println("在拦截器 InterceptorClass 中调用方法: after()");
     }
-
 }

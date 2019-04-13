@@ -64,12 +64,11 @@ public class InterceptorImpl implements Interceptor {
      * @return 类路径
      */
     private String getPackageUrl(Class clazz) {
-        return clazz.getName().substring(0, clazz.getName().lastIndexOf("."));
+        String clazzName = clazz.getName();
+        return clazzName.substring(0, clazzName.lastIndexOf("."));
     }
 
     /**
-     *
-     *
      * @return
      */
     private boolean isPointcut() {
@@ -77,8 +76,6 @@ public class InterceptorImpl implements Interceptor {
     }
 
     /**
-     *
-     *
      * @param aopAnno
      * @return
      */
@@ -159,9 +156,9 @@ public class InterceptorImpl implements Interceptor {
      */
     @Override
     public Object around(Object proxy, Object target, Method method, Object[] args) {
-//        if (isPointcut(AROUND)) {
-//
-//        }
+        //        if (isPointcut(AROUND)) {
+        //
+        //        }
         return null;
     }
 

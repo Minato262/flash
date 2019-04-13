@@ -43,9 +43,9 @@ public class DynamicProxyHandler implements InvocationHandler {
     /**
      * 代理需要调用的方法，并在该方法调用前后，先调用连接器的方法。
      *
-     * @param proxy 代理类对象
+     * @param proxy  代理类对象
      * @param method 被代理的接口方法
-     * @param args 被代理接口方法的参数
+     * @param args   被代理接口方法的参数
      * @return 方法调用返回的结果
      * @throws Throwable
      */

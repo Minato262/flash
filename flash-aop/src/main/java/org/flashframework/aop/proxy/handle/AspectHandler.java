@@ -56,7 +56,7 @@ public class AspectHandler implements InvocationHandler {
         }
         catch (Exception e) {
             interceptor.error(method, args, e);
-            log.error("Aspect Handler Exception, e={}", e);
+            log.error("Aspect Handler Exception", e);
             throw new AspectHandlerRuntimeException(e);
         }
         finally {
