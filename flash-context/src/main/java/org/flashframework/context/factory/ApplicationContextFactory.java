@@ -54,7 +54,7 @@ public class ApplicationContextFactory extends AbstractApplicationContext {
      * @return BeanDefinition 工厂
      */
     @Override
-    protected Handler getHandle() {
+    protected Handler getHandler() {
         return new ApplicationContextHandler();
     }
 

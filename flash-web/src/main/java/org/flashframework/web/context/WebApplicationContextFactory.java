@@ -32,7 +32,7 @@ public class WebApplicationContextFactory extends ApplicationContextFactory {
      * @return BeanDefinition 工厂
      */
     @Override
-    protected Handler getHandle() {
+    protected Handler getHandler() {
         return new WebBeanDefinitionHandler();
     }
 }

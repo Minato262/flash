@@ -60,7 +60,7 @@ public class AspectContextFactory extends ApplicationContextFactory {
      * @return Aop 切面处理器
      */
     @Override
-    protected Handler getHandle() {
+    protected Handler getHandler() {
         return new AspectContextHandler();
     }
 
