@@ -90,7 +90,6 @@
                 <artifactId>flash-web</artifactId>
                 <version>${flash.version}</version>
             </dependency>
-
             <!-- slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -102,14 +101,12 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-
             <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
             <!-- junit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -118,7 +115,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <finalName>flashframework</finalName>
         <plugins>
@@ -132,14 +128,12 @@
                 </configuration>
                 <version>${compiler.version}</version>
             </plugin>
-
             <!-- maven-install-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${install.version}</version>
             </plugin>
-
             <!-- maven-surefire-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
