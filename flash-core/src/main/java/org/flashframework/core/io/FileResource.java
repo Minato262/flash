@@ -47,9 +47,9 @@ public class FileResource {
      */
     private static final int FILE_CLASS_LENGTH = FILE_CLASS.length();
 
-    private File file;
+    private final File file;
 
-    private String packageName;
+    private final String packageName;
 
     /**
      * 带有文件属性和包名的文件资源构造器

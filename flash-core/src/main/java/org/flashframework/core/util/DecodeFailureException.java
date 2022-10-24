@@ -13,25 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.flashframework;
+package org.flashframework.core.util;
 
-import org.flashframework.core.logger.Enabled;
-import org.junit.Test;
+import org.flashframework.core.NestedRuntimeException;
 
-/**
- * {@link Enabled} Test
- *
- * @author kay
- * @version v1.0
- */
-public class EnabledTest {
+class DecodeFailureException extends NestedRuntimeException {
+    private static final long serialVersionUID = -6814085112361052234L;
 
-    @Test
-    public void test() {
-        Enabled enabled = Enabled.TRUE;
-        System.out.println(enabled);
-
-        enabled = Enabled.FALSE;
-        System.out.println(enabled);
+    /**
+     * 默认构造器
+     */
+    DecodeFailureException() {
+        super();
     }
 }

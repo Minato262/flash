@@ -15,7 +15,6 @@
  */
 package org.flashframework;
 
-import org.flashframework.core.util.Assert;
 import org.flashframework.core.util.StringUtils;
 import org.junit.Test;
 
@@ -30,30 +29,24 @@ public class StringUtilsTest {
     @Test
     public void isEmpty() {
         boolean isEmpty = StringUtils.isEmpty("");
-        Assert.isNotNull(isEmpty);
         System.out.println(isEmpty);
 
         isEmpty = StringUtils.isEmpty("null");
-        Assert.isNotNull(isEmpty);
         System.out.println(isEmpty);
 
         isEmpty = StringUtils.isEmpty("10");
-        Assert.isNotNull(isEmpty);
         System.out.println(isEmpty);
     }
 
     @Test
     public void toLowerCaseFirstOne() {
         String str = StringUtils.toLowercaseFirst("10");
-        Assert.isNotNull(str);
         System.out.println(str);
 
         str = StringUtils.toLowercaseFirst("ABCS");
-        Assert.isNotNull(str);
         System.out.println(str);
 
         str = StringUtils.toLowercaseFirst("aBCS");
-        Assert.isNotNull(str);
         System.out.println(str);
     }
 }

@@ -47,7 +47,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
      */
     @Override
     protected List<Class<?>> loadClasses(Enumeration<URL> urlElements, String packageName) {
-        log.info("{}, load class start", packageName);
+        log.debug("{}, load class start", packageName);
         List<Class<?>> classes = new ArrayList<>();
         while (urlElements.hasMoreElements()) {
             URL url = urlElements.nextElement();
@@ -57,7 +57,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
                 scanLocalClass(packageName, packagePath, classes);
             }
         }
-        log.info("{}, load class end", packageName);
+        log.debug("{}, load class end", packageName);
         return classes;
     }
 
@@ -100,8 +100,7 @@ public class ClassResourceLoader extends AbstractClassResource implements Resour
     private Class<?> loadClass(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().loadClass(name);
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new ClassResourceLoadFailureException();
         }
     }

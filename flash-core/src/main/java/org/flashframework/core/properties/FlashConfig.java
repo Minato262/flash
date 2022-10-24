@@ -53,12 +53,12 @@ public enum FlashConfig {
     /**
      * 配置文件枚举
      */
-    private FlashFile file;
+    private final FlashFile file;
 
     /**
      * 文件配置项
      */
-    private String item;
+    private final String item;
 
     /**
      * 带有配置文件路径的构造器

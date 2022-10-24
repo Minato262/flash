@@ -46,7 +46,7 @@ public enum FlashFile {
     /**
      * 配置
      */
-    private Properties prop;
+    private final Properties prop;
 
     /**
      * 带有配置文件路径的构造器
@@ -66,7 +66,7 @@ public enum FlashFile {
      */
     public String load(String propertyName) {
         Assert.isNotEmpty(propertyName);
-        for (final String key : prop.stringPropertyNames()) {
+        for (String key : prop.stringPropertyNames()) {
             if (propertyName.equals(key)) {
                 return prop.getProperty(key);
             }

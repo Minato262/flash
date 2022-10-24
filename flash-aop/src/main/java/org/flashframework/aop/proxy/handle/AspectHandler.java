@@ -15,7 +15,6 @@
  */
 package org.flashframework.aop.proxy.handle;
 
-import lombok.extern.slf4j.Slf4j;
 import org.flashframework.aop.interceptor.Interceptor;
 import org.flashframework.aop.interceptor.InterceptorImpl;
 
@@ -28,16 +27,13 @@ import java.lang.reflect.Method;
  * @author kay
  * @version v2.0
  */
-@Slf4j
 public class AspectHandler implements InvocationHandler {
-
-    private Object obj;
-
-    private Interceptor interceptor;
+    private final Object obj;
+    private final Interceptor interceptor;
 
     public AspectHandler(Object obj) {
         this.obj = obj;
-        interceptor = new InterceptorImpl(obj);
+        this.interceptor = new InterceptorImpl(obj);
     }
 
     @Override
@@ -49,17 +45,13 @@ public class AspectHandler implements InvocationHandler {
                 Object result = method.invoke(obj, args);
                 interceptor.after(method, args);
                 return result;
-            }
-            else {
+            } else {
                 return interceptor.around(proxy, obj, method, args);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             interceptor.error(method, args, e);
-            log.error("Aspect Handler Exception", e);
             throw new AspectHandlerRuntimeException(e);
-        }
-        finally {
+        } finally {
             interceptor.end(method, args);
         }
     }

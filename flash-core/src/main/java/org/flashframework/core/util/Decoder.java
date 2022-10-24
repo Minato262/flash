@@ -42,7 +42,7 @@ public class Decoder {
             return URLDecoder.decode(source, Unicode.UTF_8.getCode());
         }
         catch (UnsupportedEncodingException e) {
-            return "";
+            throw new DecodeFailureException();
         }
     }
 }

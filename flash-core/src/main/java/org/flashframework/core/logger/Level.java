@@ -43,7 +43,7 @@ public enum Level {
      */
     ERROR("error");
 
-    private String level;
+    private final String level;
 
     Level(String level) {
         this.level = level;

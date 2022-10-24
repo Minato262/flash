@@ -60,8 +60,7 @@ public class StringUtils {
         Assert.isNotEmpty(str);
         if (Character.isLowerCase(str.charAt(0))) {
             return str;
-        }
-        else {
+        } else {
             return Character.toLowerCase(str.charAt(0)) + str.substring(1);
         }
     }

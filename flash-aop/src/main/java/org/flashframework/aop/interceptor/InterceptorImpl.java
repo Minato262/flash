@@ -38,19 +38,14 @@ public class InterceptorImpl implements Interceptor {
     /**
      * Aop 切点注册表
      */
-    private AspectTable table = AspectTableAware.getInstance();
+    private final AspectTable table = AspectTableAware.getInstance();
 
-    private MethodInterceptor interceptor = new InvokerInterceptor();
+    private final MethodInterceptor interceptor = new InvokerInterceptor();
 
-    private String packageUrl;
+    private final String packageUrl;
 
     public InterceptorImpl(Object obj) {
-        init(obj);
-    }
-
-    private void init(Object obj) {
         packageUrl = getPackageUrl(obj.getClass());
-
         for (Object key : table.keySet()) {
             HandlerBean bean = (HandlerBean) table.get(key);
             System.out.println(bean);
@@ -68,41 +63,38 @@ public class InterceptorImpl implements Interceptor {
         return clazzName.substring(0, clazzName.lastIndexOf("."));
     }
 
-    /**
-     * @return
-     */
     private boolean isPointcut() {
         return true;
     }
 
-    /**
-     * @param aopAnno
-     * @return
-     */
     private boolean isPointcut(AopAnno aopAnno) {
-        if (BEFORE == aopAnno) {
-            for (Object key : table.keySet()) {
-                HandlerBean bean = (HandlerBean) table.get(key);
-                if (bean.getBefore().value().contains(packageUrl)) {
-                    return true;
+        switch (aopAnno) {
+            case BEFORE:
+                for (Object key : table.keySet()) {
+                    HandlerBean bean = (HandlerBean) table.get(key);
+                    if (bean.getBefore().value().contains(packageUrl)) {
+                        return true;
+                    }
                 }
-            }
-        }
-        else if (AROUND == aopAnno) {
-            for (Object key : table.keySet()) {
-                HandlerBean bean = (HandlerBean) table.get(key);
-                if (bean.getAround().value().contains(packageUrl)) {
-                    return true;
+                break;
+            case AROUND:
+                for (Object key : table.keySet()) {
+                    HandlerBean bean = (HandlerBean) table.get(key);
+                    if (bean.getAround().value().contains(packageUrl)) {
+                        return true;
+                    }
                 }
-            }
-        }
-        else if (AFTER == aopAnno) {
-            for (Object key : table.keySet()) {
-                HandlerBean bean = (HandlerBean) table.get(key);
-                if (bean.getAfter().value().contains(packageUrl)) {
-                    return true;
+                break;
+            case AFTER:
+                for (Object key : table.keySet()) {
+                    HandlerBean bean = (HandlerBean) table.get(key);
+                    if (bean.getAfter().value().contains(packageUrl)) {
+                        return true;
+                    }
                 }
-            }
+                break;
+            default:
+                //
         }
         return false;
     }

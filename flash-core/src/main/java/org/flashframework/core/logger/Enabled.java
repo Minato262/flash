@@ -33,7 +33,7 @@ public enum Enabled {
      */
     FALSE(false);
 
-    private boolean enabled;
+    private final boolean enabled;
 
     Enabled(boolean enabled) {
         this.enabled = enabled;

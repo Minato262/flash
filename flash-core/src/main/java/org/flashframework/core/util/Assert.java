@@ -42,7 +42,7 @@ public class Assert {
      */
     public static void isNotNull(Object object) {
         if (object == null) {
-            throw new InvalidParameterException("the object must be not null!");
+            throw new InvalidParameterException("the object must be not null.");
         }
     }
 
@@ -61,7 +61,7 @@ public class Assert {
      */
     public static void isNotEmpty(String str) {
         if (str == null || "".equals(str)) {
-            throw new InvalidParameterException("the string must be not empty!");
+            throw new InvalidParameterException("the string must be not empty.");
         }
     }
 }

@@ -32,7 +32,7 @@ public class AspectContextHandler extends ApplicationContextHandler {
     /**
      * Aop 切点注册表
      */
-    private AspectTable table = AspectTableAware.getInstance();
+    private final AspectTable table = AspectTableAware.getInstance();
 
     /**
      * 根据 Class，载入类注解信息

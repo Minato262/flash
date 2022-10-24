@@ -37,17 +37,17 @@ public class Configurator {
     /**
      * 是否启动 flashframework 框架自带的 Log
      */
-    private static boolean enabled;
+    private static final boolean enabled;
 
     /**
      * Log 日志打印等级
      */
-    private static Level level;
+    private static final Level level;
 
     /**
      * Log 日志打印的文件路径
      */
-    private static String file;
+    private static final String file;
 
     static {
         final String strEnabled = FlashConfig.FLASH_LOG_ENABLED.load();

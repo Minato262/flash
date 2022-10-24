@@ -29,7 +29,7 @@ public enum Unicode {
      */
     UTF_8("UTF-8");
 
-    private String code;
+    private final String code;
 
     Unicode(String code) {
         this.code = code;

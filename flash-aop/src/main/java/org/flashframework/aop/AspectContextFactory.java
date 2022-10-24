@@ -35,12 +35,12 @@ public class AspectContextFactory extends ApplicationContextFactory {
     /**
      * 是否启动 flashframework 框架自带的 Aop 设置
      */
-    private static boolean enabled;
+    private static final boolean enabled;
 
     /**
      * 动态代理
      */
-    private DynamicProxy proxy = new DynamicProxy();
+    private final DynamicProxy proxy = new DynamicProxy();
 
     static {
         String strEnabled = FlashConfig.FLASH_AOP_ENABLED.load();

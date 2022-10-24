@@ -50,16 +50,10 @@ public class PropertiesFactory {
      * @throws IOException 如果 I/O 异常
      */
     private static Properties loadProperties(String propertyPath) throws IOException {
-        InputStream in = Object.class.getResourceAsStream(propertyPath);
-        try {
+        try (InputStream in = Object.class.getResourceAsStream(propertyPath)) {
             Properties prop = new Properties();
             prop.load(in);
             return prop;
-        }
-        finally {
-            if (in != null) {
-                in.close();
-            }
         }
     }
 }

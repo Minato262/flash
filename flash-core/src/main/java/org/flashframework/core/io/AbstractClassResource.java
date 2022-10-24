@@ -66,8 +66,7 @@ public abstract class AbstractClassResource implements Resource {
     private Enumeration<URL> getEnumeration(String name) {
         try {
             return Thread.currentThread().getContextClassLoader().getResources(name);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new ClassResourceRuntimeException(e);
         }
     }
